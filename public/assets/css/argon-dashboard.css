@@ -24878,3 +24878,8 @@ pre[class*=language-] {
     overflow: auto !important;
   }
 }
+
+@font-face {
+  font-family: 'Mononoki Nerd Font';
+  src: url('/public/assets/fonts/Mononoki/ Nerd\ Font\ Complete\ Regular.ttf');
+}

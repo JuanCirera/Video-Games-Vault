@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('layouts.navbars.guest.navbar')
 
     <main class="main-content  mt-0">
@@ -14,8 +13,9 @@
                             <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
                                 style="background-image: url('/img/fondo_registro.jpg');
               background-size: cover;">
-                                <span class="mask bg-gradient-primary opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Gamers are awesome"</h4>
+                                <span class="mask bg-dark opacity-6"></span>
+                                <img class="mb-10 z-index-1 img-fluid" style="max-width: 50em" src="/img/logos/VGV_completo.svg" alt="svg">
+                                {{-- <h4 class="mb-15 text-white font-weight-bolder position-relative">"Gamers are awesome"</h4> --}}
                                 {{-- TODO: Meter frase o eslogan --}}
                                 {{-- <p class="text-white position-relative">The more effortless the writing looks, the more
                                     effort the writer actually put into the process.</p> --}}
@@ -32,32 +32,44 @@
                                         @csrf
                                         @method('post')
                                         <div class="flex flex-col mb-3">
-                                            <input type="email" name="email" class="form-control form-control-lg bg-gray-700 text-white" value="{{ old('email')}}" aria-label="Email" placeholder="Email">
-                                            @error('email') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
+                                            <input type="email" name="email"
+                                                class="form-control form-control-lg bg-gray-700 text-white"
+                                                value="{{ old('email') }}" aria-label="Email" placeholder="Email">
+                                            @error('email')
+                                                <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                            @enderror
                                         </div>
                                         <div class="flex flex-col mb-3">
-                                            <input type="password" name="password" class="form-control form-control-lg bg-gray-700 text-white" aria-label="Password" placeholder="Contraseña">
-                                            @error('password') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
+                                            <input type="password" name="password"
+                                                class="form-control form-control-lg bg-gray-700 text-white"
+                                                aria-label="Password" placeholder="Contraseña">
+                                            @error('password')
+                                                <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                            @enderror
                                         </div>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" name="remember" type="checkbox" id="rememberMe">
                                             <label class="form-check-label" for="rememberMe">Recuérdame</label>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Iniciar sesión</button>
+                                            <button type="submit"
+                                                class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Iniciar
+                                                sesión</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-1 text-sm mx-auto">
                                         ¿Has olvidad la contraseña? Resetea la contraseña
-                                        <a href="{{ route('reset-password') }}" class="text-primary font-weight-bold">aquí</a>
+                                        <a href="{{ route('reset-password') }}"
+                                            class="text-primary font-weight-bold">aquí</a>
                                     </p>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-4 text-sm mx-auto">
                                         ¿Aún no estas registrado?
-                                        <a href="{{ route('register') }}" class="text-primary font-weight-bold">Crear cuenta</a>
+                                        <a href="{{ route('register') }}" class="text-primary font-weight-bold">Crear
+                                            cuenta</a>
                                     </p>
                                 </div>
                             </div>
