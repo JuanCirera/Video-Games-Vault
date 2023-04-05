@@ -39,7 +39,10 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            // 'root' => public_path(),
             'url' => env('APP_URL').'/storage',
+            // NOTE: se ha vuelto loco el storage, no se puede acceder, asi que lo dejo todo en public
+            // 'url' => env('APP_URL'),
             'visibility' => 'public',
             'throw' => false,
         ],

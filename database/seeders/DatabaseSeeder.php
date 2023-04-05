@@ -17,8 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             'username' => 'admin',
-            'email' => 'admin@argon.com',
-            'password' => bcrypt('secret')
+            'email' => 'admin@vgv.com',
+            'password' => bcrypt('Pistacho1'),
+            'profile_photo_path' => 'img/default_profile_photo.png'
         ]);
     }
 }

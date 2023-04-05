@@ -5,8 +5,7 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0 d-flex justify-content-center align-items-center" href="{{ route('home') }}"
             target="_blank">
-            <img src="./../../../img/globomatik.png" class="navbar-brand-img " alt="main_logo">
-            {{-- <span class="ms-1 font-weight-bold">Panel Laravel</span> --}}
+            <img src="./../../../img/logos/VGV.svg" class="navbar-brand-img" alt="main_logo">
         </a>
     </div>
     <hr class="horizontal dark mt-0">
