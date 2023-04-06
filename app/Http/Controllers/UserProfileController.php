@@ -12,6 +12,8 @@ class UserProfileController extends Controller
         return view('pages.user-profile');
     }
 
+
+    //TODO: modificar esto y hacerlo a mi manera
     public function update(Request $request)
     {
         $attributes = $request->validate([
