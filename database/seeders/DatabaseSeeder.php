@@ -21,5 +21,12 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Pistacho1'),
             'profile_photo_path' => 'img/default_profile_photo.png'
         ]);
+
+        DB::table('users')->insert([
+            'username' => 'CWG',
+            'email' => 'cirera@vgv.com',
+            'password' => bcrypt('Pistacho1'),
+            'profile_photo_path' => 'img/default_profile_photo.png'
+        ]);
     }
 }

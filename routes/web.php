@@ -23,11 +23,11 @@ use App\Http\Controllers\WelcomeController;
 */
                   
 
-Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
+// Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
