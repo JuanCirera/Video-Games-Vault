@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Providers\ApiServiceProvider as ProvidersApiServiceProvider;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
-        /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+
+    public array $games=[];
 
     /**
      * Show the application dashboard.
@@ -23,6 +18,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $games=[];
+
+        if(Cache::get('games')){
+            $games=Cache::get('games');
+            // Log::info("Games loaded from cache");
+        }else{
+            $this->games=(new ProvidersApiServiceProvider)->getVideogames();
+            Cache::put('games',$this->games);
+            $games=$this->games;
+            Log::info("Games loaded from API");
+        }
+        
+        return view('home',compact('games'));
     }
 }
