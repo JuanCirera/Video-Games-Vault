@@ -30,7 +30,13 @@ class ApiServiceProvider extends ServiceProvider{
 
     }
 
-    
+
+    public static function searchGames(string $search){
+        define("searchGames","{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}&search=".$search);
+        return json_decode(file_get_contents(searchGames))->results;
+    }
+
+
     public function getVideogames(){
         return $this->videogames;
     }

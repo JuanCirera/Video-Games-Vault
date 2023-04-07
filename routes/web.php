@@ -9,7 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
-use App\Http\Controllers\WelcomeController;
+use App\Http\Livewire\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,11 @@ use App\Http\Controllers\WelcomeController;
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', function (){
+	return redirect('home');
+});
+
+Route::get('/home', Home::class)->name('home');
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');

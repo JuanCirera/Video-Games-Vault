@@ -33,7 +33,10 @@
     @guest
         @include('livewire.navbar')
         <main class="main-content">
-            @yield('content')
+            {{-- NOTE: WTF, pa fiplar. El yield que traia ARGON no funciona con livewire, hay que meter un slot--}}
+            {{-- <livewire:home /> --}}
+            {{-- @yield('content') --}}
+            {{$slot}}          
         </main>
     @endguest
 
