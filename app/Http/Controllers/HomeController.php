@@ -22,14 +22,15 @@ class HomeController extends Controller
 
         if(Cache::get('games')){
             $games=Cache::get('games');
-            // Log::info("Games loaded from cache");
         }else{
             $this->games=(new ProvidersApiServiceProvider)->getVideogames();
-            Cache::put('games',$this->games);
+            Cache::put('games', $this->games, 1440); // NOTE: 24H de expiracion
             $games=$this->games;
             Log::info("Games loaded from API");
         }
+
+        $welcome_img=$games[random_int(0,count($games)-1)]->background_image;
         
-        return view('home',compact('games'));
+        return view('home',compact('games','welcome_img'));
     }
 }

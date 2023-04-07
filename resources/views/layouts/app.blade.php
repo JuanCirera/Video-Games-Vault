@@ -31,7 +31,7 @@
 <body class="{{ $class ?? '' }}">
 
     @guest
-        @include('layouts.navbars.guest.navbar')
+        @include('livewire.navbar')
         <main class="main-content">
             @yield('content')
         </main>
