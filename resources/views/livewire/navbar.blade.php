@@ -21,29 +21,22 @@
                         {{-- class="navbar-brand font-weight-bolder text-primary text-gradient text-lg" style="font-family: monospace" --}}
                         <a href="{{ route('home') }}" class="navbar-brand">
                             {{-- VIDEO GAMES VAULT  --}}
-                            <img src="/img/logos/VGV.svg" alt="vgv" class="w-100 mx-auto">
+                            <img src="/img/logos/VGV.svg" alt="vgv" class="w-100">
                         </a>
                     </div>
                     <div class="col-4 d-flex gap-2 justify-content-end">
-                        {{-- <a class="navbar-toggler shadow-none p-0" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#search" aria-controls="search" aria-expanded="false"
-                        aria-label="Toggle search">
-                            <i class="fa-solid fa-magnifying-glass text-secondary text-2xl pt-2"></i>
-                        </a> --}}
-                        
+
                         @guest
                             <a href="{{ route('login') }}">
                                 <i class="fa-regular fa-circle-user text-secondary text-2xl ps-3 pt-2"></i>
                             </a>
                         @endguest
                         @auth
-                            <a href="{{ route('profile') }}">
-                                {{-- TODO: mostrar aqui la imagen del usuario --}}
-                                {{-- <img src="" alt=""> --}}
-                                <i class="fa-regular fa-face-smile text-secondary text-2xl"></i>
+                            <a href="{{ route('profile') }}" class="w-50">
+                                <img src="{{auth()->user()->profile_photo_path}}" alt="profile_img" class="w-90 rounded-circle">
                             </a>
                         @endauth
-                        
+
                     </div>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ms-auto">
@@ -91,15 +84,9 @@
                             </li>
                         </ul>
                     </div>
-
-                    {{-- <div class="collapse navbar-collapse" id=search>
-                        <input type="search" placeholder="Buscar..." class="form-control mt-4 mb-2 bg-gray-700 text-white" wire:model="search">
-                    </div> --}}
-
                 </div>
             </nav>
             <!-- End Navbar -->
         </div>
     </div>
 </div>
-

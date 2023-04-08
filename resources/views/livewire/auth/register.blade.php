@@ -69,30 +69,32 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register.perform') }}">
-                                @csrf
+                            {{-- <form method="POST" action="{{ route('register.perform') }}"> --}}
+                                {{-- @csrf --}}
                                 <div class="flex flex-col mb-3">
                                     <input type="text" name="username" class="form-control bg-gray-700 text-white"
-                                        placeholder="Nombre de usuario" aria-label="Name" value="{{ old('username') }}">
+                                        placeholder="Nombre de usuario" aria-label="Name" value="{{ old('username') }}"
+                                        wire:model="username">
                                     @error('username')
                                         <p class='text-danger text-xs pt-1'> {{ $message }} </p>
                                     @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <input type="email" name="email" class="form-control bg-gray-700 text-white"
-                                        placeholder="Email" aria-label="Email" value="{{ old('email') }}">
+                                        placeholder="Email" aria-label="Email" value="{{ old('email') }}" wire:model="email">
                                     @error('email')
                                         <p class='text-danger text-xs pt-1'> {{ $message }} </p>
                                     @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <input type="password" name="password" class="form-control bg-gray-700 text-white"
-                                        placeholder="Contraseña" aria-label="Password">
+                                        placeholder="Contraseña" aria-label="Password" wire:model="password">
                                     @error('password')
                                         <p class='text-danger text-xs pt-1'> {{ $message }} </p>
                                     @enderror
                                 </div>
                                 <div class="form-check form-check-info text-start">
+                                    {{-- TODO: Esto no se si implementarlo --}}
                                     <input class="form-check-input " type="checkbox" name="terms"
                                         id="flexCheckDefault">
                                     <label class="form-check-label text-white" for="flexCheckDefault">
@@ -105,7 +107,9 @@
                                     @enderror
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary w-100 my-4 mb-2">Crear cuenta</button>
+                                    <button class="btn btn-primary w-100 my-4 mb-2" wire:click="store">
+                                        Crear cuenta
+                                    </button>
                                 </div>
                                 <p class="text-sm mt-3 mb-0">¿Ya tienes una cuenta? <a href="{{ route('login') }}"
                                         class="text-primary font-weight-bolder">Inicia sesión</a></p>

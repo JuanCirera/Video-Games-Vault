@@ -7,9 +7,7 @@ use Livewire\Component;
 class Navbar extends Component
 {
 
-    public string $searchIcon="fa-solid fa-magnifying-glass";
-
-    public string $inputSearch="";
+    public string $userIcon="";
 
     public function render()
     {
@@ -17,8 +15,6 @@ class Navbar extends Component
     }
 
 
-    public function search(){
-        
-    }
+    
 
 }

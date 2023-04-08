@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Livewire;
 
+use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class UserProfileController extends Controller
+class UserProfile extends Component
 {
-    public function show()
+    public function render()
     {
-        return view('pages.user-profile');
+        return view('livewire.pages.user-profile');
     }
-
 
     //TODO: modificar esto y hacerlo a mi manera
     public function update(Request $request)
@@ -22,11 +22,11 @@ class UserProfileController extends Controller
             'profile_photo_path' => ['image','max:2048'],
         ]);
 
-        auth()->user()->update([
-            'username' => $request->get('username'),
-            'email' => $request->get('email') ,
-            'profile_photo_path' => $request->get('image')
-        ]);
+        // auth()->user()->update([
+        //     'username' => $request->get('username'),
+        //     'email' => $request->get('email') ,
+        //     'profile_photo_path' => $request->get('image')
+        // ]);
         return back()->with('succes', 'Profile succesfully updated');
     }
 }

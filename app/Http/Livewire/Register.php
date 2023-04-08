@@ -3,10 +3,20 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Laravolt\Avatar\Avatar;
 use Livewire\Component;
 
 class Register extends Component
 {
+
+    public string $username,$email,$password;
+
+    protected $rules=[
+        "username" => ['required','max:255','min:2'],
+        "email" => ['required','email','max:255','unique:users,email'],
+        "password" => ['required','min:5','max:255'],
+    ];
+
     public function render()
     {
         return view('livewire.auth.register');
@@ -14,15 +24,19 @@ class Register extends Component
 
     public function store()
     {
-        $attributes = request()->validate([
-            'username' => 'required|max:255|min:2',
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|min:5|max:255',
-            'terms' => 'required'
+        $this->validate();
+
+        $user = User::create([
+            "username" => $this->username,
+            "email" => $this->email,
+            "password" => $this->password,
+            "profile_photo_path" => "https://ui-avatars.com/api/?name=".$this->username."&background=8392ab&color=fff&bold=true"
         ]);
-        $user = User::create($attributes);
+
+        //NOTE: para la imagen de perfil por defecto estoy tirando de la api ui-avatars, la que usa jetstream
+
         auth()->login($user);
 
-        return redirect('/dashboard');
+        return redirect('home');
     }
 }

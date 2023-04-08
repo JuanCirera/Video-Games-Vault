@@ -4,14 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
+use App\Http\Livewire\ResetPassword;
+use App\Http\Livewire\UserProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,15 +37,15 @@ Route::get('/register', Register::class)->middleware('guest')->name('register');
 Route::post('/register', [Register::class, 'store'])->middleware('guest')->name('register.perform');
 Route::get('/login', Login::class)->middleware('guest')->name('login');
 Route::post('/login', [Login::class, 'login'])->middleware('guest')->name('login.perform');
-Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
+Route::get('/reset-password', ResetPassword::class)->middleware('guest')->name('reset-password');
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+// Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+	Route::get('/profile', UserProfile::class)->name('profile');
+	Route::post('/profile', [UserProfile::class, 'update'])->name('profile.update');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');
 });
