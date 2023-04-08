@@ -19,14 +19,14 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@vgv.com',
             'password' => bcrypt('Pistacho1'),
-            'profile_photo_path' => 'img/default_profile_photo.png'
+            'avatar' => "https://ui-avatars.com/api/?name=admin&background=8392ab&color=fff&bold=true"
         ]);
 
         DB::table('users')->insert([
             'username' => 'CWG',
             'email' => 'cirera@vgv.com',
             'password' => bcrypt('Pistacho1'),
-            'profile_photo_path' => 'img/default_profile_photo.png'
+            'avatar' => "https://ui-avatars.com/api/?name=cwg&background=8392ab&color=fff&bold=true"
         ]);
     }
 }

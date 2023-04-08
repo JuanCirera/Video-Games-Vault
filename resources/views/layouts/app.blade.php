@@ -41,17 +41,12 @@
     @endguest
 
     @auth
-        {{-- @if (in_array(request()->route()->getName(),
-                ['login', 'register', 'recover-password']))
-            @yield('content')
-        @else --}}
-            @include('livewire.navbar')
-            <main class="main-content border-radius-lg">
-                @yield('content')
-            </main>
-            {{-- NOTE: Esto no sirve pa na de momento --}}
-            {{-- @include('components.fixed-plugin') --}}
-        {{-- @endif --}}
+        @include('livewire.navbar')
+        <main class="main-content border-radius-lg">
+            {{$slot}}
+        </main>
+        {{-- NOTE: Esto no sirve pa na de momento --}}
+        {{-- @include('components.fixed-plugin') --}}
     @endauth
 
     <!--   Core JS Files   -->
