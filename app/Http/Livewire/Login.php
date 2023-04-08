@@ -1,22 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Livewire;
 
+use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 
-class LoginController extends Controller
+class Login extends Component
 {
-    /**
-     * Display login page.
-     *
-     * @return Renderable
-     */
-    public function show()
+    public function render()
     {
-        return view('auth.login');
+        return view('livewire.auth.login');
     }
 
     public function login(Request $request)

@@ -29,7 +29,7 @@ class Home extends Component
             //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
             $this->games = Cache::remember('games', 86400, function () { // NOTE: 24H de expiracion
                 Log::info("API request: " . count($this->games) . " games fetched");
-                return (new ProvidersApiServiceProvider)->getVideogames();
+                return ProvidersApiServiceProvider::getVideogames();
             });
         } else {
 

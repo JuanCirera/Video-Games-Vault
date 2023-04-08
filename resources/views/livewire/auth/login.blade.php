@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-    @include('layouts.navbars.guest.navbar')
-
+<div>
     <main class="main-content  mt-0">
         <section>
             <div class="page-header min-vh-100">
@@ -14,7 +10,8 @@
                                 style="background-image: url('/img/fondo_registro.jpg');
               background-size: cover;">
                                 <span class="mask bg-dark opacity-6"></span>
-                                <img class="mb-10 z-index-1 img-fluid" style="max-width: 50em" src="/img/logos/VGV_completo.svg" alt="svg">
+                                <img class="mb-10 z-index-1 img-fluid" style="max-width: 50em"
+                                    src="/img/logos/VGV_completo.svg" alt="svg">
                                 {{-- <h4 class="mb-15 text-white font-weight-bolder position-relative">"Gamers are awesome"</h4> --}}
                                 {{-- TODO: Meter frase o eslogan --}}
                                 {{-- <p class="text-white position-relative">The more effortless the writing looks, the more
@@ -48,7 +45,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" name="remember" type="checkbox" id="rememberMe">
+                                            <input class="form-check-input" name="remember" type="checkbox"
+                                                id="rememberMe">
                                             <label class="form-check-label" for="rememberMe">Recuérdame</label>
                                         </div>
                                         <div class="text-center">
@@ -79,4 +77,4 @@
             </div>
         </section>
     </main>
-@endsection
+</div>

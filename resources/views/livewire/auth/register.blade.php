@@ -1,7 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-    @include('layouts.navbars.guest.navbar')
+<div>
     <main class="main-content mt-0 bg-gray-900">
         <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
             style="background-image: url('/img/fondo_registro.jpg'); background-position: top;">
@@ -10,7 +7,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5 text-center mx-auto">
                         <h1 class="text-white mb-2 mt-5">¡Bienvenido jugador!</h1>
-                        <p class="text-lead text-white">Estás a punto de entrar a la mayor bóveda de videojuegos del multiverso</p>
+                        <p class="text-lead text-white">Estás a punto de entrar a la mayor bóveda de videojuegos del
+                            multiverso</p>
                     </div>
                 </div>
             </div>
@@ -74,24 +72,37 @@
                             <form method="POST" action="{{ route('register.perform') }}">
                                 @csrf
                                 <div class="flex flex-col mb-3">
-                                    <input type="text" name="username" class="form-control bg-gray-700 text-white" placeholder="Nombre de usuario" aria-label="Name" value="{{ old('username') }}" >
-                                    @error('username') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    <input type="text" name="username" class="form-control bg-gray-700 text-white"
+                                        placeholder="Nombre de usuario" aria-label="Name" value="{{ old('username') }}">
+                                    @error('username')
+                                        <p class='text-danger text-xs pt-1'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="email" name="email" class="form-control bg-gray-700 text-white" placeholder="Email" aria-label="Email" value="{{ old('email') }}" >
-                                    @error('email') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    <input type="email" name="email" class="form-control bg-gray-700 text-white"
+                                        placeholder="Email" aria-label="Email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <p class='text-danger text-xs pt-1'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="password" name="password" class="form-control bg-gray-700 text-white" placeholder="Contraseña" aria-label="Password">
-                                    @error('password') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    <input type="password" name="password" class="form-control bg-gray-700 text-white"
+                                        placeholder="Contraseña" aria-label="Password">
+                                    @error('password')
+                                        <p class='text-danger text-xs pt-1'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="form-check form-check-info text-start">
-                                    <input class="form-check-input " type="checkbox" name="terms" id="flexCheckDefault" >
+                                    <input class="form-check-input " type="checkbox" name="terms"
+                                        id="flexCheckDefault">
                                     <label class="form-check-label text-white" for="flexCheckDefault">
-                                        Estoy de acuerdo con los<a href="javascript:;" class="text-white font-weight-bolder"> Términos y
+                                        Estoy de acuerdo con los<a href="javascript:;"
+                                            class="text-white font-weight-bolder"> Términos y
                                             Condiciones</a>
                                     </label>
-                                    @error('terms') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
+                                    @error('terms')
+                                        <p class='text-danger text-xs'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary w-100 my-4 mb-2">Crear cuenta</button>
@@ -105,5 +116,4 @@
             </div>
         </div>
     </main>
-    @include('layouts.footers.guest.footer')
-@endsection
+</div>

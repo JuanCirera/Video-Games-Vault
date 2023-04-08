@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Livewire;
 
-// use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Livewire\Component;
 
-class RegisterController extends Controller
+class Register extends Component
 {
-    public function create()
+    public function render()
     {
-        return view('auth.register');
+        return view('livewire.auth.register');
     }
 
     public function store()
