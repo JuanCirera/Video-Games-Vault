@@ -43,7 +43,8 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/profile', UserProfile::class)->name('profile');
+	Route::get('/@{username}', UserProfile::class)->name('profile');
+	Route::get('/@{username}/games', [UserProfile::class, 'showGames'])->name("profile.games");
 	Route::post('/profile', [UserProfile::class, 'update'])->name('profile.update');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');

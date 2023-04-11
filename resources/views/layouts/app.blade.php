@@ -33,17 +33,17 @@
     @guest
         @include('livewire.navbar')
         <main class="main-content">
-            {{-- NOTE: WTF, pa fiplar. El yield que traia ARGON no funciona con livewire, hay que meter un slot--}}
+            {{-- NOTE: WTF, pa fiplar. El yield que traia ARGON no funciona con livewire, hay que meter un slot --}}
             {{-- <livewire:home /> --}}
             {{-- @yield('content') --}}
-            {{$slot}}          
+            {{ $slot }}
         </main>
     @endguest
 
     @auth
         @include('livewire.navbar')
         <main class="main-content border-radius-lg">
-            {{$slot}}
+            {{ $slot }}
         </main>
         {{-- NOTE: Esto no sirve pa na de momento --}}
         {{-- @include('components.fixed-plugin') --}}
@@ -67,10 +67,100 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/argon-dashboard.js"></script>
+    {{-- SA --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('js')
 
+    @if (session('error_msg'))
+        <script>
+            let timerInterval
+            Swal.fire({
+                icon: 'error',
+                title: '{{ session('error_msg') }}',
+                position: 'top-end',
+                timer: 2000,
+                timerProgressBar: true,
+                toast: true,
+                showConfirmButton = false,
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+            })
+        </script>
+    @endif
+
+    @if (session('success_msg'))
+        <script>
+            let timerInterval
+            Swal.fire({
+                icon: 'success',
+                title: '{{ session('success_msg') }}',
+                position: 'top-end',
+                timer: 2000,
+                timerProgressBar: true,
+                toast: true,
+                showConfirmButton = false,
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('Alert closed by the timer')
+                }
+            })
+        </script>
+    @endif
+
+    @if (session('warning_msg'))
+        <script>
+            let timerInterval
+            Swal.fire({
+                icon: 'warning',
+                title: '{{ session('warning_msg') }}',
+                position: 'top-end',
+                timer: 2000,
+                timerProgressBar: true,
+                toast: true,
+                showConfirmButton = false,
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('Alert closed by the timer')
+                }
+            })
+        </script>
+    @endif
+
+    @if (session('info_msg'))
+        <script>
+            let timerInterval
+            Swal.fire({
+                icon: 'info',
+                title: '{{ session('info_msg') }}',
+                position: 'top-end',
+                timer: 2000,
+                timerProgressBar: true,
+                toast: true,
+                showConfirmButton = false,
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('Alert closed by the timer')
+                }
+            })
+        </script>
+    @endif
+
     @livewireScripts
-    
+
 </body>
 
 </html>

@@ -32,7 +32,7 @@
                             </a>
                         @endguest
                         @auth
-                            <a href="{{ route('profile') }}" class="w-50">
+                            <a href="{{ route('profile',auth()->user()->username) }}" class="w-50">
                                 <img src="{{auth()->user()->avatar}}" alt="profile_img" class="w-90 rounded-circle">
                             </a>
                         @endauth

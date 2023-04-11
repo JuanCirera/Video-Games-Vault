@@ -10,7 +10,8 @@ class UserProfile extends Component
 {
     public function render()
     {
-        return view('livewire.pages.user-profile');
+        $user=auth()->user();
+        return view('livewire.pages.user-profile',compact('user'));
     }
 
     //TODO: modificar esto y hacerlo a mi manera
@@ -28,5 +29,9 @@ class UserProfile extends Component
         //     'profile_photo_path' => $request->get('image')
         // ]);
         return back()->with('succes', 'Profile succesfully updated');
+    }
+
+    public function showGames(){
+        
     }
 }
