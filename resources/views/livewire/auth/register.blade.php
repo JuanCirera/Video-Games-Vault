@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center">
+            <div class="row mt-lg-n10 mt-md-n11 mt-n12 justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0 bg-gray-800">
                         <div class="card-header text-center pt-4 bg-gray-800">
@@ -69,8 +69,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            {{-- <form method="POST" action="{{ route('register.perform') }}"> --}}
-                                {{-- @csrf --}}
                                 <div class="flex flex-col mb-3">
                                     <input type="text" name="username" class="form-control bg-gray-700 text-white"
                                         placeholder="Nombre de usuario" aria-label="Name" value="{{ old('username') }}"

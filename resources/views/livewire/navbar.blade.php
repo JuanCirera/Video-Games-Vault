@@ -32,26 +32,15 @@
                             </a>
                         @endguest
                         @auth
-                            <a href="{{ route('profile',auth()->user()->username) }}" class="w-50">
-                                <img src="{{auth()->user()->avatar}}" alt="profile_img" class="w-90 rounded-circle">
+                            {{-- NOTE: Si llamo a auth() se queda guardada la primera sesion, no el usuario actual, con Auth si funciona --}}
+                            <a class="w-50" data-bs-toggle="offcanvas" href="#profileOffcanvas">
+                                <img src="{{ auth()->user()->avatar }}" alt="profile_img" class="w-90 rounded-circle">
                             </a>
                         @endauth
 
                     </div>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ms-auto">
-                            {{-- <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('register') }}">
-                                    <i class="fas fa-user-circle opacity-6 me-1"></i>
-                                    Crear cuenta
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('login') }}">
-                                    <i class="fas fa-key opacity-6 me-1"></i>
-                                    Iniciar sesión
-                                </a>
-                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link me-2 text-white" href="{{ route('home') }}">
                                     <i class="fas fa-home opacity-6 me-1"></i>
@@ -89,4 +78,69 @@
             <!-- End Navbar -->
         </div>
     </div>
+    @auth
+        <div class="offcanvas offcanvas-end bg-gray-900 w-50" tabindex="-1" id="profileOffcanvas"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title text-white">{{ '@' . Auth::user()->username }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="accordion" id="accordionOffcanvas">
+                    <div class="accordion-item mb-3">
+                        <h5 class="accordion-header text-white" id="headingOne">
+                            <button class="text-white accordion-button border-bottom font-weight-bold collapsed"
+                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false"
+                                aria-controls="collapse1">
+                                Mi cuenta
+                                <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"
+                                    aria-hidden="true"></i>
+                                <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"
+                                    aria-hidden="true"></i>
+                            </button>
+                        </h5>
+                        <div id="collapse1" class="accordion-collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionOffcanvas" style="">
+                            <div class="accordion-body p-0 opacity-8">
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white"
+                                            href="{{ route('profile', Auth::user()->username) }}">
+                                            Resumen
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white"
+                                            href="{{ route('profile', Auth::user()->username) }}">
+                                            Biblioteca
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white"
+                                            href="{{ route('profile', Auth::user()->username) }}">
+                                            Favoritos
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white"
+                                            href="{{ route('profile', Auth::user()->username) }}">
+                                            Reviews
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
+                    @csrf
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        class="nav-link text-red-800 font-weight-bold">
+                        <i class="fas fa-right-from-bracket"></i> Cerrar sesión
+                    </a>
+                </form>
+            </div>
+        </div>
+    @endauth
 </div>
