@@ -9,6 +9,7 @@ use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
 use App\Http\Livewire\ResetPassword;
 use App\Http\Livewire\UserProfile;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,6 @@ use App\Http\Livewire\UserProfile;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-                  
-
-// Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
