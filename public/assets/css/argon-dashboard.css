@@ -24867,6 +24867,11 @@ pre[class*=language-] {
   width: 11px;
 }
 
+.btn-collapse{
+    border-left: 2px solid #02B3E4 !important;
+    border-bottom: 2px solid #02B3E4 !important;
+}
+
 /* MS supports */
 @supports (-ms-overflow-style: none) {
   .ps {
@@ -24883,3 +24888,5 @@ pre[class*=language-] {
   font-family: 'Mononoki Nerd Font';
   src: url('/public/assets/fonts/Mononoki/ Nerd\ Font\ Complete\ Regular.ttf');
 }
+
+

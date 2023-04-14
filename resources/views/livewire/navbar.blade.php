@@ -106,16 +106,16 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-white"
                                             href="{{ route('profile', Auth::user()->username) }}">
-                                            Resumen
+                                            Perfil
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-white"
                                             href="{{ route('profile', Auth::user()->username) }}">
-                                            Biblioteca
+                                            Mis datos
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a class="nav-link text-white"
                                             href="{{ route('profile', Auth::user()->username) }}">
                                             Favoritos
@@ -126,7 +126,7 @@
                                             href="{{ route('profile', Auth::user()->username) }}">
                                             Reviews
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

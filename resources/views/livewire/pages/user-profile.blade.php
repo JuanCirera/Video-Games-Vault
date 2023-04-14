@@ -26,13 +26,13 @@
             <div class="mt-4">
                 <div class="dropdown" id="navParent">
                     <a href="#" class="btn bg-gray-800 dropdown-toggle text-white w-100" data-bs-toggle="dropdown"
-                        id="profile_nav">
-                        <i class="fas fa-chart-simple"></i> Overview
+                        id="curLink">
+                        <i class="fas fa-chart-simple"></i> Resumen
                     </a>
                     <ul class="dropdown-menu w-100 text-center bg-gray-800 blur mt-2" aria-labelledby="profile_nav">
                         <li>
                             <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#overview">
-                                <i class="fas fa-chart-simple"></i> Overview
+                                <i class="fas fa-chart-simple"></i> Resumen
                             </a>
                         </li>
                         <li>
@@ -40,11 +40,11 @@
                                 <i class="fas fa-book"></i> Biblioteca
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#wishlist">
                                 <i class="fas fa-bookmark"></i> Favoritos
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#tracking">
                                 <i class="fas fa-location-crosshairs"></i> Lista de seguimiento
@@ -168,34 +168,184 @@
                     </div>
                 </div>
             </article>
-            <article class="collapse mt-5" id="library" data-bs-parent="#navParent">
-                {{-- TODO: meter contenido a cada collapse--}}
-                <div class="btn bg-gray-800 text-white w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fas fa-check"></i> Completados <i class="fas fa-chevron-down"></i>
+            <article class="collapse mt-4" id="library" data-bs-parent="#navParent">
+                <div class="mb-5">
+                    <h4 class="text-white">Biblioteca</h4>
+                    <p>Todos tus juegos ordenados por categorías</p>
                 </div>
-                <div class="btn bg-gray-800 text-white w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fas fa-gamepad"></i> Jugando actualmente <i class="fas fa-chevron-down"></i>
+                {{-- FINISHED GAMES --}}
+                <div class="btn btn-collapse bg-gray-800 w-100 text-white d-flex " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#finishedGames" aria-expanded="false" aria-controls="collapseExample">
+                    <div class="flex-grow-1">
+                        <i class="fas fa-check"></i> Completados
+                    </div>
+                    <div class="">
+                        <i class="fas fa-chevron-down text-secondary"></i>
+                    </div>
                 </div>
-                <div class="btn bg-gray-800 text-white w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa-solid fa-clock"></i> Pendientes <i class="fas fa-chevron-down"></i>
+                <div class="collapse" id="finishedGames">
+                    @for ($i = 0; $i < 4; $i++)
+                        <div class="mb-4">
+                            <div class="card bg-gray-800">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="/img/videogames/BF1.jpg" alt=""
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body px-4 py-2 row">
+                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
                 </div>
-                <div class="btn bg-gray-800 text-white w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa-solid fa-flask"></i> Probados <i class="fas fa-chevron-down"></i>
+                {{-- PLAYING NOW --}}
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#currentGames" aria-expanded="false" aria-controls="collapseExample">
+                    <div class="flex-grow-1">
+                        <i class="fas fa-gamepad"></i> Jugando actualmente
+                    </div>
+                    <div class="">
+                        <i class="fas fa-chevron-down text-secondary"></i>
+                    </div>
                 </div>
-                <div class="btn bg-gray-800 text-white w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa-solid fa-circle-question"></i> Sin categoría <i class="fas fa-chevron-down"></i>
+                <div class="collapse" id="currentGames">
+                    @for ($i = 0; $i < 2; $i++)
+                        <div class="mb-4">
+                            <div class="card bg-gray-800">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="/img/videogames/BF1.jpg" alt=""
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body px-4 py-2 row">
+                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+                {{-- WAITING GAMES --}}
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#waitingGames" aria-expanded="false" aria-controls="collapseExample">
+                    <div class="flex-grow-1">
+                        <i class="fa-solid fa-clock"></i> Pendientes
+                    </div>
+                    <div class="">
+                        <i class="fas fa-chevron-down text-secondary"></i>
+                    </div>
+                </div>
+                <div class="collapse" id="waitingGames">
+                    @for ($i = 0; $i < 3; $i++)
+                        <div class="mb-4">
+                            <div class="card bg-gray-800">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="/img/videogames/BF1.jpg" alt=""
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body px-4 py-2 row">
+                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+                {{-- TESTED GAMES --}}
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#testedGames" aria-expanded="false" aria-controls="collapseExample">
+                    <div class="flex-grow-1">
+                        <i class="fa-solid fa-flask"></i> Probados
+                    </div>
+                    <div class="">
+                        <i class="fas fa-chevron-down text-secondary"></i>
+                    </div>
+                </div>
+                <div class="collapse" id="testedGames">
+                    @for ($i = 0; $i < 6; $i++)
+                        <div class="mb-4">
+                            <div class="card bg-gray-800">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="/img/videogames/BF1.jpg" alt=""
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body px-4 py-2 row">
+                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+                {{-- NO CATEGORY --}}
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#uncategorizedGames" aria-expanded="false" aria-controls="collapseExample">
+                    <div class="flex-grow-1">
+                        <i class="fa-solid fa-circle-question"></i> Sin categoría
+                    </div>
+                    <div class="">
+                        <i class="fas fa-chevron-down text-secondary"></i>
+                    </div>
+                </div>
+                <div class="collapse" id="uncategorizedGames">
+                    @for ($i = 0; $i < 1; $i++)
+                        <div class="mb-4">
+                            <div class="card bg-gray-800">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="/img/videogames/BF1.jpg" alt=""
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body px-4 py-2 row">
+                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
                 </div>
             </article>
-            <article class="collapse mt-5" id="wishlist">
-                Favoritos
-            </article>
-            <article class="collapse mt-5" id="tracking">
-                Lista de seguimiento
+            <article class="collapse mt-4" id="tracking">
+                <div class="mb-5">
+                    <h4 class="text-white">Lista de seguimiento</h4>
+                    <p>Se enviarán notificaciones de todos los juegos guardados en esta lista</p>
+                </div>
+                @for ($i = 0; $i < 10; $i++)
+                    <div class="mb-4">
+                        <div class="card bg-gray-800">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img src="/img/videogames/BF1.jpg" alt=""
+                                        class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body px-4 py-2 row">
+                                        <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <a class="mt-n-10">
+                                <i class="fas fa-bookmark text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endfor
             </article>
             <article class="collapse mt-5" id="reviews">
                 Reviews
@@ -205,6 +355,21 @@
     </div>
 
     <script>
+        // // Obtener el enlace principal
+        // const curLink = document.getElementById('curLink');
+
+        // // Obtener todos los elementos del menú
+        // const menuItems = document.querySelectorAll('.dropdown-item');
+
+        // // Escuchar los eventos de clic en cada elemento del menú
+        // menuItems.forEach(item => {
+        //     item.addEventListener('click', (event) => {
+        //         // event.preventDefault(); // Evitar que el enlace se abra automáticamente
+        //         curLink.href = event.target
+        //         .href; // Actualizar el enlace principal con el valor del atributo href del elemento clicado
+        //     });
+        // });
+
         // Se obtienen todos los enlaces con la clase dropdown-item
         const links = document.querySelectorAll('.dropdown-item');
 
