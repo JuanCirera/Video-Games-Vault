@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Livewire\GameDetails;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
@@ -42,7 +43,8 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/@{username}', UserProfile::class)->name('profile');
-	Route::get('/@{username}/games', [UserProfile::class, 'showGames'])->name("profile.games");
+	// Route::get('/@{username}/games', [UserProfile::class, 'showGames'])->name("profile.games");
+    Route::get('/games/{game}', GameDetails::class)->name("game.show");
 	Route::post('/profile', [UserProfile::class, 'update'])->name('profile.update');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');

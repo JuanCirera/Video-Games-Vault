@@ -15,10 +15,22 @@
                 <h4 class="text-white text-bold">{{ $user->username }}</h4>
             </div>
             <div class="mt-4">
-                <ul class="list-inline text-white">
-                    <li class="list-inline-item">Siguiendo <sup class="text-secondary">43</sup></li>
-                    <li class="list-inline-item">Seguidores <sup class="text-secondary">230</sup></li>
-                    <li class="list-inline-item"><a href="" class="text-white">Ajustes</a></li>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="#following" data-bs-toggle="collapse" id="profNav" class="text-white">
+                            Siguiendo
+                        </a><sup class="text-secondary">43</sup>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#followers" data-bs-toggle="collapse" id="profNav" class="text-white">
+                            Seguidores</a>
+                        <sup class="text-secondary">230</sup>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="" class="text-white">
+                            Ajustes
+                        </a>
+                    </li>
                 </ul>
             </div>
             {{--  --}}
@@ -31,28 +43,32 @@
                     </a>
                     <ul class="dropdown-menu w-100 text-center bg-gray-800 blur mt-2" aria-labelledby="profile_nav">
                         <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#overview">
+                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#overview"
+                                id="profNav">
                                 <i class="fas fa-chart-simple"></i> Resumen
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#library">
+                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#library"
+                                id="profNav">
                                 <i class="fas fa-book"></i> Biblioteca
                             </a>
                         </li>
                         {{-- <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#wishlist">
+                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#wishlist"  id="profNav">
                                 <i class="fas fa-bookmark"></i> Favoritos
                             </a>
                         </li> --}}
                         <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#tracking">
+                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#tracking"
+                                id="profNav">
                                 <i class="fas fa-location-crosshairs"></i> Lista de seguimiento
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#reviews">
-                                <i class="fas fa-star"></i> Reviews
+                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#reviews"
+                                id="profNav">
+                                <i class="fas fa-star"></i> Reseñas
                             </a>
                         </li>
                     </ul>
@@ -174,8 +190,9 @@
                     <p>Todos tus juegos ordenados por categorías</p>
                 </div>
                 {{-- FINISHED GAMES --}}
-                <div class="btn btn-collapse bg-gray-800 w-100 text-white d-flex " type="button" data-bs-toggle="collapse"
-                    data-bs-target="#finishedGames" aria-expanded="false" aria-controls="collapseExample">
+                <div class="btn btn-collapse bg-gray-800 w-100 text-white d-flex " type="button"
+                    data-bs-toggle="collapse" data-bs-target="#finishedGames" aria-expanded="false"
+                    aria-controls="collapseExample">
                     <div class="flex-grow-1">
                         <i class="fas fa-check"></i> Completados
                     </div>
@@ -203,8 +220,9 @@
                     @endfor
                 </div>
                 {{-- PLAYING NOW --}}
-                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#currentGames" aria-expanded="false" aria-controls="collapseExample">
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#currentGames" aria-expanded="false"
+                    aria-controls="collapseExample">
                     <div class="flex-grow-1">
                         <i class="fas fa-gamepad"></i> Jugando actualmente
                     </div>
@@ -232,8 +250,9 @@
                     @endfor
                 </div>
                 {{-- WAITING GAMES --}}
-                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#waitingGames" aria-expanded="false" aria-controls="collapseExample">
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#waitingGames" aria-expanded="false"
+                    aria-controls="collapseExample">
                     <div class="flex-grow-1">
                         <i class="fa-solid fa-clock"></i> Pendientes
                     </div>
@@ -261,8 +280,9 @@
                     @endfor
                 </div>
                 {{-- TESTED GAMES --}}
-                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#testedGames" aria-expanded="false" aria-controls="collapseExample">
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#testedGames" aria-expanded="false"
+                    aria-controls="collapseExample">
                     <div class="flex-grow-1">
                         <i class="fa-solid fa-flask"></i> Probados
                     </div>
@@ -290,8 +310,9 @@
                     @endfor
                 </div>
                 {{-- NO CATEGORY --}}
-                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#uncategorizedGames" aria-expanded="false" aria-controls="collapseExample">
+                <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#uncategorizedGames" aria-expanded="false"
+                    aria-controls="collapseExample">
                     <div class="flex-grow-1">
                         <i class="fa-solid fa-circle-question"></i> Sin categoría
                     </div>
@@ -332,26 +353,105 @@
                                     <img src="/img/videogames/BF1.jpg" alt=""
                                         class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
                                 </div>
-                                <div class="col-8">
-                                    <div class="card-body px-4 py-2 row">
+                                <div class="col-8 d-flex">
+                                    <div class="card-body px-4 py-2 row flex-grow-1">
                                         <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                                    </div>
+                                    <div>
+                                        {{-- TODO: wire:click --}}
+                                        <a class="mt-n-10">
+                                            <i class="fas fa-bookmark text-primary text-2xl"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-end">
-                            <a class="mt-n-10">
-                                <i class="fas fa-bookmark text-white"></i>
-                            </a>
-                        </div>
+
                     </div>
                 @endfor
             </article>
             <article class="collapse mt-5" id="reviews">
-                Reviews
+                <div class="mb-5">
+                    <h4 class="text-white">Reseñas</h4>
+                    <p>Todas las reseñas escritas por {{ '@' . Auth::user()->username }}</p>
+                </div>
+
+                {{-- REVIEW --}}
+                <div class="mb-4">
+                    <div class="card bg-gray-800">
+                        <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
+                            <div class="flex-grow-1">
+                                <h6 class="text-white text-start my-0">BATTLEPAY 204$</h6>
+                                <p class="text-start text-sm mb-0">16/03/2023</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-thumbs-down text-danger text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="card-body px-4 py-2 text-white">
+                            <p>Este juego no deja jugar a la gente humilde</p>
+                        </div>
+                        <div class="card-footer d-flex pt-2 align-items-center">
+                            <div class="col-2">
+                                <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70">
+                            </div>
+                            <div class="col-6" style="text-align: left;">
+                                <p class="my-0">{{ Auth::user()->username }}</p>
+                            </div>
+                            <div class="col-2 " style="text-align: right;">
+                                3 <i class="fa-solid fa-thumbs-up"></i>
+                            </div>
+                            <div class="col-2">
+                                0 <i class="fa-solid fa-thumbs-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- REVIEW --}}
+                <div class="mb-4">
+                    <div class="card bg-gray-800">
+                        <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
+                            <div class="flex-grow-1">
+                                <h6 class="text-white text-start my-0">CYBERPAIN 2077</h6>
+                                <p class="text-start text-sm mb-0">05/01/2020</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-thumbs-down text-danger text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="card-body px-4 py-2 text-white" style="text-align: left;">
+                            <p>
+                                Dicen que los errores te hacen más fuerte.
+                                Luego de preordenar este juego, me volví fisicoculturista.
+                            </p>
+                        </div>
+                        <div class="card-footer d-flex pt-2 align-items-center">
+                            <div class="col-2">
+                                <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70">
+                            </div>
+                            <div class="col-6" style="text-align: left;">
+                                <p class="my-0">{{ Auth::user()->username }}</p>
+                            </div>
+                            <div class="col-2 " style="text-align: right;">
+                                30 <i class="fa-solid fa-thumbs-up"></i>
+                            </div>
+                            <div class="col-2">
+                                0 <i class="fa-solid fa-thumbs-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </article>
         </section>
         {{--  --}}
+        <section class="mt-4 collapse" id="followers">
+            @livewire('user-followers')
+        </section>
+        <section class="mt-4 collapse" id="following">
+            @livewire('user-following')
+        </section>
     </div>
 
     <script>
@@ -370,8 +470,10 @@
         //     });
         // });
 
-        // Se obtienen todos los enlaces con la clase dropdown-item
-        const links = document.querySelectorAll('.dropdown-item');
+        // Invento para hacer una navegacion del perfil sin recargas y sin 20 vistas muy similares entre ellas
+
+        // Se obtienen todos los enlaces con el id profileNavigation
+        const links = document.querySelectorAll('#profNav');
 
         // Se añade un evento click a cada enlace
         links.forEach(link => {
