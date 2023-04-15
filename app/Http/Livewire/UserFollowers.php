@@ -10,8 +10,8 @@ class UserFollowers extends Component
     public function render()
     {
         // $followers=User::;
-        return view('livewire.user-followers');
+        return view('livewire.pages.user-followers');
     }
 
-    
+
 }

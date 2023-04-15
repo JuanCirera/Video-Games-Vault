@@ -41,7 +41,7 @@
 
     @auth
         @include('livewire.navbar')
-        <main class="main-content border-radius-lg">
+        <main class="main-content">
             {{ $slot }}
         </main>
         {{-- NOTE: Esto no sirve pa na de momento --}}

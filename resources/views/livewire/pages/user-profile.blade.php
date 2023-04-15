@@ -1,8 +1,8 @@
 <div>
     <div class="container mt-7 min-vh-100">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-dark bg-gray-900">
-                <li class="breadcrumb-item active text-white" aria-current="page"><a href="/">Inicio</a></li>
+        <nav class="d-flex justify-content-center">
+            <ol class="breadcrumb bg-gray-900">
+                <li class="breadcrumb-item active" aria-current="page"><a href="/" class="text-white">Inicio</a></li>
                 <li class="breadcrumb-item active text-white" aria-current="page">Perfil</li>
             </ol>
         </nav>
