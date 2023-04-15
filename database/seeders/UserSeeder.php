@@ -15,16 +15,16 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'username' => 'admin',
-            'email' => 'admin@vgv.com',
-            'password' => bcrypt('Pistacho1'),
+            'email' => 'admin@gmail.com',
+            'password' => 'password',
             'avatar' => "https://ui-avatars.com/api/?name=admin&background=8392ab&color=fff&bold=true",
             "created_at" => now()
         ]);
 
         User::factory()->create([
             'username' => 'CWG',
-            'email' => 'cirerawargamer@vgv.com',
-            'password' => bcrypt('Pistacho1'),
+            'email' => 'cwg@gmail.com',
+            'password' => 'password',
             'avatar' => "https://ui-avatars.com/api/?name=cwg&background=8392ab&color=fff&bold=true",
             "created_at" => now()
         ]);

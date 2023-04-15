@@ -27,6 +27,7 @@
                                 <form role="form" method="POST" action="{{ route('login.perform') }}">
                                     @csrf
                                     @method('post')
+
                                     <div class="flex flex-col mb-3">
                                         <input type="email" name="email"
                                             class="form-control form-control-lg bg-gray-700 text-white"
@@ -40,7 +41,7 @@
                                             class="form-control form-control-lg bg-gray-700 text-white"
                                             aria-label="Password" placeholder="Contraseña">
                                         @error('password')
-                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                            <p class="text-danger text-xs pt-1 mb-0"> {{ $message }} </p>
                                         @enderror
                                     </div>
                                     <div class="form-check form-switch">

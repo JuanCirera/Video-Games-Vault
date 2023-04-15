@@ -5,8 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Log;
 
 class Login extends Component
 {
@@ -17,19 +16,22 @@ class Login extends Component
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate();
+        $credentials=$request->only('email','password');
 
+        if (Auth::attempt($credentials, $request->remember)) {
+            $request->session()->regenerate();
+            Log::info("User ".Auth::user()->username." logged in from ".$request->ip());
             return redirect()->intended('home');
         }
 
+        Log::info("Login attempt from ".$request->ip());
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Las credenciales introducidas no coinciden con ningún registro',
         ]);
     }
 
