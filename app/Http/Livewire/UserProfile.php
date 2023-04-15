@@ -8,18 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserProfile extends Component
 {
-    // public bool $showOverview=false;
-    // public bool $showLibrary=false;
-    // public bool $showWishlist=false;
-    // public bool $showTracking=false;
-    // public bool $showReviews=false;
-    // public array $showItems=[
-    //     "showOverview" => false,
-    //     "showLibrary" => false,
-    //     "showWishlist" => false,
-    //     "showTracking" => false,
-    //     "showReviews" => false,
-    // ];
+
 
     public function render()
     {
@@ -44,25 +33,5 @@ class UserProfile extends Component
         return back()->with('succes', 'Profile succesfully updated');
     }
 
-    // public function showOverview(){
-
-    //     $this->showOverview=true;
-    // }
-
-    // public function showLibrary(){
-    //     $this->showLibrary=true;
-    // }
-
-    // public function showWishlist(){
-    //     $this->showWishlist=true;
-    // }
-
-    // public function showTracking(){
-    //     $this->showTracking=true;
-    // }
-
-    // public function showReviews(){
-    //     $this->showReviews=true;
-    // }
 
 }

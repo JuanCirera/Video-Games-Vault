@@ -59,4 +59,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function videogames(){
+        return $this->belongsToMany(Videogame::class);
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
 }
