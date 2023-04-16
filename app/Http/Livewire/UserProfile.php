@@ -2,18 +2,32 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
+use App\Models\Review;
+use App\Models\User;
+use App\Models\Videogame;
 use Livewire\Component;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class UserProfile extends Component
 {
 
+    public $gameCategory;
+
+    protected $listerners=[
+        "like" => "like",
+        "dislike" => "dislike"
+    ];
 
     public function render()
     {
-        $user=auth()->user();
-        return view('livewire.pages.user-profile',compact('user'));
+        $user=User::find(Auth::user()->id);
+        $userReviews=Review::where('user_id',$user->id)->orderBy('created_at','desc')->get();
+        $categories=Category::all();
+
+        return view('livewire.pages.user-profile',compact('user','userReviews', 'categories'));
     }
 
     //TODO: modificar esto y hacerlo a mi manera
@@ -33,5 +47,16 @@ class UserProfile extends Component
         return back()->with('succes', 'Profile succesfully updated');
     }
 
+
+    public function like(Review $review){
+        dd("HOLA");//TODO
+        $review->likes+=1;
+        $review->save();
+    }
+
+    public function dislike(Review $review){
+        $review->dislikes+=1;
+        $review->save();
+    }
 
 }

@@ -12,6 +12,6 @@ class Category extends Model
     protected $fillable=["name","videogame_id"];
 
     public function videogames(){
-        return $this->belongsToMany(Videogame::class);
+        return $this->belongsToMany(Videogame::class)->withTimestamps();
     }
 }

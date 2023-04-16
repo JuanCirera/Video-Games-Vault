@@ -29,8 +29,8 @@ class CategorySeeder extends Seeder
             "name" => "probados",
         ]);
 
-        // Category::factory()->create([
-        //     "name" => "sin categoría",
-        // ]);
+        Category::factory()->create([
+            "name" => "sin categoria",
+        ]);
     }
 }

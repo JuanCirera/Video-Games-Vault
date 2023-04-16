@@ -79,7 +79,7 @@
             {{-- TODO: meter datos reales --}}
             <article class="collapse mt-5 show" id="overview" data-bs-parent="#navParent">
                 <div>
-                    <h4 class="text-white">120 videojuegos</h4>
+                    <h4 class="text-white">{{ count($user->videogames) }} videojuegos</h4>
                     <div class="d-flex mt-4">
                         <div class="col-5">
                             <span class="text-white">Completados</span>
@@ -119,8 +119,9 @@
                         <div class="col-6">
                             <div class="progress-wrapper pt-2">
                                 <div class="progress">
-                                    <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                    <div class="progress-bar bg-gradient-primary" role="progressbar"
+                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                        style="width: 40%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -201,23 +202,45 @@
                     </div>
                 </div>
                 <div class="collapse" id="finishedGames">
-                    @for ($i = 0; $i < 4; $i++)
-                        <div class="mb-4">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                    @foreach ($user->videogames as $finishedGame)
+                        @if (count($finishedGame->categories) && $finishedGame->categories[0]->name == 'en espera')
+                            <div class="mb-4">
+                                <div class="card bg-gray-800">
+                                    <div class="row g-0">
+                                        <div class="col-4">
+                                            <img src="/img/videogames/BF1.jpg" alt=""
+                                                class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body px-4 py-2 row">
+                                                <h6 class="text-white text-start">{{ $finishedGame->title }}</h6>
+                                                <div class="mt-4 text-start">
+                                                    <label for="categories" class="text-white px-0">Cambiar
+                                                        categoría</label>
+                                                    <select name="categories" id="categories"
+                                                        class="form-control bg-gray-700 text-white">
+                                                        @foreach ($categories as $cat)
+                                                            <option value="{{ $cat->name }}"
+                                                                @selected($finishedGame->categories[0]->name == $cat->name)>
+                                                                {{ $cat->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endfor
+                        @else
+                            <p class="text-white mt-2">
+                                ¿Te da pereza terminar los juegos?
+                            </p>
+                            @php
+                                break;
+                            @endphp
+                        @endif
+                    @endforeach
                 </div>
                 {{-- PLAYING NOW --}}
                 <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
@@ -231,23 +254,45 @@
                     </div>
                 </div>
                 <div class="collapse" id="currentGames">
-                    @for ($i = 0; $i < 2; $i++)
-                        <div class="mb-4">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                    @foreach ($user->videogames as $playingGame)
+                        @if (count($playingGame->categories) && $playingGame->categories[0]->name == 'en espera')
+                            <div class="mb-4">
+                                <div class="card bg-gray-800">
+                                    <div class="row g-0">
+                                        <div class="col-4">
+                                            <img src="/img/videogames/BF1.jpg" alt=""
+                                                class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body px-4 py-2 row">
+                                                <h6 class="text-white text-start">{{ $playingGame->title }}</h6>
+                                                <div class="mt-4 text-start">
+                                                    <label for="categories" class="text-white px-0">Cambiar
+                                                        categoría</label>
+                                                    <select name="categories" id="categories"
+                                                        class="form-control bg-gray-700 text-white">
+                                                        @foreach ($categories as $cat)
+                                                            <option value="{{ $cat->name }}"
+                                                                @selected($playingGame->categories[0]->name == $cat->name)>
+                                                                {{ $cat->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endfor
+                        @else
+                            <p class="text-white mt-2">
+                                ¡Relájate y juega un poco!
+                            </p>
+                            @php
+                                break;
+                            @endphp
+                        @endif
+                    @endforeach
                 </div>
                 {{-- WAITING GAMES --}}
                 <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
@@ -261,23 +306,45 @@
                     </div>
                 </div>
                 <div class="collapse" id="waitingGames">
-                    @for ($i = 0; $i < 3; $i++)
-                        <div class="mb-4">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                    @foreach ($user->videogames as $waitingGame)
+                        @if (count($waitingGame->categories) && $waitingGame->categories[0]->name == 'en espera')
+                            <div class="mb-4">
+                                <div class="card bg-gray-800">
+                                    <div class="row g-0">
+                                        <div class="col-4">
+                                            <img src="/img/videogames/BF1.jpg" alt=""
+                                                class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body px-4 py-2 row">
+                                                <h6 class="text-white text-start">{{ $waitingGame->title }}</h6>
+                                                <div class="mt-4 text-start">
+                                                    <label for="categories" class="text-white px-0">Cambiar
+                                                        categoría</label>
+                                                    <select name="categories" id="categories"
+                                                        class="form-control bg-gray-700 text-white">
+                                                        @foreach ($categories as $cat)
+                                                            <option value="{{ $cat->name }}"
+                                                                @selected($waitingGame->categories[0]->name == $cat->name)>
+                                                                {{ $cat->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endfor
+                        @else
+                            <p class="text-white mt-2">
+                                ¡Que envidia, parece que tienes tiempo para jugar a todo!
+                            </p>
+                            @php
+                                break;
+                            @endphp
+                        @endif
+                    @endforeach
                 </div>
                 {{-- TESTED GAMES --}}
                 <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
@@ -291,23 +358,45 @@
                     </div>
                 </div>
                 <div class="collapse" id="testedGames">
-                    @for ($i = 0; $i < 6; $i++)
-                        <div class="mb-4">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                    @foreach ($user->videogames as $testedGame)
+                        @if (count($testedGame->categories) && $testedGame->categories[0]->name == 'probados')
+                            <div class="mb-4">
+                                <div class="card bg-gray-800">
+                                    <div class="row g-0">
+                                        <div class="col-4">
+                                            <img src="/img/videogames/BF1.jpg" alt=""
+                                                class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body px-4 py-2 row">
+                                                <h6 class="text-white text-start">{{ $testedGame->title }}</h6>
+                                                <div class="mt-4 text-start">
+                                                    <label for="categories" class="text-white px-0">Cambiar
+                                                        categoría</label>
+                                                    <select name="categories" id="categories"
+                                                        class="form-control bg-gray-700 text-white">
+                                                        @foreach ($categories as $cat)
+                                                            <option value="{{ $cat->name }}"
+                                                                @selected($testedGame->categories[0]->name == $cat->name)>
+                                                                {{ $cat->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endfor
+                        @else
+                            <p class="text-white mt-2">
+                                ¡Vaya, parece que no te gusta probar juegos nuevos!
+                            </p>
+                            @php
+                                break;
+                            @endphp
+                        @endif
+                    @endforeach
                 </div>
                 {{-- NO CATEGORY --}}
                 <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button"
@@ -321,23 +410,45 @@
                     </div>
                 </div>
                 <div class="collapse" id="uncategorizedGames">
-                    @for ($i = 0; $i < 1; $i++)
-                        <div class="mb-4">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                    @foreach ($user->videogames as $noCatGame)
+                        @if (count($noCatGame->categories))
+                            <div class="mb-4">
+                                <div class="card bg-gray-800">
+                                    <div class="row g-0">
+                                        <div class="col-4">
+                                            <img src="/img/videogames/BF1.jpg" alt=""
+                                                class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body px-4 py-2 row">
+                                                <h6 class="text-white text-start">{{ $noCatGame->title }}</h6>
+                                                <div class="mt-4 text-start">
+                                                    <label for="categories" class="text-white px-0">Cambiar
+                                                        categoría</label>
+                                                    <select name="categories" id="categories"
+                                                        class="form-control bg-gray-700 text-white">
+                                                        @foreach ($categories as $cat)
+                                                            <option value="{{ $cat->name }}"
+                                                                @selected($noCatGame->categories[0]->name == $cat->name)>
+                                                                {{ $cat->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endfor
+                        @else
+                            <p class="text-white mt-2">
+                                ¡Buen trabajo, no tienes juegos sin categoría!
+                            </p>
+                            @php
+                                break;
+                            @endphp
+                        @endif
+                    @endforeach
                 </div>
             </article>
             <article class="collapse mt-4" id="tracking">
@@ -345,104 +456,88 @@
                     <h4 class="text-white">Lista de seguimiento</h4>
                     <p>Se enviarán notificaciones de todos los juegos guardados en esta lista</p>
                 </div>
-                @for ($i = 0; $i < 10; $i++)
-                    <div class="mb-4">
-                        <div class="card bg-gray-800">
-                            <div class="row g-0">
-                                <div class="col-4">
-                                    <img src="/img/videogames/BF1.jpg" alt=""
-                                        class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                </div>
-                                <div class="col-8 d-flex">
-                                    <div class="card-body px-4 py-2 row flex-grow-1">
-                                        <h6 class="text-white text-start">BATTLEFIELD 1</h6>
+                @foreach ($user->videogames as $trackedGame)
+                    @if ($trackedGame->followed)
+                        <div class="mb-4">
+                            <div class="card bg-gray-800">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="/img/videogames/BF1.jpg" alt=""
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
                                     </div>
-                                    <div>
-                                        {{-- TODO: wire:click --}}
-                                        <a class="mt-n-10">
-                                            <i class="fas fa-bookmark text-primary text-2xl"></i>
-                                        </a>
+                                    <div class="col-8 d-flex">
+                                        <div class="card-body px-4 py-2 row flex-grow-1">
+                                            <h6 class="text-white text-start">{{ $trackedGame->title }}</h6>
+                                        </div>
+                                        <div>
+                                            {{-- TODO: wire:click --}}
+                                            <a class="mt-n-10">
+                                                <i class="fas fa-bookmark text-primary text-2xl"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                @endfor
+                    @endif
+                @endforeach
             </article>
             <article class="collapse mt-5" id="reviews">
                 <div class="mb-5">
                     <h4 class="text-white">Reseñas</h4>
                     <p>Todas las reseñas escritas por {{ '@' . Auth::user()->username }}</p>
                 </div>
-
-                {{-- REVIEW --}}
-                <div class="mb-4">
-                    <div class="card bg-gray-800">
-                        <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
-                            <div class="flex-grow-1">
-                                <h6 class="text-white text-start my-0">BATTLEPAY 204$</h6>
-                                <p class="text-start text-sm mb-0">16/03/2023</p>
-                            </div>
-                            <div>
-                                <i class="fa-solid fa-thumbs-down text-danger text-3xl"></i>
-                            </div>
-                        </div>
-                        <div class="card-body px-4 py-2 text-white">
-                            <p>Este juego no deja jugar a la gente humilde</p>
-                        </div>
-                        <div class="card-footer d-flex pt-2 align-items-center">
-                            <div class="col-2">
-                                <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70">
-                            </div>
-                            <div class="col-6" style="text-align: left;">
-                                <p class="my-0">{{ Auth::user()->username }}</p>
-                            </div>
-                            <div class="col-2 " style="text-align: right;">
-                                3 <i class="fa-solid fa-thumbs-up"></i>
-                            </div>
-                            <div class="col-2">
-                                0 <i class="fa-solid fa-thumbs-down"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- REVIEW --}}
-                <div class="mb-4">
-                    <div class="card bg-gray-800">
-                        <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
-                            <div class="flex-grow-1">
-                                <h6 class="text-white text-start my-0">CYBERPAIN 2077</h6>
-                                <p class="text-start text-sm mb-0">05/01/2020</p>
-                            </div>
-                            <div>
-                                <i class="fa-solid fa-thumbs-down text-danger text-3xl"></i>
-                            </div>
-                        </div>
-                        <div class="card-body px-4 py-2 text-white" style="text-align: left;">
-                            <p>
-                                Dicen que los errores te hacen más fuerte.
-                                Luego de preordenar este juego, me volví fisicoculturista.
-                            </p>
-                        </div>
-                        <div class="card-footer d-flex pt-2 align-items-center">
-                            <div class="col-2">
-                                <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70">
-                            </div>
-                            <div class="col-6" style="text-align: left;">
-                                <p class="my-0">{{ Auth::user()->username }}</p>
-                            </div>
-                            <div class="col-2 " style="text-align: right;">
-                                30 <i class="fa-solid fa-thumbs-up"></i>
-                            </div>
-                            <div class="col-2">
-                                0 <i class="fa-solid fa-thumbs-down"></i>
+                @if (count($userReviews))
+                    @foreach ($userReviews as $userReview)
+                        {{-- REVIEW --}}
+                        <div class="mb-4">
+                            <div class="card bg-gray-800">
+                                <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
+                                    <div class="flex-grow-1">
+                                        <h6 class="text-white text-start my-0">{{ $userReview->title }}</h6>
+                                        <p class="text-start text-sm mb-0">{{ $userReview->created_at }}</p>
+                                    </div>
+                                    <div>
+                                        <i
+                                            @if ($userReview->rating) class="fa-solid fa-thumbs-up text-success text-3xl"
+                                        @else
+                                            class="fa-solid fa-thumbs-down text-danger text-3xl" @endif>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="card-body px-4 py-2 text-white text-start">
+                                    <p>{{ $userReview->body }}</p>
+                                </div>
+                                <div class="card-footer d-flex pt-2 align-items-center">
+                                    <div class="col-2">
+                                        <img src="{{ $userReview->user->avatar }}" alt=""
+                                            class="rounded-circle w-70">
+                                    </div>
+                                    <div class="col-6" style="text-align: left;">
+                                        <p class="my-0">{{ $userReview->user->username }}</p>
+                                    </div>
+                                    <div class="col-2 " style="text-align: right;">
+                                        {{-- class="text-primary" --}}
+                                        <a name="{{ $userReview }}" id="like" class="text-body">
+                                            {{ $userReview->likes }} <i class="fa-solid fa-thumbs-up"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        {{-- wire:click="dislike({{$userReview->id}})" --}}
+                                        <a name="{{ $userReview->id }}" id="dislike" class="text-body">
+                                            {{ $userReview->dislikes }} <i class="fa-solid fa-thumbs-down"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
+                    @endforeach
+                @else
+                    <p class="text-white">
+                        Aún no tienes reseñas. Empieza a escribir una para ayudar
+                        a la comunidad con tu opinión.
+                    </p>
+                @endif
             </article>
         </section>
         {{--  --}}
@@ -491,6 +586,28 @@
                     }
                 });
             });
+        });
+
+        document.getElementById("like").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("text-primary")) {
+                e.target.classList.remove("text-body");
+                e.target.classList.add("text-primary");
+            } else {
+                e.target.classList.remove("text-primary");
+                e.target.classList.add("text-body");
+            }
+            // Livewire.emit('like', e.target.getAttribute('name'));
+        });
+
+        document.getElementById("dislike").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("text-primary")) {
+                e.target.classList.remove("text-body");
+                e.target.classList.add("text-primary");
+            } else {
+                e.target.classList.remove("text-primary");
+                e.target.classList.add("text-body");
+            }
+            // Livewire.emit('dislike',e.target.getAttribute('name'));
         });
     </script>
 

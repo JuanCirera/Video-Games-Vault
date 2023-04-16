@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string("title")->unique();
             $table->text("body");
-            $table->integer("rating");
+            $table->boolean("rating");
+            $table->bigInteger("likes")->default(0);
+            $table->bigInteger("dislikes")->default(0);
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->foreignId("videogame_id")->constrained()->onDelete("cascade");
             $table->timestamps();

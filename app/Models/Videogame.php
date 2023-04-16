@@ -12,11 +12,11 @@ class Videogame extends Model
     protected $fillable=["name","release_date","additions","followed"];
 
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 
     public function categories(){
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
     public function reviews(){
