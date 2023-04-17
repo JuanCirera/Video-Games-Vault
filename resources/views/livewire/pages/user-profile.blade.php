@@ -76,7 +76,6 @@
             </div>
             {{--  --}}
             {{-- Profile content --}}
-            {{-- TODO: meter datos reales --}}
             <article class="collapse mt-5 show" id="overview" data-bs-parent="#navParent">
                 <div>
                     <h4 class="text-white">{{ count($user->videogames) }} videojuegos</h4>
@@ -93,7 +92,22 @@
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">60</span>
+                            <span class="text-white">
+                                {{-- TODO: arreglar la chapuza esta, tiene que haber otra forma --}}
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach ($user->videogames as $v)
+                                    @foreach ($v->categories as $cat)
+                                        @if ($cat->name == 'completados')
+                                            @php
+                                                $i++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                {{ $i }}
+                            </span>
                         </div>
                     </div>
                     <div class="d-flex mt-2">
@@ -109,12 +123,26 @@
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">10</span>
+                            <span class="text-white">
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach ($user->videogames as $v)
+                                    @foreach ($v->categories as $cat)
+                                        @if ($cat->name == 'pendientes')
+                                            @php
+                                                $i++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                {{ $i }}
+                            </span>
                         </div>
                     </div>
                     <div class="d-flex mt-2">
                         <div class="col-5">
-                            <span class="text-white">Deseados</span>
+                            <span class="text-white">Probados</span>
                         </div>
                         <div class="col-6">
                             <div class="progress-wrapper pt-2">
@@ -126,7 +154,21 @@
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">20</span>
+                            <span class="text-white">
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach ($user->videogames as $v)
+                                    @foreach ($v->categories as $cat)
+                                        @if ($cat->name == 'probados')
+                                            @php
+                                                $i++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                {{ $i }}
+                            </span>
                         </div>
                     </div>
                     <div class="d-flex mt-2">
@@ -143,12 +185,26 @@
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">3</span>
+                            <span class="text-white">
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach ($user->videogames as $v)
+                                    @foreach ($v->categories as $cat)
+                                        @if ($cat->name == 'jugando actualmente')
+                                            @php
+                                                $i++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                {{ $i }}
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="mt-5">
-                    <h4 class="text-white">{{count($user->reviews)}} reseñas</h4>
+                    <h4 class="text-white">{{ count($user->reviews) }} reseñas</h4>
                     <div class="d-flex mt-4" style="align-items: flex-end !important">
                         <div class="col-5">
                             <span class="text-white">Positivas</span>
@@ -158,12 +214,13 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar"
                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                        style="width: {{count($positiveReviews) / count($user->reviews) *100}}%;"></div>
+                                        style="width: {{ (count($positiveReviews) / count($user->reviews)) * 100 }}%;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">{{count($positiveReviews)}}</span>
+                            <span class="text-white">{{ count($positiveReviews) }}</span>
                         </div>
                     </div>
                     <div class="d-flex mt-2" style="align-items: flex-end !important">
@@ -175,12 +232,13 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar"
                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                        style="width: {{count($negativeReviews) / count($user->reviews) *100}}%;"></div>
+                                        style="width: {{ (count($negativeReviews) / count($user->reviews)) * 100 }}%;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">{{count($negativeReviews)}}</span>
+                            <span class="text-white">{{ count($negativeReviews) }}</span>
                         </div>
                     </div>
                 </div>
@@ -433,8 +491,7 @@
                                         <select name="categories" id="categories"
                                             class="form-control bg-gray-700 text-white w-100">
                                             @foreach ($categories as $cat)
-                                                <option value="{{ $cat->name }}"
-                                                    @selected($noCatGame->categories[0]->name == $cat->name)>
+                                                <option value="{{ $cat->name }}" @selected($noCatGame->categories[0]->name == $cat->name)>
                                                     {{ ucfirst($cat->name) }}
                                                 </option>
                                             @endforeach

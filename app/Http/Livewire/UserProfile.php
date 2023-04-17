@@ -33,7 +33,7 @@ class UserProfile extends Component
         compact('user','userReviews', 'categories', 'positiveReviews', 'negativeReviews'));
     }
 
-    //TODO: modificar esto y hacerlo a mi manera
+    //TODO: modificar esto y hacerlo bien
     public function update(Request $request)
     {
         $attributes = $request->validate([

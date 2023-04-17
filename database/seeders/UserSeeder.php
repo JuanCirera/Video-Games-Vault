@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => 'password',
-            'avatar' => "https://ui-avatars.com/api/?name=admin&background=8392ab&color=fff&bold=true",
+            'avatar' => "https://ui-avatars.com/api/?name=admin&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
         ]);
 
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'username' => 'CWG',
             'email' => 'cwg@gmail.com',
             'password' => 'password',
-            'avatar' => "https://ui-avatars.com/api/?name=cwg&background=8392ab&color=fff&bold=true",
+            'avatar' => "https://ui-avatars.com/api/?name=cwg&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
         ]);
     }
