@@ -148,7 +148,7 @@
                     </div>
                 </div>
                 <div class="mt-5">
-                    <h4 class="text-white">34 reviews</h4>
+                    <h4 class="text-white">{{count($user->reviews)}} reseñas</h4>
                     <div class="d-flex mt-4" style="align-items: flex-end !important">
                         <div class="col-5">
                             <span class="text-white">Positivas</span>
@@ -158,12 +158,12 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar"
                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                        style="width: 90%;"></div>
+                                        style="width: {{count($positiveReviews) / count($user->reviews) *100}}%;"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">30</span>
+                            <span class="text-white">{{count($positiveReviews)}}</span>
                         </div>
                     </div>
                     <div class="d-flex mt-2" style="align-items: flex-end !important">
@@ -175,12 +175,12 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar"
                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                        style="width: 10%;"></div>
+                                        style="width: {{count($negativeReviews) / count($user->reviews) *100}}%;"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-1">
-                            <span class="text-white">4</span>
+                            <span class="text-white">{{count($negativeReviews)}}</span>
                         </div>
                     </div>
                 </div>
@@ -417,26 +417,28 @@
                                     <div class="row g-0">
                                         <div class="col-4">
                                             <img src="/img/videogames/BF1.jpg" alt=""
-                                                class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                                class="img-fluid border-radius-top-start-lg border-radius-bottom-end-lg">
                                         </div>
                                         <div class="col-8">
                                             <div class="card-body px-4 py-2 row">
                                                 <h6 class="text-white text-start">{{ $noCatGame->title }}</h6>
                                                 <div class="mt-4 text-start">
-                                                    <label for="categories" class="text-white px-0">Cambiar
-                                                        categoría</label>
-                                                    <select name="categories" id="categories"
-                                                        class="form-control bg-gray-700 text-white">
-                                                        @foreach ($categories as $cat)
-                                                            <option value="{{ $cat->name }}"
-                                                                @selected($noCatGame->categories[0]->name == $cat->name)>
-                                                                {{ $cat->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="card-footer pt-2 pb-2">
+                                        {{-- <label for="categories" class="text-white px-0">Cambiar
+                                            categoría</label> --}}
+                                        <select name="categories" id="categories"
+                                            class="form-control bg-gray-700 text-white w-100">
+                                            @foreach ($categories as $cat)
+                                                <option value="{{ $cat->name }}"
+                                                    @selected($noCatGame->categories[0]->name == $cat->name)>
+                                                    {{ ucfirst($cat->name) }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>

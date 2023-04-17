@@ -25,9 +25,12 @@ class UserProfile extends Component
     {
         $user=User::find(Auth::user()->id);
         $userReviews=Review::where('user_id',$user->id)->orderBy('created_at','desc')->get();
+        $positiveReviews=Review::where('user_id',$user->id)->where('rating',true)->get();
+        $negativeReviews=Review::where('user_id',$user->id)->where('rating',false)->get();
         $categories=Category::all();
 
-        return view('livewire.pages.user-profile',compact('user','userReviews', 'categories'));
+        return view('livewire.pages.user-profile',
+        compact('user','userReviews', 'categories', 'positiveReviews', 'negativeReviews'));
     }
 
     //TODO: modificar esto y hacerlo a mi manera
