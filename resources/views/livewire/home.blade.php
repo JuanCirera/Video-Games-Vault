@@ -1,8 +1,7 @@
 {{-- NOTE: este div NO tocarlo ni poner nada a este nivel --}}
-<div> 
+<div>
     {{-- Welcome and search --}}
-    <div class="mb-4"
-        style="background-image: url('{{ $welcome_img }}'); background-position: top;">
+    <div class="mb-4" style="background-image: url('{{ $welcome_img }}'); background-position: top;">
         <div class="container pt-7 pb-3"
             style="background-color: rgba(33, 37, 41, 0.8); box-shadow: inset 0px -10px 10px 0px rgba(33, 37, 41, 1);">
             <h1 class="text-white">
@@ -12,8 +11,13 @@
                 Miles de videojuegos
                 por explorar a tu disposición
             </h3>
-            <input type="search" wire:model.debounce.500ms="search" placeholder="Buscar..."
-                class="form-control mt-4 mb-2 text-white" style="background-color: rgba(52, 58, 64, 0.7);">
+            <div class="input-group">
+                <span class="input-group-text text-white mt-4 mb-2 border-dark" style="background-color: rgba(52, 58, 64, 0.7);">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </span>
+                <input type="search" wire:model.debounce.500ms="search" placeholder="Buscar..."
+                    class="form-control mt-4 mb-2 text-white" style="background-color: rgba(52, 58, 64, 0.7);">
+            </div>
         </div>
     </div>
     {{-- --}}
@@ -65,7 +69,7 @@
                         @php
                             $countPS = 0;
                             $countXB = 0;
-                            
+
                             if ($item->platforms) {
                                 foreach ($item->platforms as $platform) {
                                     switch ($platform->platform->id) {
@@ -87,7 +91,7 @@
                                     }
                                 }
                             }
-                            
+
                         @endphp
 
                     </div>
@@ -106,5 +110,3 @@
 
     </div>
 </div>
-
-

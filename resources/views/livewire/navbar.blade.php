@@ -79,7 +79,7 @@
         </div>
     </div>
     @auth
-        <div class="offcanvas offcanvas-end bg-gray-900 w-50" tabindex="-1" id="profileOffcanvas"
+        <div class="offcanvas offcanvas-end bg-gray-900 w-50 blur shadow-none border-0" tabindex="-1" id="profileOffcanvas"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title text-white">{{ '@' . Auth::user()->username }}</h5>
@@ -136,7 +136,7 @@
                     @csrf
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                        class="nav-link text-red-800 font-weight-bold">
+                        class="nav-link text-warning font-weight-bold">
                         <i class="fas fa-right-from-bracket"></i> Cerrar sesión
                     </a>
                 </form>
