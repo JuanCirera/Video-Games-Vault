@@ -24,13 +24,10 @@ class UserProfile extends Component
     public function render()
     {
         $user=User::find(Auth::user()->id);
-        $userReviews=Review::where('user_id',$user->id)->orderBy('created_at','desc')->get();
-        $positiveReviews=Review::where('user_id',$user->id)->where('rating',true)->get();
-        $negativeReviews=Review::where('user_id',$user->id)->where('rating',false)->get();
-        $categories=Category::all();
-
+        // $finishedGames=Videogame::where('user_id',$user->id);
+        // dd($finishedGames);
         return view('livewire.pages.user-profile',
-        compact('user','userReviews', 'categories', 'positiveReviews', 'negativeReviews'));
+        compact('user'));
     }
 
     //TODO: modificar esto y hacerlo bien

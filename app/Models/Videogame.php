@@ -19,6 +19,7 @@ class Videogame extends Model
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
+
     public function reviews(){
         return $this->hasMany(Review::class);
     }
