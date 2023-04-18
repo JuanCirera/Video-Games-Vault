@@ -14,25 +14,28 @@
             <div>
                 <h4 class="text-white text-bold">{{ $user->username }}</h4>
             </div>
-            <div class="mt-4">
+            <div class="mt-2">
+                @if (Auth::user()->id != $user->id)
+                    @livewire('user-follow', ['user_id' => $user->id])
+                @endif
+            </div>
+            <div class="mt-2">
                 <ul class="list-inline">
                     <li class="list-inline-item">
                         <a href="#following" data-bs-toggle="collapse" id="profNav" class="text-white">
                             Siguiendo
-                        </a><sup class="text-secondary">43</sup>
+                        </a><sup class="text-secondary">{{count($user->followings)}}</sup>
                     </li>
                     <li class="list-inline-item">
                         <a href="#followers" data-bs-toggle="collapse" id="profNav" class="text-white">
                             Seguidores</a>
-                        <sup class="text-secondary">230</sup>
+                        <sup class="text-secondary">{{count($user->followers)}}</sup>
                     </li>
                     <li class="list-inline-item">
                         @if (Auth::user()->id == $user->id)
                             <a href="" class="text-white">
                                 Ajustes
                             </a>
-                        @else
-                            @livewire('user-follow', ['user_id' => $user->id])
                         @endif
                     </li>
                 </ul>

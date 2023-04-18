@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
             'username' => 'Excidium',
             'email' => 'excidium@gmail.com',
             'password' => 'password',
-            'avatar' => "https://ui-avatars.com/api/?name=cwg&background=02B3E4&color=fff&bold=true",
+            'avatar' => "https://ui-avatars.com/api/?name=excidium&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
         ]);
     }

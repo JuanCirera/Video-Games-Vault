@@ -42,7 +42,7 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/@{username}', UserProfile::class)->name('profile');
+	Route::get('/{username}', UserProfile::class)->name('profile');
     Route::get('/games/{game}', GameDetails::class)->name("game.show");
 	Route::post('/profile', [UserProfile::class, 'update'])->name('profile.update');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');

@@ -13,7 +13,7 @@ class UserFollow extends Component
 
     public function render()
     {
-        return view('livewire.user-follow');
+        return view('livewire.pages.profile.user-follow');
     }
 
     public function mount(){

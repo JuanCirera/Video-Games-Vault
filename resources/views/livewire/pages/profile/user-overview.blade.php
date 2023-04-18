@@ -133,7 +133,11 @@
                 <div class="progress">
                     <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
-                        style="width: {{ (count($positiveReviews) / count($user->reviews)) * 100 }}%;">
+                        @empty($user->reviews)
+                            style="width: {{ (count($positiveReviews) / count($user->reviews)) * 100 }}%;"
+                        @else
+                            style="width: 0%;"
+                        @endempty>
                     </div>
                 </div>
             </div>
@@ -151,7 +155,11 @@
                 <div class="progress">
                     <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
-                        style="width: {{ (count($negativeReviews) / count($user->reviews)) * 100 }}%;">
+                        @empty($user->reviews)
+                            style="width: {{ (count($negativeReviews) / count($user->reviews)) * 100 }}%;"
+                        @else
+                            style="width: 0%;"
+                        @endempty>
                     </div>
                 </div>
             </div>
