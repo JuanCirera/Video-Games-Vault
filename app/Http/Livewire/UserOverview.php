@@ -14,7 +14,7 @@ class UserOverview extends Component
     {
         $positiveReviews=Review::where('user_id',$this->user->id)->where('rating',true)->get();
         $negativeReviews=Review::where('user_id',$this->user->id)->where('rating',false)->get();
-        
-        return view('livewire.user-overview', compact('positiveReviews','negativeReviews'));
+
+        return view('livewire.pages.profile.user-overview', compact('positiveReviews','negativeReviews'));
     }
 }

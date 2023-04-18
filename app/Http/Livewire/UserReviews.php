@@ -14,6 +14,6 @@ class UserReviews extends Component
     {
         $userReviews=Review::where('user_id',$this->user->id)->orderBy('created_at','desc')->get();
 
-        return view('livewire.user-reviews',compact('userReviews'));
+        return view('livewire.pages.profile.user-reviews',compact('userReviews'));
     }
 }

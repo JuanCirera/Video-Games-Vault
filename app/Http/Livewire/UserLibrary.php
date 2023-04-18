@@ -14,6 +14,6 @@ class UserLibrary extends Component
     public function render()
     {
         $categories=Category::all();
-        return view('livewire.user-library',compact('categories'));
+        return view('livewire.pages.profile.user-library',compact('categories'));
     }
 }

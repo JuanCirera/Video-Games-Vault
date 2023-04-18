@@ -11,6 +11,6 @@ class UserTracking extends Component
 
     public function render()
     {
-        return view('livewire.user-tracking');
+        return view('livewire.pages.profile.user-tracking');
     }
 }

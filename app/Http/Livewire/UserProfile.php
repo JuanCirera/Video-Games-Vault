@@ -26,7 +26,7 @@ class UserProfile extends Component
         $user=User::find(Auth::user()->id);
         // $finishedGames=Videogame::where('user_id',$user->id);
         // dd($finishedGames);
-        return view('livewire.pages.user-profile',
+        return view('livewire.pages.profile.user-profile',
         compact('user'));
     }
 
