@@ -82,10 +82,10 @@
         <div class="offcanvas offcanvas-end bg-gray-900 w-50 blur shadow-none border-0" tabindex="-1" id="profileOffcanvas"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title text-white">{{ '@' . Auth::user()->username }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div class="offcanvas-body pt-0">
+                <p class="offcanvas-title text-body text-wrap text-md py-2"><span class="text-body">@</span>{{ Auth::user()->username }}</p>
                 <div class="accordion" id="accordionOffcanvas">
                     <div class="accordion-item mb-3">
                         <h5 class="accordion-header text-white" id="headingOne">
@@ -103,30 +103,18 @@
                             data-bs-parent="#accordionOffcanvas" style="">
                             <div class="accordion-body p-0 opacity-8">
                                 <ul class="nav">
-                                    <li class="nav-item">
+                                    <li class="nav-item w-100">
                                         <a class="nav-link text-white"
                                             href="{{ route('profile', Auth::user()->username) }}">
                                             Perfil
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item w-100">
                                         <a class="nav-link text-white"
                                             href="{{ route('profile', Auth::user()->username) }}">
                                             Mis datos
                                         </a>
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link text-white"
-                                            href="{{ route('profile', Auth::user()->username) }}">
-                                            Favoritos
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white"
-                                            href="{{ route('profile', Auth::user()->username) }}">
-                                            Reviews
-                                        </a>
-                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

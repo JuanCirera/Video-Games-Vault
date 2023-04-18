@@ -22,8 +22,16 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'username' => 'CWG',
+            'username' => 'CiReRaWarGamer',
             'email' => 'cwg@gmail.com',
+            'password' => 'password',
+            'avatar' => "https://ui-avatars.com/api/?name=cwg&background=02B3E4&color=fff&bold=true",
+            "created_at" => now()
+        ]);
+
+        User::factory()->create([
+            'username' => 'Excidium',
+            'email' => 'excidium@gmail.com',
             'password' => 'password',
             'avatar' => "https://ui-avatars.com/api/?name=cwg&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
