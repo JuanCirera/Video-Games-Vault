@@ -95,10 +95,10 @@
         </section>
         {{--  --}}
         <section class="mt-4 collapse" id="followers">
-            @livewire('user-followers')
+            @livewire('user-followers', ['user' => $user])
         </section>
         <section class="mt-4 collapse" id="following">
-            @livewire('user-following')
+            @livewire('user-following', ['user' => $user])
         </section>
     </div>
 

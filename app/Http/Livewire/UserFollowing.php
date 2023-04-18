@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 
 class UserFollowing extends Component
 {
+    public User $user;
+
     public function render()
     {
-        return view('livewire.pages.user-following');
+        return view('livewire.pages.profile.user-following');
     }
 }
