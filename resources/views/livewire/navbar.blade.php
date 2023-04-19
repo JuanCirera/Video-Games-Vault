@@ -34,7 +34,12 @@
                         @auth
                             {{-- NOTE: Si llamo a auth() se queda guardada la primera sesion, no el usuario actual, con Auth si funciona --}}
                             <a class="w-50" data-bs-toggle="offcanvas" href="#profileOffcanvas">
-                                <img src="{{ auth()->user()->avatar }}" alt="profile_img" class="w-90 rounded-circle">
+                                {{-- @dd(Auth::user()->avatar) --}}
+                                @if (Auth::user()->avatar)
+                                    <img src="{{ Auth::user()->avatar }}" alt="profile_img" class="w-90 rounded-circle">
+                                @else
+                                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="profile_img" class="w-90 rounded-circle">
+                                @endif
                             </a>
                         @endauth
 

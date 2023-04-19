@@ -11,6 +11,7 @@ use App\Http\Livewire\Register;
 use App\Http\Livewire\ResetPassword;
 use App\Http\Livewire\SearchUser;
 use App\Http\Livewire\UserProfile;
+use App\Http\Livewire\UserSettings;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -47,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{username}', UserProfile::class)->name('profile');
     Route::get('/games/{game}', GameDetails::class)->name("game.show");
 	Route::post('/profile', [UserProfile::class, 'update'])->name('profile.update');
+    Route::get('/{username}/settings', UserSettings::class)->name('profile.settings');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');
 });

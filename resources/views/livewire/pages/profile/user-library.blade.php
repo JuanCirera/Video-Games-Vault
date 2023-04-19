@@ -30,7 +30,7 @@
                                         <label for="categories" class="text-white px-0">Cambiar
                                             categoría</label>
                                         <select name="categories" id="categories"
-                                            class="form-control bg-gray-700 text-white">
+                                            class="form-control bg-gray-700 text-white" wire:model="category">
                                             @foreach ($categories as $cat)
                                                 <option value="{{ $cat->name }}" @selected($finishedGame->categories[0]->name == $cat->name)>
                                                     {{ $cat->name }}

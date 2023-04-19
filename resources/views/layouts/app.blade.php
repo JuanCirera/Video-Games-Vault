@@ -9,7 +9,7 @@
     <title>
         Video Games Vault
     </title>
-    <!--     Fonts and icons     -->
+    <!--  Fonts and icons  -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
     <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
@@ -24,6 +24,8 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    {{-- <link rel="stylesheet" href="sweetalert2.min.css"> --}}
+
     @livewireStyles
 
 </head>
@@ -33,8 +35,6 @@
     @guest
         @include('livewire.navbar')
         <main class="main-content">
-            {{-- NOTE: El yield que traia ARGON no funciona con livewire, hay que meter un slot --}}
-            {{-- @yield('content') --}}
             {{ $slot }}
         </main>
     @endguest
@@ -66,10 +66,9 @@
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    {{-- SA --}}
+    {{-- SA CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @stack('js')
+    {{-- <script src="sweetalert2.min.js"></script> --}}
 
     @if (session('error_msg'))
         <script>
@@ -158,6 +157,8 @@
             })
         </script>
     @endif
+
+    @stack('js')
 
     @livewireScripts
 
