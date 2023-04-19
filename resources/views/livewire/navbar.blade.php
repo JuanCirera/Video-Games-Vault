@@ -71,6 +71,12 @@
                                     Tiendas
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-2 text-white" href="{{ route('user.search') }}">
+                                    <i class="fas fa-user opacity-6 me-1"></i>
+                                    Buscar jugadores
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

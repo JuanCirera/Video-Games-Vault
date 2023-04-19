@@ -124,6 +124,15 @@
 </div>
 <div class="mt-5">
     <h4 class="text-white">{{ count($user->reviews) }} reseñas</h4>
+    
+    @if (count($positiveReviews) > count($negativeReviews))
+        <h6 class="text-success">Mayormente positivas</h6>
+    @elseif (count($positiveReviews) == count($negativeReviews))
+        <h6 class="text-secondary">Variadas</h6>
+    @else
+        <h6 class="text-warning">Mayormente negativas</h6>
+    @endif
+
     <div class="d-flex mt-4" style="align-items: flex-end !important">
         <div class="col-5">
             <span class="text-white">Positivas</span>
@@ -134,9 +143,9 @@
                     <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                         @empty($user->reviews)
-                            style="width: {{ (count($positiveReviews) / count($user->reviews)) * 100 }}%;"
-                        @else
                             style="width: 0%;"
+                        @else
+                            style="width: {{ (count($positiveReviews) / count($user->reviews)) * 100 }}%;"
                         @endempty>
                     </div>
                 </div>
@@ -156,9 +165,9 @@
                     <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                         @empty($user->reviews)
-                            style="width: {{ (count($negativeReviews) / count($user->reviews)) * 100 }}%;"
-                        @else
                             style="width: 0%;"
+                        @else
+                            style="width: {{ (count($negativeReviews) / count($user->reviews)) * 100 }}%;"
                         @endempty>
                     </div>
                 </div>

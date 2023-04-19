@@ -9,6 +9,7 @@ use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
 use App\Http\Livewire\ResetPassword;
+use App\Http\Livewire\SearchUser;
 use App\Http\Livewire\UserProfile;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,6 +41,7 @@ Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('gues
 Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/users', SearchUser::class)->name("user.search");
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{username}', UserProfile::class)->name('profile');

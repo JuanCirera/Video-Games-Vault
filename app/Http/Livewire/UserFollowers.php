@@ -14,12 +14,10 @@ class UserFollowers extends Component
         return view('livewire.pages.profile.user-followers');
     }
 
-    public function profile(){
-        // return view('livewire.pages.profile.user-profile', [
-        //     'user' => $this->user
-        // ]);
-            dd("HOLAAAAA");
-        // $this->emitTo('user-profile','render');
+    public function profile($id){
+        $user=User::find($id);
+        $this->emitTo('user-profile','loadUser', $user);
+        $this->redirect($user->username);
     }
 
 }

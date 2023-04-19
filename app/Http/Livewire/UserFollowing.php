@@ -15,7 +15,6 @@ class UserFollowing extends Component
     }
 
     public function profile($id){
-        // return redirect("@".$user->username);
         $user=User::find($id);
         $this->emitTo('user-profile','loadUser', $user);
         $this->redirect($user->username);
