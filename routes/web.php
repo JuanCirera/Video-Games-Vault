@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Livewire\AboutUs;
+use App\Http\Livewire\Contact;
 use App\Http\Livewire\GameDetails;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
@@ -43,6 +45,8 @@ Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('gue
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/users', SearchUser::class)->name("user.search");
+Route::get('/contact', Contact::class)->name('contact');
+Route::get('/about', AboutUs::class)->name('about');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{username}', UserProfile::class)->name('profile');

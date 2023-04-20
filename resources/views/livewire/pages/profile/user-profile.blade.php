@@ -170,5 +170,5 @@
             // Livewire.emit('dislike',e.target.getAttribute('name'));
         });
     </script>
-
+    @include('layouts.footers.auth.footer')
 </div>

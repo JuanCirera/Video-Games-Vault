@@ -144,4 +144,5 @@
             </article>
         </section>
     </div>
+    @include('layouts.footers.auth.footer')
 </div>

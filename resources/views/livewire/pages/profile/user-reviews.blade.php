@@ -48,9 +48,13 @@
             </div>
         @endforeach
     @else
-        <p class="text-white">
-            Aún no tienes reseñas. Empieza a escribir una para ayudar
-            a la comunidad con tu opinión.
+        <p>
+            @if ($user->id == Auth::user()->id)
+                Aún no tienes reseñas. Escribe la primera para ayudar
+                a la comunidad con tu opinión.
+            @else
+                <b>{{ $user->username }}</b> aun no ha escrito reseñas
+            @endif
         </p>
     @endif
 </div>

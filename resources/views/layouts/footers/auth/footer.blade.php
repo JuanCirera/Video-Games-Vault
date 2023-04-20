@@ -1,36 +1,37 @@
-<footer class="footer pt-3  ">
+<footer class="footer mt-10 pt-4 bg-gray-800">
     <div class="container-fluid">
-        <div class="row align-items-center justify-content-lg-between">
+        <div class="d-flex align-items-left align-items-sm-left align-items-md-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
-                <div class="copyright text-center text-sm text-muted text-lg-start">
+                <div class="col-lg-6 mb-4">
+                    <ul class="nav nav-footer ">
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link text-white">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('contact') }}" class="nav-link text-white">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('about') }}" class="nav-link text-white">Sobre nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copyright text-sm text-white mt-2">
                     ©
                     <script>
                         document.write(new Date().getFullYear())
                     </script>,
-                    hecho por <b>Juan Fco Cirera Rosa</b>  - Proyecto Integrado, <a href="https://iesalandalus.org/joomla/" target="_blank">I.E.S Al-Ándalus</a>
+                    hecho por <b>Juan Fco Cirera Rosa</b> - Proyecto Integrado, <a
+                        href="https://iesalandalus.org/joomla/" target="_blank" class="text-white">I.E.S Al-Ándalus</a>
+                    <div class="mt-4" id="license">
+                        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img
+                                alt="Creative Commons License" style="border-width:0"
+                                src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is
+                        licensed under a <a rel="license"
+                            href="http://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-white">Creative
+                            Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+                    </div>
                 </div>
             </div>
-            {{-- TODO: Poner enlaces --}}
-            {{-- <div class="col-lg-6">
-                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                    <li class="nav-item">
-                        <a href="https://www.updivision.com" class="nav-link text-muted" target="_blank">UPDIVISION</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                            target="_blank">License</a>
-                    </li>
-                </ul>
-            </div> --}}
         </div>
     </div>
 </footer>

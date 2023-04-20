@@ -28,6 +28,7 @@ class UserProfile extends Component
     {
         $urlUsername=substr(parse_url(url()->current(), PHP_URL_PATH), 1);
         $this->user=User::where('username',$urlUsername)->first();
+        
         return view('livewire.pages.profile.user-profile', ['user' => $this->user]);
     }
 
