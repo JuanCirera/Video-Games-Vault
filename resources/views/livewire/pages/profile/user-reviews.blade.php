@@ -29,7 +29,7 @@
                             @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
                                 <img src="{{ $userReview->user->avatar }}" alt="" class="rounded-circle w-70">
                             @else
-                                <img src="{{ storage::url($userReview->user->avatar) }}" alt="" class="rounded-circle w-70">
+                                <img src="{{ Storage::url($userReview->user->avatar) }}" alt="" class="rounded-circle w-70">
                             @endif
                         </div>
                         <div class="col-6" style="text-align: left;">

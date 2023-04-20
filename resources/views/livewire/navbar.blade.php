@@ -121,7 +121,7 @@
                                     </li>
                                     <li class="nav-item w-100">
                                         <a class="nav-link text-white"
-                                            href="{{ route('profile', Auth::user()->username) }}">
+                                            href="{{ route('profile.settings', Auth::user()->username) }}">
                                             Mis datos
                                         </a>
                                     </li>
