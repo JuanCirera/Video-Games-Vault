@@ -9,7 +9,11 @@
         <section class="text-center">
             {{-- User data --}}
             <div class="mb-2">
-                <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle">
+                @if (Str::contains($user->avatar, 'ui-avatars'))
+                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-fluid">
+                @else
+                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle img-fluid">
+                @endif
             </div>
             <div>
                 <h4 class="text-white text-bold">{{ $user->username }}</h4>

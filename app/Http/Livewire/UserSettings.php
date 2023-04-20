@@ -12,14 +12,16 @@ class UserSettings extends Component
     use WithFileUploads;
 
     public User $user;
-    public string $username, $email, $password;
+    public string $username, $email;
+    // TODO: arreglar lo del password
+    // , $password;
     public $img;
 
     protected $rules=[
         "user.username" => "",
         "user.email" => "",
-        "user.password" => "",
-        // "avatar" => ""
+        // "user.password" => "",
+        "img" => ""
     ];
 
     public function render()
@@ -33,18 +35,21 @@ class UserSettings extends Component
 
     public function update(){
         $this->validate([
-            // "user.username" => ["required","string", "unique:users,username,".$this->user->id],
-            // "user.email" => ["required","email","unique:users,email,".$this->user->id],
-            // "user.password" => ["required","string","unique:users,password"],
-            "img" => ["required","image","max:2048"]
+            "user.username" => ["nullable","string", "unique:users,username,".$this->user->id],
+            "user.email" => ["nullable","email","unique:users,email,".$this->user->id],
+            // "user.password" => ["nullable","string","unique:users,password,".!$this->user->id],
+            "img" => ["nullable","image","max:2048"]
         ]);
 
-        // $this->user->save();
+
         $url=$this->img->store("img/avatars");
+        $this->user->avatar=$url;
+        $this->user->save();
+        // dd($this->user);
         // dd($this->img->store());
-        $this->user->update([
-            "avatar" => $url
-        ]);
+        // $this->user->update([
+        //     "avatar" => $url
+        // ]);
 
         return redirect("/".$this->user->username."/settings")->with("success_msg","Usuario actualizado");
     }

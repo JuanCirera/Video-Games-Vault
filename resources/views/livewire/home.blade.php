@@ -96,11 +96,11 @@
 
                     </div>
                     <div class="mt-4">
-                        <button class="btn btn-secondary">
+                        <button class="btn btn-secondary bg-gray-800">
                             <i class="fas fa-plus"></i> Seguir
                         </button>
 
-                        <button class="btn btn-secondary">
+                        <button class="btn btn-secondary bg-gray-800">
                             <i class="fa-regular fa-heart"></i>
                         </button>
                     </div>

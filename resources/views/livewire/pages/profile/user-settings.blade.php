@@ -13,7 +13,11 @@
         <section class="text-center">
             {{-- User data --}}
             <div class="mb-2">
-                <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle">
+                @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
+                    <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid">
+                @else
+                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar" class="rounded-circle img-fluid">
+                @endif
             </div>
             <div>
                 <h4 class="text-white text-bold">{{ $user->username }}</h4>
@@ -91,16 +95,17 @@
                 <hr>
                 <h6 class="text-secondary">Cambiar contraseña</h6>
                 <div class="d-flex flex-wrap">
-                    <div class="col-12 col-sm-12 col-md-6">
+                    {{-- <div class="col-12 col-sm-12 col-md-6">
                         <div class="form-group text-start">
                             <label for="pwd" class="text-white">Contraseña</label>
-                            <input type="password" class="form-control bg-gray-800 text-white" id="pwd">
+                            <input type="password" class="form-control bg-gray-800 text-white" id="pwd"
+                            wire:model="user.password" />
                             @error('user.password')
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6">
+                    </div> --}}
+                    {{-- <div class="col-12 col-sm-12 col-md-6">
                         <div class="form-group text-start">
                             <label for="chpwd" class="text-white">Repite la contraseña</label>
                             <input type="password" class="form-control bg-gray-800 text-white" id="chpwd">
@@ -108,7 +113,7 @@
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <hr>
                 <div class="col-12 col-sm-12 col-md-6">
@@ -119,10 +124,14 @@
                     </div>
                     <div class="my-4">
                         @if ($img)
-                            <img src="{{ $img->temporaryUrl() }}" alt=""
-                                class="img-fluid rounded-circle w-30">
+                            <img src="{{ $img->temporaryUrl() }}" alt="" class="img-fluid rounded-circle w-30">
                         @else
-                            <img src="{{ $user->avatar }}" alt="" class="img-fluid rounded-circle w-30">
+                            @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
+                                <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle">
+                            @else
+                                <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar"
+                                    class="rounded-circle">
+                            @endif
                         @endif
                     </div>
                     @error('avatar')
