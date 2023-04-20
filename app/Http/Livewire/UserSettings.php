@@ -41,15 +41,9 @@ class UserSettings extends Component
             "img" => ["nullable","image","max:2048"]
         ]);
 
-
         $url=$this->img->store("img/avatars");
         $this->user->avatar=$url;
         $this->user->save();
-        // dd($this->user);
-        // dd($this->img->store());
-        // $this->user->update([
-        //     "avatar" => $url
-        // ]);
 
         return redirect("/".$this->user->username."/settings")->with("success_msg","Usuario actualizado");
     }

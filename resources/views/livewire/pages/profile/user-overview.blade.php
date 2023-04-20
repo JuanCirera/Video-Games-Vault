@@ -124,7 +124,7 @@
 </div>
 <div class="mt-5">
     <h4 class="text-white">{{ count($user->reviews) }} reseñas</h4>
-    
+
     @if (count($positiveReviews) > count($negativeReviews))
         <h6 class="text-success">Mayormente positivas</h6>
     @elseif (count($positiveReviews) == count($negativeReviews))
@@ -142,11 +142,11 @@
                 <div class="progress">
                     <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
-                        @empty($user->reviews)
+                        @if(!(count($user->reviews) || count($positiveReviews)))
                             style="width: 0%;"
                         @else
                             style="width: {{ (count($positiveReviews) / count($user->reviews)) * 100 }}%;"
-                        @endempty>
+                        @endif>
                     </div>
                 </div>
             </div>
@@ -164,11 +164,11 @@
                 <div class="progress">
                     <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
-                        @empty($user->reviews)
+                        @if(!(count($user->reviews) || count($positiveReviews)))
                             style="width: 0%;"
                         @else
                             style="width: {{ (count($negativeReviews) / count($user->reviews)) * 100 }}%;"
-                        @endempty>
+                        @endif>
                     </div>
                 </div>
             </div>
