@@ -26,7 +26,11 @@
                     </div>
                     <div class="card-footer d-flex pt-2 align-items-center">
                         <div class="col-2">
-                            <img src="{{ $userReview->user->avatar }}" alt="" class="rounded-circle w-70">
+                            @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
+                                <img src="{{ $userReview->user->avatar }}" alt="" class="rounded-circle w-70">
+                            @else
+                                <img src="{{ storage::url($userReview->user->avatar) }}" alt="" class="rounded-circle w-70">
+                            @endif
                         </div>
                         <div class="col-6" style="text-align: left;">
                             <p class="my-0">{{ $userReview->user->username }}</p>

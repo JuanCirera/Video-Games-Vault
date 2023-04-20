@@ -31,8 +31,14 @@
                 <p>
                     @if ($user->id == Auth::user()->id)
                         Aún no tienes juegos juegos en seguimiento
+                        @php
+                            break;
+                        @endphp
                     @else
                         <b>{{ $user->username }}</b> aun no tiene juegos en seguimiento
+                        @php
+                            break;
+                        @endphp
                     @endif
                 </p>
             @endif
