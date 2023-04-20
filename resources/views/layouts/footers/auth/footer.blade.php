@@ -1,4 +1,4 @@
-<footer class="footer mt-10 pt-4 bg-gray-800">
+<footer class="footer mt-7 pt-4 bg-gray-800">
     <div class="container-fluid">
         <div class="d-flex align-items-left align-items-sm-left align-items-md-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">

@@ -107,6 +107,11 @@
                 </div>
             </div>
         @endforeach
-
+        <div class="my-4">
+            <button class="btn btn-primary w-100" wire:click="">
+                Ver más
+            </button>
+        </div>
     </div>
+    @include('layouts.footers.auth.footer')
 </div>
