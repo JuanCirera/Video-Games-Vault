@@ -12257,3 +12257,19 @@ Stack trace:
 #66 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
 #67 {main}
 "} 
+[2023-04-21 19:53:52] local.INFO: API request for god-of-war-2 details  
+[2023-04-21 19:53:53] local.INFO: API request: god-of-war-2 achievements fetched  
+[2023-04-21 20:06:56] local.INFO: API request for the-witcher-3-wild-hunt details  
+[2023-04-21 20:06:57] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-04-21 20:14:52] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-04-21 20:19:32] local.INFO: API request: half-life-2 achievements fetched  
+[2023-04-21 20:20:10] local.INFO: API request: grand-theft-auto-v achievements fetched  
+[2023-04-21 20:20:49] local.INFO: API request for fallout-4 details  
+[2023-04-21 20:20:49] local.INFO: API request: fallout-4 achievements fetched  
+[2023-04-21 20:20:49] local.INFO: API request: fallout-4 achievements fetched  
+[2023-04-21 20:21:49] local.INFO: API request for doom details  
+[2023-04-21 20:21:49] local.INFO: API request: doom achievements fetched  
+[2023-04-21 20:21:50] local.INFO: API request: doom achievements fetched  
+[2023-04-21 20:22:43] local.INFO: API request for destiny-2 details  
+[2023-04-21 20:22:44] local.INFO: API request: destiny-2 achievements fetched  
+[2023-04-21 20:22:44] local.INFO: API request: destiny-2 achievements fetched  

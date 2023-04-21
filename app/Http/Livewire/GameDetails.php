@@ -12,8 +12,6 @@ class GameDetails extends Component
 
     public function render()
     {
-        $videogame="";
-
         $games = Cache::remember('games', 86400, fn () => (
             ApiServiceProvider::getVideogames()
         ));
@@ -26,13 +24,19 @@ class GameDetails extends Component
                 $achievements=Cache::remember($g->slug."_Achievements", 86400, fn () => (
                     ApiServiceProvider::getAchievements($g->slug,3)
                  ));
+
+                if($videogame->additions_count>0){
+                    $additions=Cache::remember($g->slug."_Additions", 86400, fn () => (
+                        ApiServiceProvider::getAdditions($g->slug,3)
+                    ));
+                }
             }
             // else{
             //     $this->redirect("home");
             // }
         }
 
-        return view('livewire.pages.games.game-details',compact('videogame','achievements'));
+        return view('livewire.pages.games.game-details',compact('videogame','achievements', 'additions'));
     }
 
     // public function mount(){

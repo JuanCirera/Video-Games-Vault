@@ -12,23 +12,7 @@ $dotenv->load();
 
 class ApiServiceProvider extends ServiceProvider{
 
-    // private array $videogames=[];
-    // private array $platforms=[];
-    // private array $developers=[];
-    // private array $genres=[];
-
-    // public function __construct()
-    // {
-
-    //     // define("games","{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}");
-    //     // $this->videogames=json_decode(file_get_contents(games))->results;
-
-    //     // define("genres","{$_ENV['URL_BASE']}genres?key={$_ENV['API_KEY']}");
-
-    //     // $this->genres=json_decode(file_get_contents(genres));
-
-    // }
-
+    // Toda esta clase hace uso de metodos estaticos para traer y devolver distintos datos de la API de RAWG
 
     public static function searchGames(string $search){
         define("searchGames","{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}&search=".$search);
@@ -36,8 +20,8 @@ class ApiServiceProvider extends ServiceProvider{
         return json_decode(file_get_contents(searchGames))->results;
     }
 
-    public static function getVideogames(){
-        define("games","{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}");
+    public static function getVideogames(int $size=20){
+        define("games","{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}&page_size={$size}");
         Log::info("API request: 20 games fetched");
         return json_decode(file_get_contents(games))->results;
     }
@@ -61,8 +45,8 @@ class ApiServiceProvider extends ServiceProvider{
         return json_decode(file_get_contents(genres))->results;
     }
 
-    public static function getDevelopers(){
-        define("developers","{$_ENV['URL_BASE']}developers?key={$_ENV['API_KEY']}");
+    public static function getDevelopers(int $size=20){
+        define("developers","{$_ENV['URL_BASE']}developers?key={$_ENV['API_KEY']}&page_size={$size}");
         Log::info("API request: developers fetched");
         return json_decode(file_get_contents(developers))->results;
     }
@@ -71,6 +55,12 @@ class ApiServiceProvider extends ServiceProvider{
         define("achievements","{$_ENV['URL_BASE']}games/{$slug}/achievements?key={$_ENV['API_KEY']}&page_size={$size}");
         Log::info("API request: {$slug} achievements fetched");
         return json_decode(file_get_contents(achievements))->results;
+    }
+
+    public static function getAdditions(string $slug, int $size=20){
+        define("additions","{$_ENV['URL_BASE']}games/{$slug}/additions?key={$_ENV['API_KEY']}&page_size={$size}");
+        Log::info("API request: {$slug} achievements fetched");
+        return json_decode(file_get_contents(additions))->results;
     }
 
 }

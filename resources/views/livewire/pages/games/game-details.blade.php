@@ -79,13 +79,13 @@
     {{--  --}}
     <div class="container">
         {{-- Action buttons --}}
-        <section class="mt-4 d-flex gap-2">
-            <div class="col-6 px-0">
+        <section class="mt-4 d-flex">
+            <div class="col-6 px-0 pe-2">
                 <button class="btn bg-gray-800 text-white w-100 px-2">
                     <i class="fa-solid fa-book text-lg"></i> <br> Añadir a biblioteca
                 </button>
             </div>
-            <div class="col-6 px-0">
+            <div class="col-6 px-0 ps-2">
                 <button class="btn bg-gray-800 text-white w-100 px-2">
                     <i class="fa-solid fa-bookmark text-lg"></i> <br> Añadir a seguimiento
                 </button>
@@ -102,7 +102,7 @@
                     @endforeach
                 </p>
             </article>
-            <article class="col-6">
+            <article class="col-6 ps-2">
                 <h6 class="text-white">Puntuación</h6>
                 <p class="text-center border border-primary border-radius-md text-primary text-bold me-8">
                     {{ $videogame->metacritic ?? 'N/A' }}
@@ -118,7 +118,7 @@
                     @endforeach
                 </p>
             </article>
-            <article class="col-6">
+            <article class="col-6 ps-2">
                 <h6 class="text-white">Distribuidora</h6>
                 <p>
                     @foreach ($videogame->publishers as $publisher)
@@ -136,53 +136,55 @@
                     @endforeach
                 </p>
             </article>
-            <article class="col-6">
+            <article class="col-6 ps-2">
                 <h6 class="text-white">PEGI</h6>
                 <p>
                     {{ $videogame->esrb_rating->name ?? 'N/A' }}
                 </p>
             </article>
         </section>
-        <section class="d-flex">
-            <article class="col-6">
+        <section>
+            <article>
                 <h6 class="text-white">Página web</h6>
                 <a href="{{ $videogame->website }}" target="_blank">
                     {{ $videogame->website ?? 'N/A' }}
                 </a>
             </article>
-            <article class="col-6">
+            {{-- <article class="col-6">
 
-            </article>
+            </article> --}}
         </section>
         {{--  --}}
         {{-- PC REQUIREMENTS --}}
-        <section class="mt-4">
+        <section class="py-4">
             <h6 class="text-white">Requisitos para PC </h6>
-            @isset($videogame->platforms)
-                @foreach ($videogame->platforms as $plat)
-                    @if (!empty($plat->requirements) && isset($plat->requirements->minimum) && isset($plat->requirements->recommended))
-                        <p>
-                            {!! nl2br($plat->requirements->minimum) !!}
-                        </p>
-                        <p>
-                            {!! nl2br($plat->requirements->recommended) !!}
-                        </p>
-                        @php
-                            break;
-                        @endphp
-                    @else
-                        <p>Los requisitos no están disponibles</p>
-                        @php
-                            break;
-                        @endphp
-                    @endif
-                @endforeach
-            @endisset
+            <div>
+                @isset($videogame->platforms)
+                    @foreach ($videogame->platforms as $plat)
+                        @if (!empty($plat->requirements) && isset($plat->requirements->minimum) && isset($plat->requirements->recommended))
+                            <p>
+                                {!! nl2br($plat->requirements->minimum) !!}
+                            </p>
+                            <p>
+                                {!! nl2br($plat->requirements->recommended) !!}
+                            </p>
+                            @php
+                                break;
+                            @endphp
+                        @else
+                            <p>Los requisitos no están disponibles</p>
+                            @php
+                                break;
+                            @endphp
+                        @endif
+                    @endforeach
+                @endisset
+            </div>
         </section>
         {{--  --}}
         {{-- GAME DECRIPTION --}}
-        <section class="mt-4">
-            <h6 class="text-white">Decripción</h6>
+        <section class="py-4">
+            <h6 class="text-white">Descripción</h6>
             <div class="text-truncate" id="gameDescription">
                 <p>
                     {!! $videogame->description ??
@@ -194,32 +196,33 @@
         </section>
         {{--  --}}
         {{-- GAME DLCs --}}
-        <section class="mt-4">
+        <section class="py-4">
             <h6 class="text-white mb-4">DLCs y ediciones</h6>
             @if (isset($videogame->additions_count) && $videogame->additions_count > 0)
-                <div class="mb-4">
-                    <div class="card bg-gray-800">
-                        <div class="row g-0">
-                            <div class="col-4 d-flex align-items-center">
-                                <img src="/img/videogames/BF1_apocalypse.jpg" alt=""
-                                    class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body px-4 py-2 row">
-                                    <h6 class="text-white text-start">BATTLEFIELD 1: Apocalypse</h6>
+                @foreach ($additions as $addition)
+                    <div class="mb-4">
+                        <div class="card bg-gray-800">
+                            <div class="row g-0">
+                                <div class="col-4 d-flex align-items-center">
+                                    <img src="{{$addition->background_image}}" alt=""
+                                        class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body px-4 py-2 row">
+                                        <h6 class="text-white text-start">{{$addition->name}}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             @else
                 <p>Este juego no tiene expansiones ni ediciones especiales</p>
             @endif
-
         </section>
         {{--  --}}
         {{-- GAME TAGS --}}
-        <section class="mt-4">
+        <section class="py-4">
             <h6 class="text-white">Etiquetas</h6>
             <p>
                 @if (count($videogame->tags))
@@ -233,7 +236,7 @@
         </section>
         {{--  --}}
         {{-- GAME TROPHIES --}}
-        <section class="mt-4">
+        <section class="py-4">
             <div class="d-flex mb-4">
                 <div class="flex-grow-1">
                     <h6 class="text-white">Trofeos de {{ $videogame->name }}</h6>
@@ -336,14 +339,10 @@
     </div>
 
     <script>
-
-        desc=document.getElementById('gameDescription');
-
         document.getElementById('showDescription').addEventListener('click', (e) => {
-            desc.classList.toggle('text-truncate');
-            e.target.innerHTML=(e.target.textContent=="Leer más")?"Leer menos":"Leer más";
+            document.getElementById('gameDescription').classList.toggle('text-truncate');
+            e.target.innerHTML = (e.target.textContent == "Leer más") ? "Leer menos" : "Leer más";
         });
-
     </script>
 
 </div>
