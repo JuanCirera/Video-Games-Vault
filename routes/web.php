@@ -47,10 +47,10 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 Route::get('/users', SearchUser::class)->name("user.search");
 Route::get('/contact', Contact::class)->name('contact');
 Route::get('/about', AboutUs::class)->name('about');
+Route::get('/games/{game}', GameDetails::class)->name("game.show");
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{username}', UserProfile::class)->name('profile');
-    Route::get('/games/{game}', GameDetails::class)->name("game.show");
 	Route::post('/profile', [UserProfile::class, 'update'])->name('profile.update');
     Route::get('/{username}/settings', UserSettings::class)->name('profile.settings');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');

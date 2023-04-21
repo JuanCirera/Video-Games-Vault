@@ -67,8 +67,8 @@ class ApiServiceProvider extends ServiceProvider{
         return json_decode(file_get_contents(developers))->results;
     }
 
-    public static function getAchievements(string $slug){
-        define("achievements","{$_ENV['URL_BASE']}games/{$slug}/achievements?key={$_ENV['API_KEY']}");
+    public static function getAchievements(string $slug, int $size=20){
+        define("achievements","{$_ENV['URL_BASE']}games/{$slug}/achievements?key={$_ENV['API_KEY']}&page_size={$size}");
         Log::info("API request: {$slug} achievements fetched");
         return json_decode(file_get_contents(achievements))->results;
     }

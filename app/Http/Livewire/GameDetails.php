@@ -24,7 +24,7 @@ class GameDetails extends Component
                    ApiServiceProvider::getVideogameDetails($g->slug)
                 ));
                 $achievements=Cache::remember($g->slug."_Achievements", 86400, fn () => (
-                    ApiServiceProvider::getAchievements($g->slug)
+                    ApiServiceProvider::getAchievements($g->slug,3)
                  ));
             }
             // else{

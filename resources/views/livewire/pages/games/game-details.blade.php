@@ -158,24 +158,45 @@
         {{-- PC REQUIREMENTS --}}
         <section class="mt-4">
             <h6 class="text-white">Requisitos para PC </h6>
-            <ul>
-                <h6 class="text-white">Mínimos:</h6>
-                <li>64-bit processor and operating system</li>
-                <li>OS: 64-bit Windows 7, Windows 8.1, Windows 10</li>
-                <li>...</li>
-            </ul>
+            @isset($videogame->platforms)
+                @foreach ($videogame->platforms as $plat)
+                    @if (!empty($plat->requirements) && isset($plat->requirements->minimum) && isset($plat->requirements->recommended))
+                        <p>
+                            {!! nl2br($plat->requirements->minimum) !!}
+                        </p>
+                        <p>
+                            {!! nl2br($plat->requirements->recommended) !!}
+                        </p>
+                        @php
+                            break;
+                        @endphp
+                    @else
+                        <p>Los requisitos no están disponibles</p>
+                        @php
+                            break;
+                        @endphp
+                    @endif
+                @endforeach
+            @endisset
         </section>
         {{--  --}}
         {{-- GAME DECRIPTION --}}
         <section class="mt-4">
             <h6 class="text-white">Decripción</h6>
-            {!! $videogame->description ?? 'No hay descripción disponible' !!}
+            <div class="text-truncate" id="gameDescription">
+                <p>
+                    {!! $videogame->description ??
+                        // Str::substr($videogame->description, 0, (strlen($videogame->description) - strlen($videogame->description) / 2))."..."
+                        'No hay descripción disponible' !!}
+                </p>
+            </div>
+            <a class="badge bg-gray-800 text-body" id="showDescription">Leer más</a>
         </section>
         {{--  --}}
         {{-- GAME DLCs --}}
         <section class="mt-4">
             <h6 class="text-white mb-4">DLCs y ediciones</h6>
-            @if (isset($videogame->additions_count) && ($videogame->additions_count>0))
+            @if (isset($videogame->additions_count) && $videogame->additions_count > 0)
                 <div class="mb-4">
                     <div class="card bg-gray-800">
                         <div class="row g-0">
@@ -213,7 +234,7 @@
         {{--  --}}
         {{-- GAME TROPHIES --}}
         <section class="mt-4">
-            <div class="d-flex">
+            <div class="d-flex mb-4">
                 <div class="flex-grow-1">
                     <h6 class="text-white">Trofeos de {{ $videogame->name }}</h6>
                 </div>
@@ -221,26 +242,34 @@
                     <i class="fa-solid fa-trophy"></i> {{ $videogame->achievements_count ?? '0' }} Trofeos
                 </div>
             </div>
-            @foreach ($achievements as $achievement)
-                <div class="card bg-gray-900 ps-2">
-                    <div class="row g-0">
-                        <div class="col-2 d-flex align-items-center">
-                            {{-- <img src="/img/videogames/BF1_apocalypse.jpg" alt=""
-                            class="img-fluid border-radius-lg"> --}}
-                            <div class="btn btn-secondary p-3">
-                                <i class="fa-solid fa-trophy text-2xl"></i>
+            @isset($achievements)
+                @foreach ($achievements as $achievement)
+                    <div class="card bg-gray-900 ps-2 my-2">
+                        <div class="row g-0">
+                            <div class="col-2 d-flex align-items-center">
+                                {{-- <img src="/img/videogames/BF1_apocalypse.jpg" alt=""
+                                class="img-fluid border-radius-lg"> --}}
+                                <div class="btn bg-gray-800 p-3">
+                                    <i class="fa-solid fa-trophy text-2xl"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-10">
-                            <div class="card-body px-4 py-2">
-                                <h6 class="text-white text-start">{{$achievement->name}}</h6>
-                                <p>{{$achievement->description}}</p>
+                            <div class="col-10">
+                                <div class="card-body px-4 py-2">
+                                    <h6 class="text-white text-start">{{ $achievement->name }}</h6>
+                                    <p>{{ $achievement->description }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
+                <div class="my-4">
+                    <button class="btn btn-primary bg-gray-800 w-100">
+                        Ver todos
+                    </button>
                 </div>
-            @endforeach
-            <p>Los trofeos no están diponibles en este momento</p>
+            @else
+                <p>Los trofeos no están diponibles en este momento</p>
+            @endisset
         </section>
         {{--  --}}
     </div>
@@ -283,10 +312,10 @@
                 <div class="card-footer pt-2 align-items-center">
                     <div class="d-flex">
                         <div class="col-2">
-                            <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70">
+                            {{-- <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70"> --}}
                         </div>
                         <div class="col-6" style="text-align: left;">
-                            <p class="my-0">{{ Auth::user()->username }}</p>
+                            <p class="my-0">Antoñito</p>
                         </div>
                         <div class="col-2 " style="text-align: right;">
                             3 <i class="fa-solid fa-thumbs-up"></i>
@@ -305,4 +334,16 @@
         </section>
         {{--  --}}
     </div>
+
+    <script>
+
+        desc=document.getElementById('gameDescription');
+
+        document.getElementById('showDescription').addEventListener('click', (e) => {
+            desc.classList.toggle('text-truncate');
+            e.target.innerHTML=(e.target.textContent=="Leer más")?"Leer menos":"Leer más";
+        });
+
+    </script>
+
 </div>

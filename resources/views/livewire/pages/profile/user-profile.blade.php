@@ -112,21 +112,6 @@
     </div>
 
     <script>
-        // Obtener el enlace principal
-        const curLink = document.getElementById('curLink');
-
-        // Obtener todos los elementos del menú
-        const menuItems = document.querySelectorAll('.dropdown-item');
-
-        // Escuchar los eventos de clic en cada elemento del menú
-        menuItems.forEach(item => {
-            item.addEventListener('click', (event) => {
-                // event.preventDefault(); // Evitar que el enlace se abra automáticamente
-                curLink.href = event.target
-                    .href; // Actualizar el enlace principal con el valor del atributo href del elemento clicado
-            });
-        });
-
         // Invento para hacer una navegacion del perfil sin recargas y sin 20 vistas muy similares entre ellas
 
         // Se obtienen todos los enlaces con el id profileNavigation
