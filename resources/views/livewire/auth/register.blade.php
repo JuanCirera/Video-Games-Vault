@@ -1,7 +1,7 @@
 <div>
     <main class="main-content mt-0 bg-gray-900">
         <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
-            style="background-image: url('/img/fondo_registro.jpg'); background-position: top;">
+            style="background-image: url('{{Storage::url('img/auth_background.jpg')}}'); background-position: top;">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container">
                 <div class="row justify-content-center">

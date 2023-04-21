@@ -12,7 +12,7 @@
         </nav>
         <section class="text-center">
             {{-- User data --}}
-            <div class="mb-2">
+            <div class="px-7">
                 @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
                     <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid">
                 @else
@@ -40,24 +40,6 @@
                                 <i class="fa-solid fa-list"></i> Mis datos
                             </a>
                         </li>
-                        {{-- <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#library"
-                                id="profNav">
-                                <i class="fas fa-book"></i> Biblioteca
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#tracking"
-                                id="profNav">
-                                <i class="fas fa-location-crosshairs"></i> Lista de seguimiento
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#reviews"
-                                id="profNav">
-                                <i class="fas fa-star"></i> Reseñas
-                            </a>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -117,20 +99,20 @@
                 </div>
                 <hr>
                 <div class="col-12 col-sm-12 col-md-6">
-                    <div class="form-group text-start">
+                    <div class="form-group text-start mb-0">
                         <label for="img" class="text-white">Cambiar imagen de perfil</label>
                         <input type="file" class="form-control bg-gray-800 text-white" id="img" hidden
                             wire:model.defer="img">
                     </div>
-                    <div class="my-4">
+                    <div class="px-7 py-4">
                         @if ($img)
                             <img src="{{ $img->temporaryUrl() }}" alt="" class="img-fluid rounded-circle w-30">
                         @else
                             @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
-                                <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle">
+                                <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid">
                             @else
                                 <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar"
-                                    class="rounded-circle">
+                                    class="rounded-circle img-fluid">
                             @endif
                         @endif
                     </div>

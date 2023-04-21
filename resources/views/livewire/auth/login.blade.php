@@ -6,11 +6,11 @@
                     <div
                         class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
                         <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                            style="background-image: url('/img/fondo_registro.jpg');
+                            style="background-image: url('{{Storage::url('img/auth_background.jpg')}}');
               background-size: cover;">
                             <span class="mask bg-dark opacity-6"></span>
                             <img class="mb-10 z-index-1 img-fluid" style="max-width: 50em"
-                                src="/img/logos/VGV_completo.svg" alt="svg">
+                                src="{{Storage::url('img/logos/VGV_extended.svg')}}" alt="svg">
                             {{-- <h4 class="mb-15 text-white font-weight-bolder position-relative">"Gamers are awesome"</h4> --}}
                             {{-- TODO: Meter frase o eslogan --}}
                             {{-- <p class="text-white position-relative">The more effortless the writing looks, the more

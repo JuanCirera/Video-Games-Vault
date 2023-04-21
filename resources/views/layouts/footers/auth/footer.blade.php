@@ -31,6 +31,12 @@
                             Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
                     </div>
                 </div>
+                <div class="px-7 py-2">
+                    <img src="{{Storage::url('img/logos/vgv_white.svg')}}" alt="" class="img-fluid">
+                </div>
+                <div id="version" class="text-center text-sm">
+                    <small class="my-0 text-center">v0.1 alpha</small>
+                </div>
             </div>
         </div>
     </div>

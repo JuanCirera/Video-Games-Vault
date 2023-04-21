@@ -3735,3 +3735,28 @@ Stack trace:
 "} 
 [2023-04-20 15:42:20] local.INFO: User Excidium logged in from 172.18.0.1  
 [2023-04-20 15:44:53] local.INFO: User CiReRaWarGamer logged in from 172.18.0.1  
+[2023-04-21 07:01:31] local.ERROR: Uncaught ReflectionException: Method Spatie\Permission\Models\Role::handle() does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct()
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Method Spatie\\Permission\\Models\\Role::handle() does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct()
+#1 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2023-04-21 07:03:28] local.INFO: User CiReRaWarGamer logged in from 172.18.0.1  
+[2023-04-21 07:14:51] local.ERROR: Uncaught ReflectionException: Method Spatie\Permission\Models\Role::handle() does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct()
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Method Spatie\\Permission\\Models\\Role::handle() does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct()
+#1 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 

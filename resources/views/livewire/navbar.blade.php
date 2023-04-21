@@ -21,7 +21,7 @@
                         {{-- class="navbar-brand font-weight-bolder text-primary text-gradient text-lg" style="font-family: monospace" --}}
                         <a href="{{ route('home') }}" class="navbar-brand">
                             {{-- VIDEO GAMES VAULT  --}}
-                            <img src="/img/logos/VGV.svg" alt="vgv" class="w-100">
+                            <img src="{{Storage::url('img/logos/VGV.svg')}}" alt="vgv" class="w-100">
                         </a>
                     </div>
                     <div class="col-4 d-flex gap-2 justify-content-end">

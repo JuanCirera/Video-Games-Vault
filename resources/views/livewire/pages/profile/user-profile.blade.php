@@ -10,7 +10,7 @@
         </nav>
         <section class="text-center">
             {{-- User data --}}
-            <div class="mb-2">
+            <div class="px-7 py-2">
                 @if (Str::contains($user->avatar, 'ui-avatars'))
                     <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-fluid">
                 @else
