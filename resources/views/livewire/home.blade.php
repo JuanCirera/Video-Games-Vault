@@ -12,7 +12,8 @@
                 por explorar a tu disposición
             </h3>
             <div class="input-group">
-                <span class="input-group-text text-white mt-4 mb-2 border-dark" style="background-color: rgba(52, 58, 64, 0.7);">
+                <span class="input-group-text text-white mt-4 mb-2 border-dark"
+                    style="background-color: rgba(52, 58, 64, 0.7);">
                     <i class="fas fa-search" aria-hidden="true"></i>
                 </span>
                 <input type="search" wire:model.debounce.500ms="search" placeholder="Buscar..."
@@ -47,65 +48,67 @@
             </form>
         </div>
         @foreach ($games as $item)
-            <div class="card bg-gray-800 mx-auto mb-4" wire:key="{{ $item->id }}">
-                <div class="card-header p-0 bg-gray-800">
-                    <img src="{{ $item->background_image }}" class="img-fluid border-radius-lg"
-                        style="border-bottom-right-radius: 0;border-bottom-left-radius: 0">
-                </div>
-
-                <div class="card-body pt-2">
-                    <div class="row">
-                        <h4 class="col-9 card-title d-block text-white">
-                            {{ $item->name }}
-                        </h4>
-                        <div class="col-3 ps-5 pe-0">
-                            <p class="text-center border border-primary border-radius-md text-primary text-bold">
-                                {{ $item->metacritic ?? 'N/A' }}
-                            </p>
-                        </div>
+            <a href="{{ route('game.show', $item->slug) }}">
+                <div class="card bg-gray-800 mx-auto mb-4" wire:key="{{ $item->id }}">
+                    <div class="card-header p-0 bg-gray-800">
+                        <img src="{{ $item->background_image }}" class="img-fluid border-radius-lg"
+                            style="border-bottom-right-radius: 0;border-bottom-left-radius: 0">
                     </div>
-                    <div class="d-flex gap-2">
 
-                        @php
-                            $countPS = 0;
-                            $countXB = 0;
+                    <div class="card-body pt-2">
+                        <div class="row">
+                            <h4 class="col-9 card-title d-block text-white">
+                                {{ $item->name }}
+                            </h4>
+                            <div class="col-3 ps-5 pe-0">
+                                <p class="text-center border border-primary border-radius-md text-primary text-bold">
+                                    {{ $item->metacritic ?? 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
 
-                            if ($item->platforms) {
-                                foreach ($item->platforms as $platform) {
-                                    switch ($platform->platform->id) {
-                                        case 4:
-                                            echo "<i class='fa-brands fa-windows text-white'></i>";
-                                            break;
-                                        case 187:
-                                        case 18:
-                                        case 16:
-                                            echo $countPS == 0 ? '<i class="fa-brands fa-playstation text-white"></i>' : '';
-                                            $countPS++;
-                                            break;
-                                        case 186:
-                                        case 14:
-                                        case 1:
-                                            echo $countXB == 0 ? '<i class="fa-brands fa-xbox text-white"></i>' : '';
-                                            $countXB++;
-                                            break;
+                            @php
+                                $countPS = 0;
+                                $countXB = 0;
+
+                                if ($item->platforms) {
+                                    foreach ($item->platforms as $platform) {
+                                        switch ($platform->platform->id) {
+                                            case 4:
+                                                echo "<i class='fa-brands fa-windows text-white'></i>";
+                                                break;
+                                            case 187:
+                                            case 18:
+                                            case 16:
+                                                echo $countPS == 0 ? '<i class="fa-brands fa-playstation text-white"></i>' : '';
+                                                $countPS++;
+                                                break;
+                                            case 186:
+                                            case 14:
+                                            case 1:
+                                                echo $countXB == 0 ? '<i class="fa-brands fa-xbox text-white"></i>' : '';
+                                                $countXB++;
+                                                break;
+                                        }
                                     }
                                 }
-                            }
 
-                        @endphp
+                            @endphp
 
-                    </div>
-                    <div class="mt-4">
-                        <button class="btn btn-primary bg-gray-700">
-                            <i class="fas fa-plus"></i> Seguir
-                        </button>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary bg-gray-700">
+                                <i class="fas fa-plus"></i> Añadir
+                            </button>
 
-                        <button class="btn btn-primary bg-gray-700">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
+                            <button class="btn btn-primary bg-gray-700">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         @endforeach
         <div class="my-4">
             <button class="btn btn-primary w-100" wire:click="">

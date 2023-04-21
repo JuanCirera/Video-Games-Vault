@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Providers\ApiServiceProvider as ProvidersApiServiceProvider;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 use Livewire\WithPagination;
 
 class Home extends Component
@@ -28,13 +27,11 @@ class Home extends Component
 
             //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
             $this->games = Cache::remember('games', 86400, function () { // NOTE: 24H de expiracion
-                Log::info("API request: " . count($this->games) . " games fetched");
                 return ProvidersApiServiceProvider::getVideogames();
             });
         } else {
 
             $this->games = Cache::remember($this->search, 86400, function () {
-                Log::info("API request: search for '" . $this->search . "'");
                 return ProvidersApiServiceProvider::searchGames($this->search);
             });
         }

@@ -28,19 +28,9 @@ class UserProfile extends Component
     {
         $urlUsername=substr(parse_url(url()->current(), PHP_URL_PATH), 1);
         $this->user=User::where('username',$urlUsername)->first();
-        
+
         return view('livewire.pages.profile.user-profile', ['user' => $this->user]);
     }
-
-    // public function mount(){
-    //     $this->user = User::find(Auth::user()->id);
-    // }
-
-    // public function loadUser($user)
-    // {
-    //     $this->user = $user;
-    //     return redirect("@".$this->user->username);
-    // }
 
 
     //TODO: modificar esto y hacerlo bien
