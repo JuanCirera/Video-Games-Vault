@@ -49,7 +49,7 @@
             {{--  --}}
             {{-- Profile internal nav --}}
             <div class="mt-4">
-                {{-- mobile --}}
+                {{-- MOBILE NAV --}}
                 <div class="dropdown d-md-none" id="navParent">
                     <a href="#" class="btn bg-gray-800 dropdown-toggle text-white w-100 w-md-50"
                         data-bs-toggle="dropdown" id="curLink">
@@ -88,7 +88,7 @@
                     </ul>
                 </div>
                 {{--  --}}
-                {{-- PC --}}
+                {{-- PC NAV --}}
                 <div class="nav-wrapper position-relative end-0 d-none d-md-block w-md-70 mx-auto">
                     <ul class="nav nav-pills nav-fill p-1 bg-gray-800" role="tablist">
                         <li class="nav-item" id="pc_profNav">

@@ -90,7 +90,7 @@
         </div>
     </div>
     @auth
-        <div class="offcanvas offcanvas-end bg-gray-900 w-50 blur shadow-none border-0" tabindex="-1" id="profileOffcanvas"
+        <div class="offcanvas offcanvas-end bg-gray-900 w-50 w-md-20 blur shadow-none border-0" tabindex="-1" id="profileOffcanvas"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
