@@ -91,30 +91,37 @@
                 {{-- PC --}}
                 <div class="nav-wrapper position-relative end-0 d-none d-md-block w-md-70 mx-auto">
                     <ul class="nav nav-pills nav-fill p-1 bg-gray-800" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link mb-0 px-0 py-1 text-white active" data-bs-toggle="collapse" href="#overview"
-                                role="tab" aria-controls="preview" aria-selected="true" id="profNav">
+                        <li class="nav-item" id="pc_profNav">
+                            <a class="nav-link mb-0 px-0 py-1 text-white active" data-bs-toggle="collapse"
+                                href="#overview" role="tab" aria-controls="preview" aria-selected="true"
+                                id="profNav">
                                 <i class="fas fa-chart-simple text-sm me-2"></i> Resumen
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="pc_profNav">
                             <a class="nav-link mb-0 px-0 py-1 text-white" data-bs-toggle="collapse" href="#library"
                                 role="tab" aria-controls="code" aria-selected="false" id="profNav">
                                 <i class="fas fa-book text-sm me-2"></i> Biblioteca
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="pc_profNav">
                             <a class="nav-link mb-0 px-0 py-1 text-white" data-bs-toggle="collapse" href="#tracking"
                                 role="tab" aria-controls="code" aria-selected="false" id="profNav">
                                 <i class="fas fa-location-crosshairs text-sm me-2"></i> Lista de seguimiento
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="pc_profNav">
                             <a class="nav-link mb-0 px-0 py-1 text-white" data-bs-toggle="collapse" href="#reviews"
                                 role="tab" aria-controls="code" aria-selected="false" id="profNav">
                                 <i class="fas fa-star text-sm me-2"></i> Reseñas
                             </a>
                         </li>
+                        <div class="moving-tab position-absolute nav-link"
+                            style="padding: 0px; transition: all 0.5s ease 0s; transform: translate3d(0px, 0px, 0px); width: 200px;">
+                            <a class="nav-link mb-0 px-0 py-1 bg-primary active" data-bs-toggle="collapse"
+                                href="#overview" role="tab" aria-controls="code"
+                                aria-selected="true">&nbsp;</a>
+                        </div>
                     </ul>
                 </div>
                 {{--  --}}
@@ -167,27 +174,48 @@
             });
         });
 
-        document.getElementById("like").addEventListener("click", (e) => {
-            if (!e.target.classList.contains("text-primary")) {
-                e.target.classList.remove("text-body");
-                e.target.classList.add("text-primary");
-            } else {
-                e.target.classList.remove("text-primary");
-                e.target.classList.add("text-body");
-            }
-            // Livewire.emit('like', e.target.getAttribute('name'));
-        });
+        // document.getElementById("like").addEventListener("click", (e) => {
+        //     if (!e.target.classList.contains("text-primary")) {
+        //         e.target.classList.remove("text-body");
+        //         e.target.classList.add("text-primary");
+        //     } else {
+        //         e.target.classList.remove("text-primary");
+        //         e.target.classList.add("text-body");
+        //     }
+        //     // Livewire.emit('like', e.target.getAttribute('name'));
+        // });
 
-        document.getElementById("dislike").addEventListener("click", (e) => {
-            if (!e.target.classList.contains("text-primary")) {
-                e.target.classList.remove("text-body");
-                e.target.classList.add("text-primary");
-            } else {
-                e.target.classList.remove("text-primary");
-                e.target.classList.add("text-body");
-            }
-            // Livewire.emit('dislike',e.target.getAttribute('name'));
+        // document.getElementById("dislike").addEventListener("click", (e) => {
+        //     if (!e.target.classList.contains("text-primary")) {
+        //         e.target.classList.remove("text-body");
+        //         e.target.classList.add("text-primary");
+        //     } else {
+        //         e.target.classList.remove("text-primary");
+        //         e.target.classList.add("text-body");
+        //     }
+        //     // Livewire.emit('dislike',e.target.getAttribute('name'));
+        // });
+
+        // ANIMACION PROFILE NAV - Tablet/PC VIEWPORT
+
+        // Enlaces de la barra de navegación
+        const pc_navLinks = document.querySelectorAll('#pc_profNav');
+        const movingTab = document.querySelector('.moving-tab');
+
+        pc_navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Posición y ancho del enlace
+                const navPosition = link.offsetLeft;
+                const navWidth = link.offsetWidth;
+                // Ahora se asigna la posición y el ancho al .moving-tab
+                movingTab.style.transform = `translate3d(${navPosition}px, 0px, 0px)`;
+                movingTab.style.width = `${navWidth}px`;
+            });
         });
+        // --
+
     </script>
+
     @include('layouts.footers.auth.footer')
+
 </div>
