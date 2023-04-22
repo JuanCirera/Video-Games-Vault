@@ -354,12 +354,12 @@
         style="background-image: url('{{ $videogame->background_image }}'); background-position: top;">
         <div class="pt-5 pb-3"
             style="background-color: rgba(33, 37, 41, 0.8);
-            box-shadow: inset 0px 10px -10px 0px rgba(33, 37, 41, 1);">
+            box-shadow: inset 0px 10px 10px 0px rgba(33, 37, 41, 1), inset 0px -10px 10px 0px rgba(33, 37, 41, 1);">
             <div class="container">
                 <h1 class="text-white text-center">
-                    {{ $videogame->name }} RESEÑAS
+                    {{ $videogame->name }} - RESEÑAS
                 </h1>
-                <div class="input-group">
+                <div class="input-group w-md-70 mx-auto">
                     <span class="input-group-text text-white mt-4 mb-2 border-dark"
                         style="background-color: rgba(52, 58, 64, 0.7);">
                         <i class="fas fa-search" aria-hidden="true"></i>
@@ -374,7 +374,7 @@
     <div class="container">
         {{-- REVIEWS --}}
         <section class="mb-4">
-            <div class="card bg-gray-800">
+            <div class="card bg-gray-800 w-md-60 mx-auto">
                 <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
                     <div class="flex-grow-1">
                         <h6 class="text-white text-start my-0">BATTLEPAY 204$</h6>
@@ -405,7 +405,7 @@
                     <hr>
                     <div class="mt-2">
                         <input type="text" name="reply" id="replyReview"
-                            class="form-control bg-gray-900 text-white" placeholder="Contestar...">
+                            class="form-control bg-gray-900 text-white" placeholder="Contestar..." disabled>
                     </div>
                 </div>
             </div>

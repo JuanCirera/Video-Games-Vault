@@ -14,9 +14,9 @@
             {{-- User data --}}
             <div class="px-7">
                 @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
-                    <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid">
+                    <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid w-90 w-md-50">
                 @else
-                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar" class="rounded-circle img-fluid">
+                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar" class="rounded-circle img-fluid w-90 w-md-25">
                 @endif
             </div>
             <div>
@@ -28,12 +28,12 @@
                 @endif
             </div>
             <div class="mt-4">
-                <div class="dropdown" id="navParent">
-                    <a href="#" class="btn bg-gray-800 dropdown-toggle text-white w-100" data-bs-toggle="dropdown"
+                <div class="dropdown text-center mx-auto" id="navParent">
+                    <a href="#" class="btn bg-gray-800 dropdown-toggle text-white w-100 w-md-50" data-bs-toggle="dropdown"
                         id="curLink">
                         <i class="fa-solid fa-list"></i> Mis datos
                     </a>
-                    <ul class="dropdown-menu w-100 text-center bg-gray-800 blur mt-2" aria-labelledby="profile_nav">
+                    <ul class="dropdown-menu w-100 w-md-50 text-center bg-gray-800 blur mt-2" aria-labelledby="profile_nav">
                         <li>
                             <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#overview"
                                 id="profNav">
@@ -53,7 +53,7 @@
                 </div>
                 <hr>
                 <div class="d-flex flex-wrap">
-                    <div class="col-12 col-sm-12 col-md-6">
+                    <div class="col-12 col-sm-12 col-md-6 pe-md-2">
                         <div class="form-group text-start">
                             <label for="username" class="text-white">Nombre de usuario</label>
                             <input type="text" class="form-control bg-gray-800 text-white" id="username"
@@ -63,7 +63,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6">
+                    <div class="col-12 col-sm-12 col-md-6 ps-md-2">
                         <div class="form-group text-start">
                             <label for="email" class="text-white">Correo electrónico</label>
                             <input type="email" class="form-control bg-gray-800 text-white" id="email"
@@ -77,17 +77,17 @@
                 <hr>
                 <h6 class="text-secondary">Cambiar contraseña</h6>
                 <div class="d-flex flex-wrap">
-                    {{-- <div class="col-12 col-sm-12 col-md-6">
+                    <div class="col-12 col-sm-12 col-md-6 pe-md-2">
                         <div class="form-group text-start">
                             <label for="pwd" class="text-white">Contraseña</label>
                             <input type="password" class="form-control bg-gray-800 text-white" id="pwd"
-                            wire:model="user.password" />
+                            />
                             @error('user.password')
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div> --}}
-                    {{-- <div class="col-12 col-sm-12 col-md-6">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 ps-md-2">
                         <div class="form-group text-start">
                             <label for="chpwd" class="text-white">Repite la contraseña</label>
                             <input type="password" class="form-control bg-gray-800 text-white" id="chpwd">
@@ -95,10 +95,10 @@
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
                 <hr>
-                <div class="col-12 col-sm-12 col-md-6">
+                <div class="col-12 col-sm-12 col-md-12">
                     <div class="form-group text-start mb-0">
                         <label for="img" class="text-white">Cambiar imagen de perfil</label>
                         <input type="file" class="form-control bg-gray-800 text-white" id="img" hidden
@@ -106,13 +106,13 @@
                     </div>
                     <div class="px-7 py-4">
                         @if ($img)
-                            <img src="{{ $img->temporaryUrl() }}" alt="" class="img-fluid rounded-circle w-30">
+                            <img src="{{ $img->temporaryUrl() }}" alt="" class="rounded-circle w-90 w-md-30">
                         @else
                             @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
-                                <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid">
+                                <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle w-90 w-md-30">
                             @else
                                 <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar"
-                                    class="rounded-circle img-fluid">
+                                    class="rounded-circle w-90 w-md-30">
                             @endif
                         @endif
                     </div>

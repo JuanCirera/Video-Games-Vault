@@ -12,9 +12,9 @@
             {{-- User data --}}
             <div class="px-7 py-2">
                 @if (Str::contains($user->avatar, 'ui-avatars'))
-                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-fluid">
+                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle w-90 w-md-30">
                 @else
-                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle img-fluid">
+                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle w-90 w-md-30">
                 @endif
             </div>
             <div>
@@ -49,9 +49,10 @@
             {{--  --}}
             {{-- Profile internal nav --}}
             <div class="mt-4">
-                <div class="dropdown" id="navParent">
-                    <a href="#" class="btn bg-gray-800 dropdown-toggle text-white w-100" data-bs-toggle="dropdown"
-                        id="curLink">
+                {{-- mobile --}}
+                <div class="dropdown d-md-none" id="navParent">
+                    <a href="#" class="btn bg-gray-800 dropdown-toggle text-white w-100 w-md-50"
+                        data-bs-toggle="dropdown" id="curLink">
                         <i class=""></i>
                         @if ($user->id == Auth::user()->id)
                             Mi contenido
@@ -86,6 +87,37 @@
                         </li>
                     </ul>
                 </div>
+                {{--  --}}
+                {{-- PC --}}
+                <div class="nav-wrapper position-relative end-0 d-none d-md-block w-md-70 mx-auto">
+                    <ul class="nav nav-pills nav-fill p-1 bg-gray-800" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1 text-white active" data-bs-toggle="collapse" href="#overview"
+                                role="tab" aria-controls="preview" aria-selected="true" id="profNav">
+                                <i class="fas fa-chart-simple text-sm me-2"></i> Resumen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1 text-white" data-bs-toggle="collapse" href="#library"
+                                role="tab" aria-controls="code" aria-selected="false" id="profNav">
+                                <i class="fas fa-book text-sm me-2"></i> Biblioteca
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1 text-white" data-bs-toggle="collapse" href="#tracking"
+                                role="tab" aria-controls="code" aria-selected="false" id="profNav">
+                                <i class="fas fa-location-crosshairs text-sm me-2"></i> Lista de seguimiento
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1 text-white" data-bs-toggle="collapse" href="#reviews"
+                                role="tab" aria-controls="code" aria-selected="false" id="profNav">
+                                <i class="fas fa-star text-sm me-2"></i> Reseñas
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                {{--  --}}
             </div>
             {{--  --}}
             {{-- Profile content --}}

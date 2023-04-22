@@ -7,7 +7,7 @@
         @foreach ($userReviews as $userReview)
             {{-- REVIEW --}}
             <div class="mb-4">
-                <div class="card bg-gray-800">
+                <div class="card bg-gray-800 w-md-70 mx-auto">
                     <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
                         <div class="flex-grow-1">
                             <h6 class="text-white text-start my-0">{{ $userReview->title }}</h6>
