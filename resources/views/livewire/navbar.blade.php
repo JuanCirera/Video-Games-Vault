@@ -1,11 +1,11 @@
 <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
         <div class="col-12">
-            <!-- Navbar -->
+            {{-- Navbar --}}
             <nav
                 class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-3 py-2 start-0 end-0 mx-4">
-                <div class="row">
-                    <div class="col-4">
+                <div class="row align-items-center">
+                    <div class="col-4 d-md-none">
                         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -16,19 +16,21 @@
                             </span>
                         </button>
                     </div>
-                    <div class="col-4">
-                        {{-- NOTE: para el pc --}}
+                    <div class="col-4 col-md-2 order-md-1">
                         {{-- class="navbar-brand font-weight-bolder text-primary text-gradient text-lg" style="font-family: monospace" --}}
                         <a href="{{ route('home') }}" class="navbar-brand">
-                            {{-- VIDEO GAMES VAULT  --}}
-                            <img src="{{Storage::url('img/logos/VGV.svg')}}" alt="vgv" class="w-100">
+                            <img src="{{Storage::url('img/logos/VGV.svg')}}" alt="vgv" class="w-100 w-md-50">
                         </a>
                     </div>
-                    <div class="col-4 d-flex gap-2 justify-content-end">
+                    <div class="col-4 col-md-2 d-flex gap-2 justify-content-end order-md-3">
 
                         @guest
-                            <a href="{{ route('login') }}">
-                                <i class="fa-regular fa-circle-user text-secondary text-2xl ps-3 pt-2"></i>
+                            <a href="{{ route('login') }}" class="nav-link text-white d-none d-md-inline">
+                                Iniciar sesión
+                                <i class="fas fa-circle-user text-2xl opacity-6 ms-1"></i>
+                            </a>
+                            <a href="{{ route('login') }}" class="nav-link text-white d-md-none">
+                                <i class="fas fa-circle-user text-2xl opacity-6"></i>
                             </a>
                         @endguest
                         @auth
@@ -43,8 +45,8 @@
                         @endauth
 
                     </div>
-                    <div class="collapse navbar-collapse" id="navigation">
-                        <ul class="navbar-nav ms-auto">
+                    <div class="collapse navbar-collapse col-4 col-sm-4 col-md-8 order-md-2" id="navigation">
+                        <ul class="navbar-nav me-auto mx-md-auto">
                             <li class="nav-item">
                                 <a class="nav-link me-2 text-white" href="{{ route('home') }}">
                                     <i class="fas fa-home opacity-6 me-1"></i>
@@ -77,7 +79,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link me-2 text-white" href="{{ route('user.search') }}">
-                                    <i class="fas fa-user opacity-6 me-1"></i>
+                                    <i class="fas fa-user-plus opacity-6 me-1"></i>
                                     Buscar jugadores
                                 </a>
                             </li>
@@ -85,7 +87,7 @@
                     </div>
                 </div>
             </nav>
-            <!-- End Navbar -->
+            {{-- End Navbar --}}
         </div>
     </div>
     @auth
