@@ -3,8 +3,8 @@
         <h4 class="text-white">Lista de seguimiento</h4>
         <p>Se enviarán notificaciones de todos los juegos guardados en esta lista</p>
     </div>
-    @if (count($user->videogames))
-        @foreach ($user->videogames as $trackedGame)
+    @if (count($videogames))
+        @foreach ($videogames as $trackedGame)
             @if ($trackedGame->followed)
                 <div class="mb-4">
                     <div class="card bg-gray-800">

@@ -12,9 +12,9 @@
             {{-- User data --}}
             <div class="px-7 py-2">
                 @if (Str::contains($user->avatar, 'ui-avatars'))
-                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle w-90 w-md-30">
+                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle w-90 w-md-20">
                 @else
-                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle w-90 w-md-30">
+                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle w-90 w-md-25">
                 @endif
             </div>
             <div>

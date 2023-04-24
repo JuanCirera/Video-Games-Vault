@@ -111,14 +111,43 @@
                 {{-- Action buttons --}}
                 <article class="mt-2 d-flex">
                     <div class="col-6 col-md-4 px-0 pe-2">
-                        <button class="btn bg-gray-800 text-white w-100 px-2">
-                            <i class="fa-solid fa-book text-lg"></i> <br> Añadir a biblioteca
-                        </button>
+                        @isset($user)
+                            @if ($addedToLibrary)
+                                <button class="btn btn-secondary text-white w-100 px-2"
+                                    wire:click="addToLibrary('{{ $videogame->name }}', '{{ $videogame->slug }}')">
+                                    <i class="fa-solid fa-check text-lg"></i> <br> En tu biblioteca
+                                </button>
+                            @else
+                                <button class="btn bg-gray-800 text-white w-100 px-2"
+                                    wire:click="addToLibrary('{{ $videogame->name }}', '{{ $videogame->slug }}')">
+                                    <i class="fa-solid fa-book text-lg"></i> <br> Añadir a biblioteca
+                                </button>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="btn bg-gray-800 text-white w-100 px-2">
+                                <i class="fa-solid fa-book text-lg"></i> <br> Añadir a biblioteca
+                            </a>
+                        @endisset
                     </div>
                     <div class="col-6 col-md-4 px-0 ps-2 ps-md-0">
-                        <button class="btn bg-gray-800 text-white w-100 px-2">
-                            <i class="fa-solid fa-bookmark text-lg"></i> <br> Añadir a seguimiento
-                        </button>
+                        @isset($user)
+                            @if ($addedToTracking)
+                                {{-- @if ($ug->title == $videogame->name) --}}
+                                <button class="btn btn-secondary text-white w-100 px-2"
+                                    wire:click="addToTracking('{{ $videogame->name }}', '{{ $videogame->slug }}')">
+                                    <i class="fa-solid fa-check text-lg"></i> <br> Siguiendo
+                                </button>
+                            @else
+                                <button class="btn bg-gray-800 text-white w-100 px-2"
+                                    wire:click="addToTracking('{{ $videogame->name }}', '{{ $videogame->slug }}')">
+                                    <i class="fa-solid fa-bookmark text-lg"></i> <br> Añadir a seguimiento
+                                </button>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="btn bg-gray-800 text-white w-100 px-2">
+                                <i class="fa-solid fa-bookmark text-lg"></i> <br> Añadir a seguimiento
+                            </a>
+                        @endisset
                     </div>
                 </article>
                 {{--  --}}
@@ -128,7 +157,8 @@
                         @foreach ($gameStores as $gStore)
                             @foreach ($stores as $store)
                                 @if ($store->id == $gStore->store_id)
-                                    <a href="{{ $gStore->url }}" target="_blank" class="btn btn-primary bg-gray-800 text-body">
+                                    <a href="{{ $gStore->url }}" target="_blank"
+                                        class="btn btn-primary bg-gray-800 text-body">
                                         {{ $store->name }}
                                     </a>
                                 @endif
@@ -230,7 +260,7 @@
             </div>
         </section>
         {{--  --}}
-        {{-- GAME DECRIPTION --}}
+        {{-- GAME DESCRIPTION --}}
         <section class="py-4">
             <h6 class="text-white">Descripción</h6>
             <div class="text-truncate" id="gameDescription">

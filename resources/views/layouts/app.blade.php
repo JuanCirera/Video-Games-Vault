@@ -80,7 +80,7 @@
                 timer: 2000,
                 timerProgressBar: true,
                 toast: true,
-                showConfirmButton = false,
+                showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
                 }
@@ -102,7 +102,7 @@
                 timer: 2000,
                 timerProgressBar: true,
                 toast: true,
-                showConfirmButton = false,
+                showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
                 }
@@ -124,7 +124,7 @@
                 timer: 2000,
                 timerProgressBar: true,
                 toast: true,
-                showConfirmButton = false,
+                showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
                 }
@@ -146,7 +146,7 @@
                 timer: 2000,
                 timerProgressBar: true,
                 toast: true,
-                showConfirmButton = false,
+                showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
                 }

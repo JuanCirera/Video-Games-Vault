@@ -14,7 +14,7 @@
             {{-- User data --}}
             <div class="px-7">
                 @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
-                    <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid w-90 w-md-50">
+                    <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid w-90 w-md-20">
                 @else
                     <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar"
                         class="rounded-circle img-fluid w-90 w-md-25">
@@ -170,7 +170,7 @@
     @include('layouts.footers.auth.footer')
 
     <script>
-        
+
         //NAV
         const links = document.querySelectorAll('#profNav');
 

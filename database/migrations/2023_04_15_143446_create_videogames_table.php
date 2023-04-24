@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('videogames', function (Blueprint $table) {
             $table->id();
+            // $table->bigInteger("id")->primary();
             $table->string("title")->unique();
             $table->timestamp("release_date");
             $table->timestamp("updated_date");
