@@ -12,19 +12,17 @@
     <!--  Fonts and icons  -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
-    <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     {{-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> --}}
-    <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{asset('assets/css/argon-dashboard.css')}}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css') }}" rel="stylesheet" />
     {{-- FA --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    {{-- <link rel="stylesheet" href="sweetalert2.min.css"> --}}
 
     @livewireStyles
 
@@ -49,12 +47,12 @@
     @endauth
 
     <!--   Core JS Files   -->
-    <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
+    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{asset('assets/js/argon-dashboard.js')}}"></script>
+    <script src="{{ asset('assets/js/argon-dashboard.js') }}"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -68,26 +66,25 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     {{-- SA CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script src="sweetalert2.min.js"></script> --}}
 
     @if (session('error_msg'))
         <script>
             let timerInterval
             Swal.fire({
                 icon: 'error',
+                iconColor: 'white',
                 title: '{{ session('error_msg') }}',
                 position: 'top-end',
-                timer: 2000,
+                timer: 2500,
                 timerProgressBar: true,
                 toast: true,
                 showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
-                }
+                },
+                customClass: {
+                    popup: 'colored-toast'
+                },
             })
         </script>
     @endif
@@ -97,19 +94,19 @@
             let timerInterval
             Swal.fire({
                 icon: 'success',
+                iconColor: 'white',
                 title: '{{ session('success_msg') }}',
                 position: 'top-end',
-                timer: 2000,
+                timer: 2500,
                 timerProgressBar: true,
                 toast: true,
                 showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('Alert closed by the timer')
-                }
+                },
+                customClass: {
+                    popup: 'colored-toast'
+                },
             })
         </script>
     @endif
@@ -119,19 +116,19 @@
             let timerInterval
             Swal.fire({
                 icon: 'warning',
+                iconColor: 'white',
                 title: '{{ session('warning_msg') }}',
                 position: 'top-end',
-                timer: 2000,
+                timer: 2500,
                 timerProgressBar: true,
                 toast: true,
                 showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('Alert closed by the timer')
-                }
+                },
+                customClass: {
+                    popup: 'colored-toast'
+                },
             })
         </script>
     @endif
@@ -141,19 +138,19 @@
             let timerInterval
             Swal.fire({
                 icon: 'info',
+                iconColor: 'white',
                 title: '{{ session('info_msg') }}',
                 position: 'top-end',
-                timer: 2000,
+                timer: 2500,
                 timerProgressBar: true,
                 toast: true,
                 showConfirmButton: false,
                 willClose: () => {
                     clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('Alert closed by the timer')
-                }
+                },
+                customClass: {
+                    popup: 'colored-toast'
+                },
             })
         </script>
     @endif

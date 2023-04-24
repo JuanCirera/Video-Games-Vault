@@ -234,7 +234,7 @@
                             <div class="card bg-gray-800 mb-4">
                                 <div class="row g-0 d-md-none">
                                     <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
+                                        <img src="{{$noCatGame->image}}" alt=""
                                             class="img-fluid border-radius-top-start-lg border-radius-bottom-end-lg">
                                     </div>
                                     <div class="col-8">
@@ -245,23 +245,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body pt-2 d-none d-md-block">
-                                    <div class="row">
-                                        <h4 class="col-9 card-title d-block text-white">
-                                            {{-- {{ $item->name }} --}}
-                                            {{ $noCatGame->title }}
-                                        </h4>
-                                        <div class="col-3 ps-5 pe-0">
-                                            <p
-                                                class="text-center border border-primary border-radius-md text-primary text-bold">
-                                                {{ $item->metacritic ?? 'N/A' }}
-                                            </p>
+                                <div class="d-none d-md-block">
+                                    <div>
+                                        <img src="{{$noCatGame->image}}" alt=""
+                                            class="img-fluid border-radius-top-start-md-lg border-radius-top-end-md-lg">
+                                    </div>
+                                    <div class="card-body">
+                                        <div>
+                                            <h4 class="card-title d-block text-white text-start px-0">
+                                                {{ $noCatGame->title }}
+                                            </h4>
+                                            {{-- <div class="col-3 ps-5 pe-0">
+                                                <p
+                                                    class="text-center border border-primary border-radius-md text-primary text-bold">
+                                                    {{ $item->metacritic ?? 'N/A' }}
+                                                </p>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer pt-2 pb-2">
-                                    {{-- <label for="categories" class="text-white px-0">Cambiar
-                                categoría</label> --}}
                                     <select name="categories" id="categories"
                                         class="form-control bg-gray-700 text-white w-100">
                                         @foreach ($categories as $cat)

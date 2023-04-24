@@ -109,7 +109,7 @@ class GameDetails extends Component
             foreach ($this->user->videogames as $ug) {
                 if ($ug->title == $cachedGame->name) {
                     $ug->delete();
-                    return redirect("/games/{$cachedGame->slug}")->with("success_msg", "{$cachedGame->name} eliminado de la biblioteca");
+                    return redirect("/games/{$cachedGame->slug}")->with("info_msg", "{$cachedGame->name} eliminado de la biblioteca");
                 }
             }
 
@@ -131,6 +131,7 @@ class GameDetails extends Component
                     "release_date" => $cachedGame->released,
                     "updated_date" => $cachedGame->updated,
                     "additions" => $cachedGame->additions_count,
+                    "image" => $cachedGame->background_image,
                 ]);
             }
 
@@ -160,7 +161,7 @@ class GameDetails extends Component
                     $ug->update([
                         "followed" => false
                     ]);
-                    return redirect("/games/{$cachedGame->slug}")->with("success_msg", "Has dejado de seguir a {$cachedGame->name}");
+                    return redirect("/games/{$cachedGame->slug}")->with("info_msg", "Has dejado de seguir a {$cachedGame->name}");
                 }
             }
 
@@ -185,6 +186,7 @@ class GameDetails extends Component
                     "release_date" => $cachedGame->released,
                     "updated_date" => $cachedGame->updated,
                     "additions" => $cachedGame->additions_count,
+                    "image" => $cachedGame->background_image,
                     "followed" => true
                 ]);
 

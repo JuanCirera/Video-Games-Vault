@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp("updated_date");
             $table->string("additions");
             $table->boolean("followed")->default(false);
+            $table->string("image")->nullable();
             $table->timestamps();
         });
     }
