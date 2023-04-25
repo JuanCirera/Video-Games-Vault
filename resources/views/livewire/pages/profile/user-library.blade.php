@@ -234,7 +234,7 @@
                             <div class="card bg-gray-800 mb-4">
                                 <div class="row g-0 d-md-none">
                                     <div class="col-4">
-                                        <img src="{{$noCatGame->image}}" alt=""
+                                        <img src="{{ $noCatGame->image }}" alt=""
                                             class="img-fluid border-radius-top-start-lg border-radius-bottom-end-lg">
                                     </div>
                                     <div class="col-8">
@@ -247,7 +247,7 @@
                                 </div>
                                 <div class="d-none d-md-block">
                                     <div>
-                                        <img src="{{$noCatGame->image}}" alt=""
+                                        <img src="{{ $noCatGame->image }}" alt=""
                                             class="img-fluid border-radius-top-start-md-lg border-radius-top-end-md-lg">
                                     </div>
                                     <div class="card-body">
@@ -266,9 +266,11 @@
                                 </div>
                                 <div class="card-footer pt-2 pb-2">
                                     <select name="categories" id="categories"
-                                        class="form-control bg-gray-700 text-white w-100">
+                                        class="form-control bg-gray-700 text-white w-100" wire:model="category">
                                         @foreach ($categories as $cat)
-                                            <option value="{{ $cat->name }}" @selected($noCatGame->categories[0]->name == $cat->name)>
+                                            {{-- @selected($noCatGame->categories[0]->name == $cat->name) --}}
+                                            <option value="{{ $cat->id }}"
+                                                wire:click="update('{{ $noCatGame->id }}')">
                                                 {{ ucfirst($cat->name) }}
                                             </option>
                                         @endforeach

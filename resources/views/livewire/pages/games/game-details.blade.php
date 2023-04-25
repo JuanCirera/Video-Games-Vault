@@ -132,7 +132,6 @@
                     <div class="col-6 col-md-4 px-0 ps-2 ps-md-0">
                         @isset($user)
                             @if ($addedToTracking)
-                                {{-- @if ($ug->title == $videogame->name) --}}
                                 <button class="btn btn-secondary text-white w-100 px-2"
                                     wire:click="addToTracking('{{ $videogame->name }}', '{{ $videogame->slug }}')">
                                     <i class="fa-solid fa-check text-lg"></i> <br> Siguiendo

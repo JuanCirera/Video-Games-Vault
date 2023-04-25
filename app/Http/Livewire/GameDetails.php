@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use App\Models\Videogame;
 use App\Providers\ApiServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -22,6 +23,7 @@ class GameDetails extends Component
     public function render()
     {
         // TODO: si se mete un slug por url llamar al API search
+        $additions=[];
 
         foreach ($this->games as $g) {
 
@@ -89,7 +91,7 @@ class GameDetails extends Component
         }
 
         foreach ($userGames as $ug) {
-            if ($ug->title == $this->videogame->name && $ug->followed) {
+            if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id",$ug->id)->wherePivot("tracked",1)->first()) {
                 $this->addedToTracking=true;
                 break;
             }
@@ -157,10 +159,9 @@ class GameDetails extends Component
 
             //Si el usuario tiene ya añadido el juego a su biblioteca se devuelve true y no se añade
             foreach ($this->user->videogames as $ug) {
-                if ($ug->title == $cachedGame->name && $ug->followed) {
-                    $ug->update([
-                        "followed" => false
-                    ]);
+                if ($ug->title == $cachedGame->name && $this->user->videogames()->wherePivot("videogame_id",$ug->id)->wherePivot("tracked",1)->first()) {
+                    $this->user->videogames()->updateExistingPivot($ug->id, ["tracked" => 0]);
+
                     return redirect("/games/{$cachedGame->slug}")->with("info_msg", "Has dejado de seguir a {$cachedGame->name}");
                 }
             }
@@ -172,9 +173,7 @@ class GameDetails extends Component
             foreach ($dbGames as $dbGame) {
                 if ($dbGame->title == $name) {
                     $existsInDB = true;
-                    $dbGame->update([
-                        "followed" => true
-                    ]);
+                    $this->user->videogames()->updateExistingPivot($dbGame->id, ["tracked" => 1]);
                     break;
                 }
             }
@@ -187,7 +186,6 @@ class GameDetails extends Component
                     "updated_date" => $cachedGame->updated,
                     "additions" => $cachedGame->additions_count,
                     "image" => $cachedGame->background_image,
-                    "followed" => true
                 ]);
 
                 $vg=Videogame::where("title","like",$cachedGame->name)->first();
@@ -201,8 +199,4 @@ class GameDetails extends Component
         return redirect("/games/{$cachedGame->slug}")->with("error_msg", "El juego {$name} no se encuentra");
     }
 
-
-    // public function removeFromLibrary(string $name, string $slug){
-
-    // }
 }

@@ -29,7 +29,7 @@
         <div class="mb-5">
             <h4 class="text-white">Novedades y más populares</h4>
             <form class="row mt-2 ml-2 mr-2">
-                <div class="col-6">
+                <div class="col-6 col-md-4">
                     <label for="order" class="text-gray">Ordenar por: </label>
                     <select class="form-control bg-gray-800 text-white" id="order">
                         <option>Popularidad</option>
@@ -39,30 +39,32 @@
                         <option>Nota media</option>
                     </select>
                 </div>
-                <div class="col-6">
-                    <label for="paginate" class="text-gray">Viendo: </label>
+                <div class="col-6 col-md-4">
+                    {{-- <label for="paginate" class="text-gray">Viendo: </label>
                     <select class="form-control bg-gray-800 text-white" id="paginate">
                         <option>5</option>
                         <option>10</option>
                         <option>20</option>
                         <option>25</option>
-                    </select>
+                    </select> --}}
                 </div>
             </form>
         </div>
         <section class="row">
             @foreach ($games as $item)
-                <a href="{{ route('game.show', $item->slug) }}" class="col-12 col-sm-12 col-md-4">
+                <div class="col-12 col-sm-12 col-md-4">
                     <div class="card bg-gray-800 mx-auto mb-4" wire:key="{{ $item->id }}">
                         <div class="card-header p-0 bg-gray-800">
-                            <img src="{{ $item->background_image }}" class="img-fluid border-radius-lg"
+                            <a href="{{ route('game.show', $item->slug) }}">
+                                <img src="{{ $item->background_image }}" class="img-fluid border-radius-lg"
                                 style="border-bottom-right-radius: 0;border-bottom-left-radius: 0">
+                            </a>
                         </div>
 
                         <div class="card-body pt-2">
                             <div class="row">
-                                <h4 class="col-9 card-title d-block text-white">
-                                    {{ $item->name }}
+                                <h4 class="col-9 card-title d-block">
+                                    <a href="{{ route('game.show', $item->slug) }}" class="link-white">{{ $item->name }}</a>
                                 </h4>
                                 <div class="col-3 ps-5 pe-0">
                                     <p
@@ -102,17 +104,50 @@
 
                             </div>
                             <div class="mt-4">
-                                <button class="btn btn-primary bg-gray-700">
-                                    <i class="fas fa-plus"></i> Añadir
-                                </button>
+                                @isset($user)
+                                    @php
+                                        $v=$user->videogames()->where("title",$item->name)->first();
+                                    @endphp
+                                    @if (isset($v) &&
+                                    $user->videogames()->wherePivot("videogame_id",$v->id)->pluck("videogame_id")->first())
+                                        <button class="btn bg-gray-700 text-primary"
+                                            wire:click="addToLibrary('{{ $item->name }}', '{{ $item->slug }}')">
+                                            <i class="fa-solid fa-check text-primary"></i> Añadido
+                                        </button>
+                                    @else
+                                        <button class="btn bg-gray-700 text-white"
+                                            wire:click="addToLibrary('{{ $item->name }}', '{{ $item->slug }}')">
+                                            <i class="fa-solid fa-plus"></i> Añadir
+                                        </button>
+                                    @endif
+                                @else
+                                    <a href="{{ route('login') }}" class="btn bg-gray-700 text-white">
+                                        <i class="fa-solid fa-plus"></i> Añadir
+                                    </a>
+                                @endisset
 
-                                <button class="btn btn-primary bg-gray-700">
-                                    <i class="fa-regular fa-bookmark"></i>
-                                </button>
+                                @isset($user)
+                                    @if ( isset($v) &&
+                                    $user->videogames()->wherePivot("videogame_id",$v->id)->wherePivot("tracked",1)->pluck("videogame_id")->first())
+                                        <button class="btn bg-gray-700 text-white"
+                                            wire:click="addToTracking('{{ $item->name }}', '{{ $item->slug }}')">
+                                            <i class="fa-solid fa-bookmark text-primary"></i>
+                                        </button>
+                                    @else
+                                        <button class="btn bg-gray-700 text-white"
+                                            wire:click="addToTracking('{{ $item->name }}', '{{ $item->slug }}')">
+                                            <i class="fa-regular fa-bookmark"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                    <a href="{{ route('login') }}" class="btn bg-gray-700 text-white">
+                                        <i class="fa-solid fa-bookmark"></i>
+                                    </a>
+                                @endisset
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             @endforeach
         </section>
         <div class="my-4 text-center">

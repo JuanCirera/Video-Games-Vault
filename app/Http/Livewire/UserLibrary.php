@@ -12,8 +12,7 @@ class UserLibrary extends Component
 
     public User $user;
     public Videogame $videogame;
-    public string $category;
-
+    // public int $category;
     protected $rules=[
         "category" => ""
     ];
@@ -25,17 +24,20 @@ class UserLibrary extends Component
         return view('livewire.pages.profile.user-library',compact('categories'));
     }
 
-    public function mount(){
-        $this->videogame=new Videogame();
-    }
+    // public function mount(){
+    //     $this->videogame=new Videogame();
+    // }
 
-    public function update(){
+    public function update(Videogame $game){
+        dd($game);
         $this->validate([
-            "category" => ["required", "string", "exists:categories,name"]
+            "category" => ["required", "numeric", "exists:categories,id"]
         ]);
 
-        // $this->videogame->save();
-        // $this->user->videogames()->categories()->sync();
+        $game->categories()->detach();
+        $game->categories()->attach($this->category);
+
+        return redirect("/{$this->user->username}");
 
     }
 

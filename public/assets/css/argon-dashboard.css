@@ -233,11 +233,11 @@ sup {
 }
 
 a {
-  color: #02B3E4;
+  color: #fff;
   text-decoration: none;
 }
 a:hover {
-  color: #8FCEA1;
+  color: #02B3E4;
   text-decoration: none;
 }
 
@@ -7007,7 +7007,7 @@ textarea.form-control-lg {
   color: #fff;
 }
 .link-white:hover, .link-white:focus {
-  color: white;
+  color: #02B3E4;
 }
 
 .ratio {
