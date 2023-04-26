@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Livewire\AboutUs;
-use App\Http\Livewire\AdminHome;
+use App\Http\Livewire\AdminDashboard;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\GameDetails;
 use App\Http\Livewire\Home;
@@ -51,10 +51,11 @@ Route::get('/about', AboutUs::class)->name('about');
 Route::get('/games/{game}', GameDetails::class)->name("game.show");
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/{username}', UserProfile::class)->name('profile');
-	Route::post('/profile', [UserProfile::class, 'update'])->name('profile.update');
-    Route::get('/{username}/settings', UserSettings::class)->name('profile.settings');
-	Route::get('/{page}', [PageController::class, 'index'])->name('page');
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::get('/admin/dashboard', AdminDashboard::class)->name('dashboard');
+    });
+	Route::get('/profile/{username}', UserProfile::class)->name('profile.show');
+    Route::get('/profile/settings/{username}', UserSettings::class)->name('profile.update');
+	// Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');
-    Route::get('/admin', AdminDashboard::class)->name('admin');
 });

@@ -116,13 +116,13 @@
                                 <ul class="nav">
                                     <li class="nav-item w-100">
                                         <a class="nav-link text-white"
-                                            href="{{ route('profile', Auth::user()->username) }}">
+                                            href="{{ route('profile.show', Auth::user()->username) }}">
                                             Perfil
                                         </a>
                                     </li>
                                     <li class="nav-item w-100">
                                         <a class="nav-link text-white"
-                                            href="{{ route('profile.settings', Auth::user()->username) }}">
+                                            href="{{ route('profile.update', Auth::user()->username) }}">
                                             Mis datos
                                         </a>
                                     </li>

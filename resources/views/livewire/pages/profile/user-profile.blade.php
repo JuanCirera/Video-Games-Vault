@@ -39,7 +39,7 @@
                     </li>
                     <li class="list-inline-item">
                         @if (Auth::user()->id == $user->id)
-                            <a href="{{ route('profile.settings', $user->username) }}" class="text-white">
+                            <a href="{{ route('profile.update', $user->username) }}" class="text-white">
                                 Ajustes
                             </a>
                         @endif

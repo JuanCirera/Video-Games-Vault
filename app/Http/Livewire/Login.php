@@ -26,7 +26,7 @@ class Login extends Component
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
             Log::info("User ".Auth::user()->username." logged in from ".$request->ip());
-            return redirect()->intended('home');
+            return redirect((Auth::user()->username=="admin")?'/admin/dashboard':'home');
         }
 
         Log::info("Login attempt from ".$request->ip());

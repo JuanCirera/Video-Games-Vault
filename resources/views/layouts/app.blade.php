@@ -38,12 +38,25 @@
     @endguest
 
     @auth
-        @include('livewire.navbar')
-        <main class="main-content">
-            {{ $slot }}
-        </main>
-        {{-- NOTE: Esto no sirve pa na de momento --}}
-        {{-- @include('components.fixed-plugin') --}}
+        @role('user')
+            @include('livewire.navbar')
+            <main class="main-content">
+                {{ $slot }}
+            </main>
+            {{-- NOTE: Esto no sirve pa na de momento --}}
+            {{-- @include('components.fixed-plugin') --}}
+        @endrole
+        @role('admin')
+            @if (Route::getCurrentRoute()->getName()=="dashboard")
+                @include('layouts.navbars.auth.sidenav')
+                @include('layouts.navbars.auth.topnav')
+            @else
+                @include('livewire.navbar')
+            @endif
+            <main class="main-content">
+                {{ $slot }}
+            </main>
+        @endrole
     @endauth
 
     <!--   Core JS Files   -->

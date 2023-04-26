@@ -10,7 +10,7 @@
     </div>
 
     @foreach ($followings as $following)
-        <a href="{{route('profile', $following->username)}}" class="card bg-gray-800 mb-4 py-2 w-md-50 mx-auto">
+        <a href="{{route('profile.show', $following->username)}}" class="card bg-gray-800 mb-4 py-2 w-md-50 mx-auto">
             <div class="card-body px-4 py-2 text-white d-flex" style="text-align: left; align-items: center;">
                 <div class="col-2">
                     @if (Str::contains($following->avatar, 'ui-avatars'))
