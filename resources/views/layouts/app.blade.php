@@ -28,7 +28,7 @@
 
 </head>
 
-<body class="{{ $class ?? '' }}">
+<body class="{{ $class ?? 'g-sidenav-show' }}">
 
     @guest
         @include('livewire.navbar')
@@ -47,9 +47,12 @@
             {{-- @include('components.fixed-plugin') --}}
         @endrole
         @role('admin')
+            <div class="min-height-300 position-absolute w-100"
+            style="background-image: url({{Storage::url('img/auth_background.jpg')}}); background-position: top;">
+                <div class="min-height-300" style="background-color: rgba(33, 37, 41, 0.7); box-shadow: inset 0px -10px 10px 0px rgba(33, 37, 41, 1);"></div>
+            </div>
             @if (Route::getCurrentRoute()->getName()=="dashboard")
                 @include('layouts.navbars.auth.sidenav')
-                @include('layouts.navbars.auth.topnav')
             @else
                 @include('livewire.navbar')
             @endif

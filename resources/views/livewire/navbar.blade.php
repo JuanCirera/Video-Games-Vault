@@ -19,7 +19,7 @@
                     <div class="col-4 col-md-2 order-md-1">
                         {{-- class="navbar-brand font-weight-bolder text-primary text-gradient text-lg" style="font-family: monospace" --}}
                         <a href="{{ route('home') }}" class="navbar-brand">
-                            <img src="{{Storage::url('img/logos/VGV.svg')}}" alt="vgv" class="w-100 w-md-50">
+                            <img src="{{ Storage::url('img/logos/VGV.svg') }}" alt="vgv" class="w-100 w-md-50">
                         </a>
                     </div>
                     <div class="col-4 col-md-2 d-flex gap-2 justify-content-end order-md-3">
@@ -36,9 +36,11 @@
                         @auth
                             <a class="w-50" data-bs-toggle="offcanvas" href="#profileOffcanvas">
                                 @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
-                                    <img src="{{ Auth::user()->avatar }}" alt="profile_img" class="w-90 w-md-50 rounded-circle">
+                                    <img src="{{ Auth::user()->avatar }}" alt="profile_img"
+                                        class="w-90 w-md-50 rounded-circle">
                                 @else
-                                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="profile_img" class="w-90 w-md-50 rounded-circle">
+                                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="profile_img"
+                                        class="w-90 w-md-50 rounded-circle">
                                 @endif
                             </a>
                         @endauth
@@ -90,20 +92,25 @@
         </div>
     </div>
     @auth
-        <div class="offcanvas offcanvas-end bg-gray-900 w-50 w-md-20 blur shadow-none border-0" tabindex="-1" id="profileOffcanvas"
-            aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas offcanvas-end bg-gray-900 w-50 w-md-20 blur shadow-none border-0" tabindex="-1"
+            id="profileOffcanvas" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body pt-0">
-                <p class="offcanvas-title text-body text-wrap text-md py-2"><span class="text-body">@</span>{{ Auth::user()->username }}</p>
+                <p class="offcanvas-title text-body text-wrap text-md py-2"><span
+                        class="text-body">@</span>{{ Auth::user()->username }}</p>
                 <div class="accordion" id="accordionOffcanvas">
                     <div class="accordion-item mb-3">
                         <h5 class="accordion-header text-white" id="headingOne">
                             <button class="text-white accordion-button border-bottom font-weight-bold collapsed"
                                 type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false"
                                 aria-controls="collapse1">
-                                Mi cuenta
+                                @role('admin')
+                                    Herramientas
+                                @else
+                                    Mi cuenta
+                                @endrole
                                 <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"
                                     aria-hidden="true"></i>
                                 <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"
@@ -114,18 +121,32 @@
                             data-bs-parent="#accordionOffcanvas" style="">
                             <div class="accordion-body p-0 opacity-8">
                                 <ul class="nav">
-                                    <li class="nav-item w-100">
-                                        <a class="nav-link text-white"
-                                            href="{{ route('profile.show', Auth::user()->username) }}">
-                                            Perfil
-                                        </a>
-                                    </li>
-                                    <li class="nav-item w-100">
-                                        <a class="nav-link text-white"
-                                            href="{{ route('profile.update', Auth::user()->username) }}">
-                                            Mis datos
-                                        </a>
-                                    </li>
+                                    @role('admin')
+                                        <li class="nav-item w-100">
+                                            <a class="nav-link text-white" href="{{ route('dashboard') }}">
+                                                <i class="fa-solid fa-screwdriver-wrench"></i> Dashboard
+                                            </a>
+                                        </li>
+                                        <li class="nav-item w-100">
+                                            <a class="nav-link text-white" href="">
+                                                <i class="fa-solid fa-users"></i> Gestionar usuarios
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li class="nav-item w-100">
+                                            <a class="nav-link text-white"
+                                                href="{{ route('profile.show', Auth::user()->username) }}">
+                                                Perfil
+                                            </a>
+                                        </li>
+                                        <li class="nav-item w-100">
+                                            <a class="nav-link text-white"
+                                                href="{{ route('profile.update', Auth::user()->username) }}">
+                                                Mis datos
+                                            </a>
+                                        </li>
+                                    @endrole
+
                                 </ul>
                             </div>
                         </div>
