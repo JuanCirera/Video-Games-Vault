@@ -20341,7 +20341,7 @@ label,
 }
 
 .footer .nav-link {
-  color: #02B3E4;
+  color: #fff;
   font-weight: 400;
   font-size: 0.875rem;
   padding-top: 0;
@@ -20953,7 +20953,7 @@ hr.horizontal.gray-light {
   font-size: 0.875rem;
 }
 .navbar .nav-link {
-  color: #02B3E4;
+  color: #fff;
   padding: 0.5rem 1rem;
   font-weight: 400;
   font-size: 0.875rem;

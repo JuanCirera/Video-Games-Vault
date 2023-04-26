@@ -47,37 +47,37 @@
                     <div class="collapse navbar-collapse col-4 col-sm-4 col-md-8 order-md-2" id="navigation">
                         <ul class="navbar-nav me-auto mx-md-auto">
                             <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('home') }}">
-                                    <i class="fas fa-home opacity-6 me-1"></i>
+                                <a class="nav-link me-2" href="{{ route('home') }}">
+                                    <i class="fas fa-home opacity-6 me-1 link-white"></i>
                                     Inicio
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('home') }}">
+                                <a class="nav-link me-2" href="{{ route('home') }}">
                                     <i class="fas fa-gamepad opacity-6 me-1"></i>
                                     Plataformas
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('home') }}">
+                                <a class="nav-link me-2" href="{{ route('home') }}">
                                     <i class="fa-solid fa-dice opacity-6 me-1"></i>
                                     Géneros
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('home') }}">
+                                <a class="nav-link me-2" href="{{ route('home') }}">
                                     <i class="fas fa-code opacity-6 me-1"></i>
                                     Desarrolladoras
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('home') }}">
+                                <a class="nav-link me-2" href="{{ route('home') }}">
                                     <i class="fas fa-store opacity-6 me-1"></i>
                                     Tiendas
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-2 text-white" href="{{ route('user.search') }}">
+                                <a class="nav-link me-2" href="{{ route('user.search') }}">
                                     <i class="fas fa-user-plus opacity-6 me-1"></i>
                                     Buscar jugadores
                                 </a>

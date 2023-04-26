@@ -12,10 +12,10 @@ class UserLibrary extends Component
 
     public User $user;
     public Videogame $videogame;
-    // public int $category;
-    protected $rules=[
-        "category" => ""
-    ];
+    // public $categoryID;
+    // protected $rules=[
+    //     "category" => ""
+    // ];
 
     public function render()
     {
@@ -30,15 +30,25 @@ class UserLibrary extends Component
 
     public function update(Videogame $game){
         dd($game);
-        $this->validate([
-            "category" => ["required", "numeric", "exists:categories,id"]
-        ]);
+        // $this->validate([
+        //     "category" => ["required", "numeric", "exists:categories,id"]
+        // ]);
 
         $game->categories()->detach();
-        $game->categories()->attach($this->category);
+        $game->categories()->attach($this->category_id);
 
         return redirect("/{$this->user->username}");
 
     }
+
+    // public function updatedCategoryID(){
+    //     // dd("HOLA");
+    //     $game->categories()->detach();
+    //     $game->categories()->attach($this->category_id);
+
+    //     $this->categoryID=null;
+
+    //     return redirect("/{$this->user->username}");
+    // }
 
 }

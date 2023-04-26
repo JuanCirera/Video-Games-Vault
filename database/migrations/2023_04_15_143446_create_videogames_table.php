@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             // $table->bigInteger("id")->primary();
             $table->string("title")->unique();
-            // $table->string('slug')->unique();
+            $table->string('slug')->unique();
             $table->timestamp("release_date");
             $table->timestamp("updated_date");
             $table->string("additions");

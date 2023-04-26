@@ -14,7 +14,7 @@
                 <i class="fas fa-chevron-down text-secondary"></i>
             </div>
         </div>
-        <div class="collapse" id="finishedGames">
+        <div class="collapse" id="finishedGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @foreach ($user->videogames as $finishedGame)
                     @if (count($finishedGame->categories) && $finishedGame->categories[0]->name == 'en espera')
@@ -67,7 +67,7 @@
                 <i class="fas fa-chevron-down text-secondary"></i>
             </div>
         </div>
-        <div class="collapse" id="currentGames">
+        <div class="collapse" id="currentGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @foreach ($user->videogames as $playingGame)
                     @if (count($playingGame->categories) && $playingGame->categories[0]->name == 'en espera')
@@ -120,7 +120,7 @@
                 <i class="fas fa-chevron-down text-secondary"></i>
             </div>
         </div>
-        <div class="collapse" id="waitingGames">
+        <div class="collapse" id="waitingGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @foreach ($user->videogames as $waitingGame)
                     @if (count($waitingGame->categories) && $waitingGame->categories[0]->name == 'en espera')
@@ -173,7 +173,7 @@
                 <i class="fas fa-chevron-down text-secondary"></i>
             </div>
         </div>
-        <div class="collapse" id="testedGames">
+        <div class="collapse" id="testedGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @foreach ($user->videogames as $testedGame)
                     @if (count($testedGame->categories) && $testedGame->categories[0]->name == 'probados')
@@ -226,7 +226,7 @@
                 <i class="fas fa-chevron-down text-secondary"></i>
             </div>
         </div>
-        <div class="collapse" id="uncategorizedGames">
+        <div class="collapse" id="uncategorizedGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @foreach ($user->videogames as $noCatGame)
                     @if (count($noCatGame->categories))
@@ -266,11 +266,13 @@
                                 </div>
                                 <div class="card-footer pt-2 pb-2">
                                     <select name="categories" id="categories"
-                                        class="form-control bg-gray-700 text-white w-100" wire:model="category">
+                                        class="form-control bg-gray-700 text-white w-100">
                                         @foreach ($categories as $cat)
                                             {{-- @selected($noCatGame->categories[0]->name == $cat->name) --}}
                                             <option value="{{ $cat->id }}"
-                                                wire:click="update('{{ $noCatGame->id }}')">
+                                                @selected($noCatGame->categories()->wherePivot("videogame_id",$noCatGame->id)->first())
+                                                >
+                                                {{-- wire:click="update('{{ $noCatGame->id }}')" --}}
                                                 {{ ucfirst($cat->name) }}
                                             </option>
                                         @endforeach
@@ -298,4 +300,17 @@
             @endif
         </p>
     @endif
+
+    <script>
+        // let selected=document.getElementById("categories").addEventListener("click", (e) => (
+        //     @this.update(e.target.value)
+        // ));
+        let selected=document.getElementById("categories").addEventListener("click", (e) => (
+
+            console.log(e.target.value)
+        ));
+
+
+
+    </script>
 </div>

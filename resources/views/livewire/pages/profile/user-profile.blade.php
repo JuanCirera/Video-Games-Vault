@@ -107,7 +107,7 @@
                         <li class="nav-item" id="pc_profNav">
                             <a class="nav-link mb-0 px-0 py-1 text-white" data-bs-toggle="collapse" href="#tracking"
                                 role="tab" aria-controls="code" aria-selected="false" id="profNav">
-                                <i class="fas fa-location-crosshairs text-sm me-2"></i> Lista de seguimiento
+                                <i class="fas fa-bookmark text-sm me-2"></i> Lista de seguimiento
                             </a>
                         </li>
                         <li class="nav-item" id="pc_profNav">

@@ -142,7 +142,7 @@
                         @else
                             @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
                                 <img src="{{ Auth::user()->avatar }}" alt="avatar"
-                                    class="rounded-circle w-90 w-md-30">
+                                    class="rounded-circle w-90 w-md-15">
                             @else
                                 <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar"
                                     class="rounded-circle w-90 w-md-30">

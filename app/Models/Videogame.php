@@ -9,7 +9,7 @@ class Videogame extends Model
 {
     use HasFactory;
 
-    protected $fillable=["title","release_date","updated_date","additions","followed","image"];
+    protected $fillable=["title","slug","release_date","updated_date","additions","followed","image"];
 
     public function users(){
         return $this->belongsToMany(User::class)->withTimestamps();

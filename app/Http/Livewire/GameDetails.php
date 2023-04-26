@@ -130,6 +130,7 @@ class GameDetails extends Component
             if (!$existsInDB) {
                 Videogame::create([
                     "title" => $cachedGame->name,
+                    "slug" => $cachedGame->slug,
                     "release_date" => $cachedGame->released,
                     "updated_date" => $cachedGame->updated,
                     "additions" => $cachedGame->additions_count,
@@ -182,6 +183,7 @@ class GameDetails extends Component
             if (!$existsInDB) {
                 Videogame::create([
                     "title" => $cachedGame->name,
+                    "slug" => $cachedGame->slug,
                     "release_date" => $cachedGame->released,
                     "updated_date" => $cachedGame->updated,
                     "additions" => $cachedGame->additions_count,

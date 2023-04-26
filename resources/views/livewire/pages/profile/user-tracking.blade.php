@@ -11,12 +11,16 @@
                     <div class="card bg-gray-800">
                         <div class="row g-0 d-md-none">
                             <div class="col-4">
-                                <img src="{{ $trackedGame->image }}" alt=""
-                                    class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                <a href="{{ route('game.show', $trackedGame->slug) }}">
+                                    <img src="{{ $trackedGame->image }}" alt=""
+                                        class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
+                                </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body px-4 py-2 row flex-grow-1">
-                                    <h5 class="text-white text-start">{{ $trackedGame->title }}</h5>
+                                    <a href="{{ route('game.show', $trackedGame->slug) }}">
+                                        <h5 class="text-white text-start">{{ $trackedGame->title }}</h5>
+                                    </a>
                                 </div>
                                 <div>
                                     {{-- TODO: wire:click --}}
@@ -34,10 +38,10 @@
                             <div class="">
                                 <div class="card-body px-4 py-2 row flex-grow-1">
                                     <h5 class="text-white text-start">{{ $trackedGame->title }}</h5>
-                                    <div class="mt-2">
-                                        <button class="btn bg-gray-700 text-white"
+                                    <div class="mt-2 text-start">
+                                        <button class="btn btn-warning bg-gray-700 text-white"
                                             wire:click="stopTracking('{{ $trackedGame->id }}')">
-                                            <i class="fas fa-bookmark"></i> Dejar de seguir
+                                            <i class="far fa-circle-xmark"></i> Dejar de seguir
                                         </button>
                                     </div>
                                 </div>

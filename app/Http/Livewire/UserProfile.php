@@ -26,10 +26,18 @@ class UserProfile extends Component
 
     public function render()
     {
-        $urlUsername=substr(parse_url(url()->current(), PHP_URL_PATH), 1);
-        $this->user=User::where('username',$urlUsername)->first();
-
         return view('livewire.pages.profile.user-profile', ['user' => $this->user]);
+    }
+
+
+    public function mount(){
+        $urlUsername=substr(parse_url(url()->current(), PHP_URL_PATH), 1);
+
+        if($urlUsername=="admin"){
+            return redirect('home')->with("error_msg",(Auth::user()->username!="admin")?"¡Vaya! ¿Qué buscabas?":"No tienes perfil");
+        }else{
+            $this->user=User::where('username',$urlUsername)->first();
+        }
     }
 
 
@@ -63,4 +71,5 @@ class UserProfile extends Component
         $review->dislikes += 1;
         $review->save();
     }
+
 }

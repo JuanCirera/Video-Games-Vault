@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Livewire\AboutUs;
+use App\Http\Livewire\AdminHome;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\GameDetails;
 use App\Http\Livewire\Home;
@@ -55,4 +56,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/{username}/settings', UserSettings::class)->name('profile.settings');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');
+    Route::get('/admin', AdminDashboard::class)->name('admin');
 });

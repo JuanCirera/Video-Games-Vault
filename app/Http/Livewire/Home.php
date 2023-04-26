@@ -52,7 +52,7 @@ class Home extends Component
     }
 
     public function mount(){
-        $this->user=Auth::user();
+        $this->user=(Auth::user())?Auth::user():(new User());
     }
 
 
@@ -93,6 +93,7 @@ class Home extends Component
             if (!$existsInDB) {
                 Videogame::create([
                     "title" => $cachedGame->name,
+                    "slug" => $slug,
                     "release_date" => $cachedGame->released,
                     "updated_date" => $cachedGame->updated,
                     "additions" => $cachedGame->additions_count,
@@ -144,6 +145,7 @@ class Home extends Component
             if (!$existsInDB) {
                 Videogame::create([
                     "title" => $cachedGame->name,
+                    "slug" => $slug,
                     "release_date" => $cachedGame->released,
                     "updated_date" => $cachedGame->updated,
                     "additions" => $cachedGame->additions_count,

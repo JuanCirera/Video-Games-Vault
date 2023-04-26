@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'password' => 'password',
             'avatar' => "https://ui-avatars.com/api/?name=admin&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
-        ]);
+        ])->assignRole('admin');
 
         User::factory()->create([
             'username' => 'CiReRaWarGamer',
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'password' => 'password',
             'avatar' => "https://ui-avatars.com/api/?name=cwg&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
-        ]);
+        ])->assignRole('user');
 
         User::factory()->create([
             'username' => 'Excidium',
@@ -35,6 +35,6 @@ class UserSeeder extends Seeder
             'password' => 'password',
             'avatar' => "https://ui-avatars.com/api/?name=excidium&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
-        ]);
+        ])->assignRole('user');
     }
 }
