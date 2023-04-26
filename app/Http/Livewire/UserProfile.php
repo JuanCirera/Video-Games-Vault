@@ -31,10 +31,12 @@ class UserProfile extends Component
 
 
     public function mount(){
+
+        $admin=(Auth::user()->getRoleNames()->toArray()[0])=="admin"?true:false;
         $urlUsername=substr(parse_url(url()->current(), PHP_URL_PATH), 1);
 
         if($urlUsername=="admin"){
-            return redirect('home')->with("error_msg",(Auth::user()->username!="admin")?"¡Vaya! ¿Qué buscabas?":"No tienes perfil");
+            return redirect('home')->with("error_msg",($admin)?"El administrador no tiene perfil":"¡Vaya! ¿Qué buscabas?");
         }else{
             $this->user=User::where('username',$urlUsername)->first();
         }

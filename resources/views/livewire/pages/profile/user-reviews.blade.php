@@ -1,7 +1,7 @@
 <div>
     <div class="mb-5">
         <h4 class="text-white">Reseñas</h4>
-        <p>Todas las reseñas escritas por {{ '@' . Auth::user()->username }}</p>
+        <p>Todas las reseñas escritas por <b>{{ '@' . $user->username }}</b></p>
     </div>
     @if (count($userReviews))
         @foreach ($userReviews as $userReview)

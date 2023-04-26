@@ -22,15 +22,15 @@ class UserFollowing extends Component
                 $followings[]=$f;
             }
         }
-        
+
         return view('livewire.pages.profile.user-following',compact('followings'));
     }
 
-    public function profile($id){
-        $user=User::find($id);
-        $this->emitTo('user-profile','loadUser', $user);
-        $this->redirect($user->username);
-    }
+    // public function profile($id){
+    //     $user=User::find($id);
+    //     $this->emitTo('user-profile','loadUser', $user);
+    //     $this->redirect($user->username);
+    // }
 
     public function updatingSearch(){
         $this->resetPage();

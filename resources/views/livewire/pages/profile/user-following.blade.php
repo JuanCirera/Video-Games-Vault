@@ -10,7 +10,7 @@
     </div>
 
     @foreach ($followings as $following)
-        <div class="card bg-gray-800 mb-4 py-2 w-md-50 mx-auto" wire:click="profile({{$following->id}})">
+        <a href="{{route('profile', $following->username)}}" class="card bg-gray-800 mb-4 py-2 w-md-50 mx-auto">
             <div class="card-body px-4 py-2 text-white d-flex" style="text-align: left; align-items: center;">
                 <div class="col-2">
                     @if (Str::contains($following->avatar, 'ui-avatars'))
@@ -23,6 +23,6 @@
                     <p class="ms-3 my-0">{{$following->username}}</p>
                 </div>
             </div>
-        </div>
+        </a>
     @endforeach
 </div>

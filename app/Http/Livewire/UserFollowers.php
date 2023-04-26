@@ -26,11 +26,11 @@ class UserFollowers extends Component
         return view('livewire.pages.profile.user-followers',compact('followers'));
     }
 
-    public function profile($id){
-        $user=User::find($id);
-        $this->emitTo('user-profile','loadUser', $user);
-        $this->redirect($user->username);
-    }
+    // public function profile($id){
+    //     $user=User::find($id);
+    //     $this->emitTo('user-profile','loadUser', $user);
+    //     $this->redirect($user->username);
+    // }
 
     public function updatingSearch(){
         $this->resetPage();
