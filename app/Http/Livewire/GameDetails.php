@@ -16,55 +16,28 @@ use stdClass;
 class GameDetails extends Component
 {
     public User $user;
-    public array $games = [];
+    public array $games = [], $additions = [];
     protected $videogame;
     public string $url="";
     public bool $addedToLibrary=false, $addedToTracking=false;
+    // public string $order="desc", $field="title";
+    // public $reviews;
+    public $screenshots, $stores, $gameStores, $achievements;
 
     public function render()
     {
         // TODO: si se mete un slug por url llamar al API search
-        $additions=[];
-
-        foreach ($this->games as $g) {
-
-            if ($g->slug == $this->url) {
-
-                if ($this->videogame->screenshots_count > 0) {
-                    $screenshots = Cache::remember($g->slug . "_Screenshots", 86400, fn () => (ApiServiceProvider::getGameScreenshots($g->slug, 3)
-                    ));
-                }
-
-                $achievements = Cache::remember($g->slug . "_Achievements", 86400, fn () => (ApiServiceProvider::getGameAchievements($g->slug, 3)
-                ));
-
-                if ($this->videogame->additions_count > 0) {
-                    $additions = Cache::remember($g->slug . "_Additions", 86400, fn () => (ApiServiceProvider::getGameAdditions($g->slug, 3)
-                    ));
-                }
-
-                $stores = Cache::remember("stores", 86400, fn () => (ApiServiceProvider::getStores()
-                ));
-
-                $gameStores = Cache::remember($g->slug . "_Stores", 86400, fn () => (ApiServiceProvider::getGameStores($g->slug)
-                ));
-            }
-        }
-
-        if(isset($this->videogame)){
-            $reviews = Review::where("videogame_id",$this->videogame->id)->get();
-        }
 
         return view(
             'livewire.pages.games.game-details',
             [
                 'videogame' => $this->videogame,
-                'screenshots' => $screenshots,
-                'achievements' => $achievements,
-                'additions' => $additions,
-                'stores' => $stores,
-                'gameStores' => $gameStores,
-                'reviews' => $reviews
+                'screenshots' => $this->screenshots,
+                'achievements' => $this->achievements,
+                'additions' => $this->additions,
+                'stores' => $this->stores,
+                'gameStores' => $this->gameStores,
+                // 'reviews' => $this->reviews
             ]
         );
     }
@@ -87,6 +60,31 @@ class GameDetails extends Component
             }
         }
 
+        foreach ($this->games as $g) {
+
+            if ($g->slug  == $this->url) {
+
+                if ($this->videogame->screenshots_count > 0) {
+                    $this->screenshots = Cache::remember($g->slug . "_Screenshots", 86400, fn () => (ApiServiceProvider::getGameScreenshots($g->slug, 3)
+                    ));
+                }
+
+                $this->achievements = Cache::remember($g->slug . "_Achievements", 86400, fn () => (ApiServiceProvider::getGameAchievements($g->slug, 3)
+                ));
+
+                if ($this->videogame->additions_count > 0) {
+                    $this->additions = Cache::remember($g->slug . "_Additions", 86400, fn () => (ApiServiceProvider::getGameAdditions($g->slug, 3)
+                    ));
+                }
+
+                $this->stores = Cache::remember("stores", 86400, fn () => (ApiServiceProvider::getStores()
+                ));
+
+                $this->gameStores = Cache::remember($g->slug . "_Stores", 86400, fn () => (ApiServiceProvider::getGameStores($g->slug)
+                ));
+            }
+        }
+
         $userGames = Auth::user()->videogames()->get();
 
         foreach ($userGames as $ug) {
@@ -102,6 +100,10 @@ class GameDetails extends Component
                 break;
             }
         }
+
+        // if(isset($this->videogame)){
+        //     $this->reviews = Review::where("videogame_id",$this->videogame->id)->orderBy($this->field,$this->order)->get();
+        // }
 
     }
 
@@ -207,4 +209,9 @@ class GameDetails extends Component
         return redirect("/games/{$cachedGame->slug}")->with("error_msg", "El juego {$name} no se encuentra");
     }
 
+
+    // public function sort($field){
+    //     $this->field=$field;
+    //     $this->order=($this->order="desc")?"asc":"desc";
+    // }
 }

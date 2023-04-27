@@ -1,5 +1,5 @@
 <div>
-    <button class="btn btn-primary bg-gradient-primary btn-round my-0" data-bs-toggle="modal" data-bs-target="#create-modal">
+    <button class="btn btn-primary bg-gradient-primary btn-round my-0 text-nowrap" data-bs-toggle="modal" data-bs-target="#create-modal">
         <i class="fa-solid fa-pen-nib"></i> Escribir
     </button>
 
@@ -14,7 +14,7 @@
                         </div>
                         <div class="card-body">
                             <form role="form">
-                                <div class="form-group mb-3 text-start">
+                                {{-- <div class="form-group mb-3 text-start">
                                     <label for="game_id" class="text-white">Elige uno de estos juegos</label>
                                     <select class="form-control bg-gray-700 text-white" aria-label="game_id"
                                         aria-describedby="game_id" wire:model="game_id">
@@ -25,7 +25,7 @@
                                     @error('game_id')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="form-group mb-3 text-start">
                                     <label for="title" class="text-white">Título</label>
                                     <input type="text" class="form-control bg-gray-700 text-white" aria-label="title"
@@ -37,6 +37,7 @@
                                 <div class="form-group mb-3 text-start">
                                     <label for="body" class="text-white">Reseña</label>
                                     <textarea type="text" class="form-control bg-gray-700 text-white" placeholder="Escribe aquí tu reseña..."
+                                    rows="7"
                                         aria-label="body" aria-describedby="body" wire:model="body"></textarea>
                                     @error('body')
                                         <p class="text-danger">{{ $message }}</p>
@@ -46,14 +47,14 @@
                                     <label for="rating" class="text-white">¿Recomiendas este juego?</label>
                                     <div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="rating" id="positive"
+                                            <input class="form-check-input bg-gray-700" type="radio" name="rating" id="positive"
                                             wire:model="rating">
                                             <label class="custom-control-label" for="positive">
                                                 <i class="fa-solid fa-thumbs-up text-primary text-lg"></i>
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="rating" id="negative"
+                                            <input class="form-check-input bg-gray-700" type="radio" name="rating" id="negative"
                                                 wire:model="rating">
                                             <label class="custom-control-label" for="negative">
                                                 <i class="fa-solid fa-thumbs-down text-danger text-lg"></i>
