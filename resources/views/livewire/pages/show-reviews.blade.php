@@ -40,7 +40,7 @@
                     <div class="card-header pb-2 pt-4 d-flex" style="background-color: rgba(0, 0, 0, 0);">
                         <div class="flex-grow-1">
                             <h6 class="text-white text-start my-0">{{ $review->title }}</h6>
-                            <p class="text-start text-sm mb-0">{{ date('d-m-Y', strtotime($review->created_at)) }}</p>
+                            <p class="text-start text-sm mb-0">{{ date('d-m-Y, H:i', strtotime($review->created_at)) }}</p>
                         </div>
                         <div>
                             <div class="text-white">

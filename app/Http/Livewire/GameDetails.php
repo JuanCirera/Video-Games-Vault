@@ -20,8 +20,6 @@ class GameDetails extends Component
     protected $videogame;
     public string $url="";
     public bool $addedToLibrary=false, $addedToTracking=false;
-    // public string $order="desc", $field="title";
-    // public $reviews;
     public $screenshots, $stores, $gameStores, $achievements;
 
     public function render()
@@ -37,7 +35,6 @@ class GameDetails extends Component
                 'additions' => $this->additions,
                 'stores' => $this->stores,
                 'gameStores' => $this->gameStores,
-                // 'reviews' => $this->reviews
             ]
         );
     }
@@ -100,10 +97,6 @@ class GameDetails extends Component
                 break;
             }
         }
-
-        // if(isset($this->videogame)){
-        //     $this->reviews = Review::where("videogame_id",$this->videogame->id)->orderBy($this->field,$this->order)->get();
-        // }
 
     }
 
@@ -209,9 +202,4 @@ class GameDetails extends Component
         return redirect("/games/{$cachedGame->slug}")->with("error_msg", "El juego {$name} no se encuentra");
     }
 
-
-    // public function sort($field){
-    //     $this->field=$field;
-    //     $this->order=($this->order="desc")?"asc":"desc";
-    // }
 }

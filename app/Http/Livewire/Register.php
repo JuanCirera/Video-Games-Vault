@@ -30,11 +30,11 @@ class Register extends Component
             "username" => $this->username,
             "email" => $this->email,
             "password" => $this->password,
-            "avatar" => "https://ui-avatars.com/api/?name=".$this->username."&background=8392ab&color=fff&bold=true",
+            "avatar" => "https://ui-avatars.com/api/?name=".$this->username."&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
-        ]);
+        ])->assignRole("user");
 
-        //NOTE: para la imagen de perfil por defecto estoy tirando de la api ui-avatars, la que usa jetstream
+        //INFO: para la imagen de perfil por defecto estoy tirando de la api ui-avatars, la que usa jetstream
 
         auth()->login($user);
 

@@ -395,16 +395,13 @@
                 <h2 class="text-white text-center">
                     RESEÑAS <br> {{ $videogame->name }}
                 </h2>
+                {{-- REVIEWS --}}
                 @livewire('show-reviews')
+                {{--  --}}
             </div>
         </div>
     </div>
     {{-- --}}
-    {{-- <div class="container"> --}}
-    {{-- REVIEWS --}}
-
-    {{--  --}}
-    {{-- </div> --}}
 
     <script>
         document.getElementById('showDescription').addEventListener('click', (e) => {
