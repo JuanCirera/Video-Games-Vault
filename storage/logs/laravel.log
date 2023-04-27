@@ -7322,3 +7322,8 @@ Only protected or private properties can be set as other types because JavaScrip
 [2023-04-27 15:19:38] local.INFO: Login attempt from 172.18.0.1  
 [2023-04-27 15:19:51] local.INFO: User Excidium logged in from 172.18.0.1  
 [2023-04-27 15:20:43] local.INFO: User CiReRa_7 logged in from 172.18.0.1  
+[2023-04-27 15:52:26] local.INFO: API request for red-dead-redemption-2 details  
+[2023-04-27 15:52:26] local.INFO: API request: red-dead-redemption-2 screenshots fetched  
+[2023-04-27 15:52:27] local.INFO: API request: red-dead-redemption-2 achievements fetched  
+[2023-04-27 15:52:27] local.INFO: API request: red-dead-redemption-2 achievements fetched  
+[2023-04-27 15:52:27] local.INFO: API request: red-dead-redemption-2 stores fetched  
