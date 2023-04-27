@@ -15,6 +15,9 @@
             <h6>Ordenar por: </h6>
             {{-- <p class="ps-2"> fecha <i class="fa-solid fa-sort"></i></p> --}}
             <ul class="nav">
+                <li class="nav-item ms-2 text-secondary cursor-pointer" wire:click="sort('title')">
+                    Titulo <i class="fa-solid fa-sort"></i>
+                </li>
                 <li class="nav-item ms-2 text-secondary cursor-pointer" wire:click="sort('created_at')">
                     Fecha <i class="fa-solid fa-sort"></i>
                 </li>

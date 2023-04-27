@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
+use function Ramsey\Uuid\v1;
+
 class ShowReviews extends Component
 {
     public string $order="desc", $field="title";
@@ -21,9 +23,18 @@ class ShowReviews extends Component
 
     public function render()
     {
+        $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
+        ));
+
+        foreach ($this->games as $g) {
+            if ($g->slug == $this->url) {
+                $this->videogame = Cache::remember($g->slug, 86400, fn () => (ApiServiceProvider::getVideogameDetails($g->slug)
+                ));
+            }
+        }
+
         if(isset($this->videogame)){
             $this->reviews = Review::where("videogame_id",$this->videogame->id)->orderBy($this->field,$this->order)->get();
-            Log::debug($this->reviews);
         }
 
         if(isset($this->user)){
@@ -39,24 +50,13 @@ class ShowReviews extends Component
     }
 
     public function mount(){
+        //NOTE: el mount SOLO se ejecuta la primera vez que carga la vista, no se llama al actualizar elementos con model
         $this->url=substr(parse_url(url()->current(), PHP_URL_PATH), 7);
-
-        $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
-        ));
-
-        foreach ($this->games as $g) {
-            if ($g->slug == $this->url) {
-                $this->videogame = Cache::remember($g->slug, 86400, fn () => (ApiServiceProvider::getVideogameDetails($g->slug)
-                ));
-            }
-        }
-
     }
 
     public function sort($field){
         $this->field=$field;
         $this->order=($this->order=="desc")?"asc":"desc";
-        // dd(Review::where("videogame_id",$this->videogame->id)->orderBy($this->field,$this->order)->get());
     }
 
 }
