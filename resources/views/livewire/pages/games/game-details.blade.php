@@ -380,67 +380,91 @@
     </div>
     {{-- REVIEWS HEADER --}}
     <div class="mb-4 mt-5"
-        style="background-image: url('{{ $videogame->background_image }}'); background-position: top;">
+        style="background-image: url(
+            @isset($screenshots)
+               @foreach ($screenshots as $i => $screenS)
+                    {{ $screenshots[random_int(0, $i)]->image }}
+                    @php
+                        break;
+                    @endphp
+               @endforeach
+            @else
+                {{ $videogame->background_image }}
+            @endisset
+        ); background-position: top; background-repeat: no-repeat">
         <div class="pt-5 pb-3"
             style="background-color: rgba(33, 37, 41, 0.8);
             box-shadow: inset 0px 10px 10px 0px rgba(33, 37, 41, 1), inset 0px -10px 10px 0px rgba(33, 37, 41, 1);">
             <div class="container">
-                <h1 class="text-white text-center">
-                    {{ $videogame->name }} - RESEÑAS
-                </h1>
-                <div class="input-group w-md-70 mx-auto">
-                    <span class="input-group-text text-white mt-4 mb-2 border-dark"
-                        style="background-color: rgba(52, 58, 64, 0.7);">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </span>
-                    <input type="search" wire:model.debounce.500ms="searchReview" placeholder="Buscar..."
-                        class="form-control mt-4 mb-2 text-white" style="background-color: rgba(52, 58, 64, 0.7);">
+                <h2 class="text-white text-center">
+                    RESEÑAS <br> {{ $videogame->name }}
+                </h2>
+                <div class="d-flex w-md-70 mx-auto align-items-center my-4">
+                    <div class="flex-grow-1 input-group w-md-70">
+                        <span class="input-group-text text-white border-dark border-radius-2xl"
+                            style="background-color: rgba(52, 58, 64, 0.7);">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                        <input type="search" wire:model.debounce.500ms="searchReview" placeholder="Buscar..."
+                            class="form-control text-white border-radius-2xl"
+                            style="background-color: rgba(52, 58, 64, 0.7);">
+                    </div>
+                    <div class="ms-2">
+                        @livewire('create-review')
+                    </div>
                 </div>
+                @if (count($reviews))
+                @foreach ($reviews as $review)
+                    <section class="mb-4">
+                        <div class="card w-md-60 mx-auto" style="background-color: rgba(52,58,64, 0.8);">
+                            <div class="card-header pb-2 pt-4 d-flex" style="background-color: rgba(0, 0, 0, 0);">
+                                <div class="flex-grow-1">
+                                    <h6 class="text-white text-start my-0">{{$review->title}}</h6>
+                                    <p class="text-start text-sm mb-0">{{$review->created_at}}</p>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-thumbs-down text-danger text-3xl"></i>
+                                </div>
+                            </div>
+                            <div class="card-body px-4 py-2 text-white">
+                                <p>{{$review->body}}</p>
+                            </div>
+                            <div class="card-footer pt-2 align-items-center">
+                                <div class="d-flex">
+                                    <div class="col-2">
+                                        {{-- <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70"> --}}
+                                    </div>
+                                    <div class="col-6" style="text-align: left;">
+                                        <p class="my-0">{{User::find($review->user_id)->username}}</p>
+                                    </div>
+                                    <div class="col-2 " style="text-align: right;">
+                                        {{$review->likes}} <i class="fa-solid fa-thumbs-up"></i>
+                                    </div>
+                                    <div class="col-2">
+                                        {{$review->dislikes}} <i class="fa-solid fa-thumbs-down"></i>
+                                    </div>
+                                </div>
+                                {{-- <hr> --}}
+                                {{-- <div class="mt-2">
+                                <input type="text" name="reply" id="replyReview"
+                                    class="form-control bg-gray-900 text-white" placeholder="Contestar..." disabled>
+                            </div> --}}
+                            </div>
+                        </div>
+                    </section>
+                @endforeach
+                @else
+                    <h6 class="text-center">Este juego aún no tiene reseñas, sé el primero en dar tu opinión pulsando sobre el botón escribir</h6>
+                @endif
             </div>
         </div>
     </div>
     {{-- --}}
-    <div class="container">
-        {{-- REVIEWS --}}
-        <section class="mb-4">
-            <div class="card bg-gray-800 w-md-60 mx-auto">
-                <div class="card-header bg-gray-800 pb-2 pt-4 d-flex">
-                    <div class="flex-grow-1">
-                        <h6 class="text-white text-start my-0">BATTLEPAY 204$</h6>
-                        <p class="text-start text-sm mb-0">16/03/2023</p>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-thumbs-down text-danger text-3xl"></i>
-                    </div>
-                </div>
-                <div class="card-body px-4 py-2 text-white">
-                    <p>Este juego no deja jugar a la gente humilde</p>
-                </div>
-                <div class="card-footer pt-2 align-items-center">
-                    <div class="d-flex">
-                        <div class="col-2">
-                            {{-- <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-circle w-70"> --}}
-                        </div>
-                        <div class="col-6" style="text-align: left;">
-                            <p class="my-0">Antoñito</p>
-                        </div>
-                        <div class="col-2 " style="text-align: right;">
-                            3 <i class="fa-solid fa-thumbs-up"></i>
-                        </div>
-                        <div class="col-2">
-                            0 <i class="fa-solid fa-thumbs-down"></i>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="mt-2">
-                        <input type="text" name="reply" id="replyReview"
-                            class="form-control bg-gray-900 text-white" placeholder="Contestar..." disabled>
-                    </div>
-                </div>
-            </div>
-        </section>
-        {{--  --}}
-    </div>
+    {{-- <div class="container"> --}}
+    {{-- REVIEWS --}}
+
+    {{--  --}}
+    {{-- </div> --}}
 
     <script>
         document.getElementById('showDescription').addEventListener('click', (e) => {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Review;
 use App\Models\User;
 use App\Models\Videogame;
 use App\Providers\ApiServiceProvider;
@@ -50,6 +51,10 @@ class GameDetails extends Component
             }
         }
 
+        if(isset($this->videogame)){
+            $reviews = Review::where("videogame_id",$this->videogame->id)->get();
+        }
+
         return view(
             'livewire.pages.games.game-details',
             [
@@ -58,7 +63,8 @@ class GameDetails extends Component
                 'achievements' => $achievements,
                 'additions' => $additions,
                 'stores' => $stores,
-                'gameStores' => $gameStores
+                'gameStores' => $gameStores,
+                'reviews' => $reviews
             ]
         );
     }

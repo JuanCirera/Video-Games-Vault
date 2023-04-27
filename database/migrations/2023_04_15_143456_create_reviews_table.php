@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger("likes")->default(0);
             $table->bigInteger("dislikes")->default(0);
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
-            $table->foreignId("videogame_id")->constrained()->onDelete("cascade");
+            $table->bigInteger("videogame_id");
             $table->timestamps();
         });
     }

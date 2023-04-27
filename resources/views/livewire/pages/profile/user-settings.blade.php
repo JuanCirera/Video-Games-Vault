@@ -4,7 +4,7 @@
             <ol class="breadcrumb bg-gray-900">
                 <li class="breadcrumb-item active" aria-current="page"><a href="/" class="text-secondary">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active text-secondary" aria-current="page"><a href="/{{ $user->username }}"
+                <li class="breadcrumb-item active text-secondary" aria-current="page"><a href="{{ route('profile.show', $user->username) }}"
                         class="text-secondary">Perfil</a></li>
                 <li class="breadcrumb-item active text-secondary" aria-current="page"><a href="#"
                         class="text-white">Ajustes</a></li>
