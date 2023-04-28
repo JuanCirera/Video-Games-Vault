@@ -18,7 +18,7 @@
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @if (count(
                         $user->videogames()->wherePivot('category', 'completado')->get()))
-                    @foreach ($user->videogames()->wherePivot('category', 'completado')->get() as $finishedGame)
+                    {{-- @foreach ($user->videogames()->wherePivot('category', 'completado')->get() as $finishedGame)
                         <div class="col-md-4 px-md-2">
                             <div class="card bg-gray-800">
                                 <div class="row g-0">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @endforeach --}}
                 @else
                     <p class="text-white mt-2 col-md-12">
                         ¿Te da pereza terminar los juegos?
@@ -219,58 +219,8 @@
         </div>
         <div class="collapse" id="uncategorizedGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
-                @if (count(
-                        $user->videogames()->wherePivot('category', 'sin categoria')->get()))
-                    @foreach ($user->videogames()->wherePivot('category', 'sin categoria')->get() as $noCatGame)
-                        <article class="col-md-4 px-md-2">
-                            <div class="card bg-gray-800 mb-4">
-                                <div class="row g-0 d-md-none">
-                                    <div class="col-4">
-                                        <img src="{{ $noCatGame->image }}" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-end-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">{{ $noCatGame->title }}</h6>
-                                            <div class="mt-4 text-start">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-none d-md-block">
-                                    <div>
-                                        <img src="{{ $noCatGame->image }}" alt=""
-                                            class="img-fluid border-radius-top-start-md-lg border-radius-top-end-md-lg">
-                                    </div>
-                                    <div class="card-body">
-                                        <div>
-                                            <h4 class="card-title d-block text-white text-start px-0">
-                                                {{ $noCatGame->title }}
-                                            </h4>
-                                            {{-- <div class="col-3 ps-5 pe-0">
-                                                <p
-                                                    class="text-center border border-primary border-radius-md text-primary text-bold">
-                                                    {{ $item->metacritic ?? 'N/A' }}
-                                                </p>
-                                            </div> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer pt-2 pb-2">
-                                    <select name="categories" id="categories"
-                                        class="form-control bg-gray-700 text-white w-100">
-                                        @foreach ($categories as $cat)
-                                            {{-- @selected($noCatGame->categories[0]->name == $cat->name) --}}
-                                            <option value="{{ $cat->id }}" @selected($noCatGame) wire:click="update('{{ $noCatGame->id }}')">
-                                                {{-- wire:click="update('{{ $noCatGame->id }}')" --}}
-                                                {{ ucfirst($cat->name) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </article>
-                    @endforeach
+                @if (count($user->videogames()->wherePivot('category', 'sin categoria')->get()))
+                    @livewire('show-user-games-by-category', ['user' => $user, 'category' => "sin categoria", "categories" => $categories])
                 @else
                     <p class="text-white mt-2 col-md-12">
                         ¡Buen trabajo, no tienes juegos sin categoría!

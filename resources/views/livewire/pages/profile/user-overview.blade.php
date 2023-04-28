@@ -8,7 +8,12 @@
             <div class="progress-wrapper pt-2">
                 <div class="progress">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                        aria-valuemax="100" style="width: 50%;"></div>
+                        aria-valuemax="100"
+                    @if(!count($user->videogames()->wherePivot("category","completado")->get()))
+                        style="width: 0%;"
+                    @else
+                        style="width: {{ (count($user->videogames()->wherePivot('category','completado')->get()->toArray()) / count($user->videogames)) * 100 }}%;"
+                    @endif></div>
                 </div>
             </div>
         </div>
@@ -26,7 +31,12 @@
             <div class="progress-wrapper pt-2">
                 <div class="progress">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
-                        aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
+                        aria-valuemin="0" aria-valuemax="100"
+                    @if(!count($user->videogames()->wherePivot("category","pendiente")->get()))
+                        style="width: 0%;"
+                    @else
+                        style="width: {{ (count($user->videogames()->wherePivot('category','pendiente')->get()->toArray()) / count($user->videogames)) * 100 }}%;"
+                    @endif></div>
                 </div>
             </div>
         </div>
@@ -44,7 +54,12 @@
             <div class="progress-wrapper pt-2">
                 <div class="progress">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
-                        aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                        aria-valuemin="0" aria-valuemax="100"
+                    @if(!count($user->videogames()->wherePivot("category","probado")->get()))
+                        style="width: 0%;"
+                    @else
+                        style="width: {{ (count($user->videogames()->wherePivot('category','probado')->get()->toArray()) / count($user->videogames)) * 100 }}%;"
+                    @endif></div>
                 </div>
             </div>
         </div>
@@ -62,7 +77,12 @@
             <div class="progress-wrapper pt-2">
                 <div class="progress">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
-                        aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
+                        aria-valuemin="0" aria-valuemax="100"
+                    @if(!count($user->videogames()->wherePivot("category","jugando")->get()))
+                        style="width: 0%;"
+                    @else
+                        style="width: {{ (count($user->videogames()->wherePivot('category','jugando')->get()->toArray()) / count($user->videogames)) * 100 }}%;"
+                    @endif></div>
                 </div>
             </div>
         </div>

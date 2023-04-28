@@ -28,18 +28,18 @@ class UserLibrary extends Component
     //     $this->videogame=new Videogame();
     // }
 
-    public function update(Videogame $game){
-        dd($game);
-        // $this->validate([
-        //     "category" => ["required", "numeric", "exists:categories,id"]
-        // ]);
+    // public function update(Videogame $game, Category $newCategory){
+    //     // dd($game);
+    //     // $this->validate([
+    //     //     "category" => ["required", "numeric", "exists:categories,id"]
+    //     // ]);
 
-        $game->categories()->detach();
-        $game->categories()->attach($this->category_id);
+    //     $this->user->videogames()->wherePivot("videogame_id",$game->id)->attach($newCategory->name);
+    //     $game->categories()->attach($this->category_id);
 
-        return redirect("/{$this->user->username}");
+    //     return redirect("/{$this->user->username}");
 
-    }
+    // }
 
     // public function updatedCategoryID(){
     //     // dd("HOLA");
