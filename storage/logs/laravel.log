@@ -13200,3 +13200,8 @@ Only protected or private properties can be set as other types because JavaScrip
 #55 {main}
 "} 
 [2023-04-28 20:43:38] local.INFO: API request for red-dead-redemption-2 details  
+[2023-04-28 20:54:57] local.INFO: API request for counter-strike-global-offensive details  
+[2023-04-28 20:54:58] local.INFO: API request: counter-strike-global-offensive screenshots fetched  
+[2023-04-28 20:54:58] local.INFO: API request: counter-strike-global-offensive achievements fetched  
+[2023-04-28 20:54:58] local.INFO: API request: counter-strike-global-offensive stores fetched  
+[2023-04-28 21:03:00] local.INFO: User CiReRaWarGamer logged in from 192.168.1.7  

@@ -37,6 +37,7 @@ class GameDetails extends Component
                 'gameStores' => $this->gameStores,
             ]
         );
+
     }
 
     public function mount(){
@@ -143,15 +144,12 @@ class GameDetails extends Component
                 ]);
             }
 
-            // $vg=Videogame::where("title","like",$cachedGame->name)->first();
-            // $vg->categories()->attach(5);
             $this->user->videogames()->attach(Videogame::where('title',$cachedGame->name)->pluck('id'));
 
-            return redirect("/games/{$cachedGame->slug}")->with("success_msg", "Juego añadido a tu biblioteca");
+            return redirect(url()->previous())->with("success_msg", "Juego añadido a tu biblioteca");
         }
 
-        // return redirect("/games/{$this->->slug}")->with("error_msg", "El juego {$name} no se encuentra");
-        return false;
+        return redirect(url()->previous())->with("error_msg", "El juego {$name} no se encuentra");
     }
 
 
@@ -200,10 +198,10 @@ class GameDetails extends Component
                 $this->user->videogames()->attach(Videogame::where('title',$cachedGame->name)->pluck('id'));
             }
 
-            return redirect("/games/{$cachedGame->slug}")->with("success_msg", "Juego añadido a tu lista de seguimiento");
+            return redirect(url()->previous())->with("success_msg", "Juego añadido a tu lista de seguimiento");
         }
 
-        return redirect("/games/{$cachedGame->slug}")->with("error_msg", "El juego {$name} no se encuentra");
+        return redirect(url()->previous())->with("error_msg", "El juego {$name} no se encuentra");
     }
 
 }

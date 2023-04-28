@@ -6,7 +6,7 @@
         </div>
         <div class="col-6">
             <div class="progress-wrapper pt-2">
-                <div class="progress">
+                <div class="progress bg-gray-800">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0"
                         aria-valuemax="100"
                     @if(!count($user->videogames()->wherePivot("category","completado")->get()))
@@ -29,7 +29,7 @@
         </div>
         <div class="col-6">
             <div class="progress-wrapper pt-2">
-                <div class="progress">
+                <div class="progress bg-gray-800">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                     @if(!count($user->videogames()->wherePivot("category","pendiente")->get()))
@@ -52,7 +52,7 @@
         </div>
         <div class="col-6">
             <div class="progress-wrapper pt-2">
-                <div class="progress">
+                <div class="progress bg-gray-800">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                     @if(!count($user->videogames()->wherePivot("category","probado")->get()))
@@ -75,7 +75,7 @@
         </div>
         <div class="col-6">
             <div class="progress-wrapper pt-2">
-                <div class="progress">
+                <div class="progress bg-gray-800">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                     @if(!count($user->videogames()->wherePivot("category","jugando")->get()))
@@ -88,7 +88,7 @@
         </div>
         <div class="col-1">
             <span class="text-white">
-                {{ count($user->videogames()->wherePivot("category","jugando actualmente")->get()) }}
+                {{ count($user->videogames()->wherePivot("category","jugando")->get()) }}
             </span>
         </div>
     </div>
@@ -110,7 +110,7 @@
         </div>
         <div class="col-6">
             <div class="progress-wrapper pb-2">
-                <div class="progress">
+                <div class="progress bg-gray-800">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                         @if(!(count($user->reviews) || count($positiveReviews)))
@@ -132,7 +132,7 @@
         </div>
         <div class="col-6">
             <div class="progress-wrapper pb-2">
-                <div class="progress">
+                <div class="progress bg-gray-800">
                     <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                         @if(!(count($user->reviews) || count($positiveReviews)))
