@@ -41,7 +41,7 @@ class ShowReviews extends Component
             $this->reviews = Review::where("user_id",$this->user->id)->orderBy($this->field,$this->order)->get();
         }
 
-        return view('livewire.pages.show-reviews',
+        return view('livewire.pages.reviews.show-reviews',
         [
             "reviews" => $this->reviews,
             "videogame" => $this->videogame

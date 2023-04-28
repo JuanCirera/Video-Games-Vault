@@ -33,7 +33,7 @@ class CreateReview extends Component
             return ApiServiceProvider::getVideogames();
         });
 
-        return view('livewire.pages.profile.create-review', [
+        return view('livewire.pages.reviews.create-review', [
             "videogames" => $this->videogames
         ]);
     }
