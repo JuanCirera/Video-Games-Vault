@@ -82,20 +82,24 @@ class GameDetails extends Component
             }
         }
 
-        $userGames = Auth::user()->videogames()->get();
+        if(isset($this->user)){
 
-        foreach ($userGames as $ug) {
-            if ($ug->title == $this->videogame->name) {
-                $this->addedToLibrary=true;
-                break;
-            }
-        }
+            $userGames = $this->user->videogames()->get();
 
-        foreach ($userGames as $ug) {
-            if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id",$ug->id)->wherePivot("tracked",1)->first()) {
-                $this->addedToTracking=true;
-                break;
+            foreach ($userGames as $ug) {
+                if ($ug->title == $this->videogame->name) {
+                    $this->addedToLibrary=true;
+                    break;
+                }
             }
+
+            foreach ($userGames as $ug) {
+                if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id",$ug->id)->wherePivot("tracked",1)->first()) {
+                    $this->addedToTracking=true;
+                    break;
+                }
+            }
+
         }
 
     }

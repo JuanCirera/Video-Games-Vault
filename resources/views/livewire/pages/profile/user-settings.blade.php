@@ -113,13 +113,13 @@
                     <div class="col-12 col-sm-12 col-md-6 pe-md-2">
                         <div class="form-group text-start">
                             <label for="pwd" class="text-white">Contraseña</label>
-                            <input type="password" class="form-control bg-gray-800 text-white" id="pwd" />
+                            <input type="password" class="form-control bg-gray-800 text-white" id="pwd" wire:model="password"/>
                             @error('user.password')
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6 ps-md-2">
+                    {{-- <div class="col-12 col-sm-12 col-md-6 ps-md-2">
                         <div class="form-group text-start">
                             <label for="chpwd" class="text-white">Repite la contraseña</label>
                             <input type="password" class="form-control bg-gray-800 text-white" id="chpwd">
@@ -127,7 +127,7 @@
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <hr>
                 <div class="col-12 col-sm-12 col-md-12">

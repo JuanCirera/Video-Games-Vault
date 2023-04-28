@@ -20,7 +20,7 @@ class UserSettings extends Component
     protected $rules=[
         "user.username" => "",
         "user.email" => "",
-        // "user.password" => "",
+        "user.password" => "",
         "img" => ""
     ];
 
@@ -34,17 +34,19 @@ class UserSettings extends Component
     }
 
     public function update(){
+        $this->user=Auth::user();
         $this->validate([
             "user.username" => ["nullable","string", "unique:users,username,".$this->user->id],
             "user.email" => ["nullable","email","unique:users,email,".$this->user->id],
-            // "user.password" => ["nullable","string","unique:users,password,".!$this->user->id],
+            "user.password" => ["nullable","string"],
             "img" => ["nullable","image","max:2048"]
         ]);
 
+
         $url=$this->img->store("img/avatars");
         $this->user->avatar=$url;
-        $this->user->save();
+        $this->user->update();
 
-        return redirect("/".$this->user->username."/settings")->with("success_msg","Usuario actualizado");
+        return redirect(url()->previous())->with("success_msg","Usuario actualizado");
     }
 }

@@ -58,7 +58,7 @@
                     <div class="card-footer pt-2">
                         <div class="d-flex align-items-center">
                             <div class="col-2 col-md-1">
-                                @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
+                                @if (isset($user) && Str::contains($user->avatar, 'ui-avatars'))
                                     <img src="{{ $review->user()->where('id', $review->user_id)->first()->avatar }}"
                                         alt="" class="rounded-circle w-70 w-md-80">
                                 @else

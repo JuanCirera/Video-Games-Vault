@@ -40,7 +40,9 @@ class CreateReview extends Component
 
     public function mount()
     {
-        $this->user = Auth::user();
+        if(Auth::user()){
+            $this->user = Auth::user();
+        }
     }
 
     public function store()
