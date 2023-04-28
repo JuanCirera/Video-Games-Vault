@@ -21,7 +21,7 @@ class UserLibrary extends Component
     {
         $categories=Category::all();
 
-        return view('livewire.pages.profile.user-library',compact('categories'));
+        return view('livewire.pages.profile.user-library',compact("categories"));
     }
 
     // public function mount(){

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->foreignId("videogame_id")->constrained()->onDelete("cascade");
             $table->boolean("tracked")->default(false);
+            $table->enum("category", ["completado", "jugando", "pendiente", "probado", "sin categoria"])->default("sin categoria");
             $table->timestamps();
         });
     }

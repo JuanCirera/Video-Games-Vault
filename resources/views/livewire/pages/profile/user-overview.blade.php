@@ -14,20 +14,7 @@
         </div>
         <div class="col-1">
             <span class="text-white">
-                {{-- TODO: arreglar la chapuza esta, tiene que haber otra forma --}}
-                @php
-                    $i = 0;
-                @endphp
-                @foreach ($user->videogames as $v)
-                    @foreach ($v->categories as $cat)
-                        @if ($cat->name == 'completados')
-                            @php
-                                $i++;
-                            @endphp
-                        @endif
-                    @endforeach
-                @endforeach
-                {{ $i }}
+                {{ count($user->videogames()->wherePivot("category","completado")->get()) }}
             </span>
         </div>
     </div>
@@ -45,19 +32,7 @@
         </div>
         <div class="col-1">
             <span class="text-white">
-                @php
-                    $i = 0;
-                @endphp
-                @foreach ($user->videogames as $v)
-                    @foreach ($v->categories as $cat)
-                        @if ($cat->name == 'pendientes')
-                            @php
-                                $i++;
-                            @endphp
-                        @endif
-                    @endforeach
-                @endforeach
-                {{ $i }}
+                {{ count($user->videogames()->wherePivot("category","pendiente")->get()) }}
             </span>
         </div>
     </div>
@@ -75,19 +50,7 @@
         </div>
         <div class="col-1">
             <span class="text-white">
-                @php
-                    $i = 0;
-                @endphp
-                @foreach ($user->videogames as $v)
-                    @foreach ($v->categories as $cat)
-                        @if ($cat->name == 'probados')
-                            @php
-                                $i++;
-                            @endphp
-                        @endif
-                    @endforeach
-                @endforeach
-                {{ $i }}
+                {{ count($user->videogames()->wherePivot("category","probado")->get()) }}
             </span>
         </div>
     </div>
@@ -105,19 +68,7 @@
         </div>
         <div class="col-1">
             <span class="text-white">
-                @php
-                    $i = 0;
-                @endphp
-                @foreach ($user->videogames as $v)
-                    @foreach ($v->categories as $cat)
-                        @if ($cat->name == 'jugando actualmente')
-                            @php
-                                $i++;
-                            @endphp
-                        @endif
-                    @endforeach
-                @endforeach
-                {{ $i }}
+                {{ count($user->videogames()->wherePivot("category","jugando actualmente")->get()) }}
             </span>
         </div>
     </div>
@@ -140,7 +91,7 @@
         <div class="col-6">
             <div class="progress-wrapper pb-2">
                 <div class="progress">
-                    <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
+                    <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                         @if(!(count($user->reviews) || count($positiveReviews)))
                             style="width: 0%;"
@@ -162,7 +113,7 @@
         <div class="col-6">
             <div class="progress-wrapper pb-2">
                 <div class="progress">
-                    <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="60"
+                    <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100"
                         @if(!(count($user->reviews) || count($positiveReviews)))
                             style="width: 0%;"

@@ -16,8 +16,9 @@
         </div>
         <div class="collapse" id="finishedGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
-                @foreach ($user->videogames as $finishedGame)
-                    @if (count($finishedGame->categories) && $finishedGame->categories[0]->name == 'en espera')
+                @if (count(
+                        $user->videogames()->wherePivot('category', 'completado')->get()))
+                    @foreach ($user->videogames()->wherePivot('category', 'completado')->get() as $finishedGame)
                         <div class="col-md-4 px-md-2">
                             <div class="card bg-gray-800">
                                 <div class="row g-0">
@@ -46,15 +47,12 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                        <p class="text-white mt-2 col-md-12">
-                            ¿Te da pereza terminar los juegos?
-                        </p>
-                        @php
-                            break;
-                        @endphp
-                    @endif
-                @endforeach
+                    @endforeach
+                @else
+                    <p class="text-white mt-2 col-md-12">
+                        ¿Te da pereza terminar los juegos?
+                    </p>
+                @endif
             </div>
         </div>
         {{-- PLAYING NOW --}}
@@ -69,8 +67,9 @@
         </div>
         <div class="collapse" id="currentGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
-                @foreach ($user->videogames as $playingGame)
-                    @if (count($playingGame->categories) && $playingGame->categories[0]->name == 'en espera')
+                @if (count(
+                        $user->videogames()->wherePivot('category', 'jugando')->get()))
+                    @foreach ($user->videogames()->wherePivot('category', 'jugando')->get() as $playingGame)
                         <div class="col-md-4 px-md-2">
                             <div class="card bg-gray-800">
                                 <div class="row g-0">
@@ -99,15 +98,12 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                        <p class="text-white mt-2 col-md-12">
-                            ¡Relájate y juega un poco!
-                        </p>
-                        @php
-                            break;
-                        @endphp
-                    @endif
-                @endforeach
+                    @endforeach
+                @else
+                    <p class="text-white mt-2 col-md-12">
+                        ¡Relájate y juega un poco!
+                    </p>
+                @endif
             </div>
         </div>
         {{-- WAITING GAMES --}}
@@ -122,8 +118,9 @@
         </div>
         <div class="collapse" id="waitingGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
-                @foreach ($user->videogames as $waitingGame)
-                    @if (count($waitingGame->categories) && $waitingGame->categories[0]->name == 'en espera')
+                @if (count(
+                        $user->videogames()->wherePivot('category', 'pendiente')->get()))
+                    @foreach ($user->videogames()->wherePivot('category', 'pendiente')->get() as $waitingGame)
                         <div class="col-md-4 px-md-2">
                             <div class="card bg-gray-800">
                                 <div class="row g-0">
@@ -152,15 +149,12 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                        <p class="text-white mt-2 col-md-12">
-                            ¡Que envidia, parece que tienes tiempo para jugar a todo!
-                        </p>
-                        @php
-                            break;
-                        @endphp
-                    @endif
-                @endforeach
+                    @endforeach
+                @else
+                    <p class="text-white mt-2 col-md-12">
+                        ¡Que envidia, parece que tienes tiempo para jugar a todo!
+                    </p>
+                @endif
             </div>
         </div>
         {{-- TESTED GAMES --}}
@@ -175,8 +169,8 @@
         </div>
         <div class="collapse" id="testedGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
-                @foreach ($user->videogames as $testedGame)
-                    @if (count($testedGame->categories) && $testedGame->categories[0]->name == 'probados')
+                @if (count($user->videogames()->wherePivot('category', 'probado')->get()))
+                    @foreach ($user->videogames()->wherePivot('category', 'probado')->get() as $testedGame)
                         <div class="col-md-4 px-md-2">
                             <div class="card bg-gray-800">
                                 <div class="row g-0">
@@ -205,15 +199,12 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                        <p class="text-white mt-2 col-md-12">
-                            ¡Vaya, parece que no te gusta probar juegos nuevos!
-                        </p>
-                        @php
-                            break;
-                        @endphp
-                    @endif
-                @endforeach
+                    @endforeach
+                @else
+                    <p class="text-white mt-2 col-md-12">
+                        ¡Vaya, parece que no te gusta probar juegos nuevos!
+                    </p>
+                @endif
             </div>
         </div>
         {{-- NO CATEGORY --}}
@@ -228,8 +219,9 @@
         </div>
         <div class="collapse" id="uncategorizedGames" wire:ignore>
             <div class="mb-4 d-md-flex flex-md-wrap">
-                @foreach ($user->videogames as $noCatGame)
-                    @if (count($noCatGame->categories))
+                @if (count(
+                        $user->videogames()->wherePivot('category', 'sin categoria')->get()))
+                    @foreach ($user->videogames()->wherePivot('category', 'sin categoria')->get() as $noCatGame)
                         <article class="col-md-4 px-md-2">
                             <div class="card bg-gray-800 mb-4">
                                 <div class="row g-0 d-md-none">
@@ -269,9 +261,7 @@
                                         class="form-control bg-gray-700 text-white w-100">
                                         @foreach ($categories as $cat)
                                             {{-- @selected($noCatGame->categories[0]->name == $cat->name) --}}
-                                            <option value="{{ $cat->id }}"
-                                                @selected($noCatGame->categories()->wherePivot("videogame_id",$noCatGame->id)->first())
-                                                >
+                                            <option value="{{ $cat->id }}" @selected($noCatGame) wire:click="update('{{ $noCatGame->id }}')">
                                                 {{-- wire:click="update('{{ $noCatGame->id }}')" --}}
                                                 {{ ucfirst($cat->name) }}
                                             </option>
@@ -280,15 +270,12 @@
                                 </div>
                             </div>
                         </article>
-                    @else
-                        <p class="text-white mt-2 col-md-12">
-                            ¡Buen trabajo, no tienes juegos sin categoría!
-                        </p>
-                        @php
-                            break;
-                        @endphp
-                    @endif
-                @endforeach
+                    @endforeach
+                @else
+                    <p class="text-white mt-2 col-md-12">
+                        ¡Buen trabajo, no tienes juegos sin categoría!
+                    </p>
+                @endif
             </div>
         </div>
     @else
@@ -305,12 +292,9 @@
         // let selected=document.getElementById("categories").addEventListener("click", (e) => (
         //     @this.update(e.target.value)
         // ));
-        let selected=document.getElementById("categories").addEventListener("click", (e) => (
+        // let selected = document.getElementById("categories").addEventListener("click", (e) => (
 
-            console.log(e.target.value)
-        ));
-
-
-
+        //     console.log(e.target.value)
+        // ));
     </script>
 </div>

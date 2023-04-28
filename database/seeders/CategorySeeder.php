@@ -14,19 +14,19 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::factory()->create([
-            "name" => "completados",
+            "name" => "completado",
         ]);
 
         Category::factory()->create([
-            "name" => "jugando actualmente",
+            "name" => "jugando",
         ]);
 
         Category::factory()->create([
-            "name" => "pendientes",
+            "name" => "pendiente",
         ]);
 
         Category::factory()->create([
-            "name" => "probados",
+            "name" => "probado",
         ]);
 
         Category::factory()->create([

@@ -9,9 +9,6 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable=["name","videogame_id"];
+    protected $fillable=["name"];
 
-    public function videogames(){
-        return $this->belongsToMany(Videogame::class)->withTimestamps();
-    }
 }

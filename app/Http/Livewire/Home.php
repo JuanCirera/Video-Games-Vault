@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Videogame;
 use Livewire\Component;
@@ -102,7 +103,8 @@ class Home extends Component
             }
 
             $vg=Videogame::where("title","like",$cachedGame->name)->first();
-            $vg->categories()->attach(5);
+            // $vg->categories()->attach(5);
+            // $this->user->videogames()->wherePivot("videogame_id",$vg->id)->attach("sin categoria");
             $this->user->videogames()->attach(Videogame::where('title',$cachedGame->name)->pluck('id'));
 
             return redirect("/games/{$cachedGame->slug}")->with("success_msg", "Juego añadido a tu biblioteca");
