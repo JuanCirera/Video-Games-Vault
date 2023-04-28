@@ -31,11 +31,11 @@
                                                     <div>
                                                         @if (Str::contains($user->avatar, 'ui-avatars'))
                                                             <img src="{{ $user->avatar }}" alt="profile_img"
-                                                                class="avatar avatar-sm rounded-circle me-2">
+                                                                class="avatar rounded-circle me-2" width="45" height="45" style="object-fit: cover;">
                                                         @else
                                                             <img src="{{ Storage::url($user->avatar) }}"
                                                                 alt="profile_img"
-                                                                class="avatar avatar-sm rounded-circle me-2">
+                                                                class="avatar rounded-circle me-2" width="45" height="45" style="object-fit: cover;">
                                                         @endif
                                                     </div>
                                                     <div class="my-auto">

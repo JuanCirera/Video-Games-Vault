@@ -7,7 +7,6 @@
 </p>
 
 ## VIDEO GAMES VAULT
----
 
 <br />
 

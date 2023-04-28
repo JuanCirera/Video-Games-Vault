@@ -17,6 +17,6 @@ class AdminDashboard extends Component
             }
         }
 
-        return view('livewire.dashboard',compact('users'));
+        return view('livewire.pages.admin.dashboard',compact('users'));
     }
 }

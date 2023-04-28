@@ -12,19 +12,20 @@
         </nav>
         <section class="text-center">
             {{-- User data --}}
-            <div class="px-7">
-                @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
-                    <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid w-90 w-md-15">
+            {{-- class="px-7" --}}
+            <div >
+                @if (Str::contains($user->avatar, 'ui-avatars'))
+                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                 @else
-                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar"
-                        class="rounded-circle img-fluid w-90 w-md-25">
+                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar"
+                        class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                 @endif
             </div>
             <div>
-                <h4 class="text-white text-bold">{{ $user->username }}</h4>
+                <h4 class="text-white text-bold mt-2">{{ $user->username }}</h4>
             </div>
             <div class="mt-2">
-                @if (Auth::user()->id != $user->id)
+                @if ($user->id != $user->id)
                     @livewire('user-follow', ['user_id' => $user->id])
                 @endif
             </div>
@@ -112,7 +113,7 @@
                 <div class="d-flex flex-wrap">
                     <div class="col-12 col-sm-12 col-md-6 pe-md-2">
                         <div class="form-group text-start">
-                            <label for="pwd" class="text-white">Contraseña</label>
+                            <label for="pwd" class="text-white">Nueva contraseña</label>
                             <input type="password" class="form-control bg-gray-800 text-white" id="pwd" wire:model="password"/>
                             @error('user.password')
                                 <p class="text-warning">{{ $message }}</p>
@@ -136,16 +137,17 @@
                         <input type="file" class="form-control bg-gray-800 text-white" id="img" hidden
                             wire:model.defer="img">
                     </div>
-                    <div class="px-7 py-4">
+                    {{-- px-7 --}}
+                    <div class=" py-4">
                         @if ($img)
-                            <img src="{{ $img->temporaryUrl() }}" alt="" class="rounded-circle w-90 w-md-30">
+                            <img src="{{ $img->temporaryUrl() }}" alt="uploaded_img" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                         @else
-                            @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
-                                <img src="{{ Auth::user()->avatar }}" alt="avatar"
-                                    class="rounded-circle w-90 w-md-15">
+                            @if (Str::contains($user->avatar, 'ui-avatars'))
+                                <img src="{{ $user->avatar }}" alt="avatar"
+                                    class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                             @else
-                                <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="avatar"
-                                    class="rounded-circle w-90 w-md-30">
+                                <img src="{{ Storage::url($user->avatar) }}" alt="avatar"
+                                    class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                             @endif
                         @endif
                     </div>
@@ -155,6 +157,7 @@
                     <label class="btn btn-primary" for="img">
                         <i class="fas fa-upload"></i> Subir imagen
                     </label>
+                    <p>Máx. 320x320px</p>
                 </div>
             </article>
             {{-- NOTIFY --}}

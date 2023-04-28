@@ -12,16 +12,16 @@
         @foreach ($users as $user)
             <a href="{{route('profile.show', $user->username)}}" class="card bg-gray-800 mb-4 py-2 w-md-50 mx-auto">
                 <div class="card-body px-4 py-2 text-white d-flex" style="text-align: left; align-items: center;">
-                    <div class="col-1">
+                    <div class="col-2 col-md-1">
                         @if (Str::contains($user->avatar, 'ui-avatars'))
-                            <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle w-100">
+                            <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                         @else
                             <img src="{{ Storage::url($user->avatar) }}" alt="avatar"
-                                class="rounded-circle w-100">
+                                class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                         @endif
                     </div>
-                    <div class="col-11" style="text-align: left;">
-                        <p class="ms-3 my-0">{{ $user->username }}</p>
+                    <div class="col-10 col-md-11 ps-2" style="text-align: left;">
+                        <p class="my-0">{{ $user->username }}</p>
                     </div>
                 </div>
             </a>

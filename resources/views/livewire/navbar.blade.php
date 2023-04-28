@@ -37,10 +37,10 @@
                             <a class="w-50" data-bs-toggle="offcanvas" href="#profileOffcanvas">
                                 @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
                                     <img src="{{ Auth::user()->avatar }}" alt="profile_img"
-                                        class="w-90 w-md-50 rounded-circle">
+                                        class="rounded-circle" width="45" height="45" style="object-fit: cover;">
                                 @else
                                     <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="profile_img"
-                                        class="w-90 w-md-50 rounded-circle">
+                                        class="rounded-circle" width="45" height="45" style="object-fit: cover;">
                                 @endif
                             </a>
                         @endauth

@@ -41,10 +41,10 @@
                         <div class="col-2 col-md-1">
                             @if (Str::contains(Auth::user()->avatar, 'ui-avatars'))
                                 <img src="{{ $userReview->user->avatar }}" alt=""
-                                    class="rounded-circle w-70 w-md-80">
+                                    class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                             @else
                                 <img src="{{ Storage::url($userReview->user->avatar) }}" alt=""
-                                    class="rounded-circle w-70 w-md-35">
+                                    class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                             @endif
                         </div>
                         <div class="col-6 col-md-7" style="text-align: left;">

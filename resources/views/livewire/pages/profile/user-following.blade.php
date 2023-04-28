@@ -12,15 +12,15 @@
     @foreach ($followings as $following)
         <a href="{{route('profile.show', $following->username)}}" class="card bg-gray-800 mb-4 py-2 w-md-50 mx-auto">
             <div class="card-body px-4 py-2 text-white d-flex" style="text-align: left; align-items: center;">
-                <div class="col-2">
+                <div class="col-2 col-md-1">
                     @if (Str::contains($following->avatar, 'ui-avatars'))
-                        <img src="{{ $following->avatar }}" alt="avatar" class="rounded-circle img-fluid">
+                        <img src="{{ $following->avatar }}" alt="avatar" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                     @else
-                        <img src="{{ Storage::url($following->avatar) }}" alt="avatar" class="rounded-circle img-fluid">
+                        <img src="{{ Storage::url($following->avatar) }}" alt="avatar" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                     @endif
                 </div>
-                <div class="col-10" style="text-align: left;">
-                    <p class="ms-3 my-0">{{$following->username}}</p>
+                <div class="col-10 col-md-11 ps-2" style="text-align: left;">
+                    <p class="my-0">{{$following->username}}</p>
                 </div>
             </div>
         </a>

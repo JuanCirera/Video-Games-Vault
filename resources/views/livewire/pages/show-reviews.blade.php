@@ -58,15 +58,15 @@
                     <div class="card-footer pt-2">
                         <div class="d-flex align-items-center">
                             <div class="col-2 col-md-1">
-                                @if (isset($user) && Str::contains($user->avatar, 'ui-avatars'))
+                                @if (Str::contains($review->user()->where('id', $review->user_id)->first()->avatar, 'ui-avatars'))
                                     <img src="{{ $review->user()->where('id', $review->user_id)->first()->avatar }}"
-                                        alt="" class="rounded-circle w-70 w-md-80">
+                                        alt="" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                                 @else
                                     <img src="{{ Storage::url($review->user()->where('id', $review->user_id)->first()->avatar) }}"
-                                        alt="" class="rounded-circle w-70 w-md-35">
+                                        alt="" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                                 @endif
                             </div>
-                            <div class="col-6 col-md-7" style="text-align: left;">
+                            <div class="col-6 col-md-7 ps-2" style="text-align: left;">
                                 <p class="my-0">
                                     {{ $review->user()->where('id', $review->user_id)->first()->username }}
                                 </p>

@@ -12,9 +12,7 @@ class UserSettings extends Component
     use WithFileUploads;
 
     public User $user;
-    public string $username, $email;
-    // TODO: arreglar lo del password
-    // , $password;
+    public string $username, $email, $password;
     public $img;
 
     protected $rules=[
@@ -30,11 +28,15 @@ class UserSettings extends Component
     }
 
     public function mount(){
-        $this->user=Auth::user();
+        if(Auth::user()){
+            $this->user=Auth::user();
+        }
     }
 
     public function update(){
+
         $this->user=Auth::user();
+
         $this->validate([
             "user.username" => ["nullable","string", "unique:users,username,".$this->user->id],
             "user.email" => ["nullable","email","unique:users,email,".$this->user->id],
@@ -42,10 +44,12 @@ class UserSettings extends Component
             "img" => ["nullable","image","max:2048"]
         ]);
 
+        if(isset($this->img)){
+            $url=$this->img->store("img/avatars");
+            $this->user->avatar=$url;
+        }
 
-        $url=$this->img->store("img/avatars");
-        $this->user->avatar=$url;
-        $this->user->update();
+        $this->user->save();
 
         return redirect(url()->previous())->with("success_msg","Usuario actualizado");
     }
