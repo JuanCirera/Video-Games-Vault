@@ -18,36 +18,7 @@
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @if (count(
                         $user->videogames()->wherePivot('category', 'completado')->get()))
-                    {{-- @foreach ($user->videogames()->wherePivot('category', 'completado')->get() as $finishedGame)
-                        <div class="col-md-4 px-md-2">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">{{ $finishedGame->title }}</h6>
-                                            <div class="mt-4 text-start">
-                                                <label for="categories" class="text-white px-0">Cambiar
-                                                    categoría</label>
-                                                <select name="categories" id="categories"
-                                                    class="form-control bg-gray-700 text-white" wire:model="category">
-                                                    @foreach ($categories as $cat)
-                                                        <option value="{{ $cat->name }}"
-                                                            @selected($finishedGame->categories[0]->name == $cat->name)>
-                                                            {{ $cat->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach --}}
+                    @livewire('show-user-games-by-category', ['user' => $user, 'category' => "completado", "categories" => $categories])
                 @else
                     <p class="text-white mt-2 col-md-12">
                         ¿Te da pereza terminar los juegos?
@@ -66,45 +37,16 @@
             </div>
         </div>
         <div class="collapse" id="currentGames" wire:ignore>
-            <div class="mb-4 d-md-flex flex-md-wrap">
+            {{-- <div class="mb-4 d-flex"> --}}
                 @if (count(
                         $user->videogames()->wherePivot('category', 'jugando')->get()))
-                    @foreach ($user->videogames()->wherePivot('category', 'jugando')->get() as $playingGame)
-                        <div class="col-md-4 px-md-2">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">{{ $playingGame->title }}</h6>
-                                            <div class="mt-4 text-start">
-                                                <label for="categories" class="text-white px-0">Cambiar
-                                                    categoría</label>
-                                                <select name="categories" id="categories"
-                                                    class="form-control bg-gray-700 text-white">
-                                                    @foreach ($categories as $cat)
-                                                        <option value="{{ $cat->name }}"
-                                                            @selected($playingGame->categories[0]->name == $cat->name)>
-                                                            {{ $cat->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    @livewire('show-user-games-by-category', ['user' => $user, 'category' => "jugando", "categories" => $categories])
                 @else
                     <p class="text-white mt-2 col-md-12">
                         ¡Relájate y juega un poco!
                     </p>
                 @endif
-            </div>
+            {{-- </div> --}}
         </div>
         {{-- WAITING GAMES --}}
         <div class="btn btn-collapse bg-gray-800 text-white w-100 d-flex" type="button" data-bs-toggle="collapse"
@@ -120,36 +62,7 @@
             <div class="mb-4 d-md-flex flex-md-wrap">
                 @if (count(
                         $user->videogames()->wherePivot('category', 'pendiente')->get()))
-                    @foreach ($user->videogames()->wherePivot('category', 'pendiente')->get() as $waitingGame)
-                        <div class="col-md-4 px-md-2">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">{{ $waitingGame->title }}</h6>
-                                            <div class="mt-4 text-start">
-                                                <label for="categories" class="text-white px-0">Cambiar
-                                                    categoría</label>
-                                                <select name="categories" id="categories"
-                                                    class="form-control bg-gray-700 text-white">
-                                                    @foreach ($categories as $cat)
-                                                        <option value="{{ $cat->name }}"
-                                                            @selected($waitingGame->categories[0]->name == $cat->name)>
-                                                            {{ $cat->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    @livewire('show-user-games-by-category', ['user' => $user, 'category' => "pendiente", "categories" => $categories])
                 @else
                     <p class="text-white mt-2 col-md-12">
                         ¡Que envidia, parece que tienes tiempo para jugar a todo!
@@ -168,38 +81,9 @@
             </div>
         </div>
         <div class="collapse" id="testedGames" wire:ignore>
-            <div class="mb-4 d-md-flex flex-md-wrap">
+            <div class="mb-4 d-md-flex">
                 @if (count($user->videogames()->wherePivot('category', 'probado')->get()))
-                    @foreach ($user->videogames()->wherePivot('category', 'probado')->get() as $testedGame)
-                        <div class="col-md-4 px-md-2">
-                            <div class="card bg-gray-800">
-                                <div class="row g-0">
-                                    <div class="col-4">
-                                        <img src="/img/videogames/BF1.jpg" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body px-4 py-2 row">
-                                            <h6 class="text-white text-start">{{ $testedGame->title }}</h6>
-                                            <div class="mt-4 text-start">
-                                                <label for="categories" class="text-white px-0">Cambiar
-                                                    categoría</label>
-                                                <select name="categories" id="categories"
-                                                    class="form-control bg-gray-700 text-white">
-                                                    @foreach ($categories as $cat)
-                                                        <option value="{{ $cat->name }}"
-                                                            @selected($testedGame->categories[0]->name == $cat->name)>
-                                                            {{ $cat->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    @livewire('show-user-games-by-category', ['user' => $user, 'category' => "probado", "categories" => $categories])
                 @else
                     <p class="text-white mt-2 col-md-12">
                         ¡Vaya, parece que no te gusta probar juegos nuevos!
@@ -238,13 +122,4 @@
         </p>
     @endif
 
-    <script>
-        // let selected=document.getElementById("categories").addEventListener("click", (e) => (
-        //     @this.update(e.target.value)
-        // ));
-        // let selected = document.getElementById("categories").addEventListener("click", (e) => (
-
-        //     console.log(e.target.value)
-        // ));
-    </script>
 </div>

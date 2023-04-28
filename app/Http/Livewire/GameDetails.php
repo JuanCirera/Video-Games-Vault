@@ -143,8 +143,8 @@ class GameDetails extends Component
                 ]);
             }
 
-            $vg=Videogame::where("title","like",$cachedGame->name)->first();
-            $vg->categories()->attach(5);
+            // $vg=Videogame::where("title","like",$cachedGame->name)->first();
+            // $vg->categories()->attach(5);
             $this->user->videogames()->attach(Videogame::where('title',$cachedGame->name)->pluck('id'));
 
             return redirect("/games/{$cachedGame->slug}")->with("success_msg", "Juego añadido a tu biblioteca");
