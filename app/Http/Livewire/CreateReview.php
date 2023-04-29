@@ -47,37 +47,44 @@ class CreateReview extends Component
 
     public function store()
     {
+        if(isset($this->user)){
 
-        $games_id = [];
+            $games_id = [];
 
-        foreach ($this->videogames as $g) {
-            $games_id[] = $g["id"];
-        }
-
-        $games_id = implode(",", $games_id);
-
-        $this->validate([
-            "title" => ["required", "string", "min:3"],
-            "body" => ["required", "string", "min:20"],
-            "rating" => ["required", "boolean"],
-            "game_id" => ["required", "numeric", "in:" . $games_id]
-        ]);
-
-        // Con esta comprobacion evito que el usuario escriba dos veces una reseña para el mismo juego
-        foreach ($this->user->reviews()->get() as $review) {
-            if ($review->user_id == $this->user->id) {
-                return redirect(url()->previous())->with("error_msg", "No puedes escribir más reseñas para este juego");
+            foreach ($this->videogames as $g) {
+                $games_id[] = $g["id"];
             }
+
+            $games_id = implode(",", $games_id);
+
+            $this->validate([
+                "title" => ["required", "string", "min:3"],
+                "body" => ["required", "string", "min:20"],
+                "rating" => ["required", "boolean"],
+                "game_id" => ["required", "numeric", "in:" . $games_id]
+            ]);
+
+            // Con esta comprobacion evito que el usuario escriba dos veces una reseña para el mismo juego
+            foreach ($this->user->reviews()->get() as $review) {
+                if ($review->user_id == $this->user->id) {
+                    return redirect(url()->previous())->with("error_msg", "No puedes escribir más reseñas para este juego");
+                }
+            }
+
+            Review::create([
+                "title" => $this->title,
+                "body" => $this->body,
+                "rating" => $this->rating,
+                "user_id" => $this->user->id,
+                "videogame_id" => $this->game_id
+            ]);
+
+            return redirect(url()->previous())->with("success_msg", "Reseña publicada!");
+
         }
 
-        Review::create([
-            "title" => $this->title,
-            "body" => $this->body,
-            "rating" => $this->rating,
-            "user_id" => $this->user->id,
-            "videogame_id" => $this->game_id
-        ]);
+        return redirect('login');
 
-        return redirect(url()->previous())->with("success_msg", "Reseña publicada!");
     }
+
 }
