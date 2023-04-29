@@ -54,7 +54,9 @@ class Home extends Component
 
     public function mount()
     {
-        $this->user = (Auth::user()) ? Auth::user() : null;
+        if(Auth::user()){
+            $this->user = Auth::user();
+        }
     }
 
 
