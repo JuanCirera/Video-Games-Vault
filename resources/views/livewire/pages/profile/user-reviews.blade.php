@@ -49,7 +49,7 @@
                     </div>
                     <div class="card-footer d-flex pt-2 align-items-center">
                         <div class="col-2 col-md-1">
-                            @if (Str::contains($user->avatar, 'ui-avatars'))
+                            @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
                                 <img src="{{ $userReview->user->avatar }}" alt="" class="rounded-circle"
                                     width="50" height="50" style="object-fit: cover;">
                             @else

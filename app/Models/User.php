@@ -22,7 +22,9 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'avatar'
+        'avatar',
+        'external_id',
+        'external_auth'
     ];
 
     /**

@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Livewire\AboutUs;
 use App\Http\Livewire\AdminDashboard;
@@ -15,7 +14,9 @@ use App\Http\Livewire\ResetPassword;
 use App\Http\Livewire\SearchUser;
 use App\Http\Livewire\UserProfile;
 use App\Http\Livewire\UserSettings;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,36 @@ Route::get('/', function (){
 
 Route::get('/home', Home::class)->name('home');
 
+// ** GOOGLE AUTH **
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('login-google');
+
+Route::get('/google-callback', function () {
+
+    $user = Socialite::driver('google')->user();
+
+    $userExists=User::where('external_id',$user->id)->where('external_auth','google')->first();
+
+    if($userExists){
+        Auth::login($userExists);
+    }else{
+        $newUser=User::create([
+            "username" => $user->name,
+            "email" => $user->email,
+            "avatar" => $user->avatar,
+            "external_id" => $user->id,
+            "external_auth" => "google"
+        ])->assignRole('user');
+
+        Auth::login($newUser);
+    }
+    
+    return redirect('home');
+
+});
+//
+
 Route::get('/register', Register::class)->middleware('guest')->name('register');
 Route::post('/register', [Register::class, 'store'])->middleware('guest')->name('register.perform');
 Route::get('/login', Login::class)->middleware('guest')->name('login');
@@ -44,7 +75,6 @@ Route::get('/reset-password', ResetPassword::class)->middleware('guest')->name('
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-// Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/users', SearchUser::class)->name("user.search");
 Route::get('/contact', Contact::class)->name('contact');
 Route::get('/about', AboutUs::class)->name('about');
@@ -56,6 +86,5 @@ Route::group(['middleware' => 'auth'], function () {
     });
 	Route::get('/profile/{username}', UserProfile::class)->name('profile.show');
     Route::get('/profile/settings/{username}', UserSettings::class)->name('profile.update');
-	// Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');
 });

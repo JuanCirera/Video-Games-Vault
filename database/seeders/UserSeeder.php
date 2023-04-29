@@ -21,13 +21,13 @@ class UserSeeder extends Seeder
             "created_at" => now()
         ])->assignRole('admin');
 
-        User::factory()->create([
-            'username' => 'CiReRaWarGamer',
-            'email' => 'cwg@gmail.com',
-            'password' => 'password',
-            'avatar' => "https://ui-avatars.com/api/?name=cwg&background=02B3E4&color=fff&bold=true",
-            "created_at" => now()
-        ])->assignRole('user');
+        // User::factory()->create([
+        //     'username' => 'CiReRaWarGamer',
+        //     'email' => 'cwg@gmail.com',
+        //     'password' => 'password',
+        //     'avatar' => "https://ui-avatars.com/api/?name=cwg&background=02B3E4&color=fff&bold=true",
+        //     "created_at" => now()
+        // ])->assignRole('user');
 
         User::factory()->create([
             'username' => 'Excidium',

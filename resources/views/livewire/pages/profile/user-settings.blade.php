@@ -14,7 +14,7 @@
             {{-- User data --}}
             {{-- class="px-7" --}}
             <div >
-                @if (Str::contains($user->avatar, 'ui-avatars'))
+                @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
                     <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                 @else
                     <img src="{{ Storage::url($user->avatar) }}" alt="avatar"
@@ -142,7 +142,7 @@
                         @if ($img)
                             <img src="{{ $img->temporaryUrl() }}" alt="uploaded_img" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                         @else
-                            @if (Str::contains($user->avatar, 'ui-avatars'))
+                            @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
                                 <img src="{{ $user->avatar }}" alt="avatar"
                                     class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                             @else
