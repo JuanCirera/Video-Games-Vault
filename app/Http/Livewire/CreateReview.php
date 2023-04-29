@@ -16,7 +16,7 @@ class CreateReview extends Component
 {
     public $videogames;
     public int $game_id;
-    public bool $rating = true;
+    public bool $rating;
     public string $title = "", $body = "";
     public User $user;
 

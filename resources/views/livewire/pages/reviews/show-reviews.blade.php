@@ -30,7 +30,14 @@
             </ul>
         </div>
         <div class="ms-2">
-            @livewire('create-review', ['game_id' => $videogame->id])
+            @if (isset($user) && $user->reviews()->where("videogame_id",$videogame->id)->get())
+                <button class="btn btn-primary bg-gradient-primary btn-round my-0 text-nowrap" data-bs-toggle="modal"
+                data-bs-target="#create-modal" disabled>
+                Ya has escrito una reseña
+                </button>
+            @else
+                @livewire('create-review', ['game_id' => $videogame->id])
+            @endif
         </div>
     </div>
     @if (count($reviews))

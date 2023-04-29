@@ -109,14 +109,14 @@
                                         <div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input bg-gray-700" type="radio"
-                                                    name="rating" id="positive" value="1" wire:model="review.rating">
+                                                    name="review.rating" id="positive" value="1" wire:model="review.rating">
                                                 <label class="custom-control-label" for="positive">
                                                     <i class="fa-solid fa-thumbs-up text-primary text-lg"></i>
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input bg-gray-700" type="radio"
-                                                    name="rating" id="negative" value="0" wire:model="review.rating">
+                                                    name="review.rating" id="negative" value="0" wire:model="review.rating">
                                                 <label class="custom-control-label" for="negative">
                                                     <i class="fa-solid fa-thumbs-down text-danger text-lg"></i>
                                                 </label>

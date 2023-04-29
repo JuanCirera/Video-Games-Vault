@@ -25,6 +25,9 @@ class GameDetails extends Component
     public function render()
     {
         // TODO: si se mete un slug por url llamar al API search
+        if (Auth::user()) {
+            $this->user = Auth::user();
+        }
 
         return view(
             'livewire.pages.games.game-details',
@@ -43,10 +46,6 @@ class GameDetails extends Component
     public function mount(){
 
         $this->url=substr(parse_url(url()->current(), PHP_URL_PATH), 7);
-
-        if (Auth::user()) {
-            $this->user = Auth::user();
-        }
 
         $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
         ));

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Review;
 use App\Models\User;
 use App\Providers\ApiServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
@@ -23,6 +24,10 @@ class ShowReviews extends Component
 
     public function render()
     {
+        if (Auth::user()) {
+            $this->user = Auth::user();
+        }
+
         $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
         ));
 
@@ -44,7 +49,8 @@ class ShowReviews extends Component
         return view('livewire.pages.reviews.show-reviews',
         [
             "reviews" => $this->reviews,
-            "videogame" => $this->videogame
+            "videogame" => $this->videogame,
+            "user" => $this->user
         ]);
 
     }
