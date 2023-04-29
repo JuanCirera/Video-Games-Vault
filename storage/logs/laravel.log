@@ -14888,3 +14888,4 @@ Only protected or private properties can be set as other types because JavaScrip
 #48 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
 #49 {main}
 "} 
+[2023-04-29 17:47:10] local.INFO: User Excidium logged in from 192.168.1.10  

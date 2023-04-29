@@ -35,7 +35,7 @@
                         @endguest
                         @auth
                             <a class="w-50" data-bs-toggle="offcanvas" href="#profileOffcanvas">
-                                @if (Str::contains(Auth::user()->avatar, 'ui-avatars' || 'lh3.googleusercontent'))
+                                @if (Str::contains(Auth::user()->avatar, 'ui-avatars') || Str::contains(Auth::user()->avatar, 'lh3.googleusercontent'))
                                     <img src="{{ Auth::user()->avatar }}" alt="profile_img"
                                         class="rounded-circle" width="45" height="45" style="object-fit: cover;">
                                 @else

@@ -16,7 +16,7 @@ class ShowUserGamesByCategory extends Component
 
     public function render()
     {
-        return view('livewire.show-user-games-by-category');
+        return view('livewire..pages.profile.show-user-games-by-category');
     }
 
     public function update(Videogame $game, Category $newCategory){
