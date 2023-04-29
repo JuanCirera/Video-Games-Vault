@@ -78,11 +78,6 @@
                                 {{ $review->dislikes }} <i class="fa-solid fa-thumbs-down"></i>
                             </div>
                         </div>
-                        {{-- <hr> --}}
-                        {{-- <div class="mt-2">
-                                <input type="text" name="reply" id="replyReview"
-                                    class="form-control bg-gray-900 text-white" placeholder="Contestar..." disabled>
-                            </div> --}}
                     </div>
                 </div>
             </section>
