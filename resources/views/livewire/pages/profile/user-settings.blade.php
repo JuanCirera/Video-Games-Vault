@@ -4,8 +4,8 @@
             <ol class="breadcrumb bg-gray-900">
                 <li class="breadcrumb-item active" aria-current="page"><a href="/" class="text-secondary">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active text-secondary" aria-current="page"><a href="{{ route('profile.show', $user->username) }}"
-                        class="text-secondary">Perfil</a></li>
+                <li class="breadcrumb-item active text-secondary" aria-current="page"><a
+                        href="{{ route('profile.show', $user->username) }}" class="text-secondary">Perfil</a></li>
                 <li class="breadcrumb-item active text-secondary" aria-current="page"><a href="#"
                         class="text-white">Ajustes</a></li>
             </ol>
@@ -13,12 +13,13 @@
         <section class="text-center">
             {{-- User data --}}
             {{-- class="px-7" --}}
-            <div >
+            <div>
                 @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
-                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
+                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150" height="150"
+                        style="object-fit: cover;">
                 @else
-                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar"
-                        class="rounded-circle" width="150" height="150" style="object-fit: cover;">
+                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle" width="150"
+                        height="150" style="object-fit: cover;">
                 @endif
             </div>
             <div>
@@ -79,48 +80,54 @@
             </div>
             {{-- Settings content --}}
             <article class="collapse mt-4 show" id="userData" data-bs-parent="#navParent">
-                {{-- @livewire('user-update', ['user'=> $user]) --}}
-                <div class="text-end">
-                    <button class="btn btn-primary my-0" wire:click="update">
-                        Guardar
-                    </button>
+                @role('external_user')
+                <div class="my-7 alert bg-dark text-white w-md-60 mx-auto">
+                    <span class="alert-icon"><i class="fas fa-circle-info text-2xl me-2"></i></span>
+                    <span class="alert-text">Has iniciado sesión con una cuenta externa, regístrate para poder modificar tus datos</span>
                 </div>
-                <hr>
-                <div class="d-flex flex-wrap">
-                    <div class="col-12 col-sm-12 col-md-6 pe-md-2">
-                        <div class="form-group text-start">
-                            <label for="username" class="text-white">Nombre de usuario</label>
-                            <input type="text" class="form-control bg-gray-800 text-white" id="username"
-                                wire:model="user.username">
-                            @error('user.username')
-                                <p class="text-warning">{{ $message }}</p>
-                            @enderror
+                @else
+                    <div class="text-end">
+                        <button class="btn btn-primary my-0" wire:click="update">
+                            Guardar
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-wrap">
+                        <div class="col-12 col-sm-12 col-md-6 pe-md-2">
+                            <div class="form-group text-start">
+                                <label for="username" class="text-white">Nombre de usuario</label>
+                                <input type="text" class="form-control bg-gray-800 text-white" id="username"
+                                    wire:model="user.username">
+                                @error('user.username')
+                                    <p class="text-warning">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 ps-md-2">
+                            <div class="form-group text-start">
+                                <label for="email" class="text-white">Correo electrónico</label>
+                                <input type="email" class="form-control bg-gray-800 text-white" id="email"
+                                    wire:model="user.email">
+                                @error('user.email')
+                                    <p class="text-warning">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6 ps-md-2">
-                        <div class="form-group text-start">
-                            <label for="email" class="text-white">Correo electrónico</label>
-                            <input type="email" class="form-control bg-gray-800 text-white" id="email"
-                                wire:model="user.email">
-                            @error('user.email')
-                                <p class="text-warning">{{ $message }}</p>
-                            @enderror
+                    <hr>
+                    <h6 class="text-secondary">Cambiar contraseña</h6>
+                    <div class="d-flex flex-wrap">
+                        <div class="col-12 col-sm-12 col-md-6 pe-md-2">
+                            <div class="form-group text-start">
+                                <label for="pwd" class="text-white">Nueva contraseña</label>
+                                <input type="password" class="form-control bg-gray-800 text-white" id="pwd"
+                                    wire:model="password" />
+                                @error('user.password')
+                                    <p class="text-warning">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <hr>
-                <h6 class="text-secondary">Cambiar contraseña</h6>
-                <div class="d-flex flex-wrap">
-                    <div class="col-12 col-sm-12 col-md-6 pe-md-2">
-                        <div class="form-group text-start">
-                            <label for="pwd" class="text-white">Nueva contraseña</label>
-                            <input type="password" class="form-control bg-gray-800 text-white" id="pwd" wire:model="password"/>
-                            @error('user.password')
-                                <p class="text-warning">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-                    {{-- <div class="col-12 col-sm-12 col-md-6 ps-md-2">
+                        {{-- <div class="col-12 col-sm-12 col-md-6 ps-md-2">
                         <div class="form-group text-start">
                             <label for="chpwd" class="text-white">Repite la contraseña</label>
                             <input type="password" class="form-control bg-gray-800 text-white" id="chpwd">
@@ -129,36 +136,38 @@
                             @enderror
                         </div>
                     </div> --}}
-                </div>
-                <hr>
-                <div class="col-12 col-sm-12 col-md-12">
-                    <div class="form-group text-start mb-0">
-                        <label for="img" class="text-white">Cambiar imagen de perfil</label>
-                        <input type="file" class="form-control bg-gray-800 text-white" id="img" hidden
-                            wire:model.defer="img">
                     </div>
-                    {{-- px-7 --}}
-                    <div class=" py-4">
-                        @if ($img)
-                            <img src="{{ $img->temporaryUrl() }}" alt="uploaded_img" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
-                        @else
-                            @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
-                                <img src="{{ $user->avatar }}" alt="avatar"
-                                    class="rounded-circle" width="150" height="150" style="object-fit: cover;">
+                    <hr>
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <div class="form-group text-start mb-0">
+                            <label for="img" class="text-white">Cambiar imagen de perfil</label>
+                            <input type="file" class="form-control bg-gray-800 text-white" id="img" hidden
+                                wire:model.defer="img">
+                        </div>
+                        {{-- px-7 --}}
+                        <div class=" py-4">
+                            @if ($img)
+                                <img src="{{ $img->temporaryUrl() }}" alt="uploaded_img" class="rounded-circle"
+                                    width="150" height="150" style="object-fit: cover;">
                             @else
-                                <img src="{{ Storage::url($user->avatar) }}" alt="avatar"
-                                    class="rounded-circle" width="150" height="150" style="object-fit: cover;">
+                                @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
+                                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150"
+                                        height="150" style="object-fit: cover;">
+                                @else
+                                    <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle"
+                                        width="150" height="150" style="object-fit: cover;">
+                                @endif
                             @endif
-                        @endif
+                        </div>
+                        @error('avatar')
+                            <p class="text-warning">{{ $message }}</p>
+                        @enderror
+                        <label class="btn btn-primary" for="img">
+                            <i class="fas fa-upload"></i> Subir imagen
+                        </label>
+                        <p>Máx. 320x320px</p>
                     </div>
-                    @error('avatar')
-                        <p class="text-warning">{{ $message }}</p>
-                    @enderror
-                    <label class="btn btn-primary" for="img">
-                        <i class="fas fa-upload"></i> Subir imagen
-                    </label>
-                    <p>Máx. 320x320px</p>
-                </div>
+                @endrole
             </article>
             {{-- NOTIFY --}}
             <article class="collapse mt-4" id="notifications" data-bs-parent="#navParent">
@@ -173,7 +182,6 @@
     @include('layouts.footers.auth.footer')
 
     <script>
-
         //NAV
         const links = document.querySelectorAll('#profNav');
 

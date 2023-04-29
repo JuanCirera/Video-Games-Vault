@@ -57,11 +57,11 @@ Route::get('/google-callback', function () {
             "avatar" => $user->avatar,
             "external_id" => $user->id,
             "external_auth" => "google"
-        ])->assignRole('user');
+        ])->assignRole('external_user');
 
         Auth::login($newUser);
     }
-    
+
     return redirect('home');
 
 });

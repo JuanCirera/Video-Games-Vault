@@ -38,13 +38,11 @@
     @endguest
 
     @auth
-        @role('user')
+        @role('user|external_user')
             @include('livewire.navbar')
             <main class="main-content">
                 {{ $slot }}
             </main>
-            {{-- NOTE: Esto no sirve pa na de momento --}}
-            {{-- @include('components.fixed-plugin') --}}
         @endrole
         @role('admin')
             <div class="min-height-300 position-absolute w-100"
