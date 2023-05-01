@@ -24,13 +24,21 @@ class UserFollow extends Component
     }
 
     public function follow(){
+
+        $mailContent=
+        '<div>
+        <p style="margin-top: 5vh; text-align: center; font-size: 1.5vh">'
+        .Auth::user()->username.' te ha seguido
+        </p>
+        </div>';
+
         if($this->following){
             Auth::user()->followings()->detach($this->user_id);
         }else{
             Auth::user()->followings()->attach($this->user_id);
 
             Mail::to(User::find($this->user_id)->email)->send(new NotifyUser([
-                "content" => Auth::user()->username." te ha seguido"
+                "content" => $mailContent
             ]));
         }
 

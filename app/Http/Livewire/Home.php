@@ -167,8 +167,7 @@ class Home extends Component
                         "image" => $currentGame->background_image,
                     ]);
 
-                    $vg = Videogame::where("title", "like", $currentGame->name)->first();
-                    $vg->categories()->attach(5);
+
                     $this->user->videogames()->attach(Videogame::where('title', $currentGame->name)->pluck('id'));
                 }
 
