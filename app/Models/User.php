@@ -24,7 +24,9 @@ class User extends Authenticatable
         'password',
         'avatar',
         'external_id',
-        'external_auth'
+        'external_auth',
+        'notifySocial',
+        'notifyGames'
     ];
 
     /**

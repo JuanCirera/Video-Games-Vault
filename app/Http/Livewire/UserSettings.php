@@ -21,6 +21,8 @@ class UserSettings extends Component
         "user.username" => "",
         "user.email" => "",
         "password" => "",
+        // "user.notifySocial" => "",
+        // "user.notifyGames" => "",
         "img" => ""
     ];
 
@@ -59,7 +61,13 @@ class UserSettings extends Component
 
     }
 
-    // public function send(){
-    //     Mail::to($this->user->email)->send(new NotifyUser(["hola"]));
-    // }
+    public function toggleNotifySocial(){
+        $this->user->notifySocial=($this->user->notifySocial)?false:true;
+        $this->user->save();
+    }
+
+    public function toggleNotifyGames(){
+        $this->user->notifyGames=($this->user->notifyGames)?false:true;
+        $this->user->save();
+    }
 }

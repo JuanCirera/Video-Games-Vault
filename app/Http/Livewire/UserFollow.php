@@ -37,9 +37,11 @@ class UserFollow extends Component
         }else{
             Auth::user()->followings()->attach($this->user_id);
 
-            Mail::to(User::find($this->user_id)->email)->send(new NotifyUser([
-                "content" => $mailContent
-            ]));
+            if(User::find($this->user_id)->noifySocial){
+                Mail::to(User::find($this->user_id)->email)->send(new NotifyUser([
+                    "content" => $mailContent
+                ]));
+            }
         }
 
         $this->following=!$this->following;

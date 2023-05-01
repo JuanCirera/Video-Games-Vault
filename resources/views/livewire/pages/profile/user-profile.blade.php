@@ -116,7 +116,7 @@
                                 <i class="fas fa-star text-sm me-2"></i> Reseñas
                             </a>
                         </li>
-                        <div class="moving-tab position-absolute nav-link"
+                        <div class="moving-tab position-absolute nav-link" wire:ignore.self
                             style="padding: 0px; transition: all 0.5s ease 0s; transform: translate3d(0px, 0px, 0px); width: 200px;">
                             <a class="nav-link mb-0 px-0 py-1 bg-primary active" data-bs-toggle="collapse"
                                 href="#overview" role="tab" aria-controls="code"
@@ -128,24 +128,24 @@
             </div>
             {{--  --}}
             {{-- Profile content --}}
-            <article class="collapse mt-5 show" id="overview" data-bs-parent="#navParent">
+            <article class="collapse mt-5 show" id="overview" data-bs-parent="#navParent" wire:ignore.self>
                 @livewire('user-overview', ['user' => $user])
             </article>
-            <article class="collapse mt-4" id="library" data-bs-parent="#navParent">
+            <article class="collapse mt-4" id="library" data-bs-parent="#navParent" wire:ignore.self>
                 @livewire('user-library', ['user' => $user])
             </article>
-            <article class="collapse mt-4" id="tracking">
+            <article class="collapse mt-4" id="tracking" wire:ignore.self>
                 @livewire('user-tracking', ['user' => $user])
             </article>
-            <article class="collapse mt-5" id="reviews">
+            <article class="collapse mt-5" id="reviews" wire:ignore.self>
                 @livewire('user-reviews', ['user' => $user])
             </article>
         </section>
         {{--  --}}
-        <section class="mt-4 collapse" id="followers">
+        <section class="mt-4 collapse" id="followers" wire:ignore.self>
             @livewire('user-followers', ['user' => $user])
         </section>
-        <section class="mt-4 collapse" id="following">
+        <section class="mt-4 collapse" id="following" wire:ignore.self>
             @livewire('user-following', ['user' => $user])
         </section>
     </div>

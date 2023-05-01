@@ -69,7 +69,7 @@
                                 <i class="fas fa-bell text-sm me-2"></i> Notificaciones
                             </a>
                         </li>
-                        <div class="moving-tab position-absolute nav-link"
+                        <div class="moving-tab position-absolute nav-link" wire:ignore.self
                             style="padding: 0px; transition: all 0.5s ease 0s; transform: translate3d(0px, 0px, 0px); width: 0px;">
                             <a class="nav-link mb-0 px-0 py-1 bg-primary active" data-bs-toggle="collapse"
                                 href="#overview" role="tab" aria-controls="code" aria-selected="true">&nbsp;</a>
@@ -79,7 +79,7 @@
                 {{--  --}}
             </div>
             {{-- Settings content --}}
-            <article class="collapse mt-4 show" id="userData" data-bs-parent="#navParent">
+            <article class="collapse mt-4 show" id="userData" data-bs-parent="#navParent" wire:ignore.self>
                 <div class="text-end">
                     <button class="btn btn-primary my-0" wire:click="update">
                         Guardar
@@ -119,7 +119,8 @@
                             @error('password')
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
-                            <p class="text-sm mt-2">Debe contener mínimo 1 letra minúscula, 1 mayúscula y 1 número con una logitud mínima de 6 caracteres</p>
+                            <p class="text-sm mt-2">Debe contener mínimo 1 letra minúscula, 1 mayúscula y 1 número con
+                                una logitud mínima de 6 caracteres</p>
                         </div>
                     </div>
                     {{-- <div class="col-12 col-sm-12 col-md-6 ps-md-2">
@@ -164,10 +165,17 @@
                 </div>
             </article>
             {{-- NOTIFY --}}
-            <article class="collapse mt-4" id="notifications" data-bs-parent="#navParent">
-                <div>
-                    NOTIFY
-                    {{-- <button wire:click="send">Enviar</button> --}}
+            <article class="collapse mt-4" id="notifications" data-bs-parent="#navParent" wire:ignore.self>
+                <h6>Activa/desactiva notificaciones</h6>
+                <div class="w-md-70 mx-auto px-2 mt-4">
+                    <div class="form-check form-switch mb-4">
+                        <input class="form-check-input" type="checkbox" id="socialCheck" @checked($this->user->notifySocial) wire:click="toggleNotifySocial">
+                        <label class="form-check-label text-secondary" for="socialCheck">Social</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="gamesCheck" @checked($this->user->notifyGames) >
+                        <label class="form-check-label text-secondary" for="gamesCheck">Videojuegos (Lanzamientos, DLC, etc)</label>
+                    </div>
                 </div>
             </article>
             {{--  --}}

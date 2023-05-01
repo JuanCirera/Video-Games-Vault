@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->string('avatar');
+            $table->boolean('notifySocial')->default(true);
+            $table->boolean('notifyGames')->default(true);
             $table->timestamps();
         });
     }

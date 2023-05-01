@@ -29,18 +29,20 @@ class UserTracking extends Component
 
     public function notifyRelease()
     {
-        foreach ($this->videogames as $game) {
-            if ($game->release_date==date(now())) {
-                $mailContent =
-                    '<div>
-                    <p style="margin-top: 5vh; text-align: center; font-size: 1.5vh">
-                    ¡'. $game->title . ' ha salido a la venta!
-                    </p>
-                    </div>';
+        if($this->user->notifyGames){
+            foreach ($this->videogames as $game) {
+                if ($game->release_date==date(now())) {
+                    $mailContent =
+                        '<div>
+                        <p style="margin-top: 5vh; text-align: center; font-size: 1.5vh">
+                        ¡'. $game->title . ' ha salido a la venta!
+                        </p>
+                        </div>';
 
-                Mail::to($this->user->email)->send(new NotifyUser([
-                    "content" => $mailContent
-                ]));
+                    Mail::to($this->user->email)->send(new NotifyUser([
+                        "content" => $mailContent
+                    ]));
+                }
             }
         }
     }
