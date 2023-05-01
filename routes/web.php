@@ -115,6 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin/dashboard', AdminDashboard::class)->name('dashboard');
     });
 	Route::get('/profile/{username}', UserProfile::class)->name('profile.show');
-    Route::get('/profile/settings/{username}', UserSettings::class)->name('profile.update');
+    Route::get('/profile/settings/{username}', UserSettings::class)->name('profile.settings');
+    // Route::post('/profile/settings/{username}', [UserSettings::class, "update"])->name('profile.update');
 	Route::post('logout', [Login::class, 'logout'])->name('logout');
 });
