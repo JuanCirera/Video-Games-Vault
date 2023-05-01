@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\NotifyUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -56,4 +58,8 @@ class UserSettings extends Component
         return redirect(url()->previous())->with("info_msg","Usuario actualizado");
 
     }
+
+    // public function send(){
+    //     Mail::to($this->user->email)->send(new NotifyUser(["hola"]));
+    // }
 }

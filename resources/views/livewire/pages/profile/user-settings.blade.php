@@ -167,6 +167,7 @@
             <article class="collapse mt-4" id="notifications" data-bs-parent="#navParent">
                 <div>
                     NOTIFY
+                    {{-- <button wire:click="send">Enviar</button> --}}
                 </div>
             </article>
             {{--  --}}

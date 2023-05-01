@@ -2,7 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\NotifyUser;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class UserFollow extends Component
@@ -26,6 +29,8 @@ class UserFollow extends Component
         }else{
             Auth::user()->followings()->attach($this->user_id);
         }
+
+        Mail::to(User::find($this->user_id)->email)->send(new NotifyUser(["hola"]));
 
         $this->following=!$this->following;
     }
