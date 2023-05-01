@@ -28,9 +28,11 @@ class UserFollow extends Component
             Auth::user()->followings()->detach($this->user_id);
         }else{
             Auth::user()->followings()->attach($this->user_id);
-        }
 
-        Mail::to(User::find($this->user_id)->email)->send(new NotifyUser(["hola"]));
+            Mail::to(User::find($this->user_id)->email)->send(new NotifyUser([
+                "content" => Auth::user()->username." te ha seguido"
+            ]));
+        }
 
         $this->following=!$this->following;
     }

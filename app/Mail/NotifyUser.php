@@ -12,14 +12,14 @@ use Illuminate\Queue\SerializesModels;
 class NotifyUser extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data=[];
+    public array $data=[];
 
     /**
      * Create a new message instance.
      */
     public function __construct(array $data)
     {
-        $this->data[]=$data;
+        $this->data=$data;
     }
 
     /**
@@ -39,9 +39,9 @@ class NotifyUser extends Mailable
     {
         return new Content(
             view: 'notify.mail.content',
-            // with: [
-            //     "" => ""
-            // ]
+            with: [
+                "content" => $this->data["content"],
+            ]
         );
     }
 
