@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <div>
                                 <h4 class="card-title d-block text-white text-start px-0">
-                                    {{ $categorizedGame->title }}
+                                    <a href="{{ route('game.show', $categorizedGame->slug) }}" class="link-white">{{ $categorizedGame->title }}</a>
                                 </h4>
                             </div>
                         </div>

@@ -17713,3 +17713,8 @@ Did you mean one of these?
 #80 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
 #81 {main}
 "} 
+[2023-05-01 18:15:10] local.INFO: API request: grand-theft-auto-v screenshots fetched  
+[2023-05-01 18:15:10] local.INFO: API request: grand-theft-auto-v achievements fetched  
+[2023-05-01 18:15:10] local.INFO: API request: grand-theft-auto-v achievements fetched  
+[2023-05-01 18:15:11] local.INFO: API request: 10 stores fetched  
+[2023-05-01 18:15:11] local.INFO: API request: grand-theft-auto-v stores fetched  
