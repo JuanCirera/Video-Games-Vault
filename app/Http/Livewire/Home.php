@@ -22,7 +22,7 @@ class Home extends Component
     public User $user;
     public bool $addedToLibrary = false, $addedToTracking = false;
     protected $videogame;
-    private int $resultPage = 1;
+    public $resultPage;
 
     protected $listeners = [
         "render" => "render"
@@ -30,11 +30,6 @@ class Home extends Component
 
     public function render()
     {
-        $this->resultPage=Cache::remember('games_paginate', 86400, function () {
-            return $this->resultPage;
-        });
-
-        Log::debug("render, before init " . count($this->games)); //TODO
 
         if ($this->search == "") {
             if (count($this->games) <= 40) {
@@ -50,7 +45,7 @@ class Home extends Component
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
-        Log::debug("render, after init " . count($this->games)); //TODO
+        // Log::debug("render, after init " . count($this->games)); //TODO
         return view('livewire.home', [
             "games" => $this->games,
             "welcome_img" => $welcome_img
@@ -63,6 +58,8 @@ class Home extends Component
         if (Auth::user()) {
             $this->user = Auth::user();
         }
+
+        $this->resultPage=session('resultPage',1);
     }
 
 
@@ -189,7 +186,12 @@ class Home extends Component
     {
         //Lo unico que se me ha ocurrido para guardar el valor de la página
         //es meterlo en cache, asi al recargar no se resetea, aunque lo hará por tiempo
-        $this->resultPage=Cache::increment('games_paginate', 1);
+        // $this->resultPage=Cache::increment('games_paginate', 1);
+        // Log::debug("no incre, ".$this->resultPage);
+
+        $this->resultPage++;
+        session(['resultPage' => $this->resultPage]);
+        // Log::debug(session('resultPage'));
 
         $results = Cache::remember('games_page_' . $this->resultPage, 86400, function () {
             return ProvidersApiServiceProvider::getVideogames(40, $this->resultPage);
@@ -200,7 +202,6 @@ class Home extends Component
             // a json, despues se convierte de nuevo a un array con clases StdClass como estaba en la 1a llamada a la API
             $mergedGames = json_encode(array_merge($this->games, $results));
             $this->games=json_decode($mergedGames);
-            $this->resetPage();
         }
     }
 }
