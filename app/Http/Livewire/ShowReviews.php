@@ -50,7 +50,7 @@ class ShowReviews extends Component
         [
             "reviews" => $this->reviews,
             "videogame" => $this->videogame,
-            "user" => $this->user
+            "user" => isset($this->user)?$this->user:""
         ]);
 
     }

@@ -9,7 +9,7 @@
                 <nav class="d-flex justify-content-center">
                     <ol class="breadcrumb" style="background-color: rgba(33, 37, 41, 0.0);">
                         <li class="breadcrumb-item active" aria-current="page" class="text-body"><a href="/"
-                                class="text-body">Inicio</a>
+                                class="text-secondary">Inicio</a>
                         </li>
                         <li class="breadcrumb-item active text-body" aria-current="page"><a href="#"
                                 class="text-white">{{ $videogame->name }}</a></li>
@@ -153,7 +153,7 @@
                             @foreach ($stores as $store)
                                 @if ($store->id == $gStore->store_id)
                                     <a href="{{ $gStore->url }}" target="_blank"
-                                        class="btn btn-primary bg-gray-800 text-body">
+                                        class="btn btn-primary bg-gray-800 text-secondary">
                                         {{ $store->name }}
                                     </a>
                                 @endif
@@ -169,7 +169,7 @@
         <section class="d-flex mt-4">
             <article class="col-6">
                 <h6 class="text-white">Plataformas</h6>
-                <p>
+                <p class="text-secondary">
                     @foreach ($videogame->platforms as $platform)
                         {{ $platform->platform->name }},
                     @endforeach
@@ -185,7 +185,7 @@
         <section class="d-flex">
             <article class="col-6">
                 <h6 class="text-white">Género</h6>
-                <p>
+                <p class="text-secondary">
                     @foreach ($videogame->genres as $genre)
                         {{ $genre->name }},
                     @endforeach
@@ -193,7 +193,7 @@
             </article>
             <article class="col-6 ps-2">
                 <h6 class="text-white">Distribuidora</h6>
-                <p>
+                <p class="text-secondary">
                     @foreach ($videogame->publishers as $publisher)
                         {{ $publisher->name ?? 'N/A' }}
                     @endforeach
@@ -203,7 +203,7 @@
         <section class="d-flex">
             <article class="col-6">
                 <h6 class="text-white">Desarrolladora</h6>
-                <p>
+                <p class="text-secondary">
                     @foreach ($videogame->developers as $developer)
                         {{ $developer->name ?? 'N/A' }},
                     @endforeach
@@ -211,7 +211,7 @@
             </article>
             <article class="col-6 ps-2">
                 <h6 class="text-white">PEGI</h6>
-                <p>
+                <p class="text-secondary">
                     {{ $videogame->esrb_rating->name ?? 'N/A' }}
                 </p>
             </article>
@@ -259,7 +259,7 @@
         <section class="py-4">
             <h6 class="text-white">Descripción</h6>
             <div class="text-truncate" id="gameDescription">
-                <p>
+                <p class="text-secondary">
                     {!! $videogame->description ??
                         // Str::substr($videogame->description, 0, (strlen($videogame->description) - strlen($videogame->description) / 2))."..."
                         'No hay descripción disponible' !!}
@@ -317,7 +317,7 @@
         {{-- GAME TAGS --}}
         <section class="py-4">
             <h6 class="text-white">Etiquetas</h6>
-            <p>
+            <p class="text-secondary">
                 @if (count($videogame->tags))
                     @foreach ($videogame->tags as $tag)
                         {{ $tag->name }},
@@ -334,37 +334,40 @@
                 <div class="flex-grow-1">
                     <h6 class="text-white">Trofeos de {{ $videogame->name }}</h6>
                 </div>
-                <div>
-                    <i class="fa-solid fa-trophy"></i> {{ $videogame->achievements_count ?? '0' }} Trofeos
+                <div class="text-secondary">
+                    <i class="fa-solid fa-trophy"></i> {{ $videogame->parent_achievements_count ?? '0' }} Trofeos
                 </div>
             </div>
             @isset($achievements)
-                @foreach ($achievements as $achievement)
-                    <div class="card bg-gray-900 ps-2 my-2 w-md-70 mx-auto">
-                        <div class="row g-0">
-                            <div class="col-3 col-md-2 d-flex align-items-center">
-                                <div class="flex-grow-1">
-                                    @isset($achievement->image)
-                                        <img src="{{ $achievement->image }}" alt=""
-                                            class="img-fluid w-90 w-sm-90 w-md-90 border-radius-lg p-0">
-                                    @else
-                                        <div class="btn bg-gray-800 p-3">
-                                            <i class="fa-solid fa-trophy text-2xl"></i>
-                                        </div>
-                                    @endisset
+                @foreach ($achievements as $i => $achievement)
+                    @if ($i < 3)
+                        <div class="card bg-gray-900 ps-2 my-2 w-md-70 mx-auto">
+                            <div class="row g-0">
+                                <div class="col-3 col-md-2 d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        @isset($achievement->image)
+                                            <img src="{{ $achievement->image }}" alt=""
+                                                class="img-fluid w-90 w-sm-90 w-md-90 border-radius-lg p-0">
+                                        @else
+                                            <div class="btn bg-gray-800 p-3">
+                                                <i class="fa-solid fa-trophy text-2xl"></i>
+                                            </div>
+                                        @endisset
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-9 col-md-10">
-                                <div class="card-body ps-0 pe-2 py-2">
-                                    <h6 class="text-white text-start">{{ $achievement->name }}</h6>
-                                    <p>{{ $achievement->description }}</p>
+                                <div class="col-9 col-md-10">
+                                    <div class="card-body ps-0 pe-2 py-2">
+                                        <h6 class="text-white text-start">{{ $achievement->name }}</h6>
+                                        <p class="text-secondary">{{ $achievement->description }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
                 <div class="my-4 text-center">
-                    <button class="btn btn-primary bg-gray-800 w-100 w-md-30">
+                    <button class="btn btn-primary bg-gray-800 w-100 w-md-30" data-bs-toggle="modal"
+                        data-bs-target="#trophies-modal">
                         Ver todos
                     </button>
                 </div>
@@ -402,12 +405,52 @@
         </div>
     </div>
     {{-- --}}
+    {{-- MODALES --}}
+    <div class="modal fade" data-bs-backdrop="static" id="trophies-modal" role="dialog"
+        aria-labelledby="trophies-modal" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content bg-gray-800">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="modal-title-default">Trofeos de {{ $videogame->name }}</h6>
+                    <button type="button" class="btn-close text-primary" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body px-0">
+                    @isset($achievements)
+                        @foreach ($achievements as $achievement)
+                            <div class="card bg-gray-900 ps-2 my-2 w-95 mx-auto">
+                                <div class="row g-0">
+                                    <div class="col-3 col-md-2 d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            @isset($achievement->image)
+                                                <img src="{{ $achievement->image }}" alt=""
+                                                    class="img-fluid w-90 w-sm-90 w-md-90 border-radius-lg p-0">
+                                            @else
+                                                <div class="btn bg-gray-800 p-3">
+                                                    <i class="fa-solid fa-trophy text-2xl"></i>
+                                                </div>
+                                            @endisset
+                                        </div>
+                                    </div>
+                                    <div class="col-9 col-md-10">
+                                        <div class="card-body ps-0 pe-2 py-2">
+                                            <h6 class="text-white text-start">{{ $achievement->name }}</h6>
+                                            <p class="text-secondary">{{ $achievement->description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endisset
+                </div>
+            </div>
+        </div>
+        {{--  --}}
+        <script>
+            document.getElementById('showDescription').addEventListener('click', (e) => {
+                document.getElementById('gameDescription').classList.toggle('text-truncate');
+                e.target.innerHTML = (e.target.textContent == "Leer más") ? "Leer menos" : "Leer más";
+            });
+        </script>
 
-    <script>
-        document.getElementById('showDescription').addEventListener('click', (e) => {
-            document.getElementById('gameDescription').classList.toggle('text-truncate');
-            e.target.innerHTML = (e.target.textContent == "Leer más") ? "Leer menos" : "Leer más";
-        });
-    </script>
-
-</div>
+    </div>

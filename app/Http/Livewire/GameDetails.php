@@ -66,8 +66,27 @@ class GameDetails extends Component
                     ));
                 }
 
-                $this->achievements = Cache::remember($g->slug . "_Achievements", 86400, fn () => (ApiServiceProvider::getGameAchievements($g->slug, 3)
+                $this->achievements = Cache::remember($g->slug . "_Achievements_Page_1", 86400, fn () => (ApiServiceProvider::getGameAchievements($g->slug, 40, 1)
                 ));
+
+                if(count($this->achievements)==40){
+                    $page=2;
+
+                    do{
+                        $results=Cache::remember($g->slug . "_Achievements_Page_".$page, 86400, fn () => (ApiServiceProvider::getGameAchievements($g->slug, 40, $page)
+                        ));
+
+                        if($results){
+                            $this->achievements = array_merge($this->achievements, $results);
+                            $page++;
+                        }else{
+                            break;
+                        }
+
+                    }while(true);
+
+                }
+
 
                 if ($this->videogame->additions_count > 0) {
                     $this->additions = Cache::remember($g->slug . "_Additions", 86400, fn () => (ApiServiceProvider::getGameAdditions($g->slug, 3)
