@@ -30,6 +30,9 @@ class Home extends Component
 
     public function render()
     {
+        $this->resultPage=Cache::remember('games_paginate', 86400, function () {
+            return $this->resultPage;
+        });
 
         Log::debug("render, before init " . count($this->games)); //TODO
 
@@ -184,7 +187,9 @@ class Home extends Component
 
     public function loadMore()
     {
-        $this->resultPage++;
+        //Lo unico que se me ha ocurrido para guardar el valor de la página
+        //es meterlo en cache, asi al recargar no se resetea, aunque lo hará por tiempo
+        $this->resultPage=Cache::increment('games_paginate', 1);
 
         $results = Cache::remember('games_page_' . $this->resultPage, 86400, function () {
             return ProvidersApiServiceProvider::getVideogames(40, $this->resultPage);
