@@ -80,11 +80,11 @@ class ApiServiceProvider extends ServiceProvider{
 
     // ** GENERAL CONSULTS **
 
-    public static function getVideogames(int $size=20){
-        define("games","{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}&page_size={$size}");
+    public static function getVideogames(int $size=20, int $page){
+        $apiRequest="{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}&page_size={$size}&page={$page}";
         try{
-            Log::info("API request: 20 games fetched");
-            return json_decode(file_get_contents(games))->results;
+            Log::info("API request: {$size} games fetched");
+            return json_decode(file_get_contents($apiRequest))->results;
         }catch(Exception $e){
             return Log::warning("API request failed, 0 games fetched!");
         }

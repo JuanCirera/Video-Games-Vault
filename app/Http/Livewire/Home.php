@@ -10,6 +10,7 @@ use App\Providers\ApiServiceProvider as ProvidersApiServiceProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Livewire\WithPagination;
 
 class Home extends Component
@@ -21,6 +22,7 @@ class Home extends Component
     public User $user;
     public bool $addedToLibrary = false, $addedToTracking = false;
     protected $videogame;
+    private int $resultPage = 1;
 
     protected $listeners = [
         "render" => "render"
@@ -29,22 +31,23 @@ class Home extends Component
     public function render()
     {
 
-        $this->games = array_splice($this->games, 0);
+        Log::debug("render, before init " . count($this->games)); //TODO
 
         if ($this->search == "") {
-            //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
-            $this->games = Cache::remember('games', 86400, function () { // NOTE: 24H de expiracion
-                return ProvidersApiServiceProvider::getVideogames();
-            });
+            if (count($this->games) <= 40) {
+                //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
+                $this->games = Cache::remember('games_page_1', 86400, function () { // NOTE: 24H de expiracion
+                    return ProvidersApiServiceProvider::getVideogames(40, 1);
+                });
+            }
         } else {
             $this->games = Cache::remember($this->search, 86400, function () {
                 return ProvidersApiServiceProvider::searchGames($this->search);
             });
-
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
-
+        Log::debug("render, after init " . count($this->games)); //TODO
         return view('livewire.home', [
             "games" => $this->games,
             "welcome_img" => $welcome_img
@@ -54,7 +57,7 @@ class Home extends Component
 
     public function mount()
     {
-        if(Auth::user()){
+        if (Auth::user()) {
             $this->user = Auth::user();
         }
     }
@@ -70,8 +73,8 @@ class Home extends Component
     {
         if ($this->user) {
 
-            foreach($this->games as $g){
-                if($g["slug"]==$slug){
+            foreach ($this->games as $g) {
+                if ($g["slug"] == $slug) {
                     $currentGame = Cache::remember($slug, 86400, fn () => (ProvidersApiServiceProvider::getVideogameDetails($slug)
                     ));
                 }
@@ -125,8 +128,8 @@ class Home extends Component
     {
         if ($this->user) {
 
-            foreach($this->games as $g){
-                if($g["slug"]==$slug){
+            foreach ($this->games as $g) {
+                if ($g["slug"] == $slug) {
                     $currentGame = Cache::remember($slug, 86400, fn () => (ProvidersApiServiceProvider::getVideogameDetails($slug)
                     ));
                 }
@@ -176,5 +179,23 @@ class Home extends Component
             return redirect(url()->previous())->with("error_msg", "El juego {$name} no se encuentra");
         }
         return redirect('login');
+    }
+
+
+    public function loadMore()
+    {
+        $this->resultPage++;
+
+        $results = Cache::remember('games_page_' . $this->resultPage, 86400, function () {
+            return ProvidersApiServiceProvider::getVideogames(40, $this->resultPage);
+        });
+
+        if ($results) {
+            // Para no perder el json y poder seguir trabajando con StdClass se hace un array_merge y se convierte
+            // a json, despues se convierte de nuevo a un array con clases StdClass como estaba en la 1a llamada a la API
+            $mergedGames = json_encode(array_merge($this->games, $results));
+            $this->games=json_decode($mergedGames);
+            $this->resetPage();
+        }
     }
 }

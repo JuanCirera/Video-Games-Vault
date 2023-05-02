@@ -1,5 +1,6 @@
 {{-- NOTE: este div NO tocarlo ni poner nada a este nivel --}}
 <div>
+    {{-- @dd($games) --}}
     {{-- Welcome and search --}}
     <div class="mb-4" style="background-image: url('{{ $welcome_img }}'); background-position: top;">
         <div class="pt-7 pb-3"
@@ -151,8 +152,9 @@
             @endforeach
         </section>
         <div class="my-4 text-center">
-            <button class="btn btn-primary w-100 w-sm-30 w-md-30" wire:click="">
-                Ver más
+            <button class="btn btn-primary w-100 w-sm-30 w-md-30" wire:click="loadMore">
+                <span wire:loading.remove wire:target="loadMore">Ver más </span>
+                <span wire:loading wire:target="loadMore">Cargando...</span>
             </button>
         </div>
     </div>
