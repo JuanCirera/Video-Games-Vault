@@ -30,6 +30,9 @@ class Home extends Component
 
     public function render()
     {
+        if($this->resultPage!=1){
+            session()->forget('resultPage');
+        }
 
         if ($this->search == "") {
             if (count($this->games) <= 40) {
