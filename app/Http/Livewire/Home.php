@@ -59,7 +59,7 @@ class Home extends Component
             $this->user = Auth::user();
         }
 
-        $this->resultPage=session('resultPage',1);
+        $this->resultPage=session()->get('resultPage',1);
     }
 
 
@@ -185,13 +185,10 @@ class Home extends Component
     public function loadMore()
     {
         //Lo unico que se me ha ocurrido para guardar el valor de la página
-        //es meterlo en cache, asi al recargar no se resetea, aunque lo hará por tiempo
-        // $this->resultPage=Cache::increment('games_paginate', 1);
-        // Log::debug("no incre, ".$this->resultPage);
-
+        //es meterlo en una var de sesion, asi al recargar no se resetea,
+        //aunque lo hará al cambiar de ruta
         $this->resultPage++;
         session(['resultPage' => $this->resultPage]);
-        // Log::debug(session('resultPage'));
 
         $results = Cache::remember('games_page_' . $this->resultPage, 86400, function () {
             return ProvidersApiServiceProvider::getVideogames(40, $this->resultPage);

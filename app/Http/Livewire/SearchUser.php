@@ -17,6 +17,8 @@ class SearchUser extends Component
 
     public function render()
     {
+        session()->forget('resultPage');
+        
         $users=User::where('username','LIKE','%'.$this->search.'%')->get();
 
         //Con esto evito que se mande el usuario admin con el resto hacia la vista

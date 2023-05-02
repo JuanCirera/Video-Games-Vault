@@ -8,6 +8,7 @@ class Contact extends Component
 {
     public function render()
     {
+        session()->forget('resultPage');
         return view('livewire.pages.contact.contact');
     }
 }

@@ -11,6 +11,8 @@ class Login extends Component
 {
     public function render()
     {
+        session()->forget('resultPage');
+
         return view('livewire.auth.login');
     }
 

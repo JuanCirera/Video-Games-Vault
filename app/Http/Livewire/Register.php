@@ -19,6 +19,7 @@ class Register extends Component
 
     public function render()
     {
+        session()->forget('resultPage');
         return view('livewire.auth.register');
     }
 

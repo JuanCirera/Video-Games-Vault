@@ -8,6 +8,7 @@ class Dashboard extends Component
 {
     public function render()
     {
+        session()->forget('resultPage');
         return view('livewire.dashboard');
     }
 }

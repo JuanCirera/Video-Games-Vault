@@ -24,6 +24,7 @@ class GameDetails extends Component
 
     public function render()
     {
+        session()->forget('resultPage');
         // TODO: si se mete un slug por url llamar al API search
         if (Auth::user()) {
             $this->user = Auth::user();
