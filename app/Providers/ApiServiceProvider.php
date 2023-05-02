@@ -80,8 +80,8 @@ class ApiServiceProvider extends ServiceProvider{
 
     // ** GENERAL CONSULTS **
 
-    public static function getVideogames(int $size=20, int $page){
-        $apiRequest="{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}&page_size={$size}&page={$page}";
+    public static function getVideogames(int $size=20, int $page=1, $orderField=""){
+        $apiRequest="{$_ENV['URL_BASE']}games?key={$_ENV['API_KEY']}&page_size={$size}&page={$page}&ordering={$orderField}";
         try{
             Log::info("API request: {$size} games fetched");
             return json_decode(file_get_contents($apiRequest))->results;

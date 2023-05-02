@@ -23,6 +23,8 @@ class Home extends Component
     public bool $addedToLibrary = false, $addedToTracking = false;
     protected $videogame;
     public $resultPage;
+    public string $field="";
+    public string $order="-";
 
     protected $listeners = [
         "render" => "render"
@@ -30,25 +32,30 @@ class Home extends Component
 
     public function render()
     {
+        //Esto es por si la vista se vuelve a cargar, para que empiece de nuevo la paginacion
         if($this->resultPage!=1){
             session()->forget('resultPage');
         }
 
-        if ($this->search == "") {
+        if ($this->search == "" && $this->field=="") {
             if (count($this->games) <= 40) {
                 //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
                 $this->games = Cache::remember('games_page_1', 86400, function () { // NOTE: 24H de expiracion
                     return ProvidersApiServiceProvider::getVideogames(40, 1);
                 });
             }
-        } else {
+        } else if ($this->field!="") {
+            $this->games = Cache::remember('games_page_1_order_by_'.$this->field, 86400, function () {
+                return ProvidersApiServiceProvider::getVideogames(40, 1, $this->field);
+            });
+        }else{
             $this->games = Cache::remember($this->search, 86400, function () {
                 return ProvidersApiServiceProvider::searchGames($this->search);
             });
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
-        // Log::debug("render, after init " . count($this->games)); //TODO
+
         return view('livewire.home', [
             "games" => $this->games,
             "welcome_img" => $welcome_img
@@ -185,6 +192,15 @@ class Home extends Component
     }
 
 
+    public function order(string $field){
+        Log::debug($this->order.$field);//TODO
+
+        $this->order=($this->order=="-")?"":"-";
+        $this->field=$this->order.$field;
+        // dd(urlencode($this->order.$field));
+    }
+
+
     public function loadMore()
     {
         //Lo unico que se me ha ocurrido para guardar el valor de la página
@@ -194,7 +210,7 @@ class Home extends Component
         session(['resultPage' => $this->resultPage]);
 
         $results = Cache::remember('games_page_' . $this->resultPage, 86400, function () {
-            return ProvidersApiServiceProvider::getVideogames(40, $this->resultPage);
+            return ProvidersApiServiceProvider::getVideogames(40, $this->resultPage, $this->field);
         });
 
         if ($results) {

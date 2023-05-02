@@ -29,27 +29,48 @@
     <div class="container">
         <div class="mb-5">
             <h4 class="text-white">Novedades y más populares</h4>
-            <form class="row mt-2 ml-2 mr-2">
+            <article class="row mt-2 ml-2 mr-2 align-items-center">
                 <div class="col-6 col-md-4">
-                    <label for="order" class="text-gray">Ordenar por: </label>
-                    <select class="form-control bg-gray-800 text-white" id="order">
-                        <option>Popularidad</option>
-                        <option>Fecha lanzamiento</option>
-                        <option>Nombre</option>
-                        <option>Ultimos añadidos</option>
-                        <option>Nota media</option>
-                    </select>
+                    <div class="dropdown mt-2">
+                        <button class="btn bg-gradient-primary dropdown-toggle w-100 w-md-auto" type="button"
+                            id="changeCategory" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ordenar por...
+                        </button>
+                        <ul class="dropdown-menu w-100 w-md-auto">
+                            <li>
+                                <a class="dropdown-item" wire:click="order('')">
+                                    Popularidad
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" wire:click="order('released')">
+                                    Fecha lanzamiento
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" wire:click="order('name')">
+                                    Nombre
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" wire:click="order('metacritic')">
+                                    Nota media
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" wire:click="order('added')">
+                                    Últimos añadidos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-6 col-md-4">
-                    {{-- <label for="paginate" class="text-gray">Viendo: </label>
-                    <select class="form-control bg-gray-800 text-white" id="paginate">
-                        <option>5</option>
-                        <option>10</option>
-                        <option>20</option>
-                        <option>25</option>
-                    </select> --}}
+                <div class="col-6 col-md-4 mx-auto">
+                    <div class="spinner-border text-primary my-0" role="status" wire:loading wire:target="order">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
-            </form>
+            </article>
         </div>
         <section class="row">
             @foreach ($games as $item)
@@ -58,14 +79,15 @@
                         <div class="card-header p-0 bg-gray-800">
                             <a href="{{ route('game.show', $item->slug) }}">
                                 <img src="{{ $item->background_image }}" class="img-fluid border-radius-lg"
-                                style="border-bottom-right-radius: 0;border-bottom-left-radius: 0">
+                                    style="border-bottom-right-radius: 0;border-bottom-left-radius: 0">
                             </a>
                         </div>
 
                         <div class="card-body pt-2">
                             <div class="row">
                                 <h4 class="col-9 card-title d-block">
-                                    <a href="{{ route('game.show', $item->slug) }}" class="link-white">{{ $item->name }}</a>
+                                    <a href="{{ route('game.show', $item->slug) }}"
+                                        class="link-white">{{ $item->name }}</a>
                                 </h4>
                                 <div class="col-3 ps-5 pe-0">
                                     <p
@@ -107,10 +129,13 @@
                             <div class="mt-4">
                                 @isset($user)
                                     @php
-                                        $v=$user->videogames()->where("title",$item->name)->first();
+                                        $v = $user
+                                            ->videogames()
+                                            ->where('title', $item->name)
+                                            ->first();
                                     @endphp
                                     @if (isset($v) &&
-                                    $user->videogames()->wherePivot("videogame_id",$v->id)->pluck("videogame_id")->first())
+                                            $user->videogames()->wherePivot('videogame_id', $v->id)->pluck('videogame_id')->first())
                                         <button class="btn bg-gray-700 text-primary"
                                             wire:click="addToLibrary('{{ $item->name }}', '{{ $item->slug }}')">
                                             <i class="fa-solid fa-check text-primary"></i> Añadido
@@ -128,8 +153,8 @@
                                 @endisset
 
                                 @isset($user)
-                                    @if ( isset($v) &&
-                                    $user->videogames()->wherePivot("videogame_id",$v->id)->wherePivot("tracked",1)->pluck("videogame_id")->first())
+                                    @if (isset($v) &&
+                                            $user->videogames()->wherePivot('videogame_id', $v->id)->wherePivot('tracked', 1)->pluck('videogame_id')->first())
                                         <button class="btn bg-gray-700 text-white"
                                             wire:click="addToTracking('{{ $item->name }}', '{{ $item->slug }}')">
                                             <i class="fa-solid fa-bookmark text-primary"></i>
