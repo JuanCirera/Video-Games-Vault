@@ -38,27 +38,27 @@
                         </button>
                         <ul class="dropdown-menu w-100 w-md-auto">
                             <li>
-                                <a class="dropdown-item" wire:click="order('')">
+                                <a class="dropdown-item" wire:click.defer="order()">
                                     Popularidad
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" wire:click="order('released')">
+                                <a class="dropdown-item" wire:click.defer="order('released')">
                                     Fecha lanzamiento
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" wire:click="order('name')">
+                                <a class="dropdown-item" wire:click.defer="order('name')">
                                     Nombre
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" wire:click="order('metacritic')">
+                                <a class="dropdown-item" wire:click.defer="order('metacritic')">
                                     Nota media
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" wire:click="order('added')">
+                                <a class="dropdown-item" wire:click.defer="order('added')">
                                     Últimos añadidos
                                 </a>
                             </li>

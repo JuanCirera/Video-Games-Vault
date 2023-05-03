@@ -17,14 +17,16 @@ class Home extends Component
 {
     use WithPagination;
 
-    public array $games = [];
+    //NOTE: El array games DEBE ser protegido o privado para evitar que livewire
+    //le cambie el checksum y salte excepcion
+    protected array $games = [];
     public string $search = "";
     public User $user;
     public bool $addedToLibrary = false, $addedToTracking = false;
     protected $videogame;
     public $resultPage;
-    public string $field="";
-    public string $order="-";
+    protected string $field="";
+    public $order="-";
 
     protected $listeners = [
         "render" => "render"
@@ -32,6 +34,7 @@ class Home extends Component
 
     public function render()
     {
+        Log::debug($this->order." orden en render");
         //Esto es por si la vista se vuelve a cargar, para que empiece de nuevo la paginacion
         if($this->resultPage!=1){
             session()->forget('resultPage');
@@ -40,18 +43,12 @@ class Home extends Component
         if ($this->search == "" && $this->field=="") {
             if (count($this->games) <= 40) {
                 //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
-                $this->games = Cache::remember('games_page_1', 86400, function () { // NOTE: 24H de expiracion
-                    return ProvidersApiServiceProvider::getVideogames(40, 1);
-                });
+                $this->games = ProvidersApiServiceProvider::getVideogames(40, 1);
             }
-        } else if ($this->field!="") {
-            $this->games = Cache::remember('games_page_1_order_by_'.$this->field, 86400, function () {
-                return ProvidersApiServiceProvider::getVideogames(40, 1, $this->field);
-            });
+        }else if ($this->field!="") {
+            $this->games = ProvidersApiServiceProvider::getVideogames(40, 1, $this->field);
         }else{
-            $this->games = Cache::remember($this->search, 86400, function () {
-                return ProvidersApiServiceProvider::searchGames($this->search);
-            });
+            $this->games = ProvidersApiServiceProvider::searchGames($this->search);
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
@@ -192,12 +189,9 @@ class Home extends Component
     }
 
 
-    public function order(string $field){
-        Log::debug($this->order.$field);//TODO
-
+    public function order(string $field=""){
         $this->order=($this->order=="-")?"":"-";
         $this->field=$this->order.$field;
-        // dd(urlencode($this->order.$field));
     }
 
 
@@ -218,6 +212,12 @@ class Home extends Component
             // a json, despues se convierte de nuevo a un array con clases StdClass como estaba en la 1a llamada a la API
             $mergedGames = json_encode(array_merge($this->games, $results));
             $this->games=json_decode($mergedGames);
+
+            // if(Cache::get('games')){
+            //     Cache::forget('games');
+            // }else{
+            //     Cache::set('games', $this->games, 86400);
+            // };
         }
     }
 }

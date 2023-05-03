@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Mail\NotifyUser;
 use App\Models\User;
+use App\Notifications\FollowUserNotify;
+use App\Notifications\UserFollow as NotificationsUserFollow;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -38,9 +40,7 @@ class UserFollow extends Component
             Auth::user()->followings()->attach($this->user_id);
 
             if(User::find($this->user_id)->notifySocial){
-                Mail::to(User::find($this->user_id)->email)->send(new NotifyUser([
-                    "content" => $mailContent
-                ]));
+                User::find($this->user_id)->notify(new FollowUserNotify(Auth::user()));
             }
         }
 

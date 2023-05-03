@@ -50,6 +50,7 @@ class GameDetails extends Component
 
         $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
         ));
+        // dd($this->games);
 
         foreach ($this->games as $g) {
             if ($g->slug == $this->url) {
