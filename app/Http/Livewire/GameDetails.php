@@ -18,16 +18,62 @@ class GameDetails extends Component
     public User $user;
     public array $games = [], $additions = [];
     protected $videogame;
-    public string $url="";
-    public bool $addedToLibrary=false, $addedToTracking=false;
+    public string $url = "";
+    public bool $addedToLibrary = false, $addedToTracking = false;
     public $screenshots, $stores, $gameStores, $achievements;
 
     public function render()
     {
         session()->forget('resultPage');
-        // TODO: si se mete un slug por url llamar al API search
+
         if (Auth::user()) {
             $this->user = Auth::user();
+        }
+
+        $this->videogame = Cache::remember($this->url, 86400, fn () => (ApiServiceProvider::getVideogameDetails($this->url)
+        ));
+
+        if (!$this->videogame) {
+            back();
+        }
+
+        if ($this->videogame) {
+
+            if ($this->videogame->screenshots_count > 0) {
+                $this->screenshots = Cache::remember($this->videogame->slug . "_Screenshots", 86400, fn () => (ApiServiceProvider::getGameScreenshots($this->videogame->slug, 3)
+                ));
+            }
+
+            $this->achievements = Cache::remember($this->videogame->slug . "_Achievements_Page_1", 86400, fn () => (ApiServiceProvider::getGameAchievements($this->videogame->slug, 40, 1)
+            ));
+
+            if (count($this->achievements) == 40) {
+                $page = 2;
+
+                do {
+                    $results = Cache::remember($this->videogame->slug . "_Achievements_Page_" . $page, 86400, fn () => (ApiServiceProvider::getGameAchievements($this->videogame->slug, 40, $page)
+                    ));
+
+                    if ($results) {
+                        $this->achievements = array_merge($this->achievements, $results);
+                        $page++;
+                    } else {
+                        break;
+                    }
+                } while (true);
+            }
+
+
+            if ($this->videogame->additions_count > 0) {
+                $this->additions = Cache::remember($this->videogame->slug . "_Additions", 86400, fn () => (ApiServiceProvider::getGameAdditions($this->videogame->slug, 3)
+                ));
+            }
+
+            $this->stores = Cache::remember("stores", 86400, fn () => (ApiServiceProvider::getStores()
+            ));
+
+            $this->gameStores = Cache::remember($this->videogame->slug . "_Stores", 86400, fn () => (ApiServiceProvider::getGameStores($this->videogame->slug)
+            ));
         }
 
         return view(
@@ -41,88 +87,105 @@ class GameDetails extends Component
                 'gameStores' => $this->gameStores,
             ]
         );
-
     }
 
-    public function mount(){
+    public function mount()
+    {
 
-        $this->url=substr(parse_url(url()->current(), PHP_URL_PATH), 7);
+        $this->url = substr(parse_url(url()->current(), PHP_URL_PATH), 7);
 
-        $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
-        ));
-        // dd($this->games);
+        // TODO: borrar esto
+        // $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
+        // ));
 
-        foreach ($this->games as $g) {
-            if ($g->slug == $this->url) {
-                $this->videogame = Cache::remember($g->slug, 86400, fn () => (ApiServiceProvider::getVideogameDetails($g->slug)
-                ));
-            }
-        }
+        // if (!$this->games && !count($this->games)) {
+        //     $this->videogame = Cache::remember($this->url, 86400, fn () => (ApiServiceProvider::getVideogameDetails($this->url)
+        //     ));
+        // } else {
+        //     foreach ($this->games as $g) {
+        //         if ($g->slug == $this->url) {
+        //             $this->videogame = Cache::remember($g->slug, 86400, fn () => (ApiServiceProvider::getVideogameDetails($g->slug)
+        //             ));
+        //         }
+        //     }
+        // }
+        // $this->videogame = Cache::remember($this->url, 86400, fn () => (
+        //     ApiServiceProvider::getVideogameDetails($this->url)
+        // ));
 
-        foreach ($this->games as $g) {
+        // if(!$this->videogame){
+        //     return redirect(url()->previous())->with('error_msg','El videojuego que buscas no se encuentra');
+        // }
 
-            if ($g->slug  == $this->url) {
+        // // dd($this->videogame);
 
-                if ($this->videogame->screenshots_count > 0) {
-                    $this->screenshots = Cache::remember($g->slug . "_Screenshots", 86400, fn () => (ApiServiceProvider::getGameScreenshots($g->slug, 3)
-                    ));
-                }
+        // // foreach ($this->games as $g) {
 
-                $this->achievements = Cache::remember($g->slug . "_Achievements_Page_1", 86400, fn () => (ApiServiceProvider::getGameAchievements($g->slug, 40, 1)
-                ));
+        // //     if ($g->slug  == $this->url) {
+        // if ($this->videogame) {
 
-                if(count($this->achievements)==40){
-                    $page=2;
+        //     if ($this->videogame->screenshots_count > 0) {
+        //         $this->screenshots = Cache::remember($this->videogame->slug . "_Screenshots", 86400, fn () => (ApiServiceProvider::getGameScreenshots($this->videogame->slug, 3)
+        //         ));
+        //     }
 
-                    do{
-                        $results=Cache::remember($g->slug . "_Achievements_Page_".$page, 86400, fn () => (ApiServiceProvider::getGameAchievements($g->slug, 40, $page)
-                        ));
+        //     $this->achievements = Cache::remember($this->videogame->slug . "_Achievements_Page_1", 86400, fn () => (ApiServiceProvider::getGameAchievements($this->videogame->slug, 40, 1)
+        //     ));
 
-                        if($results){
-                            $this->achievements = array_merge($this->achievements, $results);
-                            $page++;
-                        }else{
-                            break;
-                        }
+        //     if (count($this->achievements) == 40) {
+        //         $page = 2;
 
-                    }while(true);
+        //         do {
+        //             $results = Cache::remember($this->videogame->slug . "_Achievements_Page_" . $page, 86400, fn () => (ApiServiceProvider::getGameAchievements($this->videogame->slug, 40, $page)
+        //             ));
 
-                }
+        //             if ($results) {
+        //                 $this->achievements = array_merge($this->achievements, $results);
+        //                 $page++;
+        //             } else {
+        //                 break;
+        //             }
+        //         } while (true);
+        //     }
 
 
-                if ($this->videogame->additions_count > 0) {
-                    $this->additions = Cache::remember($g->slug . "_Additions", 86400, fn () => (ApiServiceProvider::getGameAdditions($g->slug, 3)
-                    ));
-                }
+        //     if ($this->videogame->additions_count > 0) {
+        //         $this->additions = Cache::remember($this->videogame->slug . "_Additions", 86400, fn () => (ApiServiceProvider::getGameAdditions($this->videogame->slug, 3)
+        //         ));
+        //     }
 
-                $this->stores = Cache::remember("stores", 86400, fn () => (ApiServiceProvider::getStores()
-                ));
+        //     $this->stores = Cache::remember("stores", 86400, fn () => (ApiServiceProvider::getStores()
+        //     ));
 
-                $this->gameStores = Cache::remember($g->slug . "_Stores", 86400, fn () => (ApiServiceProvider::getGameStores($g->slug)
-                ));
-            }
-        }
+        //     $this->gameStores = Cache::remember($this->videogame->slug. "_Stores", 86400, fn () => (ApiServiceProvider::getGameStores($this->videogame->slug)
+        //     ));
+        // }
+        //     }
+        // }
 
-        if(isset($this->user)){
+        if (isset($this->user)) {
 
             $userGames = $this->user->videogames()->get();
 
             foreach ($userGames as $ug) {
                 if ($ug->title == $this->videogame->name) {
-                    $this->addedToLibrary=true;
+                    $this->addedToLibrary = true;
                     break;
                 }
             }
 
             foreach ($userGames as $ug) {
-                if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id",$ug->id)->wherePivot("tracked",1)->first()) {
-                    $this->addedToTracking=true;
+                if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id", $ug->id)->wherePivot("tracked", 1)->first()) {
+                    $this->addedToTracking = true;
                     break;
                 }
             }
-
         }
+    }
 
+    // Estas funciones sirven para volver atras con un mensaje desde el metodo render
+    private function back(){
+        return redirect(url()->previous())->with('error_msg', 'El videojuego que buscas no se encuentra');
     }
 
     public function addToLibrary(string $name, string $slug)
@@ -164,7 +227,7 @@ class GameDetails extends Component
                 ]);
             }
 
-            $this->user->videogames()->attach(Videogame::where('title',$cachedGame->name)->pluck('id'));
+            $this->user->videogames()->attach(Videogame::where('title', $cachedGame->name)->pluck('id'));
 
             return redirect(url()->previous())->with("success_msg", "Juego añadido a tu biblioteca");
         }
@@ -183,7 +246,7 @@ class GameDetails extends Component
 
             //Si el usuario tiene ya añadido el juego a su biblioteca se devuelve true y no se añade
             foreach ($this->user->videogames as $ug) {
-                if ($ug->title == $cachedGame->name && $this->user->videogames()->wherePivot("videogame_id",$ug->id)->wherePivot("tracked",1)->first()) {
+                if ($ug->title == $cachedGame->name && $this->user->videogames()->wherePivot("videogame_id", $ug->id)->wherePivot("tracked", 1)->first()) {
                     $this->user->videogames()->updateExistingPivot($ug->id, ["tracked" => 0]);
 
                     return redirect("/games/{$cachedGame->slug}")->with("info_msg", "Has dejado de seguir a {$cachedGame->name}");
@@ -213,9 +276,9 @@ class GameDetails extends Component
                     "image" => $cachedGame->background_image,
                 ]);
 
-                $vg=Videogame::where("title","like",$cachedGame->name)->first();
+                $vg = Videogame::where("title", "like", $cachedGame->name)->first();
                 $vg->categories()->attach(5);
-                $this->user->videogames()->attach(Videogame::where('title',$cachedGame->name)->pluck('id'));
+                $this->user->videogames()->attach(Videogame::where('title', $cachedGame->name)->pluck('id'));
             }
 
             return redirect(url()->previous())->with("success_msg", "Juego añadido a tu lista de seguimiento");
@@ -223,5 +286,4 @@ class GameDetails extends Component
 
         return redirect(url()->previous())->with("error_msg", "El juego {$name} no se encuentra");
     }
-
 }

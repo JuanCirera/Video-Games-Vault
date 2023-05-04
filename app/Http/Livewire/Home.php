@@ -43,12 +43,18 @@ class Home extends Component
         if ($this->search == "" && $this->field=="") {
             if (count($this->games) <= 40) {
                 //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
-                $this->games = ProvidersApiServiceProvider::getVideogames(40, 1);
+                $this->games = Cache::remember('games', 86400, fn () => ( // NOTE: 24H de expiracion
+                    ProvidersApiServiceProvider::getVideogames(40, 1)
+                ));
             }
         }else if ($this->field!="") {
-            $this->games = ProvidersApiServiceProvider::getVideogames(40, 1, $this->field);
+            $this->games = Cache::remember('games'.$this->field, 86400, fn () => (
+                ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
+            ));
         }else{
-            $this->games = ProvidersApiServiceProvider::searchGames($this->search);
+            $this->games =  Cache::remember($this->search, 86400, fn () => (
+                ProvidersApiServiceProvider::searchGames($this->search)
+            ));
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
@@ -213,11 +219,12 @@ class Home extends Component
             $mergedGames = json_encode(array_merge($this->games, $results));
             $this->games=json_decode($mergedGames);
 
-            // if(Cache::get('games')){
-            //     Cache::forget('games');
-            // }else{
-            //     Cache::set('games', $this->games, 86400);
-            // };
+            //Esto es necesario para que a los juegos iniciales en cache se les sume los nuevos que se han cargado en la vista
+            if(Cache::get('games')){
+                Cache::forget('games');
+            }else{
+                Cache::set('games', $this->games, 86400);
+            };
         }
     }
 }

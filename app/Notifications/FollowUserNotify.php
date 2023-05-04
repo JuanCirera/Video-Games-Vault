@@ -39,7 +39,7 @@ class FollowUserNotify extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->greeting("¡Te haces conocido!") //TODO
+                    ->greeting("¡Te haces conocido!") 
                     ->line('El usuario '.$this->newFollower->username.' te ha seguido')
                     ->action('Perfil seguidor', url('/profile/'.$this->newFollower->username));
     }

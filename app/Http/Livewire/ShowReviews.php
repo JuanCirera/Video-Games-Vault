@@ -28,21 +28,18 @@ class ShowReviews extends Component
             $this->user = Auth::user();
         }
 
-        $this->games = Cache::remember('games', 86400, fn () => (ApiServiceProvider::getVideogames()
+        $this->videogame = Cache::remember($this->url, 86400, fn () => (ApiServiceProvider::getVideogameDetails($this->url)
         ));
 
-        foreach ($this->games as $g) {
-            if ($g->slug == $this->url) {
-                $this->videogame = Cache::remember($g->slug, 86400, fn () => (ApiServiceProvider::getVideogameDetails($g->slug)
-                ));
-            }
+        if (!$this->videogame) {
+            $this->back();
         }
 
-        if(isset($this->videogame)){
+        if($this->videogame){
             $this->reviews = Review::where("videogame_id",$this->videogame->id)->orderBy($this->field,$this->order)->get();
         }
 
-        if(isset($this->user)){
+        if($this->user){
             $this->reviews = Review::where("user_id",$this->user->id)->orderBy($this->field,$this->order)->get();
         }
 
@@ -53,6 +50,10 @@ class ShowReviews extends Component
             "user" => isset($this->user)?$this->user:""
         ]);
 
+    }
+
+    private function back(){
+        return redirect(url()->previous())->with('error_msg', 'El videojuego que buscas no se encuentra');
     }
 
     public function mount(){
