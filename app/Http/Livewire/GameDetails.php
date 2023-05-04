@@ -76,6 +76,25 @@ class GameDetails extends Component
             ));
         }
 
+        if (isset($this->user)) {
+
+            $userGames = $this->user->videogames()->get();
+
+            foreach ($userGames as $ug) {
+                if ($ug->title == $this->videogame->name) {
+                    $this->addedToLibrary = true;
+                    break;
+                }
+            }
+
+            foreach ($userGames as $ug) {
+                if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id", $ug->id)->wherePivot("tracked", 1)->first()) {
+                    $this->addedToTracking = true;
+                    break;
+                }
+            }
+        }
+
         return view(
             'livewire.pages.games.game-details',
             [
@@ -163,24 +182,24 @@ class GameDetails extends Component
         //     }
         // }
 
-        if (isset($this->user)) {
+        // if (isset($this->user)) {
 
-            $userGames = $this->user->videogames()->get();
+        //     $userGames = $this->user->videogames()->get();
 
-            foreach ($userGames as $ug) {
-                if ($ug->title == $this->videogame->name) {
-                    $this->addedToLibrary = true;
-                    break;
-                }
-            }
+        //     foreach ($userGames as $ug) {
+        //         if ($ug->title == $this->videogame->name) {
+        //             $this->addedToLibrary = true;
+        //             break;
+        //         }
+        //     }
 
-            foreach ($userGames as $ug) {
-                if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id", $ug->id)->wherePivot("tracked", 1)->first()) {
-                    $this->addedToTracking = true;
-                    break;
-                }
-            }
-        }
+        //     foreach ($userGames as $ug) {
+        //         if ($ug->title == $this->videogame->name && $this->user->videogames()->wherePivot("videogame_id", $ug->id)->wherePivot("tracked", 1)->first()) {
+        //             $this->addedToTracking = true;
+        //             break;
+        //         }
+        //     }
+        // }
     }
 
     // Estas funciones sirven para volver atras con un mensaje desde el metodo render
@@ -275,11 +294,9 @@ class GameDetails extends Component
                     "additions" => $cachedGame->additions_count,
                     "image" => $cachedGame->background_image,
                 ]);
-
-                $vg = Videogame::where("title", "like", $cachedGame->name)->first();
-                $vg->categories()->attach(5);
-                $this->user->videogames()->attach(Videogame::where('title', $cachedGame->name)->pluck('id'));
             }
+
+            $this->user->videogames()->attach(Videogame::where('title', $cachedGame->name)->pluck('id'));
 
             return redirect(url()->previous())->with("success_msg", "Juego añadido a tu lista de seguimiento");
         }
