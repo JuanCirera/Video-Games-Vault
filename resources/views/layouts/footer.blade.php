@@ -29,7 +29,12 @@
 
                 </div>
                 <div id="version" class="text-center text-sm">
-                    <small class="my-0 text-center">v0.1 alpha</small>
+                    <small class="my-0 text-center">
+                        @php
+                            $version=env('APP_VERSION')
+                        @endphp
+                        v{{$version}}
+                    </small>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-4 text-center text-sm pt-4" id="license">
