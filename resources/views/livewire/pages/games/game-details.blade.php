@@ -47,7 +47,16 @@
                     @endphp
                 </h5>
                 <h6 class="text-center text-white">
-                    {{ date('d M, Y', strtotime($videogame->released)) }}
+                    {{-- INFO:
+                        Si el juego no tiene fecha de lanzamiento el campo released devuelve null
+                        por lo que un null por parametro en la funcion date devuelve la fecha en la que
+                        se terminó UNIX 1 de enero de  1970, desde donde empieza a 'contar' el tiempo.
+                    --}}
+                    @if ($videogame->released)
+                        {{ date('d M, Y', strtotime($videogame->released)) }}
+                    @else
+                        Sin fecha de lanzamiento
+                    @endif
                 </h6>
             </div>
         </div>
