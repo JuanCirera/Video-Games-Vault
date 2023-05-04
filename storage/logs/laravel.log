@@ -29762,3 +29762,5 @@ Ensure that the [name, id, data] of the Livewire component wasn't tampered with 
 [2023-05-04 09:57:36] local.DEBUG: - orden en render  
 [2023-05-04 09:57:40] local.DEBUG: - orden en render  
 [2023-05-04 09:57:43] local.DEBUG: - orden en render  
+[2023-05-04 09:59:36] local.INFO: API request: tomb-raider achievements fetched  
+[2023-05-04 09:59:36] local.WARNING: API request for tomb-raider achievements failed!  

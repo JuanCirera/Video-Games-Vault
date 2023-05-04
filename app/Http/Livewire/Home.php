@@ -37,7 +37,6 @@ class Home extends Component
 
     public function render()
     {
-        Log::debug($this->order." orden en render");
         //Esto es por si la vista se vuelve a cargar, para que empiece de nuevo la paginacion
         if($this->resultPage!=1){
             session()->forget('resultPage');

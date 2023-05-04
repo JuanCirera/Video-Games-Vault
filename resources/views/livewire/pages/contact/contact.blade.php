@@ -12,21 +12,24 @@
             <h4 class="text-white">Contacto</h4>
         </div>
         <hr>
-        <div class="d-flex flex-wrap">
-            <div class="col-12 col-sm-12 col-md-6">
-                <div class="form-group text-start">
-                    <label for="email" class="text-white">Email</label>
-                    <input type="email" class="form-control bg-gray-800 text-white" id="email" wire:model="email"
-                    placeholder="Introduce tu email">
-                    @error('email')
-                        <p class="text-warning">{{ $message }}</p>
-                    @enderror
+        <h6 class="text-center py-2">Contáctanos para lo que necesites, esuchamos sugerencias</h6>
+        <div class="d-flex flex-wrap w-md-60 mx-auto">
+            @guest
+                <div class="col-12">
+                    <div class="form-group text-start">
+                        <label for="email" class="text-white">Email</label>
+                        <input type="email" class="form-control bg-gray-800 text-white" id="email" wire:model="email"
+                            placeholder="Introduce tu email">
+                        @error('email')
+                            <p class="text-warning">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6">
+            @endguest
+            <div class="col-12">
                 <div class="form-group text-start">
                     <label for="content" class="text-white">Motivo del contacto</label>
-                    <textarea class="form-control bg-gray-800 text-white" wire:model="content"></textarea>
+                    <textarea class="form-control bg-gray-800 text-white" wire:model="content" rows="7"></textarea>
                     @error('content')
                         <p class="text-warning">{{ $message }}</p>
                     @enderror
@@ -35,7 +38,9 @@
         </div>
         <div class="text-center">
             <button class="btn btn-primary my-0" wire:click="send">
-                <i class="fas fa-paper-plane"></i> Enviar
+                <i class="fas fa-paper-plane"></i>
+                <span wire:loading.remove wire:target="send">Enviar</span> 
+                <span wire:loading wire:target="send">Enviando...</span>
             </button>
         </div>
     </div>

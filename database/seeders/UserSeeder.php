@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'username' => 'admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'videogamesvault111@gmail.com',
             'password' => 'password',
             'avatar' => "https://ui-avatars.com/api/?name=admin&background=02B3E4&color=fff&bold=true",
             "created_at" => now()
