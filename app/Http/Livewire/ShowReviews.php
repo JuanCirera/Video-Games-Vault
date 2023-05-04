@@ -39,7 +39,7 @@ class ShowReviews extends Component
             $this->reviews = Review::where("videogame_id",$this->videogame->id)->orderBy($this->field,$this->order)->get();
         }
 
-        if($this->user){
+        if(isset($this->user)){
             $this->reviews = Review::where("user_id",$this->user->id)->orderBy($this->field,$this->order)->get();
         }
 

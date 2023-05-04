@@ -245,7 +245,9 @@
                                 break;
                             @endphp
                         @else
-                            <p>Los requisitos no están disponibles</p>
+                            <p class="text-secondary">
+                                <i class="fa-solid fa-circle-exclamation"></i> Los requisitos no están disponibles
+                            </p>
                             @php
                                 break;
                             @endphp
@@ -310,7 +312,9 @@
                     </article>
                 @endforeach
             @else
-                <p>Este juego no tiene expansiones ni ediciones especiales</p>
+                <p class="text-secondary">
+                    <i class="fa-solid fa-circle-info"></i> Este juego no tiene expansiones ni ediciones especiales
+                </p>
             @endif
         </section>
         {{--  --}}
@@ -366,13 +370,22 @@
                     @endif
                 @endforeach
                 <div class="my-4 text-center">
-                    <button class="btn btn-primary bg-gray-800 w-100 w-md-30" data-bs-toggle="modal"
-                        data-bs-target="#trophies-modal">
-                        Ver todos
-                    </button>
+                    @if (count($achievements))
+                        <button class="btn btn-primary bg-gray-800 w-100 w-md-30" data-bs-toggle="modal"
+                            data-bs-target="#trophies-modal">
+                            Ver todos
+                        </button>
+                    @else
+                        <p class="text-secondary">
+                            <i class="fas fa-circle-info"></i> Este juego no tiene trofeos
+                        </p>
+                    @endif
+
                 </div>
             @else
-                <p>Los trofeos no están diponibles en este momento</p>
+                <p class="text-secondary">
+                    <i class="fa-solid fa-circle-exclamation"></i> Los trofeos no están diponibles en este momento
+                </p>
             @endisset
         </section>
         {{--  --}}
@@ -405,6 +418,9 @@
         </div>
     </div>
     {{-- --}}
+
+    @include('layouts.footers.auth.footer')
+
     {{-- MODALES --}}
     <div class="modal fade" data-bs-backdrop="static" id="trophies-modal" role="dialog"
         aria-labelledby="trophies-modal" aria-hidden="true" wire:ignore.self>
@@ -412,7 +428,8 @@
             <div class="modal-content bg-gray-800">
                 <div class="modal-header">
                     <h6 class="modal-title" id="modal-title-default">Trofeos de {{ $videogame->name }}</h6>
-                    <button type="button" class="btn-close text-primary" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn-close text-primary" data-bs-dismiss="modal"
+                        aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body px-0">

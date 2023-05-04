@@ -54,7 +54,10 @@
                                     Inicio
                                 </a>
                             </li>
-                            <li class="nav-item">
+
+                            {{-- En un principio habría más vistas, pero no ha dado tiempo --}}
+
+                            {{-- <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('home') }}">
                                     <i class="fas fa-gamepad opacity-6 me-1"></i>
                                     Plataformas
@@ -77,11 +80,24 @@
                                     <i class="fas fa-store opacity-6 me-1"></i>
                                     Tiendas
                                 </a>
-                            </li>
+                            </li> --}}
+                            
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('user.search') }}">
                                     <i class="fas fa-user-plus opacity-6 me-1"></i>
                                     Buscar jugadores
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-2" href="{{ route('contact') }}">
+                                    <i class="fa-solid fa-envelope opacity-6 me-1"></i>
+                                    Contacto
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-2" href="{{ route('about') }}">
+                                    <i class="fas fa-info opacity-6 me-1"></i>
+                                    Sobre nosotros
                                 </a>
                             </li>
                         </ul>
