@@ -20,6 +20,9 @@ class Home extends Component
     //NOTE: El array games DEBE ser protegido o privado para evitar que livewire
     //le cambie el checksum y salte excepcion
     protected array $games = [];
+    //Sigo necesitando el array en otras funciones, asi que publico otro para livewire con los
+    // datos del protegido
+    public array $publicGames = [];
     public string $search = "";
     public User $user;
     public bool $addedToLibrary = false, $addedToTracking = false;
@@ -46,15 +49,18 @@ class Home extends Component
                 $this->games = Cache::remember('games', 86400, fn () => ( // NOTE: 24H de expiracion
                     ProvidersApiServiceProvider::getVideogames(40, 1)
                 ));
+                $this->publicGames=$this->games;//TODO
             }
         }else if ($this->field!="") {
             $this->games = Cache::remember('games'.$this->field, 86400, fn () => (
                 ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
             ));
+            $this->publicGames=$this->games;//TODO
         }else{
             $this->games =  Cache::remember($this->search, 86400, fn () => (
                 ProvidersApiServiceProvider::searchGames($this->search)
             ));
+            $this->publicGames=$this->games;//TODO
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
@@ -86,7 +92,9 @@ class Home extends Component
     {
         if ($this->user) {
 
-            foreach ($this->games as $g) {
+            // dd($this->publicGames);
+
+            foreach ($this->publicGames as $g) {
                 if ($g["slug"] == $slug) {
                     $currentGame = Cache::remember($slug, 86400, fn () => (ProvidersApiServiceProvider::getVideogameDetails($slug)
                     ));
@@ -94,7 +102,7 @@ class Home extends Component
             }
 
             //Se comprueba si el juego esta en cache
-            if ($currentGame) {
+            if (isset($currentGame)) {
 
                 //Si el usuario tiene ya añadido el juego a su biblioteca se devuelve true y no se añade
                 foreach ($this->user->videogames as $ug) {
@@ -141,7 +149,7 @@ class Home extends Component
     {
         if ($this->user) {
 
-            foreach ($this->games as $g) {
+            foreach ($this->publicGames as $g) {
                 if ($g["slug"] == $slug) {
                     $currentGame = Cache::remember($slug, 86400, fn () => (ProvidersApiServiceProvider::getVideogameDetails($slug)
                     ));
