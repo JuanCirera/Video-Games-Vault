@@ -428,7 +428,7 @@
     </div>
     {{-- --}}
 
-    @include('layouts.footers.auth.footer')
+    @include('layouts.footer')
 
     {{-- MODALES --}}
     <div class="modal fade" data-bs-backdrop="static" id="trophies-modal" role="dialog"

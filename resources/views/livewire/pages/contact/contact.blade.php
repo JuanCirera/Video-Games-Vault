@@ -39,10 +39,10 @@
         <div class="text-center">
             <button class="btn btn-primary my-0" wire:click="send">
                 <i class="fas fa-paper-plane"></i>
-                <span wire:loading.remove wire:target="send">Enviar</span> 
+                <span wire:loading.remove wire:target="send">Enviar</span>
                 <span wire:loading wire:target="send">Enviando...</span>
             </button>
         </div>
     </div>
-    @include('layouts.footers.auth.footer')
+    @include('layouts.footer')
 </div>

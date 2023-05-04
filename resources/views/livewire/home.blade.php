@@ -183,5 +183,5 @@
             </button>
         </div>
     </div>
-    @include('layouts.footers.auth.footer')
+    @include('layouts.footer')
 </div>

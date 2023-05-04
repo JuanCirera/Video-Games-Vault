@@ -182,7 +182,7 @@
         </section>
     </div>
 
-    @include('layouts.footers.auth.footer')
+    @include('layouts.footer')
 
     <script>
         //NAV

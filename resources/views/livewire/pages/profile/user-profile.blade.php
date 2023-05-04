@@ -216,6 +216,6 @@
 
     </script>
 
-    @include('layouts.footers.auth.footer')
+    @include('layouts.footer')
 
 </div>

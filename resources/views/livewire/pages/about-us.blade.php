@@ -23,5 +23,5 @@
             comentario o sugerencia, no dudes en ponerte en contacto con nosotros en cualquier momento.
         </p>
     </div>
-    @include('layouts.footers.auth.footer')
+    @include('layouts.footer')
 </div>
