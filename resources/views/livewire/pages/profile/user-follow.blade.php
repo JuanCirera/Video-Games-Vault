@@ -3,6 +3,9 @@
         <button class="btn bg-gradient-primary border-radius-2xl" wire:click.prevent="follow">
             {{-- <i class="fas fa-user-plus"></i>  --}}
             Seguir
+            <span class="spinner-border spinner-border-sm text-white" role="status" wire:loading wire:target="follow">
+                <span class="visually-hidden">Loading...</span>
+            </span>
         </button>
     @else
         <button class="btn btn-outline-secondary border-radius-2xl" wire:click.prevent="follow">
