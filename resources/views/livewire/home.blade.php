@@ -42,16 +42,17 @@
                                     Popularidad
                                 </a>
                             </li>
-                            <li>
+                            {{-- TODO: reventada al ordenar --}}
+                            {{-- <li>
                                 <a class="dropdown-item" wire:click.defer="order('released')">
                                     Fecha lanzamiento
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" wire:click.defer="order('name')">
+                                <a class="dropdown-item" wire:click.defer.500ms="order('name')">
                                     Nombre
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a class="dropdown-item" wire:click.defer="order('metacritic')">
                                     Nota media
@@ -75,7 +76,7 @@
         <section class="row">
             @foreach ($games as $item)
                 <div class="col-12 col-sm-12 col-md-4">
-                    <div class="card bg-gray-800 mx-auto mb-4" wire:key="{{ $item->id }}">
+                    <div class="card bg-gray-800 mx-auto mb-4">
                         <div class="card-header p-0 bg-gray-800">
                             <a href="{{ route('game.show', $item->slug) }}">
                                 <img src="{{ $item->background_image }}" class="img-fluid border-radius-lg"

@@ -7,10 +7,13 @@ use App\Models\User;
 use App\Models\Videogame;
 use Livewire\Component;
 use App\Providers\ApiServiceProvider as ProvidersApiServiceProvider;
+use Error;
+use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Livewire\Exceptions\CorruptComponentPayloadException;
 use Livewire\WithPagination;
 
 class Home extends Component
@@ -19,10 +22,10 @@ class Home extends Component
 
     //NOTE: El array games DEBE ser protegido o privado para evitar que livewire
     //le cambie el checksum y salte excepcion
-    protected array $games = [];
+    public array $games = [];
     //Sigo necesitando el array en otras funciones, asi que publico otro para livewire con los
     // datos del protegido
-    public array $publicGames = [];
+    // public array $publicGames = [];
     public string $search = "";
     public User $user;
     public bool $addedToLibrary = false, $addedToTracking = false;
@@ -37,6 +40,8 @@ class Home extends Component
 
     public function render()
     {
+       // $this->publicGames=[];
+       $this->games=[];
         //Esto es por si la vista se vuelve a cargar, para que empiece de nuevo la paginacion
         if($this->resultPage!=1){
             session()->forget('resultPage');
@@ -48,24 +53,61 @@ class Home extends Component
                 $this->games = Cache::remember('games', 86400, fn () => ( // NOTE: 24H de expiracion
                     ProvidersApiServiceProvider::getVideogames(40, 1)
                 ));
-                $this->publicGames=$this->games;//TODO
+                // $this->publicGames=$this->games;//TODO
             }
         }else if ($this->field!="") {
-            $this->games = Cache::remember('games'.$this->field, 86400, fn () => (
-                ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
-            ));
-            $this->publicGames=$this->games;//TODO
+            //TODO:
+            Log::debug("CONDICION CORRECTA");
+
+            Log::debug("INICIO API");
+                log::debug(ProvidersApiServiceProvider::getVideogames(40, 1, $this->field));
+                Log::debug("FIN API");
+
+                // Log::debug("INICIO CACHE");
+                // log::debug(ProvidersApiServiceProvider::getVideogames(40, 1, $this->field));
+                // Log::debug("FIN CACHE");
+            // try{
+                $this->games=Cache::remember('games'.$this->field, 86400, fn () => (
+                    ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
+                ));
+                // Log::debug($this->games=Cache::remember('games'.$this->field, 86400, fn () => (
+                //     ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
+                // )));
+
+                // $cache=ProvidersApiServiceProvider::getVideogames(40, 1, $this->field);
+                // if(isset($cache)){
+                //     try{
+                //         $this->games = json_decode(json_encode($cache));
+                //     }catch(CorruptComponentPayloadException $e){
+                //         Log::warning("Fail to fetch games ordering by ".$this->field);
+                //     }catch(Exception $e){
+                //         Log::warning("Unknown exception fetching games ordering by ".$this->field);
+                //     }catch(Error $e){
+                //         Log::warning("Unknown error fetching games ordering by ".$this->field);
+                //     }
+                // }
+
+
+                // Log::debug(ProvidersApiServiceProvider::getVideogames(40, 1, $this->field));
+
+            // }catch(CorruptComponentPayloadException $e){
+            //     Log::warning("Fail to fetch games ordering by ".$this->field);
+            // }catch(Exception $e){
+            //     Log::warning("Unknown error fetching games ordering by ".$this->field);
+            // }
+
+            // $this->publicGames=$this->games;//TODO
         }else{
             $this->games =  Cache::remember($this->search, 86400, fn () => (
                 ProvidersApiServiceProvider::searchGames($this->search)
             ));
-            $this->publicGames=$this->games;//TODO
+            // $this->publicGames=$this->games;//TODO
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
 
         return view('livewire.home', [
-            "games" => $this->games,
+           // "games" => $this->games, TODO:
             "welcome_img" => $welcome_img
         ]); //NOTE: el compact se puede cambiar por un array normal, asi se puede mandar de todo, no solo un string
 
@@ -78,6 +120,7 @@ class Home extends Component
         }
 
         $this->resultPage=session()->get('resultPage',1);
+        // $this->games=[];
     }
 
 
