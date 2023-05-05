@@ -78,11 +78,27 @@
                                     {{ $review->user()->where('id', $review->user_id)->first()->username }}
                                 </p>
                             </div>
-                            <div class="col-2" style="text-align: right;">
-                                {{ $review->likes }} <i class="fa-solid fa-thumbs-up"></i>
+                            <div class="col-2 px-2" style="text-align: right;">
+                                <a id="like"
+                                @if (count($user->reviewsLiked()->get()) && $user->reviewsLiked()->wherePivot("review_id",$review->id)->get())
+                                    class="cursor-pointer text-primary"
+                                @else
+                                    class="cursor-pointer text-secondary"
+                                @endif
+                                    wire:click="like({{$review->id}})">
+                                    <i class="fa-solid fa-thumbs-up"></i> {{ $review->likes }}
+                                </a>
                             </div>
-                            <div class="col-2">
-                                {{ $review->dislikes }} <i class="fa-solid fa-thumbs-down"></i>
+                            <div class="col-2 px-2">
+                                <a id="dislike"
+                                @if (count($user->reviewsDisliked()->get()) && count($user->reviewsDisliked()->wherePivot("review_id",$review->id)->get()))
+                                    class="cursor-pointer text-danger"
+                                @else
+                                    class="cursor-pointer text-secondary"
+                                @endif
+                                    wire:click="dislike({{$review->id}})">
+                                    <i class="fa-solid fa-thumbs-down"></i> {{ $review->dislikes }}
+                                </a>
                             </div>
                         </div>
                     </div>

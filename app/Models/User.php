@@ -67,6 +67,14 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+    public function reviewsLiked(){
+        return $this->belongsToMany(Review::class, 'user_like_review', 'user_id', 'review_id')->withTimestamps();
+    }
+
+    public function reviewsDisliked(){
+        return $this->belongsToMany(Review::class, 'user_dislike_review', 'user_id', 'review_id')->withTimestamps();
+    }
+
     // FOLLOWERS SYSTEM
     // Se relaciona a si mismo, teniendo cada relacion una FK distinta en la tabla pivote
     public function followers(){

@@ -18,4 +18,12 @@ class Review extends Model
     public function videogame(){
         return $this->belongsTo(Videogame::class);
     }
+
+    public function usersLiked(){
+        return $this->belongsToMany(User::class, 'user_like_review', 'user_id', 'review_id')->withTimestamps();
+    }
+
+    public function usersDisliked(){
+        return $this->belongsToMany(User::class, 'user_dislike_review', 'user_id', 'review_id')->withTimestamps();
+    }
 }
