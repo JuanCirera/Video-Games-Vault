@@ -288,25 +288,35 @@
                         <div class="card bg-gray-800 d-md-none">
                             <div class="row g-0">
                                 <div class="col-4 d-flex align-items-center">
-                                    <img src="{{ $addition->background_image }}" alt=""
-                                        class="w-100 border-radius-top-start-lg border-radius-bottom-start-lg">
+                                    <a href="{{ route('game.show', $addition->slug) }}">
+                                        <img src="{{ $addition->background_image }}" alt=""
+                                            class="w-100 border-radius-top-start-lg border-radius-bottom-start-lg">
+                                    </a>
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body px-4 py-2 row">
-                                        <h6 class="text-white text-start">{{ $addition->name }}</h6>
+                                        <h6 class="text-start">
+                                            <a href="{{ route('game.show', $addition->slug) }}" class="link-white">
+                                                {{ $addition->name }}
+                                            </a>
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card bg-gray-800 d-none d-md-block">
                             <div class="">
-                                <img src="{{ $addition->background_image }}" alt=""
-                                    class="w-100 border-radius-top-end-sm-lg border-radius-top-start-sm-lg">
+                                <a href="{{ route('game.show', $addition->slug) }}">
+                                    <img src="{{ $addition->background_image }}" alt=""
+                                        class="w-100 border-radius-top-end-sm-lg border-radius-top-start-sm-lg">
+                                </a>
                             </div>
                             <div class="card-body px-4 py-2 row">
                                 <div class="row">
                                     <h4 class="col-9 card-title d-block text-white">
-                                        {{ $addition->name }}
+                                        <a href="{{ route('game.show', $addition->slug) }}" class="link-white">
+                                            {{ $addition->name }}
+                                        </a>
                                     </h4>
                                     <div class="col-3 px-0 d-flex justify-content-end align-items-baseline">
                                         <p
