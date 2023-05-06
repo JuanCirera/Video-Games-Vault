@@ -65,7 +65,7 @@
                     <div class="card-footer pt-2">
                         <div class="d-flex align-items-center">
                             <div class="col-2 col-md-1">
-                                @if (Str::contains($review->user()->where('id', $review->user_id)->first()->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
+                                @if (Str::contains($review->user()->where('id', $review->user_id)->first()->avatar, 'ui-avatars') || Str::contains($review->user()->where('id', $review->user_id)->first()->avatar, 'lh3.googleusercontent'))
                                     <img src="{{ $review->user()->where('id', $review->user_id)->first()->avatar }}"
                                         alt="" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                                 @else
@@ -74,13 +74,13 @@
                                 @endif
                             </div>
                             <div class="col-6 col-md-7 ps-2" style="text-align: left;">
-                                <p class="my-0">
+                                <p class="my-0 text-secondary">
                                     {{ $review->user()->where('id', $review->user_id)->first()->username }}
                                 </p>
                             </div>
                             <div class="col-2 px-2" style="text-align: right;">
                                 <a id="like"
-                                @if (count($user->reviewsLiked()->get()) && $user->reviewsLiked()->wherePivot("review_id",$review->id)->get())
+                                @if (isset($user) && count($user->reviewsLiked()->get()) && count($user->reviewsLiked()->wherePivot("review_id",$review->id)->get()))
                                     class="cursor-pointer text-primary"
                                 @else
                                     class="cursor-pointer text-secondary"
@@ -91,7 +91,7 @@
                             </div>
                             <div class="col-2 px-2">
                                 <a id="dislike"
-                                @if (count($user->reviewsDisliked()->get()) && count($user->reviewsDisliked()->wherePivot("review_id",$review->id)->get()))
+                                @if (isset($user) && count($user->reviewsDisliked()->get()) && count($user->reviewsDisliked()->wherePivot("review_id",$review->id)->get()))
                                     class="cursor-pointer text-danger"
                                 @else
                                     class="cursor-pointer text-secondary"

@@ -14832,3 +14832,591 @@ Ensure that the [name, id, data] of the Livewire component wasn't tampered with 
 [2023-05-05 21:43:01] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
 [2023-05-05 21:43:41] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
 [2023-05-05 21:43:41] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:44:54] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:44:55] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:46:57] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:46:57] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:47:05] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:47:06] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:47:09] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:47:09] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:49:21] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:49:21] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:50:15] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:50:16] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:50:21] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:50:21] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:50:29] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:50:29] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:52:48] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:52:48] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:53:11] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:53:11] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:53:24] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:53:25] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:53:59] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:53:59] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-05 21:54:37] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-05 21:54:37] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:35:37] local.INFO: API request: 40 games fetched  
+[2023-05-06 09:38:58] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:38:58] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:38:58] local.ERROR: Call to a member function reviewsLiked() on null {"view":{"view":"/var/www/html/resources/views/livewire/pages/reviews/show-reviews.blade.php","data":[]},"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Call to a member function reviewsLiked() on null at /var/www/html/resources/views/livewire/pages/reviews/show-reviews.blade.php:83)
+[stacktrace]
+#0 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include()
+#1 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\ShowReviews->Livewire\\ComponentConcerns\\{closure}()
+#2 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#6 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#7 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#8 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#9 /var/www/html/vendor/livewire/livewire/src/LivewireManager.php(132): Livewire\\LifecycleManager->initialDehydrate()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(353): Livewire\\LivewireManager->mount()
+#11 /var/www/html/resources/views/livewire/pages/games/game-details.blade.php(434): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#12 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include('...')
+#13 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\GameDetails->Livewire\\ComponentConcerns\\{closure}()
+#14 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#18 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#19 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#20 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#21 /var/www/html/vendor/livewire/livewire/src/Macros/livewire-view-component.blade.php(3): Livewire\\LifecycleManager->initialDehydrate()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('...')
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#25 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(69): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#27 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(35): Illuminate\\View\\Engines\\CompilerEngine->get()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(906): Illuminate\\Http\\Response->__construct()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(875): Illuminate\\Routing\\Router::toResponse()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Routing\\Router->prepareResponse()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Pipeline\\Pipeline->then()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#57 /var/www/html/vendor/livewire/livewire/src/DisableBrowserCache.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Livewire\\DisableBrowserCache->handle()
+#59 /var/www/html/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle()
+#61 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#63 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#64 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#65 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#66 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#67 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#68 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#69 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#70 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#71 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#72 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#73 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#74 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#75 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#76 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then()
+#77 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#78 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#79 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#80 {main}
+
+[previous exception] [object] (Error(code: 0): Call to a member function reviewsLiked() on null at /var/www/html/storage/framework/views/b7b545c2de2a38ceb6846bb4cd541f0c.php:90)
+[stacktrace]
+#0 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include()
+#1 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\ShowReviews->Livewire\\ComponentConcerns\\{closure}()
+#2 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#6 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#7 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#8 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#9 /var/www/html/vendor/livewire/livewire/src/LivewireManager.php(132): Livewire\\LifecycleManager->initialDehydrate()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(353): Livewire\\LivewireManager->mount()
+#11 /var/www/html/storage/framework/views/597d2371fead87c932d114a63be26c7f.php(453): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#12 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include('...')
+#13 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\GameDetails->Livewire\\ComponentConcerns\\{closure}()
+#14 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#18 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#19 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#20 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#21 /var/www/html/storage/framework/views/f131d0c3634c11f6381a4afab465d5b2.php(3): Livewire\\LifecycleManager->initialDehydrate()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('...')
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#25 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(69): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#27 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(35): Illuminate\\View\\Engines\\CompilerEngine->get()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(906): Illuminate\\Http\\Response->__construct()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(875): Illuminate\\Routing\\Router::toResponse()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Routing\\Router->prepareResponse()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Pipeline\\Pipeline->then()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#57 /var/www/html/vendor/livewire/livewire/src/DisableBrowserCache.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Livewire\\DisableBrowserCache->handle()
+#59 /var/www/html/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle()
+#61 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#63 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#64 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#65 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#66 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#67 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#68 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#69 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#70 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#71 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#72 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#73 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#74 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#75 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#76 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then()
+#77 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#78 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#79 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#80 {main}
+"} 
+[2023-05-06 09:39:59] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:40:00] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:40:00] local.ERROR: Call to a member function reviewsDisliked() on null {"view":{"view":"/var/www/html/resources/views/livewire/pages/reviews/show-reviews.blade.php","data":[]},"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Call to a member function reviewsDisliked() on null at /var/www/html/resources/views/livewire/pages/reviews/show-reviews.blade.php:94)
+[stacktrace]
+#0 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include()
+#1 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\ShowReviews->Livewire\\ComponentConcerns\\{closure}()
+#2 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#6 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#7 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#8 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#9 /var/www/html/vendor/livewire/livewire/src/LivewireManager.php(132): Livewire\\LifecycleManager->initialDehydrate()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(353): Livewire\\LivewireManager->mount()
+#11 /var/www/html/resources/views/livewire/pages/games/game-details.blade.php(434): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#12 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include('...')
+#13 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\GameDetails->Livewire\\ComponentConcerns\\{closure}()
+#14 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#18 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#19 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#20 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#21 /var/www/html/vendor/livewire/livewire/src/Macros/livewire-view-component.blade.php(3): Livewire\\LifecycleManager->initialDehydrate()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('...')
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#25 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(69): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#27 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(35): Illuminate\\View\\Engines\\CompilerEngine->get()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(906): Illuminate\\Http\\Response->__construct()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(875): Illuminate\\Routing\\Router::toResponse()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Routing\\Router->prepareResponse()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Pipeline\\Pipeline->then()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#57 /var/www/html/vendor/livewire/livewire/src/DisableBrowserCache.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Livewire\\DisableBrowserCache->handle()
+#59 /var/www/html/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle()
+#61 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#63 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#64 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#65 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#66 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#67 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#68 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#69 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#70 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#71 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#72 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#73 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#74 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#75 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#76 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then()
+#77 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#78 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#79 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#80 {main}
+
+[previous exception] [object] (Error(code: 0): Call to a member function reviewsDisliked() on null at /var/www/html/storage/framework/views/b7b545c2de2a38ceb6846bb4cd541f0c.php:102)
+[stacktrace]
+#0 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include()
+#1 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\ShowReviews->Livewire\\ComponentConcerns\\{closure}()
+#2 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#6 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#7 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#8 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#9 /var/www/html/vendor/livewire/livewire/src/LivewireManager.php(132): Livewire\\LifecycleManager->initialDehydrate()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(353): Livewire\\LivewireManager->mount()
+#11 /var/www/html/storage/framework/views/597d2371fead87c932d114a63be26c7f.php(453): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#12 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(83): include('...')
+#13 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(84): App\\Http\\Livewire\\GameDetails->Livewire\\ComponentConcerns\\{closure}()
+#14 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(59): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#18 /var/www/html/vendor/livewire/livewire/src/Component.php(235): Illuminate\\View\\View->render()
+#19 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/RenderView.php(14): Livewire\\Component->output()
+#20 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(141): Livewire\\HydrationMiddleware\\RenderView::dehydrate()
+#21 /var/www/html/storage/framework/views/f131d0c3634c11f6381a4afab465d5b2.php(3): Livewire\\LifecycleManager->initialDehydrate()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('...')
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#25 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(69): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Livewire\\LivewireViewCompilerEngine->evaluatePath()
+#27 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/RendersLivewireComponents.php(35): Illuminate\\View\\Engines\\CompilerEngine->get()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(195): Livewire\\LivewireViewCompilerEngine->get()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(906): Illuminate\\Http\\Response->__construct()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(875): Illuminate\\Routing\\Router::toResponse()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Routing\\Router->prepareResponse()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Pipeline\\Pipeline->then()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#57 /var/www/html/vendor/livewire/livewire/src/DisableBrowserCache.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Livewire\\DisableBrowserCache->handle()
+#59 /var/www/html/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle()
+#61 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#63 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#64 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#65 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#66 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#67 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#68 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#69 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#70 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#71 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#72 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#73 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#74 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#75 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#76 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then()
+#77 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#78 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#79 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#80 {main}
+"} 
+[2023-05-06 09:40:21] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:40:21] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:42:15] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:42:15] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:43:05] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:43:05] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:43:10] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:43:10] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:43:56] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:43:57] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:44:35] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:44:35] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:46:03] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:46:04] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:46:09] local.ERROR: SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'likes' at row 1 (Connection: mysql, SQL: update `reviews` set `likes` = -1, `reviews`.`updated_at` = 2023-05-06 09:46:09 where `id` = 1) {"userId":3,"exception":"[object] (Illuminate\\Database\\QueryException(code: 22003): SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'likes' at row 1 (Connection: mysql, SQL: update `reviews` set `likes` = -1, `reviews`.`updated_at` = 2023-05-06 09:46:09 where `id` = 1) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:793)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(591): Illuminate\\Database\\Connection->run()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(543): Illuminate\\Database\\Connection->affectingStatement()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3375): Illuminate\\Database\\Connection->update()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1021): Illuminate\\Database\\Query\\Builder->update()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1215): Illuminate\\Database\\Eloquent\\Builder->update()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1132): Illuminate\\Database\\Eloquent\\Model->performUpdate()
+#7 /var/www/html/app/Http/Livewire/ShowReviews.php(82): Illuminate\\Database\\Eloquent\\Model->save()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Http\\Livewire\\ShowReviews->like()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#12 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/HandlesActions.php(149): Illuminate\\Container\\BoundMethod::call()
+#13 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/PerformActionCalls.php(36): Livewire\\Component->callMethod()
+#14 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(89): Livewire\\HydrationMiddleware\\PerformActionCalls::hydrate()
+#15 /var/www/html/vendor/livewire/livewire/src/Connection/ConnectionHandler.php(13): Livewire\\LifecycleManager->hydrate()
+#16 /var/www/html/vendor/livewire/livewire/src/Controllers/HttpConnectionHandler.php(19): Livewire\\Connection\\ConnectionHandler->handle()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(46): Livewire\\Controllers\\HttpConnectionHandler->__invoke()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(259): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Pipeline\\Pipeline->then()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#42 /var/www/html/vendor/livewire/livewire/src/DisableBrowserCache.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Livewire\\DisableBrowserCache->handle()
+#44 /var/www/html/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#57 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#59 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#61 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#63 {main}
+
+[previous exception] [object] (PDOException(code: 22003): SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'likes' at row 1 at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:603)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(603): PDOStatement->execute()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(786): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(591): Illuminate\\Database\\Connection->run()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(543): Illuminate\\Database\\Connection->affectingStatement()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3375): Illuminate\\Database\\Connection->update()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1021): Illuminate\\Database\\Query\\Builder->update()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1215): Illuminate\\Database\\Eloquent\\Builder->update()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1132): Illuminate\\Database\\Eloquent\\Model->performUpdate()
+#9 /var/www/html/app/Http/Livewire/ShowReviews.php(82): Illuminate\\Database\\Eloquent\\Model->save()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Http\\Livewire\\ShowReviews->like()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#14 /var/www/html/vendor/livewire/livewire/src/ComponentConcerns/HandlesActions.php(149): Illuminate\\Container\\BoundMethod::call()
+#15 /var/www/html/vendor/livewire/livewire/src/HydrationMiddleware/PerformActionCalls.php(36): Livewire\\Component->callMethod()
+#16 /var/www/html/vendor/livewire/livewire/src/LifecycleManager.php(89): Livewire\\HydrationMiddleware\\PerformActionCalls::hydrate()
+#17 /var/www/html/vendor/livewire/livewire/src/Connection/ConnectionHandler.php(13): Livewire\\LifecycleManager->hydrate()
+#18 /var/www/html/vendor/livewire/livewire/src/Controllers/HttpConnectionHandler.php(19): Livewire\\Connection\\ConnectionHandler->handle()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(46): Livewire\\Controllers\\HttpConnectionHandler->__invoke()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(259): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(797): Illuminate\\Pipeline\\Pipeline->then()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#44 /var/www/html/vendor/livewire/livewire/src/DisableBrowserCache.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Livewire\\DisableBrowserCache->handle()
+#46 /var/www/html/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#57 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#59 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#61 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#63 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#64 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
+#65 {main}
+"} 
+[2023-05-06 09:52:45] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:52:45] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:56:35] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:56:36] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:58:55] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:58:56] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:59:18] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:59:18] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 09:59:47] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 09:59:47] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:00:11] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:00:11] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:05:46] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:05:46] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:06:08] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:06:08] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:07:58] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:07:58] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:08:40] local.INFO: User Excidium logged in from 192.168.1.10  
+[2023-05-06 10:08:43] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:08:43] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:09:02] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:09:02] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:09:10] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:09:10] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:09:59] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:09:59] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:10:09] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:10:09] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:10:47] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:10:48] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:11:01] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:11:02] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:11:16] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:11:16] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:11:19] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:11:20] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:11:38] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:11:38] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:11:45] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:11:46] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:16] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:17] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:18] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:19] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:25] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:25] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:30] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:30] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:33] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:33] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:37] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:38] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:42] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:42] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:47] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:47] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:49] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:49] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:55] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:55] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:12:57] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:12:58] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:13:01] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:13:01] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:13:09] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:13:09] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:13:11] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:13:12] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-06 10:13:14] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-06 10:13:14] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  

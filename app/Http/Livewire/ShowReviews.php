@@ -39,9 +39,9 @@ class ShowReviews extends Component
             $this->reviews = Review::where("videogame_id", $this->videogame->id)->orderBy($this->field, $this->order)->get();
         }
 
-        if (isset($this->user)) {
-            $this->reviews = Review::where("user_id", $this->user->id)->orderBy($this->field, $this->order)->get();
-        }
+        // if (isset($this->user)) {
+        //     $this->reviews = Review::where("user_id", $this->user->id)->orderBy($this->field, $this->order)->get();
+        // }
 
         return view(
             'livewire.pages.reviews.show-reviews',
@@ -69,67 +69,62 @@ class ShowReviews extends Component
         $this->order = ($this->order == "desc") ? "asc" : "desc";
     }
 
+    //Reviews likes system
     public function like(Review $review)
     {
         if (isset($this->user)) {
-
-            if (count($this->user->reviewsLiked()->get())) {
-
-                if ($this->user->reviewsLiked()->wherePivot("review_id", $review->id)->get()) {
-                    $this->user->reviewsLiked()->detach([$this->user->id, $review->id]);
+            //Si el usuario le ha dado like a esta review se resta 1
+            if (count($this->user->reviewsLiked()->wherePivot("review_id", $review->id)->get())) {
+                $this->user->reviewsLiked()->detach([$this->user->id, $review->id]);
+                if ($review->likes > 0) {
                     $review->likes--;
-                    $review->save();
-                } else {
-                    if ($this->user->reviewsDisliked()->wherePivot("review_id", $review->id)->get()) {
-                        $this->user->reviewsDisliked()->detach([$this->user->id, $review->id]);
+                }
+                $review->save();
+                //Si no le ha dado like, se resta un dislike y se suma un like
+            } else {
+                if (count($this->user->reviewsDisliked()->wherePivot("review_id", $review->id)->get())) {
+                    $this->user->reviewsDisliked()->detach([$this->user->id, $review->id]);
+                    if ($review->dislikes > 0) {
                         $review->dislikes--;
                     }
-                    $this->user->reviewsLiked()->attach($this->user->id, ["review_id" => $review->id]);
-                    $review->likes++;
-                    $review->save();
-                }
-            } else {
-                if (count($this->user->reviewsDisliked()->get()) && $this->user->reviewsDisliked()->wherePivot("review_id", $review->id)->get()) {
-                    $this->user->reviewsDisliked()->detach([$this->user->id, $review->id]);
-                    $review->dislikes--;
                 }
                 $this->user->reviewsLiked()->attach($this->user->id, ["review_id" => $review->id]);
                 $review->likes++;
                 $review->save();
             }
         }
+
+        if (!Auth::user()) {
+            return redirect('login');
+        }
     }
+
 
     public function dislike(Review $review)
     {
         if (isset($this->user)) {
 
-            if (count($this->user->reviewsDisliked()->get())) {
-
-                if ($this->user->reviewsDisliked()->wherePivot("review_id", $review->id)->get()) {
-                    $this->user->reviewsDisliked()->detach([$this->user->id, $review->id]);
+            if (count($this->user->reviewsDisliked()->wherePivot("review_id", $review->id)->get())) {
+                $this->user->reviewsDisliked()->detach([$this->user->id, $review->id]);
+                if ($review->dislikes > 0) {
                     $review->dislikes--;
-                    $review->save();
-                } else {
-                    if ($this->user->reviewsLiked()->wherePivot("review_id", $review->id)->get()) {
-                        $this->user->reviewsLiked()->detach([$this->user->id, $review->id]);
+                }
+                $review->save();
+            } else {
+                if (count($this->user->reviewsLiked()->wherePivot("review_id", $review->id)->get())) {
+                    $this->user->reviewsLiked()->detach([$this->user->id, $review->id]);
+                    if ($review->likes > 0) {
                         $review->likes--;
                     }
-                    $this->user->reviewsDisliked()->attach($this->user->id, ["review_id" => $review->id]);
-                    $review->dislikes++;
-                    $review->save();
-                }
-
-            } else {
-                if (count($this->user->reviewsLiked()->get()) && $this->user->reviewsLiked()->wherePivot("review_id", $review->id)->get()) {
-                    $this->user->reviewsLiked()->detach([$this->user->id, $review->id]);
-                    $review->likes--;
                 }
                 $this->user->reviewsDisliked()->attach($this->user->id, ["review_id" => $review->id]);
                 $review->dislikes++;
                 $review->save();
             }
+        }
 
+        if (!Auth::user()) {
+            return redirect('login');
         }
     }
 }
