@@ -1,6 +1,6 @@
 <div>
-    <div class="d-flex w-md-60 mx-auto align-items-center my-4">
-        <div class="flex-grow-1 input-group">
+    <div class="d-flex flex-wrap flex-lg-nowrap w-md-60 mx-auto align-items-center my-4">
+        <div class="col-12 flex-lg-grow-1 input-group">
             {{-- <span class="input-group-text text-white border-dark border-radius-2xl"
                 style="background-color: rgba(52, 58, 64, 0.7);">
                 <i class="fas fa-search" aria-hidden="true"></i>
@@ -29,7 +29,7 @@
                 </li>
             </ul>
         </div>
-        <div class="ms-2">
+        <div class="col-12 col-lg-0 ms-lg-2 mt-4 mt-lg-0 text-center">
             @if (isset($user) && count($user->reviews()->where("videogame_id",$videogame->id)->get()))
                 <button class="btn btn-primary bg-gradient-primary btn-round my-0 text-nowrap" data-bs-toggle="modal"
                 data-bs-target="#create-modal" disabled>
@@ -43,8 +43,8 @@
     @if (count($reviews))
         @foreach ($reviews as $review)
             <section class="mb-4">
-                <div class="card w-md-60 mx-auto" style="background-color: rgba(52,58,64, 0.8);">
-                    <div class="card-header pb-2 pt-4 d-flex" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="card w-lg-60 mx-auto" style="background-color: rgba(52,58,64, 0.8);">
+                    <div class="card-header pb-2 pt-4 d-flex flex-wrap flex-md-nowrap" style="background-color: rgba(0, 0, 0, 0);">
                         <div class="flex-grow-1">
                             <h6 class="text-white text-start my-0">{{ $review->title }}</h6>
                             <p class="text-start text-sm mb-0">{{ date('d-m-Y, H:i', strtotime($review->created_at)) }}</p>
@@ -52,9 +52,9 @@
                         <div>
                             <div class="text-white">
                                 @if ($review->rating)
-                                    Recomendado <i class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
+                                    <span class="text-success">Recomendado</span> <i class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
                                 @else
-                                    No recomendado <i class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
+                                    <span class="text-danger">No recomendado</span> <i class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
                                 @endif
                             </div>
                         </div>

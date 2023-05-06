@@ -66,7 +66,7 @@
     <div class="container">
         <div class="d-flex flex-wrap">
             {{-- CARRUSEL --}}
-            <section class="col-12 col-md-6">
+            <section class="col-12 col-md-8 col-lg-6">
                 @if (isset($screenshots) && count($screenshots) >= 3)
                     <div id="screenshotsCarousel" class="carousel slide">
                         <div class="carousel-indicators">
@@ -112,10 +112,10 @@
                 @endif
                 {{--  --}}
             </section>
-            <section class="col-12 col-md-6 ps-md-4">
+            <section class="col-12 col-md-4 col-lg-6 ps-md-4">
                 {{-- Action buttons --}}
-                <article class="mt-2 d-flex">
-                    <div class="col-6 col-md-4 px-0 pe-2">
+                <article class="mt-2 d-flex flex-md-wrap flex-lg-nowrap">
+                    <div class="col-6 col-md-12 col-lg-4 px-0 pe-2 pe-md-0 pe-lg-2">
                         @isset($user)
                             @if ($addedToLibrary)
                                 <button class="btn btn-secondary text-white w-100 px-2"
@@ -134,7 +134,7 @@
                             </a>
                         @endisset
                     </div>
-                    <div class="col-6 col-md-4 px-0 ps-2 ps-md-0">
+                    <div class="col-6 col-md-12 col-lg-4 px-0 ps-2 ps-md-0">
                         @isset($user)
                             @if ($addedToTracking)
                                 <button class="btn btn-secondary text-white w-100 px-2"
@@ -186,7 +186,7 @@
             </article>
             <article class="col-6 ps-2">
                 <h6 class="text-white">Puntuación</h6>
-                <p class="text-center border border-primary border-radius-md text-primary text-bold w-25 w-md-6">
+                <p class="text-center border border-primary border-radius-md text-primary text-bold w-25 w-md-10 w-lg-6">
                     {{ $videogame->metacritic ?? 'N/A' }}
                 </p>
             </article>
@@ -364,7 +364,7 @@
             @isset($achievements)
                 @foreach ($achievements as $i => $achievement)
                     @if ($i < 3)
-                        <div class="card bg-gray-900 ps-2 my-2 w-md-70 mx-auto">
+                        <div class="card bg-gray-900 ps-2 my-2 w-lg-70 mx-auto">
                             <div class="row g-0">
                                 <div class="col-3 col-md-2 d-flex align-items-center">
                                     <div class="flex-grow-1">

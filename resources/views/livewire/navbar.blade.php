@@ -5,7 +5,7 @@
             <nav
                 class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-3 py-2 start-0 end-0 mx-4">
                 <div class="row align-items-center">
-                    <div class="col-4 d-md-none">
+                    <div class="col-4 d-lg-none">
                         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -16,13 +16,13 @@
                             </span>
                         </button>
                     </div>
-                    <div class="col-4 col-md-2 order-md-1">
+                    <div class="col-4 col-lg-2 order-lg-1 text-center">
                         {{-- class="navbar-brand font-weight-bolder text-primary text-gradient text-lg" style="font-family: monospace" --}}
                         <a href="{{ route('home') }}" class="navbar-brand">
                             <img src="{{ Storage::url('img/logos/VGV.svg') }}" alt="vgv" class="w-100 w-md-50">
                         </a>
                     </div>
-                    <div class="col-4 col-md-2 d-flex gap-2 justify-content-end order-md-3">
+                    <div class="col-4 col-lg-2 d-flex gap-2 justify-content-end order-lg-3">
 
                         @guest
                             <a href="{{ route('login') }}" class="nav-link text-white d-none d-md-inline">
@@ -34,7 +34,7 @@
                             </a>
                         @endguest
                         @auth
-                            <a class="w-50" data-bs-toggle="offcanvas" href="#profileOffcanvas">
+                            <a class="w-50 text-end" data-bs-toggle="offcanvas" href="#profileOffcanvas">
                                 @if (Str::contains(Auth::user()->avatar, 'ui-avatars') || Str::contains(Auth::user()->avatar, 'lh3.googleusercontent'))
                                     <img src="{{ Auth::user()->avatar }}" alt="profile_img"
                                         class="rounded-circle" width="45" height="45" style="object-fit: cover;">
@@ -46,8 +46,8 @@
                         @endauth
 
                     </div>
-                    <div class="collapse navbar-collapse col-4 col-sm-4 col-md-8 order-md-2" id="navigation">
-                        <ul class="navbar-nav me-auto mx-md-auto">
+                    <div class="collapse navbar-collapse col-4 col-sm-4 col-md-8 order-lg-2" id="navigation">
+                        <ul class="navbar-nav me-auto mx-auto">
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('home') }}">
                                     <i class="fas fa-home opacity-6 me-1 link-white"></i>
@@ -81,7 +81,7 @@
                                     Tiendas
                                 </a>
                             </li> --}}
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('user.search') }}">
                                     <i class="fas fa-user-plus opacity-6 me-1"></i>
@@ -108,7 +108,7 @@
         </div>
     </div>
     @auth
-        <div class="offcanvas offcanvas-end bg-gray-900 w-50 w-md-20 blur shadow-none border-0" tabindex="-1"
+        <div class="offcanvas offcanvas-end bg-gray-900 w-50 w-lg-20 blur shadow-none border-0" tabindex="-1"
             id="profileOffcanvas" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
