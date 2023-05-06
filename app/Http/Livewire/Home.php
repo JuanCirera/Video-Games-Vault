@@ -40,8 +40,6 @@ class Home extends Component
 
     public function render()
     {
-       // $this->publicGames=[];
-       $this->games=[];
         //Esto es por si la vista se vuelve a cargar, para que empiece de nuevo la paginacion
         if($this->resultPage!=1){
             session()->forget('resultPage');

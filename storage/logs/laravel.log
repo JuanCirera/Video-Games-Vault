@@ -39620,3 +39620,4 @@ SOUND CARD: Yes',
 #83 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
 #84 {main}
 "} 
+[2023-05-06 15:30:46] local.INFO: API request: 40 games fetched  
