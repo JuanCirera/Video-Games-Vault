@@ -75,7 +75,7 @@
         </div>
         <section class="row">
             @foreach ($games as $item)
-                <div class="col-12 col-sm-12 col-md-4">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                     <div class="card bg-gray-800 mx-auto mb-4">
                         <div class="card-header p-0 bg-gray-800">
                             <a href="{{ route('game.show', $item->slug) }}">
@@ -90,7 +90,7 @@
                                     <a href="{{ route('game.show', $item->slug) }}"
                                         class="link-white">{{ $item->name }}</a>
                                 </h4>
-                                <div class="col-3 ps-5 pe-0">
+                                <div class="col-3 ps-5 ps-md-4 pe-0">
                                     <p
                                         class="text-center border border-primary border-radius-md text-primary text-bold">
                                         {{ $item->metacritic ?? 'N/A' }}

@@ -89,7 +89,7 @@
                 </div>
                 {{--  --}}
                 {{-- PC NAV --}}
-                <div class="nav-wrapper position-relative end-0 d-none d-md-block w-md-80 w-lg-70 mx-auto">
+                <div class="nav-wrapper position-relative end-0 d-none d-md-block w-md-100 w-lg-70 mx-auto">
                     <ul class="nav nav-pills nav-fill p-1 bg-gray-800" role="tablist">
                         <li class="nav-item" id="pc_profNav">
                             <a class="nav-link mb-0 px-0 py-1 text-white active" data-bs-toggle="collapse"

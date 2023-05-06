@@ -136,7 +136,7 @@ class Home extends Component
 
             // dd($this->publicGames);
 
-            foreach ($this->publicGames as $g) {
+            foreach ($this->games as $g) {
                 if ($g["slug"] == $slug) {
                     $currentGame = Cache::remember($slug, 86400, fn () => (ProvidersApiServiceProvider::getVideogameDetails($slug)
                     ));
@@ -191,7 +191,7 @@ class Home extends Component
     {
         if ($this->user) {
 
-            foreach ($this->publicGames as $g) {
+            foreach ($this->games as $g) {
                 if ($g["slug"] == $slug) {
                     $currentGame = Cache::remember($slug, 86400, fn () => (ProvidersApiServiceProvider::getVideogameDetails($slug)
                     ));

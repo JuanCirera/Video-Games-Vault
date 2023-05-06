@@ -1,13 +1,13 @@
 <div>
     <div class="mb-5">
         <h4 class="text-white">Reseñas</h4>
-        <p>Todas las reseñas escritas por <b>{{ '@' . $user->username }}</b></p>
+        <p class="text-secondary">Todas las reseñas escritas por <b>{{ '@' . $user->username }}</b></p>
     </div>
     @if (count($userReviews))
         @foreach ($userReviews as $userReview)
             {{-- REVIEW --}}
             <div class="mb-4">
-                <div class="card bg-gray-800 w-md-80 w-lg-60 mx-auto">
+                <div class="card bg-gray-800 w-md-90 w-lg-60 mx-auto">
                     <div class="row g-0 border-radius-top-start-md-xl border-radius-top-end-md-xl"
                         style="background-image: url(
                         @foreach ($videogames as $game)
@@ -18,8 +18,8 @@
                         <div class="border-radius-top-start-md-xl border-radius-top-end-md-xl"
                             style="background-color: rgba(52,58,64, 0.9);
                                     box-shadow: inset 0px -10px 10px 0px rgba(52,58,64, 1);">
-
-                            <div class="card-header pb-2 pt-4 d-flex" style="background-color: rgba(0, 0, 0, 0);">
+                            {{-- CARD HEADER --}}
+                            <div class="card-header pb-2 pt-4 d-flex flex-wrap flex-lg-nowrap" style="background-color: rgba(0, 0, 0, 0);">
                                 <div class="flex-grow-1">
                                     <h6 class="text-white text-start my-0">
                                         @if ($user->id == Auth::user()->id)
@@ -36,19 +36,21 @@
                                 </div>
                                 <div class="text-white">
                                     @if ($userReview->rating)
-                                        Recomendado <i class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
+                                        <span class="text-success">Recomendado</span> <i class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
                                     @else
-                                        No recomendado <i class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
+                                        <span class="text-danger">No recomendado</span> <i class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
                                     @endif
                                 </div>
                             </div>
+                            {{-- CARD BODY --}}
                             <div class="card-body px-4 py-2 text-white text-start">
                                 <p>{{ $userReview->body }}</p>
                             </div>
                         </div>
                     </div>
+                    {{-- CARD FOOTER --}}
                     <div class="card-footer d-flex pt-2 align-items-center">
-                        <div class="col-2 col-md-1">
+                        <div class="col-2 col-lg-1">
                             @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
                                 <img src="{{ $userReview->user->avatar }}" alt="" class="rounded-circle"
                                     width="50" height="50" style="object-fit: cover;">
@@ -57,19 +59,29 @@
                                     class="rounded-circle" width="50" height="50" style="object-fit: cover;">
                             @endif
                         </div>
-                        <div class="col-6 col-md-7" style="text-align: left;">
-                            <p class="my-0">{{ $userReview->user->username }}</p>
+                        <div class="col-6 col-lg-7" style="text-align: left;">
+                            <p class="my-0 text-secondary">{{ $userReview->user->username }}</p>
                         </div>
-                        <div class="col-2" style="text-align: right;">
-                            {{-- class="text-primary" --}}
-                            <a name="{{ $userReview }}" id="like" class="text-body">
-                                {{ $userReview->likes }} <i class="fa-solid fa-thumbs-up"></i>
+                        <div class="col-2 px-2" style="text-align: right;">
+                            <a id="like"
+                            @if (isset($user) && count($user->reviewsLiked()->get()) && count($user->reviewsLiked()->wherePivot("review_id",$userReview->id)->get()))
+                                class="cursor-pointer text-primary"
+                            @else
+                                class="cursor-pointer text-secondary"
+                            @endif
+                                wire:click="like({{$userReview->id}})">
+                                <i class="fa-solid fa-thumbs-up"></i> {{ $userReview->likes }}
                             </a>
                         </div>
-                        <div class="col-2">
-                            {{-- wire:click="dislike({{$userReview->id}})" --}}
-                            <a name="{{ $userReview->id }}" id="dislike" class="text-body">
-                                {{ $userReview->dislikes }} <i class="fa-solid fa-thumbs-down"></i>
+                        <div class="col-2 px-2">
+                            <a id="dislike"
+                            @if (isset($user) && count($user->reviewsDisliked()->get()) && count($user->reviewsDisliked()->wherePivot("review_id",$userReview->id)->get()))
+                                class="cursor-pointer text-danger"
+                            @else
+                                class="cursor-pointer text-secondary"
+                            @endif
+                                wire:click="dislike({{$userReview->id}})">
+                                <i class="fa-solid fa-thumbs-down"></i> {{ $userReview->dislikes }}
                             </a>
                         </div>
                     </div>

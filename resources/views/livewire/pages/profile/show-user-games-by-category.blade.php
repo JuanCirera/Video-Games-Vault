@@ -1,7 +1,7 @@
 <div>
     <div class="mb-4 d-md-flex flex-md-wrap">
         @foreach ($user->videogames()->wherePivot('category', $category)->get() as $i => $categorizedGame)
-            <article class="col-md-4 col-lg-4 px-md-2">
+            <article class="col-12 col-md-6 col-lg-4 px-md-2">
                 <div class="card bg-gray-800 mb-4">
                     <div class="row g-0 d-md-none">
                         <div class="col-4">

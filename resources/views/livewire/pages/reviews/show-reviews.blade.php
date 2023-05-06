@@ -44,7 +44,7 @@
         @foreach ($reviews as $review)
             <section class="mb-4">
                 <div class="card w-lg-60 mx-auto" style="background-color: rgba(52,58,64, 0.8);">
-                    <div class="card-header pb-2 pt-4 d-flex flex-wrap flex-md-nowrap" style="background-color: rgba(0, 0, 0, 0);">
+                    <div class="card-header pb-2 pt-4 d-flex flex-wrap flex-lg-nowrap" style="background-color: rgba(0, 0, 0, 0);">
                         <div class="flex-grow-1">
                             <h6 class="text-white text-start my-0">{{ $review->title }}</h6>
                             <p class="text-start text-sm mb-0">{{ date('d-m-Y, H:i', strtotime($review->created_at)) }}</p>

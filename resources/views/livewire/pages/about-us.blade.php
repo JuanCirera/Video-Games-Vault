@@ -1,5 +1,5 @@
 <div>
-    <div class="container mt-8 text-white w-md-70">
+    <div class="container mt-8 text-white w-md-90 w-lg-70">
         <h4 class="text-center text-gradient text-primary mb-4"> - VIDEO GAMES VAULT - </h4>
         <p>
             ¡Bienvenido a nuestra plataforma de videojuegos! Somos un equipo apasionado de desarrolladores y jugadores

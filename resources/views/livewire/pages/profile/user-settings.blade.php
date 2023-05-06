@@ -12,7 +12,6 @@
         </nav>
         <section class="text-center">
             {{-- User data --}}
-            {{-- class="px-7" --}}
             <div>
                 @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
                     <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150" height="150"
@@ -53,7 +52,7 @@
                     </ul>
                 </div>
                 {{-- PC NAV --}}
-                <div class="nav-wrapper position-relative end-0 d-none d-md-block w-md-70 mx-auto">
+                <div class="nav-wrapper position-relative end-0 d-none d-md-block w-md-100 w-lg-70 mx-auto">
                     <ul class="nav nav-pills nav-fill p-1 bg-gray-800" role="tablist">
                         <li class="nav-item" id="pc_profNav">
                             <a class="nav-link mb-0 px-0 py-1 text-white active" data-bs-toggle="collapse"
@@ -138,7 +137,7 @@
                     <div class="form-group text-start mb-0">
                         <label for="img" class="text-white">Cambiar imagen de perfil</label>
                         <input type="file" class="form-control bg-gray-800 text-white" id="img" hidden
-                            wire:model.defer="img">
+                            wire:model.defer="img" accept="image/*" max-size="2147483648">
                     </div>
                     {{-- px-7 --}}
                     <div class=" py-4">
@@ -161,12 +160,13 @@
                     <label class="btn btn-primary" for="img">
                         <i class="fas fa-upload"></i> Subir imagen
                     </label>
-                    <p>Máx. 320x320px</p>
+                    <p>Máx. 320x320px y 2048MB</p>
                 </div>
             </article>
             {{-- NOTIFY --}}
             <article class="collapse mt-4" id="notifications" data-bs-parent="#navParent" wire:ignore.self>
                 <h6>Activa/desactiva notificaciones</h6>
+                <i class="fas fa-circle-info"></i> <span>Al desactivar estas opciones ya no recibirás más correos electrónicos de VGV</span>
                 <div class="w-md-70 mx-auto px-2 mt-4">
                     <div class="form-check form-switch mb-4">
                         <input class="form-check-input" type="checkbox" id="socialCheck" @checked($this->user->notifySocial) wire:click="toggleNotifySocial">

@@ -7,7 +7,7 @@
         <section class="d-md-flex">
             @foreach ($videogames as $trackedGame)
                 {{-- @if ($trackedGame->followed) --}}
-                <div class="mb-4 col-md-4 px-2">
+                <div class="mb-4 col-md-6 col-lg-4 px-2">
                     <div class="card bg-gray-800">
                         <div class="row g-0 d-md-none">
                             <div class="col-4">
