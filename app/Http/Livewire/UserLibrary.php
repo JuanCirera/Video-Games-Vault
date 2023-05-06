@@ -20,8 +20,4 @@ class UserLibrary extends Component
         return view('livewire.pages.profile.user-library',compact("categories"));
     }
 
-    // public function mount(){
-    //     $this->videogame=new Videogame();
-    // }
-
 }

@@ -76,7 +76,7 @@
                         <li>
                             <a class="dropdown-item text-white" data-bs-toggle="collapse" href="#tracking"
                                 id="profNav">
-                                <i class="fas fa-location-crosshairs"></i> Lista de seguimiento
+                                <i class="fas fa-bookmark"></i> Lista de seguimiento
                             </a>
                         </li>
                         <li>

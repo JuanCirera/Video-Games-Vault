@@ -9,25 +9,33 @@
                 {{-- @if ($trackedGame->followed) --}}
                 <div class="mb-4 col-md-6 col-lg-4 px-2">
                     <div class="card bg-gray-800">
-                        <div class="row g-0 d-md-none">
-                            <div class="col-4">
-                                <a href="{{ route('game.show', $trackedGame->slug) }}">
-                                    <img src="{{ $trackedGame->image }}" alt=""
-                                        class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
-                                </a>
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body px-4 py-2 row flex-grow-1">
+                        {{-- MOBILE CARD --}}
+                        <div class="d-md-none">
+                            <div class="row g-0">
+                                <div class="col-4">
                                     <a href="{{ route('game.show', $trackedGame->slug) }}">
-                                        <h5 class="text-white text-start">{{ $trackedGame->title }}</h5>
+                                        <img src="{{ $trackedGame->image }}" alt=""
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-end-lg">
                                     </a>
                                 </div>
-                                <div>
-                                    {{-- TODO: wire:click --}}
-                                    <a class="mt-n-10">
+                                <div class="col-8">
+                                    <div class="card-body px-4 py-2 row flex-grow-1">
+                                        <a href="{{ route('game.show', $trackedGame->slug) }}">
+                                            <h5 class="text-white text-start">{{ $trackedGame->title }}</h5>
+                                        </a>
+                                    </div>
+                                    {{-- <div> --}}
+                                        {{-- <a class="mt-n-10" wire:click="stopTracking('{{ $trackedGame->id }}')">
                                         <i class="fas fa-bookmark text-primary text-2xl"></i>
-                                    </a>
+                                    </a> --}}
+                                    {{-- </div> --}}
                                 </div>
+                            </div>
+                            <div class="mt-2 text-start text-center">
+                                <button class="btn btn-warning bg-gray-700 text-white w-90"
+                                    wire:click="stopTracking('{{ $trackedGame->id }}')">
+                                    <i class="far fa-circle-xmark"></i> Dejar de seguir
+                                </button>
                             </div>
                         </div>
                         <div class="d-none d-md-block">

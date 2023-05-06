@@ -23,6 +23,6 @@ class ShowUserGamesByCategory extends Component
 
         $this->user->videogames()->wherePivot("videogame_id",$game->id)->updateExistingPivot($game->id,["category"=>$newCategory->name]);
 
-        return redirect(url()->previous())->with("info_msg","Juego modivo a {$newCategory->name}");
+        return redirect(url()->previous())->with("info_msg","Juego movido a {$newCategory->name}");
     }
 }

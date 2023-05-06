@@ -13,15 +13,21 @@
                         @foreach ($videogames as $game)
                             @if ($game->id == $userReview->videogame_id)
                                 {{ $game->background_image }}
-                            @endif @endforeach
+                            @endif
+                        @endforeach
                         );">
                         <div class="border-radius-top-start-md-xl border-radius-top-end-md-xl"
                             style="background-color: rgba(52,58,64, 0.9);
                                     box-shadow: inset 0px -10px 10px 0px rgba(52,58,64, 1);">
                             {{-- CARD HEADER --}}
                             <div class="card-header pb-2 pt-4 d-flex flex-wrap flex-lg-nowrap" style="background-color: rgba(0, 0, 0, 0);">
-                                <div class="flex-grow-1">
-                                    <h6 class="text-white text-start my-0">
+                                <div class="col-12 col-lg-8">
+                                    @foreach ($videogames as $game)
+                                        @if ($game->id == $userReview->videogame_id)
+                                            <p class="text-secondary text-start">{{$game->name}}</p>
+                                        @endif
+                                    @endforeach
+                                    <h6 class="text-white text-start my-0 wrap">
                                         @if ($user->id == Auth::user()->id)
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#edit-modal"
                                                 wire:click="edit({{ $userReview->id }})">
@@ -34,12 +40,14 @@
                                     <p class="text-start text-sm mb-0">
                                         {{ date('d-m-Y, H:i', strtotime($userReview->created_at)) }}</p>
                                 </div>
-                                <div class="text-white">
-                                    @if ($userReview->rating)
-                                        <span class="text-success">Recomendado</span> <i class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
-                                    @else
-                                        <span class="text-danger">No recomendado</span> <i class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
-                                    @endif
+                                <div class="col-12 col-lg-4 text-start">
+                                    <div>
+                                        @if ($userReview->rating)
+                                            <span class="text-success">Recomendado</span> <i class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
+                                        @else
+                                            <span class="text-danger">No recomendado</span> <i class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             {{-- CARD BODY --}}
