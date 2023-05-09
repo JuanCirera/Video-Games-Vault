@@ -76,57 +76,64 @@
         <section class="row">
             @foreach ($games as $item)
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-                    <div class="card bg-gray-800 mx-auto mb-4">
+                    <div class="card bg-gray-800 mx-auto mb-4 min-height-490 max-height-490">
                         <div class="card-header p-0 bg-gray-800">
                             <a href="{{ route('game.show', $item->slug) }}">
-                                <img src="{{ $item->background_image }}" class="img-fluid border-radius-lg"
-                                    style="border-bottom-right-radius: 0;border-bottom-left-radius: 0">
+                                <img src="{{ $item->background_image }}"
+                                    class="img-fluid border-radius-lg min-height-250 max-height-250 w-100"
+                                    style="border-bottom-right-radius: 0;border-bottom-left-radius: 0; object-fit: cover;">
                             </a>
                         </div>
 
                         <div class="card-body pt-2">
+                            <div class="d-flex align-items-center mb-1">
+                                <div class="col-9 col-lg-10 d-flex gap-2">
+
+                                    @php
+                                        $countPS = 0;
+                                        $countXB = 0;
+
+                                        if ($item->platforms) {
+                                            foreach ($item->platforms as $platform) {
+                                                switch ($platform->platform->id) {
+                                                    case 4:
+                                                        echo "<i class='fa-brands fa-windows text-white'></i>";
+                                                        break;
+                                                    case 187:
+                                                    case 18:
+                                                    case 16:
+                                                        echo $countPS == 0 ? '<i class="fa-brands fa-playstation text-white"></i>' : '';
+                                                        $countPS++;
+                                                        break;
+                                                    case 186:
+                                                    case 14:
+                                                    case 1:
+                                                        echo $countXB == 0 ? '<i class="fa-brands fa-xbox text-white"></i>' : '';
+                                                        $countXB++;
+                                                        break;
+                                                }
+                                            }
+                                        }
+                                    @endphp
+
+                                </div>
+
+                                <div class="col-3 col-lg-2 ps-5 ps-md-4 ps-lg-2 p-0 m-0">
+                                    <div
+                                        class="text-center border border-primary border-radius-md text-primary text-bold m-0">
+                                        {{ $item->metacritic ?? 'N/A' }}
+                                    </div>
+                                </div>
+
+                            </div>
+
                             <div class="row">
-                                <h4 class="col-9 card-title d-block">
+                                <h4 class="col-12 card-title d-block pe-0">
                                     <a href="{{ route('game.show', $item->slug) }}"
                                         class="link-white">{{ $item->name }}</a>
                                 </h4>
-                                <div class="col-3 ps-5 ps-md-4 pe-0">
-                                    <p
-                                        class="text-center border border-primary border-radius-md text-primary text-bold">
-                                        {{ $item->metacritic ?? 'N/A' }}
-                                    </p>
-                                </div>
                             </div>
-                            <div class="d-flex gap-2">
 
-                                @php
-                                    $countPS = 0;
-                                    $countXB = 0;
-
-                                    if ($item->platforms) {
-                                        foreach ($item->platforms as $platform) {
-                                            switch ($platform->platform->id) {
-                                                case 4:
-                                                    echo "<i class='fa-brands fa-windows text-white'></i>";
-                                                    break;
-                                                case 187:
-                                                case 18:
-                                                case 16:
-                                                    echo $countPS == 0 ? '<i class="fa-brands fa-playstation text-white"></i>' : '';
-                                                    $countPS++;
-                                                    break;
-                                                case 186:
-                                                case 14:
-                                                case 1:
-                                                    echo $countXB == 0 ? '<i class="fa-brands fa-xbox text-white"></i>' : '';
-                                                    $countXB++;
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                @endphp
-
-                            </div>
                             <div class="mt-4">
                                 @isset($user)
                                     @php
