@@ -481,12 +481,13 @@
                 </div>
             </div>
         </div>
-        {{--  --}}
-        <script>
-            document.getElementById('showDescription').addEventListener('click', (e) => {
-                document.getElementById('gameDescription').classList.toggle('text-truncate');
-                e.target.innerHTML = (e.target.textContent == "Leer más") ? "Leer menos" : "Leer más";
-            });
-        </script>
-
     </div>
+    {{--  --}}
+    <script>
+        document.getElementById('showDescription').addEventListener('click', (e) => {
+            document.getElementById('gameDescription').classList.toggle('text-truncate');
+            e.target.innerHTML = (e.target.textContent == "Leer más") ? "Leer menos" : "Leer más";
+        });
+    </script>
+
+</div>
