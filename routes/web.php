@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\AboutUs;
-use App\Http\Livewire\AdminDashboard;
+use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Auth\ChangePassword;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\GameDetails;
@@ -112,7 +112,7 @@ Route::get('/games/{game}', GameDetails::class)->name("game.show");
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:admin']], function () {
-        Route::get('/admin/dashboard', AdminDashboard::class)->name('dashboard');
+        Route::get('/admin/dashboard', Dashboard::class)->name('dashboard');
     });
 	Route::get('/profile/{username}', UserProfile::class)->name('profile.show');
     Route::get('/profile/settings/{username}', UserSettings::class)->name('profile.settings');

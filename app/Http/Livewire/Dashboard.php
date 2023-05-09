@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
-class AdminDashboard extends Component
+class Dashboard extends Component
 {
     public User $user;
     public string $password, $repeat_password;
