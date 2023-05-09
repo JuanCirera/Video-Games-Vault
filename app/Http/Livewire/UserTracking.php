@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Mail\NotifyUser;
 use App\Models\User;
 use App\Models\Videogame;
+use App\Notifications\ReleaseNotify;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -45,16 +46,7 @@ class UserTracking extends Component
         if ($this->user->notifyGames) {
             foreach ($this->videogames as $game) {
                 if ($game->release_date == date(now())) {
-                    $mailContent =
-                        '<div>
-                        <p style="margin-top: 5vh; text-align: center; font-size: 1.5vh">
-                        ¡' . $game->title . ' ha salido a la venta!
-                        </p>
-                        </div>';
-
-                    Mail::to($this->user->email)->send(new NotifyUser([
-                        "content" => $mailContent
-                    ]));
+                    $this->user->notify(new ReleaseNotify($game->name));
                 }
             }
         }
@@ -77,6 +69,7 @@ class UserTracking extends Component
         //     }
         // }
         // TODO:
+
     }
 
     public function notifyUpdate()

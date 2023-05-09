@@ -1,11 +1,13 @@
 <div>
-    <div class="container mt-8 text-white w-md-90 w-lg-70">
+    <div class="container mt-8 text-white w-md-90 w-lg-60">
         <h4 class="text-center text-gradient text-primary mb-4"> - VIDEO GAMES VAULT - </h4>
+        <h5 class="text-primary">¿Quiénes somos?</h5>
         <p>
             ¡Bienvenido a nuestra plataforma de videojuegos! Somos un equipo apasionado de desarrolladores y jugadores
             que creemos que los videojuegos son más que solo un pasatiempo: son una forma de arte, una forma de
             conectarnos con otros y una forma de explorar nuevas realidades.
         </p>
+        <h5 class="text-primary">Nuestro objetivo</h5>
         <p>
             Nuestra plataforma ha sido diseñada para que puedas guardar y clasificar tu biblioteca de videojuegos,
             escribir reviews y seguir a otros usuarios para ver sus perfiles y descubrir nuevos títulos emocionantes. Ya
