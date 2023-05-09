@@ -81,6 +81,9 @@
             <article class="collapse mt-4 show" id="userData" data-bs-parent="#navParent" wire:ignore.self>
                 <div class="text-end">
                     <button class="btn btn-primary my-0" wire:click="update">
+                        <span class="spinner-border spinner-border-sm text-white" role="status" wire:loading wire:target="update">
+                            <span class="visually-hidden">Loading...</span>
+                        </span>
                         Guardar
                     </button>
                 </div>
@@ -122,15 +125,15 @@
                                 una logitud mínima de 6 caracteres</p>
                         </div>
                     </div>
-                    {{-- <div class="col-12 col-sm-12 col-md-6 ps-md-2">
+                    <div class="col-12 col-sm-12 col-md-6 ps-md-2">
                         <div class="form-group text-start">
-                            <label for="chpwd" class="text-white">Repite la contraseña</label>
-                            <input type="password" class="form-control bg-gray-800 text-white" id="chpwd">
-                            @error('user.password')
+                            <label for="repeat-pwd" class="text-white">Repite la contraseña</label>
+                            <input type="password" class="form-control bg-gray-800 text-white" id="repeat-pwd" wire:model="repeat_password">
+                            @error('repeat_password')
                                 <p class="text-warning">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
                 <hr>
                 <div class="col-12 col-sm-12 col-md-12">

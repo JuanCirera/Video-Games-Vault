@@ -14,15 +14,14 @@ class UserSettings extends Component
     use WithFileUploads;
 
     public User $user;
-    public string $password;
+    public string $password, $repeat_password;
     public $img;
 
     protected $rules=[
         "user.username" => "",
         "user.email" => "",
         "password" => "",
-        // "user.notifySocial" => "",
-        // "user.notifyGames" => "",
+        "repeat_password" => "",
         "img" => ""
     ];
 
@@ -43,6 +42,7 @@ class UserSettings extends Component
             "user.username" => ["nullable","string","unique:users,username,".$this->user->id],
             "user.email" => ["nullable","email","unique:users,email,".$this->user->id],
             "password" => ["nullable","string","min:6","regex:/[a-z]/","regex:/[A-Z]/","regex:/[0-9]/"],
+            "repeat_password" => ["nullable","same:password"],
             "img" => ["nullable","image","max:2048"]
         ]);
 
