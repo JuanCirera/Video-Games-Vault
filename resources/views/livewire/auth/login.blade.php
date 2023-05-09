@@ -64,7 +64,7 @@
                                     <hr>
 
                                 </div>
-                                <p class="mb-0">O introduce tu email y contraseña</p>
+                                <p class="mb-0 text-secondary">O introduce tu email y contraseña</p>
                             </div>
                             <div class="card-body">
                                 <form role="form" method="POST" action="{{ route('login.perform') }}">
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" name="remember" type="checkbox" id="rememberMe">
-                                        <label class="form-check-label" for="rememberMe">Recuérdame</label>
+                                        <label class="form-check-label text-secondary" for="rememberMe">Recuérdame</label>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit"
@@ -99,14 +99,14 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                <p class="mb-1 text-sm mx-auto">
+                                <p class="mb-1 text-sm mx-auto text-secondary">
                                     ¿Has olvidad la contraseña? Resetea la contraseña
                                     <a href="{{ route('reset-password') }}"
                                         class="text-primary font-weight-bold">aquí</a>
                                 </p>
                             </div>
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                <p class="mb-4 text-sm mx-auto">
+                                <p class="mb-4 text-sm mx-auto text-secondary">
                                     ¿Aún no estas registrado?
                                     <a href="{{ route('register') }}" class="text-primary font-weight-bold">Crear
                                         cuenta</a>

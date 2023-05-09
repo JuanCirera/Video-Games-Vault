@@ -46,12 +46,10 @@ class ForgotPassword extends Notification
     {
         $url = URL::temporarySignedRoute('change-password', now()->addHours(12) ,['id' => $this->token]);
         return (new MailMessage)
-                    ->line('Hi!')
-                    ->subject('Reset Password')
-                    ->line('You are receiving this email so you can reset the password for your account')
-                    ->action('Reset Password', $url )
-                    ->line("If you didn't request this, please ignore this email.")
-                    ->line('Thank you!');
+                    ->subject('Resetear contraseña')
+                    ->line('Has solicitado un reseteo de contraseña de tu cuenta, haz click en el botón para proceder')
+                    ->action('Resetear Contraseña', $url )
+                    ->line("¡Importante! Si no has sido tú el que ha solicitado el cambio de contraseña, ignora este correo o ponte en contacto con soporte: videogamesvault111@gmail.com");
     }
 
     /**

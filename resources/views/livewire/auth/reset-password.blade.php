@@ -1,17 +1,17 @@
 <div>
-    <main class="main-content"> 
+    <main class="main-content">
         <section>
             <div class="container mt-8">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-dark bg-gray-900">
                         <li class="breadcrumb-item active text-white" aria-current="page"><a href="/">Inicio</a></li>
-                        <li class="breadcrumb-item active text-white" aria-current="page"><a href="/login">Cuenta</a></li>
+                        <li class="breadcrumb-item active text-white" aria-current="page"><a href="/login">Login</a></li>
                         <li class="breadcrumb-item active text-white" aria-current="page">Resetear contraseña</li>
                     </ol>
                 </nav>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
-                        <div class="card card-plain">
+                {{-- <div class="row"> --}}
+                    {{-- <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0"> --}}
+                        <div class="card card-plain mx-auto w-lg-50">
                             <div class="card-header pb-0 text-start bg-gray-900">
                                 <h4 class="font-weight-bolder text-white">Resetea tu contraseña</h4>
                                 <p class="mb-0">Introduce tu email y espera unos segundos</p>
@@ -29,8 +29,8 @@
                                     @enderror
                                 </div>
                                 <div class="text-center">
-                                    <button wire:click="send" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">
-                                        Enviar correo
+                                    <button wire:click="send" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0 w-md-50 w-lg-55">
+                                        <span wire:loading.remove wire:target="send">Enviar correo</span><span wire:loading wire:target="send">Enviando...</span>
                                     </button>
                                 </div>
                                 {{-- </form> --}}
@@ -39,8 +39,8 @@
                                 @include('components.alert')
                             </div>
                         </div>
-                    </div>
-                </div>
+                    {{-- </div> --}}
+                {{-- </div> --}}
             </div>
         </section>
     </main>

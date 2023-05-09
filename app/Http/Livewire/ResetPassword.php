@@ -32,8 +32,8 @@ class ResetPassword extends Component
         $user = User::where('email', $this->email)->first();
 
         if ($user) {
-            $this->notify(new ForgotPassword($user->id));
-            return back()->with('msg', 'El correo se ha enviado exitosamente');
+            $user->notify(new ForgotPassword($user->id));
+            return redirect(url()->previous())->with('success_msg', 'El correo se ha enviado exitosamente');
         }
     }
 }

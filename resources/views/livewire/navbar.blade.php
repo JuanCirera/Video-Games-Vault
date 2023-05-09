@@ -115,7 +115,7 @@
             </div>
             <div class="offcanvas-body pt-0">
                 <p class="offcanvas-title text-body text-wrap text-md py-2"><span
-                        class="text-body">@</span>{{ Auth::user()->username }}</p>
+                        class="text-secondary">@</span>{{ Auth::user()->username }}</p>
                 <div class="accordion" id="accordionOffcanvas">
                     <div class="accordion-item mb-3">
                         <h5 class="accordion-header text-white" id="headingOne">

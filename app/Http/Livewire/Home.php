@@ -20,19 +20,14 @@ class Home extends Component
 {
     use WithPagination;
 
-    //NOTE: El array games DEBE ser protegido o privado para evitar que livewire
-    //le cambie el checksum y salte excepcion
     public array $games = [];
-    //Sigo necesitando el array en otras funciones, asi que publico otro para livewire con los
-    // datos del protegido
-    // public array $publicGames = [];
     public string $search = "";
     public User $user;
     public bool $addedToLibrary = false, $addedToTracking = false;
     protected $videogame;
     public $resultPage;
-    protected string $field="";
-    public $order="-";
+    protected string $field = "";
+    public $order = "-";
 
     protected $listeners = [
         "render" => "render"
@@ -41,71 +36,29 @@ class Home extends Component
     public function render()
     {
         //Esto es por si la vista se vuelve a cargar, para que empiece de nuevo la paginacion
-        if($this->resultPage!=1){
+        if ($this->resultPage != 1) {
             session()->forget('resultPage');
         }
 
-        if ($this->search == "" && $this->field=="") {
+        if ($this->search == "" && $this->field == "") {
             if (count($this->games) <= 40) {
                 //NOTE: remember, si encuentra el nombre del dato lo devuelve, si no ejecuta la funcion
                 $this->games = Cache::remember('games', 86400, fn () => ( // NOTE: 24H de expiracion
                     ProvidersApiServiceProvider::getVideogames(40, 1)
                 ));
-                // $this->publicGames=$this->games;//TODO
             }
-        }else if ($this->field!="") {
-            //TODO:
-            Log::debug("CONDICION CORRECTA");
-
-            Log::debug("INICIO API");
-                log::debug(ProvidersApiServiceProvider::getVideogames(40, 1, $this->field));
-                Log::debug("FIN API");
-
-                // Log::debug("INICIO CACHE");
-                // log::debug(ProvidersApiServiceProvider::getVideogames(40, 1, $this->field));
-                // Log::debug("FIN CACHE");
-            // try{
-                $this->games=Cache::remember('games'.$this->field, 86400, fn () => (
-                    ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
-                ));
-                // Log::debug($this->games=Cache::remember('games'.$this->field, 86400, fn () => (
-                //     ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
-                // )));
-
-                // $cache=ProvidersApiServiceProvider::getVideogames(40, 1, $this->field);
-                // if(isset($cache)){
-                //     try{
-                //         $this->games = json_decode(json_encode($cache));
-                //     }catch(CorruptComponentPayloadException $e){
-                //         Log::warning("Fail to fetch games ordering by ".$this->field);
-                //     }catch(Exception $e){
-                //         Log::warning("Unknown exception fetching games ordering by ".$this->field);
-                //     }catch(Error $e){
-                //         Log::warning("Unknown error fetching games ordering by ".$this->field);
-                //     }
-                // }
-
-
-                // Log::debug(ProvidersApiServiceProvider::getVideogames(40, 1, $this->field));
-
-            // }catch(CorruptComponentPayloadException $e){
-            //     Log::warning("Fail to fetch games ordering by ".$this->field);
-            // }catch(Exception $e){
-            //     Log::warning("Unknown error fetching games ordering by ".$this->field);
-            // }
-
-            // $this->publicGames=$this->games;//TODO
-        }else{
-            $this->games =  Cache::remember($this->search, 86400, fn () => (
-                ProvidersApiServiceProvider::searchGames($this->search)
+        } else if ($this->field != "") {
+            $this->games = Cache::remember('games' . $this->field, 86400, fn () => (ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
             ));
-            // $this->publicGames=$this->games;//TODO
+        } else {
+            $this->games =  Cache::remember($this->search, 86400, fn () => (ProvidersApiServiceProvider::searchGames($this->search)
+            ));
         }
 
         $welcome_img = (count($this->games)) ? $this->games[random_int(0, count($this->games) - 1)]->background_image : "/img/fondo_registro.jpg";
 
         return view('livewire.home', [
-           // "games" => $this->games, TODO:
+            // "games" => $this->games, TODO:
             "welcome_img" => $welcome_img
         ]); //NOTE: el compact se puede cambiar por un array normal, asi se puede mandar de todo, no solo un string
 
@@ -117,7 +70,7 @@ class Home extends Component
             $this->user = Auth::user();
         }
 
-        $this->resultPage=session()->get('resultPage',1);
+        $this->resultPage = session()->get('resultPage', 1);
         // $this->games=[];
     }
 
@@ -131,8 +84,6 @@ class Home extends Component
     public function addToLibrary(string $name, string $slug)
     {
         if ($this->user) {
-
-            // dd($this->publicGames);
 
             foreach ($this->games as $g) {
                 if ($g["slug"] == $slug) {
@@ -243,9 +194,10 @@ class Home extends Component
     }
 
 
-    public function order(string $field=""){
-        $this->order=($this->order=="-")?"":"-";
-        $this->field=$this->order.$field;
+    public function order(string $field = "")
+    {
+        $this->order = ($this->order == "-") ? "" : "-";
+        $this->field = $this->order . $field;
     }
 
 
@@ -265,12 +217,12 @@ class Home extends Component
             // Para no perder el json y poder seguir trabajando con StdClass se hace un array_merge y se convierte
             // a json, despues se convierte de nuevo a un array con clases StdClass como estaba en la 1a llamada a la API
             $mergedGames = json_encode(array_merge($this->games, $results));
-            $this->games=json_decode($mergedGames);
+            $this->games = json_decode($mergedGames);
 
             //Esto es necesario para que a los juegos iniciales en cache se les sume los nuevos que se han cargado en la vista
-            if(Cache::get('games')){
+            if (Cache::get('games')) {
                 Cache::forget('games');
-            }else{
+            } else {
                 Cache::set('games', $this->games, 86400);
             };
         }

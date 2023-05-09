@@ -1,17 +1,6 @@
 <div>
     <div class="d-flex flex-wrap flex-lg-nowrap w-md-60 mx-auto align-items-center my-4">
-        <div class="col-12 flex-lg-grow-1 input-group">
-            {{-- <span class="input-group-text text-white border-dark border-radius-2xl"
-                style="background-color: rgba(52, 58, 64, 0.7);">
-                <i class="fas fa-search" aria-hidden="true"></i>
-            </span> --}}
-            {{-- <input type="search" wire:model.debounce.500ms="searchReview" placeholder="Buscar..."
-                class="form-control text-white border-radius-2xl"
-                style="background-color: rgba(52, 58, 64, 0.7);"> --}}
-            {{-- <select name="" id="">
-                <option value="-1">Ordenar por:</option>
-                <option value="0">Fecha</option>
-            </select> --}}
+        <div class="col-12 col-lg-6 w-lg-70 input-group">
             <h6>Ordenar por: </h6>
             {{-- <p class="ps-2"> fecha <i class="fa-solid fa-sort"></i></p> --}}
             <ul class="nav">
@@ -29,7 +18,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-12 col-lg-0 ms-lg-2 mt-4 mt-lg-0 text-center">
+        <div class="col-12 col-lg-6 ms-lg-2 mt-4 mt-lg-0 text-center text-lg-start">
             @if (isset($user) && count($user->reviews()->where("videogame_id",$videogame->id)->get()))
                 <button class="btn btn-primary bg-gradient-primary btn-round my-0 text-nowrap" data-bs-toggle="modal"
                 data-bs-target="#create-modal" disabled>

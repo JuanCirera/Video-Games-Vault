@@ -12,7 +12,7 @@
             <h4 class="text-white">Contacto</h4>
         </div>
         <hr>
-        <h6 class="text-center py-2">Contáctanos para lo que necesites, esuchamos sugerencias</h6>
+        <h6 class="text-center py-2">Contáctanos para lo que necesites, escuchamos sugerencias</h6>
         <div class="d-flex flex-wrap w-md-90 w-lg-60 mx-auto">
             @guest
                 <div class="col-12">

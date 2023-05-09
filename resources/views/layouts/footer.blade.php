@@ -29,7 +29,7 @@
 
                 </div>
                 <div id="version" class="text-center text-sm">
-                    <small class="my-0 text-center">
+                    <small class="my-0 text-center text-secondary">
                         @php
                             $version=env('APP_VERSION')
                         @endphp
@@ -37,7 +37,7 @@
                     </small>
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-lg-4 text-center text-sm pt-4" id="license">
+            <div class="col-12 col-sm-12 col-lg-4 text-center text-sm pt-4 text-white" id="license">
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img
                         alt="Creative Commons License" style="border-width:0"
                         src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is
