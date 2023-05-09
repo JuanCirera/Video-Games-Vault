@@ -47,6 +47,7 @@
                                     @enderror
                                 </div>
                                 <div class="text-center">
+                                    <input type="hidden" hidden value="{{$user_id}}" name="u_id">
                                     <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">
                                         <span wire:loading.remove>Enviar</span><span wire:loading>Enviando...</span>
                                     </button>

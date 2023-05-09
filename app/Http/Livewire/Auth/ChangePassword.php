@@ -10,31 +10,29 @@ use Livewire\Component;
 
 class ChangePassword extends Component
 {
-    protected $user;
-
     public function render()
     {
-        return view('livewire.auth.change-password');
-    }
-
-    public function mount(){
         Auth::logout();
 
-        $id = intval(request()->id);
-        $this->user = User::find($id);
+        $user_id = intval(request()->id);
+
+        return view('livewire.auth.change-password',compact('user_id'));
     }
 
     public function update(Request $request)
     {
         $request->validate([
             'email' => ['required','email'],
-            'password' => ['required', 'min:5'],
-            'confirm-password' => ['same:password']
+            'password' => ['required', 'min:6','max:255',"regex:/[a-z]/","regex:/[A-Z]/","regex:/[0-9]/"],
+            'confirm-password' => ['same:password'],
+            'u_id' => ['required','numeric','exists:users,id']
         ]);
+
+        $user = User::find($request->u_id);
 
         $userExists = User::where('email', $request->email)->first();
 
-        if ($userExists) {
+        if ($userExists && $user->email==$userExists->email) {
             $userExists->update([
                 'password' => $request->password
             ]);
@@ -43,7 +41,10 @@ class ChangePassword extends Component
 
             return redirect('login')->with("success_msg","Contraseña cambiada correctamente");
         } else {
-            return back()->with('error_msg', 'El email no corresponde con el usuario');
+
+            Log::info("Password reset attempt for user $userExists from ".$request->ip());
+
+            return redirect(url()->previous())->with('error_msg', 'El email no corresponde con el usuario que solicitó el cambio');
         }
     }
 }
