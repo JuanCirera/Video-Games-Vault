@@ -87,7 +87,7 @@
 
                         <div class="card-body pt-2">
                             <div class="d-flex align-items-center mb-1">
-                                <div class="col-9 col-lg-10 d-flex gap-2">
+                                <div class="col-9 col-lg-10 d-flex gap-2 align-items-center">
 
                                     @php
                                         $countPS = 0;
@@ -98,6 +98,9 @@
                                                 switch ($platform->platform->id) {
                                                     case 4:
                                                         echo "<i class='fa-brands fa-windows text-white'></i>";
+                                                        break;
+                                                    case 7:
+                                                        echo "<i class='bi bi-nintendo-switch text-white'></i>";
                                                         break;
                                                     case 187:
                                                     case 18:
