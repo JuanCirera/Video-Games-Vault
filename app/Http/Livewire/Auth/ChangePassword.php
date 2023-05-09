@@ -42,7 +42,7 @@ class ChangePassword extends Component
             return redirect('login')->with("success_msg","Contraseña cambiada correctamente");
         } else {
 
-            Log::info("Password reset attempt for user $userExists from ".$request->ip());
+            Log::info("Password reset attempt for user $userExists->username from ".$request->ip());
 
             return redirect(url()->previous())->with('error_msg', 'El email no corresponde con el usuario que solicitó el cambio');
         }
