@@ -11,10 +11,6 @@
                             <span class="mask bg-dark opacity-6"></span>
                             <img class="mb-10 z-index-1 img-fluid" style="max-width: 50em"
                                 src="{{ Storage::url('img/logos/VGV_extended.svg') }}" alt="svg">
-                            {{-- <h4 class="mb-15 text-white font-weight-bolder position-relative">"Gamers are awesome"</h4> --}}
-                            {{-- TODO: Meter frase o eslogan --}}
-                            {{-- <p class="text-white position-relative">The more effortless the writing looks, the more
-                                    effort the writer actually put into the process.</p> --}}
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">

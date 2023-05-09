@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ChangePassword;
 use App\Http\Livewire\AboutUs;
 use App\Http\Livewire\AdminDashboard;
+use App\Http\Livewire\Auth\ChangePassword;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\GameDetails;
 use App\Http\Livewire\Home;
-use App\Http\Livewire\Login;
-use App\Http\Livewire\Register;
-use App\Http\Livewire\ResetPassword;
+use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\Register;
+use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\SearchUser;
 use App\Http\Livewire\UserProfile;
 use App\Http\Livewire\UserSettings;
@@ -103,7 +103,7 @@ Route::get('/login', Login::class)->middleware('guest')->name('login');
 Route::post('/login', [Login::class, 'login'])->middleware('guest')->name('login.perform');
 Route::get('/reset-password', ResetPassword::class)->middleware('guest')->name('reset-password');
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
-Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
+Route::get('/change-password', ChangePassword::class)->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 Route::get('/users', SearchUser::class)->name("user.search");
 Route::get('/contact', Contact::class)->name('contact');
