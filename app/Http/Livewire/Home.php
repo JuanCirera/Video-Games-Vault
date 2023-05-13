@@ -47,11 +47,13 @@ class Home extends Component
                     ProvidersApiServiceProvider::getVideogames(40, 1)
                 ));
             }
+        // ** ORDENACION **
         } else if ($this->field != "") {
             $this->games = Cache::remember('games' . $this->field, 86400, fn () => (ProvidersApiServiceProvider::getVideogames(40, 1, $this->field)
             ));
+        // ** BUSQUEDA **
         } else {
-            $this->games =  Cache::remember($this->search, 86400, fn () => (ProvidersApiServiceProvider::searchGames($this->search)
+            $this->games =  Cache::remember("search_for_".$this->search, 86400, fn () => (ProvidersApiServiceProvider::searchGames($this->search)
             ));
         }
 

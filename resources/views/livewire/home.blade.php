@@ -18,7 +18,7 @@
                         style="background-color: rgba(52, 58, 64, 0.7);">
                         <i class="fas fa-search" aria-hidden="true"></i>
                     </span>
-                    <input type="search" wire:model.debounce.500ms="search" placeholder="Buscar..."
+                    <input type="search" wire:model.debounce.900ms="search" placeholder="Buscar..."
                         class="form-control mt-4 mb-2 text-white border-radius-2xl"
                         style="background-color: rgba(52, 58, 64, 0.7);">
                 </div>
@@ -189,7 +189,7 @@
         </section>
         <div class="my-4 text-center">
             <button class="btn btn-primary w-100 w-sm-30 w-md-30" wire:click="loadMore">
-                <span wire:loading.remove wire:target="loadMore">Ver más </span>
+                <span wire:loading.remove wire:target="loadMore"><i class="fas fa-eye"></i> Ver más </span>
                 <span wire:loading wire:target="loadMore">Cargando...</span>
             </button>
         </div>
