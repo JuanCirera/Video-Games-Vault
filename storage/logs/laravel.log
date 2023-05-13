@@ -1428,3 +1428,21 @@
 [2023-05-13 16:53:45] local.INFO: API request for coreball details  
 [2023-05-13 16:53:45] local.INFO: API request: coreball achievements fetched  
 [2023-05-13 16:53:46] local.INFO: API request: coreball stores fetched  
+[2023-05-13 17:17:43] local.INFO: API request for the-witcher-3-wild-hunt details  
+[2023-05-13 17:17:43] local.INFO: API request: the-witcher-3-wild-hunt screenshots fetched  
+[2023-05-13 17:17:44] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-13 17:17:45] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-13 17:17:46] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-13 17:17:46] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-13 17:17:46] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-13 17:17:46] local.INFO: API request: the-witcher-3-wild-hunt stores fetched  
+[2023-05-13 17:17:52] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-13 17:17:52] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-13 17:19:58] local.INFO: API request for 4-fotos-1-palabra-es details  
+[2023-05-13 17:19:58] local.INFO: API request: 4-fotos-1-palabra-es achievements fetched  
+[2023-05-13 17:19:58] local.INFO: API request: 4-fotos-1-palabra-es stores fetched  
+[2023-05-13 18:08:13] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-13 18:08:13] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-13 18:09:43] local.INFO: API request: the-witcher-3-wild-hunt achievements fetched  
+[2023-05-13 18:09:44] local.WARNING: API request for the-witcher-3-wild-hunt achievements failed!  
+[2023-05-13 18:13:30] local.INFO: API request: 40 games fetched  

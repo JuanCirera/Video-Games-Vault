@@ -105,20 +105,21 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                @endif
-
-                @isset($videogame->background_image)
-                    <div>
-                        <img src="{{ $videogame->background_image }}" alt="" class="img-fluid">
-                    </div>
                 @else
-                    <div class="bg-gray-800 border-radius-lg min-height-300 max-height-300 text-center d-flex align-items-center">
-                        <span class="text-lg text-secondary col-12">
-                            Imagen no disponible <br>
-                            <i class="fa-regular fa-image text-5xl mt-4"></i>
-                        </span>
-                    </div>
-                @endisset
+                    @isset($videogame->background_image)
+                        <div>
+                            <img src="{{ $videogame->background_image }}" alt="" class="img-fluid">
+                        </div>
+                    @else
+                        <div
+                            class="bg-gray-800 border-radius-lg min-height-300 max-height-300 text-center d-flex align-items-center">
+                            <span class="text-lg text-secondary col-12">
+                                Imagen no disponible <br>
+                                <i class="fa-regular fa-image text-5xl mt-4"></i>
+                            </span>
+                        </div>
+                    @endisset
+                @endif
                 {{--  --}}
             </section>
             <section class="col-12 col-md-4 col-lg-6 ps-md-4">

@@ -96,7 +96,7 @@
 
                         <div class="card-body pt-2">
                             <div class="d-flex align-items-center mb-1">
-                                <div class="col-9 col-lg-10 d-flex gap-2 align-items-center">
+                                <div class="col-10 d-flex gap-2 align-items-center">
 
                                     @php
                                         $countPS = 0;
@@ -130,7 +130,7 @@
 
                                 </div>
 
-                                <div class="col-3 col-lg-2 ps-5 ps-md-4 ps-lg-2 p-0 m-0">
+                                <div class="col-2 ps-2 ps-sm-2 ps-md-2 ps-lg-2 p-0 m-0">
                                     <div
                                         class="text-center border border-primary border-radius-md text-primary text-bold m-0">
                                         {{ $item->metacritic ?? 'N/A' }}
