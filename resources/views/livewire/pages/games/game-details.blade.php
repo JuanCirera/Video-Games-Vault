@@ -105,11 +105,20 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                @else
+                @endif
+
+                @isset($videogame->background_image)
                     <div>
                         <img src="{{ $videogame->background_image }}" alt="" class="img-fluid">
                     </div>
-                @endif
+                @else
+                    <div class="bg-gray-800 border-radius-lg min-height-300 max-height-300 text-center d-flex align-items-center">
+                        <span class="text-lg text-secondary col-12">
+                            Imagen no disponible <br>
+                            <i class="fa-regular fa-image text-5xl mt-4"></i>
+                        </span>
+                    </div>
+                @endisset
                 {{--  --}}
             </section>
             <section class="col-12 col-md-4 col-lg-6 ps-md-4">
@@ -186,7 +195,8 @@
             </article>
             <article class="col-6 ps-2">
                 <h6 class="text-white">Puntuación</h6>
-                <p class="text-center border border-primary border-radius-md text-primary text-bold w-25 w-md-10 w-lg-6">
+                <p
+                    class="text-center border border-primary border-radius-md text-primary text-bold w-25 w-md-10 w-lg-6">
                     {{ $videogame->metacritic ?? 'N/A' }}
                 </p>
             </article>

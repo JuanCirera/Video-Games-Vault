@@ -79,9 +79,18 @@
                     <div class="card bg-gray-800 mx-auto mb-4 min-height-490 max-height-490">
                         <div class="card-header p-0 bg-gray-800">
                             <a href="{{ route('game.show', $item->slug) }}">
-                                <img src="{{ $item->background_image }}"
-                                    class="img-fluid border-radius-lg min-height-250 max-height-250 w-100"
-                                    style="border-bottom-right-radius: 0;border-bottom-left-radius: 0; object-fit: cover;">
+                                @isset($item->background_image)
+                                    <img src="{{ $item->background_image }}"
+                                        class="img-fluid border-radius-lg min-height-250 max-height-250 w-100"
+                                        style="border-bottom-right-radius: 0;border-bottom-left-radius: 0; object-fit: cover;">
+                                @else
+                                    <div class="min-height-250 max-height-250 text-center d-flex align-items-center">
+                                        <span class="text-lg text-secondary col-12">
+                                            Imagen no disponible <br>
+                                            <i class="fa-regular fa-image text-5xl mt-4"></i>
+                                        </span>
+                                    </div>
+                                @endisset
                             </a>
                         </div>
 
