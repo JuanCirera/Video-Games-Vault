@@ -43,17 +43,4 @@ class UserProfile extends Component
         }
     }
 
-    public function like(Review $review)
-    {
-        dd("HOLA"); //TODO: likes
-        $review->likes += 1;
-        $review->save();
-    }
-
-    public function dislike(Review $review)
-    {
-        $review->dislikes += 1;
-        $review->save();
-    }
-
 }

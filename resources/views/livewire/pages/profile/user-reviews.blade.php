@@ -73,22 +73,25 @@
                         <div class="col-2 px-2" style="text-align: right;">
                             <a id="like"
                             @if (isset($user) && count($user->reviewsLiked()->get()) && count($user->reviewsLiked()->wherePivot("review_id",$userReview->id)->get()))
-                                class="cursor-pointer text-primary"
+                                class="text-primary"
+                                {{-- cursor-pointer --}}
                             @else
-                                class="cursor-pointer text-secondary"
+                                class="text-secondary"
                             @endif
-                                wire:click="like({{$userReview->id}})">
+                            {{-- wire:click="like({{$userReview->id}})" --}}
+                                >
                                 <i class="fa-solid fa-thumbs-up"></i> {{ $userReview->likes }}
                             </a>
                         </div>
                         <div class="col-2 px-2">
                             <a id="dislike"
                             @if (isset($user) && count($user->reviewsDisliked()->get()) && count($user->reviewsDisliked()->wherePivot("review_id",$userReview->id)->get()))
-                                class="cursor-pointer text-danger"
+                                class="text-danger"
                             @else
-                                class="cursor-pointer text-secondary"
+                                class="text-secondary"
                             @endif
-                                wire:click="dislike({{$userReview->id}})">
+                            {{-- wire:click="dislike({{$userReview->id}})" --}}
+                                >
                                 <i class="fa-solid fa-thumbs-down"></i> {{ $userReview->dislikes }}
                             </a>
                         </div>

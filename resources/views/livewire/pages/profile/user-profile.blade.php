@@ -174,27 +174,6 @@
             });
         });
 
-        // document.getElementById("like").addEventListener("click", (e) => {
-        //     if (!e.target.classList.contains("text-primary")) {
-        //         e.target.classList.remove("text-body");
-        //         e.target.classList.add("text-primary");
-        //     } else {
-        //         e.target.classList.remove("text-primary");
-        //         e.target.classList.add("text-body");
-        //     }
-        //     // Livewire.emit('like', e.target.getAttribute('name'));
-        // });
-
-        // document.getElementById("dislike").addEventListener("click", (e) => {
-        //     if (!e.target.classList.contains("text-primary")) {
-        //         e.target.classList.remove("text-body");
-        //         e.target.classList.add("text-primary");
-        //     } else {
-        //         e.target.classList.remove("text-primary");
-        //         e.target.classList.add("text-body");
-        //     }
-        //     // Livewire.emit('dislike',e.target.getAttribute('name'));
-        // });
 
         // ANIMACION PROFILE NAV - Tablet/PC VIEWPORT
 

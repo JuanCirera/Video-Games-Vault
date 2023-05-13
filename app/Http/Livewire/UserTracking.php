@@ -68,7 +68,8 @@ class UserTracking extends Component
         //         ]));
         //     }
         // }
-        // TODO:
+        // TODO: Hacer que cada 24H se compruebe si updated es mayor o igual a la fecha actual para lanzar el notify, complicado
+
 
     }
 
