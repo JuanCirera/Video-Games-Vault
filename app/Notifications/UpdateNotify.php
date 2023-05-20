@@ -11,12 +11,15 @@ class UpdateNotify extends Notification
 {
     use Queueable;
 
+    public string $gameTitle, $gameSlug;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(string $gameTitle, string $gameSlug)
     {
-        //
+        $this->gameTitle=$gameTitle;
+        $this->gameSlug=$gameSlug;
     }
 
     /**
@@ -35,9 +38,9 @@ class UpdateNotify extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting('¡Uno de tus juegos tiene novedades!')
+                    ->line($this->gameTitle.' se ha actualizado recientemente, entra para ver cuales son las novedades.')
+                    ->action('Ver detalles', url('/games/'.$this->gameSlug));
     }
 
     /**

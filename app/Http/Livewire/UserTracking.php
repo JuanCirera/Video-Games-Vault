@@ -6,7 +6,12 @@ use App\Mail\NotifyUser;
 use App\Models\User;
 use App\Models\Videogame;
 use App\Notifications\ReleaseNotify;
+use App\Notifications\UpdateNotify;
+use App\Providers\ApiServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
@@ -24,6 +29,7 @@ class UserTracking extends Component
         return view('livewire.pages.profile.user-tracking', ["videogames" => $this->videogames]);
     }
 
+
     public function stopTracking(Videogame $game)
     {
         if ($this->user) {
@@ -36,10 +42,10 @@ class UserTracking extends Component
                     return redirect(url()->previous())->with("info_msg", "Has dejado de seguir a {$game->title}");
                 }
             }
-
         }
         return redirect('login');
     }
+
 
     public function notifyRelease()
     {
@@ -52,29 +58,43 @@ class UserTracking extends Component
         }
     }
 
-    public function notifyDLC()
+
+    public static function checkDataUpdate()
     {
-        // foreach ($this->videogames as $game) {
-        //     if ($game->additions>) {
-        //         $mailContent =
-        //             '<div>
-        //             <p style="margin-top: 5vh; text-align: center; font-size: 1.5vh">
-        //             ¡'. $game->title . ' ha salido a la venta!
-        //             </p>
-        //             </div>';
+        $user=Auth()->user();
+        $videogames=$user->videogames()->wherePivot("tracked", 1)->get();
 
-        //         Mail::to($this->user->email)->send(new NotifyUser([
-        //             "content" => $mailContent
-        //         ]));
-        //     }
-        // }
-        // TODO: Hacer que cada 24H se compruebe si updated es mayor o igual a la fecha actual para lanzar el notify, complicado
+        foreach ($videogames as $game) {
+            //Se traen los datos más recientes del juego
+            $apiGame = ApiServiceProvider::getVideogameDetails($game->slug);
 
+            //Se guardan en cache
+            Cache::set($game->slug, $apiGame, 86400);
 
+            //Si la fecha de la API que es la más actualizada es mayor que la fecha de la BD,
+            //se utiliza Carbon para comparar las fechas
+            if (Carbon::parse($apiGame->updated)->lt(Carbon::parse(str_replace('T', ' ', $game->updated_date)))) {
+                //Se guarda la nueva fecha en la BD
+                $game->updated_date = $apiGame->updated;
+                //Se notifica al usuario
+                self::notifyUpdate();
+            }
+        }
+        Log::info('Scheduled task for checkDataUpdate executed');
     }
 
-    public function notifyUpdate()
+
+    public static function notifyUpdate()
     {
-        //TODO:
+        $user=Auth()->user();
+        $videogames=$user->videogames()->wherePivot("tracked", 1)->get();
+
+        if ($user->notifyGames) {
+            foreach ($videogames as $game) {
+                if (Carbon::parse($game->updated_date)->eq(Carbon::parse(date(now())) || Carbon::parse($game->updated_date)->gt(Carbon::parse(date(now()))))) {
+                    $user->notify(new UpdateNotify($game->title, $game->slug));
+                }
+            }
+        }
     }
 }
