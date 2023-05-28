@@ -29,7 +29,9 @@
                                             <td>
                                                 <div class="d-flex px-2">
                                                     <div>
-                                                        @if (Str::contains($u->avatar, 'ui-avatars') || Str::contains($u->avatar, 'lh3.googleusercontent'))
+                                                        @if (Str::contains($u->avatar, 'ui-avatars') ||
+                                                                Str::contains($u->avatar, 'lh3.googleusercontent') ||
+                                                                Str::contains($u->avatar, 'graph.facebook'))
                                                             <img src="{{ $u->avatar }}" alt="profile_img"
                                                                 class="avatar rounded-circle me-2" width="45"
                                                                 height="45" style="object-fit: cover;">

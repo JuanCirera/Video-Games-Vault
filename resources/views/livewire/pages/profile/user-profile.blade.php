@@ -11,7 +11,7 @@
         <section class="text-center">
             {{-- User data --}}
             <div class="px-7 py-2">
-                @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
+                @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent') || Str::contains(Auth::user()->avatar, 'graph.facebook'))
                     <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                 @else
                     <img src="{{ Storage::url($user->avatar) }}" alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">

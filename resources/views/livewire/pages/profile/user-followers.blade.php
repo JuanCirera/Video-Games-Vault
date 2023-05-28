@@ -6,17 +6,22 @@
             <i class="fas fa-search" aria-hidden="true"></i>
         </span>
         <input type="search" class="form-control text-white bg-gray-800" placeholder="Buscar usuario..."
-        wire:model="search">
+            wire:model="search">
     </div>
 
     @foreach ($followers as $follower)
-        <a href="{{route('profile.show', $follower->username)}}" class="card bg-gray-800 mb-4 py-2 w-md-70 w-lg-50 mx-auto">
+        <a href="{{ route('profile.show', $follower->username) }}"
+            class="card bg-gray-800 mb-4 py-2 w-md-70 w-lg-50 mx-auto">
             <div class="card-body px-4 py-2 text-white d-flex" style="text-align: left; align-items: center;">
                 <div class="col-2 col-lg-1">
-                    @if (Str::contains($follower->avatar, 'ui-avatars') || Str::contains($follower->avatar, 'lh3.googleusercontent'))
-                        <img src="{{ $follower->avatar }}" alt="avatar" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
+                    @if (Str::contains($follower->avatar, 'ui-avatars') ||
+                            Str::contains($follower->avatar, 'lh3.googleusercontent') ||
+                            Str::contains($follower->avatar, 'graph.facebook'))
+                        <img src="{{ $follower->avatar }}" alt="avatar" class="rounded-circle" width="50"
+                            height="50" style="object-fit: cover;">
                     @else
-                        <img src="{{ Storage::url($follower->avatar) }}" alt="avatar" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
+                        <img src="{{ Storage::url($follower->avatar) }}" alt="avatar" class="rounded-circle"
+                            width="50" height="50" style="object-fit: cover;">
                     @endif
                 </div>
                 <div class="col-10 col-lg-11" style="text-align: left;">

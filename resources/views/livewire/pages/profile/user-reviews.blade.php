@@ -59,7 +59,7 @@
                     {{-- CARD FOOTER --}}
                     <div class="card-footer d-flex pt-2 align-items-center">
                         <div class="col-2 col-lg-1">
-                            @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))
+                            @if (Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent') || Str::contains(Auth::user()->avatar, 'graph.facebook'))
                                 <img src="{{ $userReview->user->avatar }}" alt="" class="rounded-circle"
                                     width="50" height="50" style="object-fit: cover;">
                             @else

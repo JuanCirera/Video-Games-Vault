@@ -19,10 +19,12 @@
             </ul>
         </div>
         <div class="col-12 col-lg-6 ms-lg-2 mt-4 mt-lg-0 text-center text-lg-start">
-            @if (isset($user) && count($user->reviews()->where("videogame_id",$videogame->id)->get()))
+            @if (isset($user) &&
+                    count(
+                        $user->reviews()->where('videogame_id', $videogame->id)->get()))
                 <button class="btn btn-primary bg-gradient-primary btn-round my-0 text-nowrap" data-bs-toggle="modal"
-                data-bs-target="#create-modal" disabled>
-                Ya has escrito una reseña
+                    data-bs-target="#create-modal" disabled>
+                    Ya has escrito una reseña
                 </button>
             @else
                 @livewire('create-review', ['game_id' => $videogame->id])
@@ -33,17 +35,21 @@
         @foreach ($reviews as $review)
             <section class="mb-4">
                 <div class="card w-lg-60 mx-auto" style="background-color: rgba(52,58,64, 0.8);">
-                    <div class="card-header pb-2 pt-4 d-flex flex-wrap flex-lg-nowrap" style="background-color: rgba(0, 0, 0, 0);">
+                    <div class="card-header pb-2 pt-4 d-flex flex-wrap flex-lg-nowrap"
+                        style="background-color: rgba(0, 0, 0, 0);">
                         <div class="col-12 col-lg-8">
                             <h6 class="text-white text-start my-0 wrap">{{ $review->title }}</h6>
-                            <p class="text-start text-sm mb-0">{{ date('d-m-Y, H:i', strtotime($review->created_at)) }}</p>
+                            <p class="text-start text-sm mb-0">{{ date('d-m-Y, H:i', strtotime($review->created_at)) }}
+                            </p>
                         </div>
                         <div class="col-12 col-lg-4 ps-lg-2">
                             <div>
                                 @if ($review->rating)
-                                    <span class="text-success">Recomendado</span> <i class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
+                                    <span class="text-success">Recomendado</span> <i
+                                        class="fa-solid fa-thumbs-up text-success text-3xl ms-2"></i>
                                 @else
-                                    <span class="text-danger">No recomendado</span> <i class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
+                                    <span class="text-danger">No recomendado</span> <i
+                                        class="fa-solid fa-thumbs-down text-danger text-3xl ms-2"></i>
                                 @endif
                             </div>
                         </div>
@@ -54,12 +60,22 @@
                     <div class="card-footer pt-2">
                         <div class="d-flex align-items-center">
                             <div class="col-2 col-md-1">
-                                @if (Str::contains($review->user()->where('id', $review->user_id)->first()->avatar, 'ui-avatars') || Str::contains($review->user()->where('id', $review->user_id)->first()->avatar, 'lh3.googleusercontent'))
+                                @if (Str::contains(
+                                        $review->user()->where('id', $review->user_id)->first()->avatar,
+                                        'ui-avatars') ||
+                                        Str::contains(
+                                            $review->user()->where('id', $review->user_id)->first()->avatar,
+                                            'lh3.googleusercontent') ||
+                                        Str::contains(
+                                            $review->user()->where('id', $review->user_id)->first()->avatar,
+                                            'graph.facebook'))
                                     <img src="{{ $review->user()->where('id', $review->user_id)->first()->avatar }}"
-                                        alt="" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
+                                        alt="" class="rounded-circle" width="50" height="50"
+                                        style="object-fit: cover;">
                                 @else
                                     <img src="{{ Storage::url($review->user()->where('id', $review->user_id)->first()->avatar) }}"
-                                        alt="" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
+                                        alt="" class="rounded-circle" width="50" height="50"
+                                        style="object-fit: cover;">
                                 @endif
                             </div>
                             <div class="col-6 col-md-7 ps-2" style="text-align: left;">
@@ -69,23 +85,25 @@
                             </div>
                             <div class="col-2 px-2" style="text-align: right;">
                                 <a id="like"
-                                @if (isset($user) && count($user->reviewsLiked()->get()) && count($user->reviewsLiked()->wherePivot("review_id",$review->id)->get()))
-                                    class="cursor-pointer text-primary"
+                                    @if (isset($user) &&
+                                            count($user->reviewsLiked()->get()) &&
+                                            count(
+                                                $user->reviewsLiked()->wherePivot('review_id', $review->id)->get())) class="cursor-pointer text-primary"
                                 @else
-                                    class="cursor-pointer text-secondary"
-                                @endif
-                                    wire:click="like({{$review->id}})">
+                                    class="cursor-pointer text-secondary" @endif
+                                    wire:click="like({{ $review->id }})">
                                     <i class="fa-solid fa-thumbs-up"></i> {{ $review->likes }}
                                 </a>
                             </div>
                             <div class="col-2 px-2">
                                 <a id="dislike"
-                                @if (isset($user) && count($user->reviewsDisliked()->get()) && count($user->reviewsDisliked()->wherePivot("review_id",$review->id)->get()))
-                                    class="cursor-pointer text-danger"
+                                    @if (isset($user) &&
+                                            count($user->reviewsDisliked()->get()) &&
+                                            count(
+                                                $user->reviewsDisliked()->wherePivot('review_id', $review->id)->get())) class="cursor-pointer text-danger"
                                 @else
-                                    class="cursor-pointer text-secondary"
-                                @endif
-                                    wire:click="dislike({{$review->id}})">
+                                    class="cursor-pointer text-secondary" @endif
+                                    wire:click="dislike({{ $review->id }})">
                                     <i class="fa-solid fa-thumbs-down"></i> {{ $review->dislikes }}
                                 </a>
                             </div>
