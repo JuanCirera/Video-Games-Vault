@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
-use function Ramsey\Uuid\v1;
-
 class ShowReviews extends Component
 {
     public string $order = "desc", $field = "title";

@@ -64,9 +64,9 @@ class CreateReview extends Component
                 "game_id" => ["required", "numeric", "in:" . $games_id]
             ]);
 
-            // Con esta comprobacion evito que el usuario escriba dos veces una reseña para el mismo juego
+            // Con esta comprobacion evito que el usuario escriba varias reseñas para el mismo juego
             foreach ($this->user->reviews()->get() as $review) {
-                if ($review->user_id == $this->user->id) {
+                if ($review->videogame_id == $this->game_id) {
                     return redirect(url()->previous())->with("error_msg", "No puedes escribir más reseñas para este juego");
                 }
             }
@@ -79,7 +79,7 @@ class CreateReview extends Component
                 "videogame_id" => $this->game_id
             ]);
 
-            return redirect(url()->previous())->with("success_msg", "Reseña publicada!");
+            return redirect(url()->previous())->with("success_msg", "Reseña publicada");
 
         }
 
