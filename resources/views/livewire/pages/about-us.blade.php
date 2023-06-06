@@ -1,6 +1,7 @@
 <div>
     <div class="container mt-8 text-white w-md-90 w-lg-60">
-        <h4 class="text-center text-gradient text-primary mb-4"> - VIDEO GAMES VAULT - </h4>
+        <h3 class="text-center text-gradient text-primary pb-4"> VIDEO GAMES VAULT </h3>
+
         <div class="card bg-gray-900">
             <div class="card-header bg-gray-800 px-4 py-3">
                 <h5 class="text-primary m-0">¿Quiénes somos?</h5>
