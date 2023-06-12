@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -25,7 +26,10 @@ class Dashboard extends Component
         $users=User::all();
 
         foreach($users as $i=>$u){
-            if($u->getRoleNames()->toArray()[0]=="admin"){
+
+            $roles=$u->getRoleNames()->toArray();
+            // reset coge devuelve el primer elemento del array, no lo borra
+            if(reset($roles) == "admin"){
                 unset($users[$i]);
             }
         }
@@ -56,7 +60,7 @@ class Dashboard extends Component
 
 
     public function destroyUser(User $user){
-        if (!(Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent'))){
+        if (!(Str::contains($user->avatar, 'ui-avatars') || Str::contains($user->avatar, 'lh3.googleusercontent') || Str::contains($user->avatar, 'graph.facebook'))){
             Storage::delete($user->avatar);
         }
         $username=$user->username;
