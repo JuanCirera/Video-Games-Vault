@@ -7,64 +7,71 @@
                     <h6>Gestión de usuarios</h6>
                     <div class="card bg-gray-700">
                         <div class="table-responsive">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-white">
-                                            Username</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-white">
-                                            Email</th>
-                                        {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-white">
-                                        Status</th> --}}
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-white">
-                                            Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($users as $u)
+                            @if (count($users))
+                                <table class="table align-items-center mb-0">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                                <div class="d-flex px-2">
-                                                    <div>
-                                                        @if (Str::contains($u->avatar, 'ui-avatars') ||
-                                                                Str::contains($u->avatar, 'lh3.googleusercontent') ||
-                                                                Str::contains($u->avatar, 'graph.facebook'))
-                                                            <img src="{{ $u->avatar }}" alt="profile_img"
-                                                                class="avatar rounded-circle me-2" width="45"
-                                                                height="45" style="object-fit: cover;">
-                                                        @else
-                                                            <img src="{{ Storage::url($u->avatar) }}" alt="profile_img"
-                                                                class="avatar rounded-circle me-2" width="45"
-                                                                height="45" style="object-fit: cover;">
-                                                        @endif
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <h6 class="mb-0 text-xs">{{ $u->username }}</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0 text-white">{{ $u->email }}
-                                                </p>
-                                            </td>
-                                            <td class="align-middle">
-                                                <button class="btn btn-primary"
-                                                    wire:click="editUser({{ $u->id }})" data-bs-toggle="modal"
-                                                    data-bs-target="#editUser-modal">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="btn btn-primary"
-                                                    wire:click="destroyUser({{ $u->id }})">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-white">
+                                                Username</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-white">
+                                                Email</th>
+                                            {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-white">
+                                        Status</th> --}}
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-white">
+                                                Actions</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users as $u)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2">
+                                                        <div>
+                                                            @if (Str::contains($u->avatar, 'ui-avatars') ||
+                                                                    Str::contains($u->avatar, 'lh3.googleusercontent') ||
+                                                                    Str::contains($u->avatar, 'graph.facebook'))
+                                                                <img src="{{ $u->avatar }}" alt="profile_img"
+                                                                    class="avatar rounded-circle me-2" width="45"
+                                                                    height="45" style="object-fit: cover;">
+                                                            @else
+                                                                <img src="{{ Storage::url($u->avatar) }}"
+                                                                    alt="profile_img" class="avatar rounded-circle me-2"
+                                                                    width="45" height="45"
+                                                                    style="object-fit: cover;">
+                                                            @endif
+                                                        </div>
+                                                        <div class="my-auto">
+                                                            <h6 class="mb-0 text-xs">{{ $u->username }}</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0 text-white">
+                                                        {{ $u->email }}
+                                                    </p>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <button class="btn btn-primary"
+                                                        wire:click="editUser({{ $u->id }})"
+                                                        data-bs-toggle="modal" data-bs-target="#editUser-modal">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-primary"
+                                                        wire:click="destroyUser({{ $u->id }})">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            @else
+                                <p class="text-primary text-center py-4"><i class="fas fa-circle-info"></i> No existen usuarios registrados</p>
+                            @endif
                         </div>
                     </div>
                 </section>
