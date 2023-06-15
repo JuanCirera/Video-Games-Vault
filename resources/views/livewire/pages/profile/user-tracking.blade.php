@@ -15,7 +15,7 @@
                                 <div class="col-4">
                                     <a href="{{ route('game.show', $trackedGame->slug) }}">
                                         <img src="{{ $trackedGame->image }}" alt=""
-                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-end-lg">
+                                            class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
                                     </a>
                                 </div>
                                 <div class="col-8">

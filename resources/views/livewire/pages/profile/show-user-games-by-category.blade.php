@@ -7,7 +7,7 @@
                     <div class="row g-0 d-md-none">
                         <div class="col-4">
                             <img src="{{ $categorizedGame->image }}" alt=""
-                                class="img-fluid border-radius-top-start-lg border-radius-bottom-end-lg">
+                                class="img-fluid border-radius-top-start-lg border-radius-bottom-start-lg">
                         </div>
                         <div class="col-8">
                             <div class="card-body px-4 py-2 row">
