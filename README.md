@@ -8,6 +8,9 @@
 
 <br />
 
+> [!NOTE]
+> Esto es un proyecto ficticio creado para el Grade Superior de Desarrollo de Aplicaciones Web (DAW) del IES Al-ÁNDALUS (Almería).
+
 Video Games Vault es el lugar donde los jugadores pueden encontrar miles de juegos con los cuales crear sus bibliotecas u ordenar los juegos que haya jugado, completado, tenga pendientes, etc.
 
 Además de poder hacer un seguimiento de juegos favoritos o de nuevos juegos aún por presentarse con un sistema de notificaciones.
